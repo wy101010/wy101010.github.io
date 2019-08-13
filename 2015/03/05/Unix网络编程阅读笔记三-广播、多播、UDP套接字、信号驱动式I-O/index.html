@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>码农随笔</title>
+  <title>Unix网络编程阅读笔记三 广播、多播、UDP套接字、信号驱动式I/O | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Linux C C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码农随笔">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="由 王宇 原创并发布本文代码，在以下环境下编译通过CentOS 6.4Kernal version: 2.6.32GCC version: 4.4.7一、广播1、用途和寻址方式广播的用途之一是在本地子网定位一个服务器主机，前提是已知或认定这个服务器主机位于本地子网，但是不知道它的单播IP地址。这种操作也称为资源发现。另一个用途是在有多个客户主机与单个服务器主机通信的局域网环境中尽量减少分组流通。">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unix网络编程阅读笔记三 广播、多播、UDP套接字、信号驱动式I&#x2F;O">
+<meta property="og:url" content="http://yoursite.com/2015/03/05/Unix网络编程阅读笔记三-广播、多播、UDP套接字、信号驱动式I-O/index.html">
 <meta property="og:site_name" content="码农随笔">
+<meta property="og:description" content="由 王宇 原创并发布本文代码，在以下环境下编译通过CentOS 6.4Kernal version: 2.6.32GCC version: 4.4.7一、广播1、用途和寻址方式广播的用途之一是在本地子网定位一个服务器主机，前提是已知或认定这个服务器主机位于本地子网，但是不知道它的单播IP地址。这种操作也称为资源发现。另一个用途是在有多个客户主机与单个服务器主机通信的局域网环境中尽量减少分组流通。">
 <meta property="og:locale" content="cn">
+<meta property="og:updated_time" content="2019-08-13T05:09:49.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农随笔">
+<meta name="twitter:title" content="Unix网络编程阅读笔记三 广播、多播、UDP套接字、信号驱动式I&#x2F;O">
+<meta name="twitter:description" content="由 王宇 原创并发布本文代码，在以下环境下编译通过CentOS 6.4Kernal version: 2.6.32GCC version: 4.4.7一、广播1、用途和寻址方式广播的用途之一是在本地子网定位一个服务器主机，前提是已知或认定这个服务器主机位于本地子网，但是不知道它的单播IP地址。这种操作也称为资源发现。另一个用途是在有多个客户主机与单个服务器主机通信的局域网环境中尽量减少分组流通。">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -197,378 +201,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenGL学习记录-着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Unix网络编程阅读笔记三-广播、多播、UDP套接字、信号驱动式I-O" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/OpenGL学习记录-着色/">OpenGL学习记录-着色</a>
+    <h1 class="article-title" itemprop="name">
+      Unix网络编程阅读笔记三 广播、多播、UDP套接字、信号驱动式I/O
     </h1>
   
 
         
-        <a href="/2018/06/20/OpenGL学习记录-着色/" class="archive-article-date">
-  	<time datetime="2018-06-20T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+        <a href="/2015/03/05/Unix网络编程阅读笔记三-广播、多播、UDP套接字、信号驱动式I-O/" class="archive-article-date">
+  	<time datetime="2015-03-05T09:17:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blog-image/zsq-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="着色器-运行在GPU上的小程序"><a href="#着色器-运行在GPU上的小程序" class="headerlink" title="着色器 - 运行在GPU上的小程序"></a>着色器 - 运行在GPU上的小程序</h2><p>从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。</p>
+        <p>由 王宇 原创并发布<br>本文代码，在以下环境下编译通过<br>CentOS 6.4<br>Kernal version: 2.6.32<br>GCC version: 4.4.7<br>一、广播<br>1、用途和寻址方式<br>广播的用途之一是在本地子网定位一个服务器主机，前提是已知或认定这个服务器主机位于本地子网，但是不知道它的单播IP地址。这种操作也称为资源发现。另一个用途是在有多个客户主机与单个服务器主机通信的局域网环境中尽量减少分组流通。</p>
+<p>图 20-1</p>
+<p>TCP 只支持单播<br>IPv6 不支持广播<br>IPv4 是可选的<br>广播和多播要求用于UDP或原始IP<br>2、单播和广播的比较<br>图 20-3</p>
+<p>图 20-4</p>
+<p>单播IP数据报仅由通过目的IP地址指定的单个主机接收，子网上的其他主机都不受任何影响。 广播存在的根本问题，子网上未参加相应广播应用的所有主机也不得不沿协议栈一路向上完整地处理收取的UDP广播数据报，直到该数据报历经UDP层时被丢弃为止。另外，子网上所有非IP的主机也不得不在数据链路层接收完整的帧，然后再丢弃它，这有可能严重影响子网上这些其他主机的工作。</p>
+<p>  3、使用广播的dg_cli函数<br>void dg_cli( FILE *fp, int socket_fd, const SA *server_addr, socklen_t server_len)<br>{<br>  int n;<br>  const int on = 1;<br>  char send_line[MAXLINE], recv_line[MAXLINE + 1];<br>  struct sockaddr *preply_addr;<br>  socklen_t len;</p>
+<p>  preply_addr = (struct sockaddr*)malloc(server_len);<br>  if(preply_addr == NULL)<br>  {<br>    perror(“Error: malloc.\n”);<br>    return;<br>  }</p>
+<p>  if(setsockopt(socket_fd, SOL_SOCKET, SO_BROADCAST, &amp;on, sizeof(on)) == -1)/<em>广播标识：SO_BROADCAST</em>/<br>  {<br>    perror(“Error: setsockopt\n”);<br>    return;<br>  }</p>
+<p>  if(signal(SIGALRM, recvfrom_alarm) == SIG_ERR)<br>  {<br>    perror(“Error: signal\n”);<br>    return;<br>  }</p>
+<p>  while(fgets(send_line, MAXLINE, fp) != NULL)<br>  {<br>    if(sendto(socket_fd, send_line, strlen(send_line), 0, server_addr, server_len) == -1)<br>    {<br>      perror(“Error: sendto\n”);<br>      return;<br>    }</p>
+<pre><code>alarm(5);
+
+for(;;)
+{
+  len = server_len;
+  n = recvfrom(socket_fd, recv_line, MAXLINE, 0, preply_addr, &amp;len);
+
+  if(n &lt; 0)
+  {
+    if(errno == EINTR)
+    {
+      break;  
+    }
+    else
+    {
+      perror(&quot;Error: recvfrom\n&quot;);    
+    }
+  }
+  else
+  {
+    recv_line[n] = 0;
+    printf(&quot;from %s: %s\n&quot;, sock_ntop_host(preply_addr, len), recv_line );
+  }
+}</code></pre><p>  }</p>
+<p>  free(preply_addr);<br>}</p>
+<p>二、 多播<br>单播地址标识单个IP接口，广播地址标识某个子网的所有IP接口，多播地址标识一组IP接口。</p>
+<p>1、IPv4 的D类地址<br>IPv4的D类地址（从224.0.0.0到239.255.255.255）是IPv4多播地址。D类地址的低序28位构成多播组ID，整个32位地址则称为组地址</p>
+<p>图A-3</p>
+<p>图21-1</p>
+<p>2、局域网上多播和广播的比较<br>图21-4</p>
+<p>3、使用多播的dg_cli函数<br>通过简单地去掉setsockopt调用来修改广播的dg_cli函数，则发送多播数据报无需设置任何多播套接字选项。</p>
+<p>三、高级UDP套接字编程<br>1、何时用UDP代替TCP<br>UDP的优势：</p>
+<p>UDP支持广播和多播。事实上如果应用程序使用广播或多播，那就必须使用UDP<br>UDP没有连接建立和拆除，减小资源开销<br>UDP无法提供的TCP特性，需注意的是，不是所有应用程序都需要TCP的所有这些特性：</p>
+<p>正面确认，丢失分组重传，重复分组检测，给被网络打乱次序的分组排序。TCP确认所有数据，以便检测出丢失的分组。这些特性的实现要求每个TCP数据分节都包含一个能被对端确认的序列号。这些特性还要求TCP为每个连接估算重传超时值，该值应随着两个端系统之间分组流通的变化持续更新。<br>窗口式流量控制<br>慢启动和拥塞避免<br>对于简单的请求-应答应用程序可以使用UDP，不过错误检测功能必须加到应用程序内部。<br>对于海量数据传输（例如文件传输）不应该使用UDP<br>2、给UDP应用增加可靠性<br>在客户程序中增加两个特性：</p>
+<p>超时和重传：用于处理丢失的数据报<br>处理超时和重传的老式方法是先发送一个请求并等待N秒钟。如果期间没有收到应答，那就重新发送同一个请求并再等待N秒钟。如此发生一定次数后放弃发送。<br>序列号：供客户验证一个应答是否匹配相应的请求<br>客户为每个请求冠以一个序列号，服务器必须在返送给客户的应答中回射这个序列号。<br>图：22-5</p>
+<p>#include&lt;stdio.h&gt;</p>
+<p>#include&lt;stdlib.h&gt;</p>
+<p>#include&lt;unistd.h&gt;</p>
+<p>#include&lt;fcntl.h&gt;</p>
+<p>#include&lt;sys/socket.h&gt;</p>
+<p>#include&lt;sys/types.h&gt;</p>
+<p>#include&lt;sys/select.h&gt;</p>
+<p>#include&lt;sys/time.h&gt;</p>
+<p>#include&lt;netinet/in.h&gt;</p>
+<p>#include&lt;setjmp.h&gt;</p>
+<p>#include&lt;errno.h&gt;</p>
+<p>#include&lt;signal.h&gt;</p>
+<p>#define SERV_PORT 51001</p>
+<p>#define MAXLINE 4096 </p>
+<p>#define SA struct sockaddr</p>
+<p>char* Ip_address = “192.168.153.130”;</p>
+<p>struct rtt_info<br>{<br>  float    rtt_rtt;     /* most recent measured RTT, in seconds <em>/<br>  float    rtt_srtt;    /</em> smoothed RTT estimator, in seconds <em>/<br>  float    rtt_rttvar;  /</em> smoothed mean deviation, in seconds <em>/<br>  float    rtt_rto;     /</em> current RTO to use, in seconds <em>/<br>  int      rtt_nrexmt;  /</em> times retransmitted: 0, 1, 2, … <em>/<br>  uint32_t rtt_base;    /</em> sec since 1/1/1970 at start */<br>};</p>
+<p>#define RTT_RXTMIN    2    /* min retransmit timeout value, in seconds */</p>
+<p>#define RTT_RXTMAX    60   /* max retransmit timeout value, in seconds */</p>
+<p>#define RTT_MAXNREXMT 3    /* max times to retransmit */</p>
+<p>/*</p>
 <ul>
-<li>GLSL - 包含一些针对向量和矩阵操作的有用特性。</li>
+<li>Calculate the RTO value based on current estimators:</li>
+<li>smoothed RTT plus four times the deviation</li>
+<li>/</li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version version_number</span></span><br><span class="line">in type in_variable_name;</span><br><span class="line">in type in_variable_name;</span><br><span class="line"></span><br><span class="line">out type out_variable_name;</span><br><span class="line"></span><br><span class="line">uniform type uniform_name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 处理输入并进行一些图形操作</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 输出处理过的结果到输出变量</span></span><br><span class="line">  out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/#more">more >></a>
-        
+<p>#define RTT_RTOCALC(ptr) ((ptr)-&gt;rtt_srtt + (4.0 * (ptr)-&gt;rtt_rttvar))</p>
+<p>static struct rtt_info rttinfo;<br>static int rttinit =0;<br>static struct msghdr msgsend, msgrecv;<br>static struct hdr<br>{<br>  uint32_t seq;  /* sequence <em>/<br>  uint32_t ts;   /</em> timestamp when sent */</p>
+<p>}sendhdr, recvhdr;</p>
+<p>static sigjmp_buf jmpbuf;</p>
+<p>int rtt_d_flag = 0;</p>
+<p>static float rtt_minmax(float rto)<br>{<br>  if(rto &lt; RTT_RXTMIN)<br>  {<br>    rto = RTT_RXTMIN;<br>  }<br>  else if(rto &gt; RTT_RXTMAX)<br>  {<br>    rto = RTT_RXTMAX;<br>  }</p>
+<p>  return(rto);<br>}</p>
+<p>void rtt_init(struct rtt_info *ptr)<br>{<br>  struct timeval tv;<br>  if(gettimeofday(&amp;tv, NULL) == -1)<br>  {<br>    perror(“Error: gettimeofday in rtt_init!\n”);<br>  }</p>
+<p>  ptr-&gt;rtt_base = tv.tv_sec;</p>
+<p>  ptr-&gt;rtt_rtt = 0;<br>  ptr-&gt;rtt_srtt = 0;<br>  ptr-&gt;rtt_rttvar = 0.75;<br>  ptr-&gt;rtt_rto = rtt_minmax(RTT_RTOCALC(ptr));<br>  /* first RTO at (srtt + (4 * rttvar)) = 3 secounds */<br>}</p>
+<p>uint32_t rtt_ts(struct rtt_info *ptr)<br>{<br>  uint32_t ts;<br>  struct timeval tv;</p>
+<p>  if(gettimeofday(&amp;tv, NULL) == -1)<br>  {<br>    perror(“Error: gettimeofday in rtt_ts!\n”);<br>  }<br>  ts = ((tv.tv_sec - ptr-&gt;rtt_base) * 1000) + (tv.tv_usec /1000);<br>  return(ts);<br>}</p>
+<p>void rtt_newpack(struct rtt_info *ptr)<br>{<br>  ptr-&gt;rtt_nrexmt = 0;<br>}</p>
+<p>int rtt_start(struct rtt_info <em>ptr)<br>{<br>  return((int)(ptr-&gt;rtt_rto + 0.5)); /</em> round float ot int<em>/<br>  /</em> return value can be used as: alarm(rtt_start(&amp;foo)) */<br>}</p>
+<p>void rtt_stop(struct rtt_info *ptr, uint32_t ms)<br>{<br>  double delta;</p>
+<p>  ptr-&gt;rtt_rtt = ms / 1000.0; /* measured RTT in seconds*/</p>
+<p>  delta = ptr-&gt;rtt_rtt - ptr-&gt;rtt_srtt;<br>  ptr-&gt;rtt_srtt += delta / 8; /* g = 1/8*/</p>
+<p>  if(delta &lt; 0.0)<br>  {<br>    delta = -delta;<br>  }</p>
+<p>  ptr-&gt;rtt_rttvar += (delta - ptr-&gt;rtt_rttvar) /4; /* h = 1/4 */</p>
+<p>  ptr-&gt;rtt_rto = rtt_minmax(RTT_RTOCALC(ptr));<br>}</p>
+<p>int rtt_timeout(struct rtt_info <em>ptr)<br>{<br>  ptr-&gt;rtt_rto *=2; /</em> next RTO */</p>
+<p>  if(++ptr-&gt;rtt_nrexmt &gt; RTT_MAXNREXMT)<br>  {<br>    return -1; /* time to give up for this packet */<br>  }</p>
+<p>  return 0;<br>}</p>
+<p>static void sig_alarm(int signo)<br>{<br>  siglongjmp(jmpbuf, 1);<br>}</p>
+<p>ssize_t dg_send_recv(int fd, const void *outbuff, size_t outbytes,<br>    void *inbuff, size_t inbytes,<br>    const SA *destaddr, socklen_t destlen)<br>{<br>  ssize_t n;<br>  struct iovec iovsend[2], iovrecv[2];</p>
+<p>  if(rttinit == 0)<br>  {<br>    rtt_init(&amp;rttinfo);<br>    rttinit = 1;<br>    rtt_d_flag = 1;<br>  }</p>
+<p>  sendhdr.seq++;</p>
+<p>  msgsend.msg_name = destaddr;<br>  msgsend.msg_namelen = destlen;<br>  msgsend.msg_iov = iovsend;<br>  msgsend.msg_iovlen = 2;<br>  iovsend[0].iov_base = &sendhdr;<br>  iovsend[0].iov_len = sizeof(struct hdr);<br>  iovsend[1].iov_base = outbuff;<br>  iovsend[1].iov_len = outbytes;</p>
+<p>  msgrecv.msg_name = NULL;<br>  msgrecv.msg_namelen = 0;<br>  msgrecv.msg_iov = iovrecv;<br>  msgrecv.msg_iovlen = 2;<br>  iovrecv[0].iov_base = &recvhdr;<br>  iovrecv[0].iov_len = sizeof(struct hdr);<br>  iovrecv[1].iov_base = inbuff;<br>  iovrecv[1].iov_len = inbytes;</p>
+<p>  if(signal(SIGALRM, sig_alarm) == SIG_ERR)<br>  {<br>    perror(“Error: signal\n”);<br>    return;<br>  }</p>
+<p>  rtt_newpack(&amp;rttinfo); /* iinitialize for this packet */</p>
+<p>sendagain:<br>  sendhdr.ts = rtt_ts(&amp;rttinfo);<br>  sendmsg(fd, &amp;msgsend, 0);</p>
+<p>  alarm(rtt_start(&amp;rttinfo)); /* calc timeout value &amp; start timer */</p>
+<p>  if (sigsetjmp(jmpbuf, 1) !=0  )<br>  {</p>
+<pre><code>if ( rtt_timeout(&amp;rttinfo) &lt; 0 ) 
+{
+  printf(&quot;dg_send_recv: no response from server, giving up&quot;);
+  rttinit = 0; /* reinit in case we&apos;re called again */
+  errno = ETIMEDOUT;
+  return(-1);
+}
+
+goto sendagain;</code></pre><p>  }</p>
+<p>  do {<br>    n = recvmsg(fd, &amp;msgrecv, 0);<br>  } while (n &lt; sizeof(struct hdr) || recvhdr.seq != sendhdr.seq );</p>
+<p>  alarm(0);<br>  /* calculate &amp; store new RTT estimator values <em>/<br>  rtt_stop(&amp;rttinfo, rtt_ts(&amp;rttinfo) - recvhdr.ts);<br>  return(n -sizeof(struct hdr)); /</em> return size of received datagram */<br>}</p>
+<p>void dg_cli( FILE *fp, int socket_fd, const SA *server_addr, socklen_t server_len)<br>{<br>  int n;<br>  char send_line[MAXLINE], recv_line[MAXLINE + 1];</p>
+<p>  while(fgets(send_line, MAXLINE, fp) != NULL)<br>  {<br>    n = dg_send_recv(socket_fd, send_line, strlen(send_line),<br>        recv_line, MAXLINE, server_addr, server_len);</p>
+<pre><code>recv_line[n] = 0;
+fputs(recv_line, stdout);</code></pre><p>  }<br>}</p>
+<p>int main()<br>{<br>  int socket_fd, connect_rt;<br>  struct sockaddr_in server_addr;</p>
+<p>  bzero(&amp;server_addr, sizeof(server_addr));</p>
+<p>  server_addr.sin_family = AF_INET;<br>  server_addr.sin_port = htons(SERV_PORT);<br>  inet_pton(AF_INET, Ip_address, &amp;server_addr.sin_addr);</p>
+<p>  socket_fd = socket(AF_INET, SOCK_DGRAM, 0);</p>
+<p>  if(socket_fd == -1)<br>  {<br>    perror(“Error: created socket!\n”);<br>    exit(1);<br>  }</p>
+<p>  dg_cli(stdin, socket_fd, (SA *)&amp;server_addr, sizeof(server_addr));</p>
+<p>  exit(0);<br>}</p>
+<p>3、并发UDP服务器<br>对于UDP, 我们必须应对两种不同类型的服务器： </p>
+<p>(1) 读入一个客户请求并发送一个应答后，与这个客户就不再相关了。这种情况下，读入客户请求的服务器可以fork一个子进程并让子进程去处理该请求。</p>
+<p>(2) UDP服务器与客户交互多个数据报。问题是客户知道的服务器端口号只有服务器的一个荣所周知端口。一个客户发送其请求的第一个数据报到这个端口，但是服务器如何区分这是来自该客户同一个请求的后续数据报还是来自其他客户请求的数据报呢？这个问题典型的解决办法是让服务器为每个客户创建一个新的套接字，在其上bind一个临时端口，然后使用该套接字发送对该客户的所有应答。这个办法要求客户查看服务器第一个应答中的源端口号，并把本请求的后续数据报发送到该端口。</p>
+<p>图22-19</p>
+<p>四、 信号驱动式I/O<br>信号驱动式I/O是指进程预先告之内核，使得当某个描述符上发生某事时，内和使用信号通知相关进程。信号驱动式I/O不是真正的异步I/O, 非阻塞式I/O同样不是异步I/O</p>
+<p>1、针对一个套接字使用信号驱动式I/O要求进程执行以下3个步骤：<br>建立SIGIO信号的信号处理函数。<br>设置该套接字的属主，通常使用fcntl的F_SETOWN命令设置<br>开启改套接字的信号驱动式I/O, 通常通过使用fcntl的F_SETFL命令打开O_ASYNC标志完成。<br>2、对于UDP套接字的SIGIO信号<br>SIGIO信号在发生以下事件时产生：</p>
+<p>数据报到达套接字；<br>套接字上发生异步错误；<br>因此当捕获对于某个UDP套接字的SIGIO信号时，我们调用recvfrom或者读入到达的数据报，或者获取发生的异步错误</p>
+<p>3、对于TCP套接字的SIGIO信号<br>不幸的是，信号驱动式I/O对于TCP套接字近乎无用。问题在于该信号产生得过于频繁，并且它的出现并没有告诉我们发生了什么事件。</p>
+<p>4、使用SIGIO的UDP回射服务器程序</p>
+
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/OpenGL学习记录-纹理/">OpenGL学习记录-纹理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/OpenGL学习记录-纹理/" class="archive-article-date">
-  	<time datetime="2018-06-19T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/wl-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><ul>
-<li>纹理概述<br>为了能够把纹理映射(Map)到三角形上，我们需要指定三角形的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个<font color="red">纹理坐标(Texture Coordinate)</font>，用来标明该从纹理图像的哪个部分<font color="red">采样</font>（译注：采集片段颜色）。之后在图形的其它片段上进行片段<font color="red">插值</font>(Fragment Interpolation)。</li>
-</ul>
-<p>纹理坐标在x和y轴上，范围为0到1之间（注意我们使用的是2D纹理图像）。使用纹理坐标获取纹理颜色叫做<font color="red">采样(Sampling)</font>。纹理坐标起始于(0, 0)，也就是纹理图片的左下角，终始于(1, 1)，即纹理图片的右上角。</p>
-        
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/OpenGL学习记录-基础篇/">OpenGL学习记录-基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/OpenGL学习记录-基础篇/" class="archive-article-date">
-  	<time datetime="2018-06-18T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/gljc-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="教程地址："><a href="#教程地址：" class="headerlink" title="教程地址："></a>教程地址：</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
-<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><ul>
-<li>Khronos组织制定并维护的规范</li>
-<li>立即渲染模式: OpenGL3.2 开始废弃</li>
-<li>核心模式(Core-profile)</li>
-<li>扩展</li>
-<li>状态机(State Machine)</li>
-<li>对象</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-医学影像中呼吸门控的动态显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/医学影像中呼吸门控的动态显示/">医学影像中呼吸门控的动态显示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" class="archive-article-date">
-  	<time datetime="2018-05-22T09:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/menkong-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="呼吸门控概念"><a href="#呼吸门控概念" class="headerlink" title="呼吸门控概念"></a>呼吸门控概念</h2><p>由于受到呼吸运动的影响，位于胸腹部的病灶具有较大幅度的移动。在传统放疗方式中考虑呼吸运动则需要增加较大的计划靶区（PTV），导致受照正常组织显着增加。呼吸门控技术 （respiratory gating technology）是指在放射治疗过程中监测患者呼吸运动，在特定呼吸时相触发射线照射，降低正常组织受照剂量。</p>
-        
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">应用实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">ROS(Robot OS)Tutorial 学习记录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/" class="archive-article-date">
-  	<time datetime="2018-03-31T07:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/ros-1.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<p>注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。</p>
-<p>官方教程：<a href="http://wiki.ros.org/ROS/Tutorials" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials</a></p>
-<h2 id="Beginner-Level"><a href="#Beginner-Level" class="headerlink" title="Beginner Level"></a>Beginner Level</h2><h3 id="1-安装配置ROS环境"><a href="#1-安装配置ROS环境" class="headerlink" title="1. 安装配置ROS环境"></a>1. 安装配置ROS环境</h3><h4 id="安装ROS"><a href="#安装ROS" class="headerlink" title="安装ROS"></a>安装ROS</h4><ul>
-<li><p>官方推荐 ROS Kinettic Kame   <a href="http://wiki.ros.org/Distributions" target="_blank" rel="noopener">http://wiki.ros.org/Distributions</a></p>
-</li>
-<li><p>安装步骤： <a href="http://wiki.ros.org/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">http://wiki.ros.org/kinetic/Installation/Ubuntu</a></p>
-<h4 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h4></li>
-<li><p>概念 ：<font color="red">notion of combining spaces using the shell environment </font></p>
-</li>
-<li><p>检查环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> printenv | grep ROS</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source /opt/ros/kinetic/setup.bash</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -588,16 +400,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2015/03/05/Unix网络编程阅读笔记三-广播、多播、UDP套接字、信号驱动式I-O/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/03/05/Unix网络编程阅读笔记二-守护进程和高级IO/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Unix网络编程阅读笔记二 守护进程和高级IO
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/03/05/Unix网络编程阅读笔记四-线程、客户、服务器程序设计范式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Unix网络编程阅读笔记四 线程、客户、服务器程序设计范式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -612,447 +492,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="cpp-深入理解C-11阅读笔记" class="article article-type-cpp  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/深入理解C-11阅读笔记/">深入理解C++11阅读笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/14/深入理解C-11阅读笔记/" class="archive-article-date">
-  	<time datetime="2017-12-14T06:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/cpp11-1.jpg" alt="ccss"></p>
-<p>由 王宇 原创并发布：</p>
-<h2 id="一-新标准的诞生"><a href="#一-新标准的诞生" class="headerlink" title="一 新标准的诞生"></a>一 新标准的诞生</h2><h3 id="从使用上分类方法"><a href="#从使用上分类方法" class="headerlink" title="从使用上分类方法"></a>从使用上分类方法</h3><ul>
-<li>类作者需要的</li>
-<li>库作者需要的</li>
-<li>所有人需要的</li>
-<li>部分人需要的</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-VTK与图形学相关的基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/VTK与图形学相关的基本概念/">VTK与图形学相关的基本概念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/VTK与图形学相关的基本概念/" class="archive-article-date">
-  	<time datetime="2017-10-26T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念</li>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
-        
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK7-1-1安装部署记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/VTK7-1-1安装部署记录/">VTK7.1.1安装部署记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/VTK7-1-1安装部署记录/" class="archive-article-date">
-  	<time datetime="2017-07-10T09:09:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk7-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念<ul>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-        
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kafka与Storm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/Kafka与Storm整合/">Kafka与Storm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/Kafka与Storm整合/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/kafka-storm-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="整合Storm的概念"><a href="#整合Storm的概念" class="headerlink" title="整合Storm的概念"></a>整合Storm的概念</h2><ul>
-<li><p>整合场景</p>
-<blockquote>
-<p>A spout is a source of streams. For example, <font color="red">a spout may read tuples off a Kafka Topic</font> and emit them as a stream. <font color="red">A bolt consumes input streams, process and possibly emits new streams.</font> Bolts can do anything from running functions, filtering tuples, do streaming aggregations, streaming joins, <font color="red">talk to databases</font>, and more. Each node in a Storm topology executes in parallel. A topology runs indefinitely until you terminate it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if the machines go down and messages are dropped.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JSON学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/JSON学习笔记/">JSON学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/JSON学习笔记/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/json-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="JSON-是如何存储信息"><a href="#JSON-是如何存储信息" class="headerlink" title="JSON 是如何存储信息"></a>JSON 是如何存储信息</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"book"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"01"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"Java"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"third"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"Herbert Schildt"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"07"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"C++"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"second"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"E.Balagurusamy"</span></span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>
-        
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1075,8 +540,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

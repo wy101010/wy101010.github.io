@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>码农随笔</title>
+  <title>Programming in Object C 4th-阅读笔记 | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Linux C C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码农随笔">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="由 王宇 原创并发布： Programming in Object C 4th  Introduction  Programming in Objective-C   Compiling and Running Programs Table 2.1 Common Filename Extensions Extension Meaning c C language source file .cc,">
+<meta name="keywords" content="cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programming in Object C 4th-阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2016/04/14/Programming-in-Object-C-4th-阅读笔记/index.html">
 <meta property="og:site_name" content="码农随笔">
+<meta property="og:description" content="由 王宇 原创并发布： Programming in Object C 4th  Introduction  Programming in Objective-C   Compiling and Running Programs Table 2.1 Common Filename Extensions Extension Meaning c C language source file .cc,">
 <meta property="og:locale" content="cn">
+<meta property="og:updated_time" content="2019-08-13T04:47:55.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农随笔">
+<meta name="twitter:title" content="Programming in Object C 4th-阅读笔记">
+<meta name="twitter:description" content="由 王宇 原创并发布： Programming in Object C 4th  Introduction  Programming in Objective-C   Compiling and Running Programs Table 2.1 Common Filename Extensions Extension Meaning c C language source file .cc,">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -197,461 +201,893 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenGL学习记录-着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Programming-in-Object-C-4th-阅读笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/OpenGL学习记录-着色/">OpenGL学习记录-着色</a>
+    <h1 class="article-title" itemprop="name">
+      Programming in Object C 4th-阅读笔记
     </h1>
   
 
         
-        <a href="/2018/06/20/OpenGL学习记录-着色/" class="archive-article-date">
-  	<time datetime="2018-06-20T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+        <a href="/2016/04/14/Programming-in-Object-C-4th-阅读笔记/" class="archive-article-date">
+  	<time datetime="2016-04-14T09:14:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blog-image/zsq-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="着色器-运行在GPU上的小程序"><a href="#着色器-运行在GPU上的小程序" class="headerlink" title="着色器 - 运行在GPU上的小程序"></a>着色器 - 运行在GPU上的小程序</h2><p>从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。</p>
+        <p>由 王宇 原创并发布：</p>
+<p>Programming in Object C 4th</p>
+<ol>
+<li><p>Introduction</p>
+</li>
+<li><p>Programming in Objective-C</p>
+</li>
+</ol>
+<p>Compiling and Running Programs</p>
+<p>Table 2.1 Common Filename Extensions</p>
+<p>Extension Meaning</p>
+<p>c C language source file</p>
+<p>.cc, .cpp C++ language source file</p>
+<p>.h Header file</p>
+<p>.m Objective-C source file</p>
+<p>.mm Objective-C++ source file</p>
+<p>.pl Perl source file</p>
+<p>.o Object (compiled) file</p>
+<p>// First program example</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, const char * argv[])<br>{<br>  @autoreleasepool {<br>    NSLog (@”Programming is fun!”);<br>  }<br>  return 0;<br>}<br>Comment : // /**/</p>
+<p>#import &lt;Foundation/Foundation.h&gt; // import or include the information from the file</p>
+<p>main is a special name that indicates precisely where the program is to begin execution.</p>
+<p>auto release pool is a mechanism that allows the system to efficiently manage the memory your application uses as it creates new objects. More detail in Chapter 17</p>
+<p>@”Programming is fun” this is known as a constant NSString object</p>
+<p>You must terminate all program statements in Objective-C with a semicolon(;)</p>
+<p>The backslash() NSLog (@”Testing…\n..1\n…2\n….3”);</p>
+<p>  Displaying the Values of Variables<br>int main (int argc, const char *argv[])<br>{<br>  @autoreleasepool {<br>    int value1, value2, sum;<br>    value1 = 50;<br>    value2 = 25;<br>    sum = value1 + value2;<br>    NSLog (@”The sum of %i and %i is %i”, value1, value2, sum);<br>  }<br>  return 0;<br>}</p>
+<ol start="3">
+<li>Classes, Objects, and Methods</li>
+</ol>
+<p>What is an Object class instancemethod(behavior) member data</p>
+<p>Instances and Methods<br>yourCar = [Car new];      // get a new car<br>[yourCar drive];          // drive your car<br>[yourCar setSpeed: 55];   // set the speed to 55 mph</p>
+<p>call message</p>
+<p>An Objective-C Class for Working with Fractions</p>
+<p>Define an actual class in Objective-C</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>//—- @interface section —-<br>@interface Fraction: NSObject<br>-(void) print;<br>-(void) setNumerator: (int) n;<br>-(void) setDenominator: (int) d;<br>@end<br>//—- @implementation section —-<br>@implementation Fraction<br>{<br>  int numerator;<br>  int denominator;<br>}<br>-(void) print<br>{<br>  NSLog (@”%i/%i”, numerator, denominator);<br>}<br>-(void) setNumerator: (int) n<br>{<br>  numerator = n;<br>}<br>-(void) setDenominator: (int) d<br>{<br>  denominator = d;<br>}<br>@end<br>//—- program section —-<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    Fraction *myFraction;<br>    // Create an instance of a Fraction<br>    myFraction = [Fraction alloc];<br>    myFraction = [myFraction init];<br>    // Set fraction to 1/3<br>    [myFraction setNumerator: 1];<br>    [myFraction setDenominator: 3];<br>    // Display the fraction using the print method<br>    NSLog (@”The value of myFraction is:”);<br>    [myFraction print];<br>  }<br>  return 0;<br>}<br>@interface section describes the class and its methods</p>
+<p>@implementation section describes the data(memeber data) and contains the actual code that implements the methods declared in th interface section</p>
+<p>program section contains the program code to carry out the intended purpose of the program</p>
+<p>The @interface Section<br>Choosing Names 小写字母开头等等</p>
+<p>Class and Instance Methods</p>
+<p>-(void)print<br>+(void)print</p>
+<p>The leading minus sign (-) tells the Objective-C compiler that the method is an instance method.The only other option is a plus sign (+), which indicates a class method. A class method is one that performs some operation on the class itself, such as creating a new instance of the class.</p>
+<p>(+)可以直接访问，有点类似于，类的static 成员</p>
+<p>Return Values</p>
+<p>–(int) currentAge;<br>Method Arguments</p>
+<p>The @implementation Section</p>
+<p>@implementation NewClassName<br>{<br>  memberDeclarations;<br>}<br>methodDefinitions;<br>@end<br>The program Section</p>
+<p>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    Fraction *myFraction;</p>
+<pre><code>// Create an instance of a Fraction and initialize it
+myFraction = [Fraction alloc];
+myFraction = [myFraction init];
+
+// Set fraction to 1/3
+[myFraction setNumerator: 1];
+[myFraction setDenominator: 3];
+// Display the fraction using the print method
+NSLog (@&quot;The value of myFraction is:&quot;);
+[myFraction print];</code></pre><p>  }<br>  return 0;<br>}</p>
 <ul>
-<li>GLSL - 包含一些针对向量和矩阵操作的有用特性。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version version_number</span></span><br><span class="line">in type in_variable_name;</span><br><span class="line">in type in_variable_name;</span><br><span class="line"></span><br><span class="line">out type out_variable_name;</span><br><span class="line"></span><br><span class="line">uniform type uniform_name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 处理输入并进行一些图形操作</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 输出处理过的结果到输出变量</span></span><br><span class="line">  out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/OpenGL学习记录-纹理/">OpenGL学习记录-纹理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/OpenGL学习记录-纹理/" class="archive-article-date">
-  	<time datetime="2018-06-19T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/wl-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><ul>
-<li>纹理概述<br>为了能够把纹理映射(Map)到三角形上，我们需要指定三角形的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个<font color="red">纹理坐标(Texture Coordinate)</font>，用来标明该从纹理图像的哪个部分<font color="red">采样</font>（译注：采集片段颜色）。之后在图形的其它片段上进行片段<font color="red">插值</font>(Fragment Interpolation)。</li>
-</ul>
-<p>纹理坐标在x和y轴上，范围为0到1之间（注意我们使用的是2D纹理图像）。使用纹理坐标获取纹理颜色叫做<font color="red">采样(Sampling)</font>。纹理坐标起始于(0, 0)，也就是纹理图片的左下角，终始于(1, 1)，即纹理图片的右上角。</p>
-        
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/OpenGL学习记录-基础篇/">OpenGL学习记录-基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/OpenGL学习记录-基础篇/" class="archive-article-date">
-  	<time datetime="2018-06-18T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/gljc-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="教程地址："><a href="#教程地址：" class="headerlink" title="教程地址："></a>教程地址：</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
-<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><ul>
-<li>Khronos组织制定并维护的规范</li>
-<li>立即渲染模式: OpenGL3.2 开始废弃</li>
-<li>核心模式(Core-profile)</li>
-<li>扩展</li>
-<li>状态机(State Machine)</li>
-<li>对象</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-医学影像中呼吸门控的动态显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/医学影像中呼吸门控的动态显示/">医学影像中呼吸门控的动态显示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" class="archive-article-date">
-  	<time datetime="2018-05-22T09:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/menkong-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="呼吸门控概念"><a href="#呼吸门控概念" class="headerlink" title="呼吸门控概念"></a>呼吸门控概念</h2><p>由于受到呼吸运动的影响，位于胸腹部的病灶具有较大幅度的移动。在传统放疗方式中考虑呼吸运动则需要增加较大的计划靶区（PTV），导致受照正常组织显着增加。呼吸门控技术 （respiratory gating technology）是指在放射治疗过程中监测患者呼吸运动，在特定呼吸时相触发射线照射，降低正常组织受照剂量。</p>
-        
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">应用实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">ROS(Robot OS)Tutorial 学习记录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/" class="archive-article-date">
-  	<time datetime="2018-03-31T07:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/ros-1.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<p>注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。</p>
-<p>官方教程：<a href="http://wiki.ros.org/ROS/Tutorials" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials</a></p>
-<h2 id="Beginner-Level"><a href="#Beginner-Level" class="headerlink" title="Beginner Level"></a>Beginner Level</h2><h3 id="1-安装配置ROS环境"><a href="#1-安装配置ROS环境" class="headerlink" title="1. 安装配置ROS环境"></a>1. 安装配置ROS环境</h3><h4 id="安装ROS"><a href="#安装ROS" class="headerlink" title="安装ROS"></a>安装ROS</h4><ul>
-<li><p>官方推荐 ROS Kinettic Kame   <a href="http://wiki.ros.org/Distributions" target="_blank" rel="noopener">http://wiki.ros.org/Distributions</a></p>
+<li><p>Fraction *myFraction; is an object of type Fraction(存储实例化对象的内存地址)</p>
 </li>
-<li><p>安装步骤： <a href="http://wiki.ros.org/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">http://wiki.ros.org/kinetic/Installation/Ubuntu</a></p>
-<h4 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h4></li>
-<li><p>概念 ：<font color="red">notion of combining spaces using the shell environment </font></p>
+<li><p>myFraction = [Fraction alloc] alloc is short for allocate. You want to allocate memory storage space for a new fraction.</p>
 </li>
-<li><p>检查环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> printenv | grep ROS</span><br></pre></td></tr></table></figure>
+<li><p>myFraction = [myFraction init] initializes the instance of a class</p>
 </li>
-<li><p>安装命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source /opt/ros/kinetic/setup.bash</span><br></pre></td></tr></table></figure>
-
+<li><p>the two messages are typically conbined:<br>myFraction = [[Fraction alloc] init];</p>
 </li>
 </ul>
-        
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="cpp-深入理解C-11阅读笔记" class="article article-type-cpp  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/深入理解C-11阅读笔记/">深入理解C++11阅读笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/14/深入理解C-11阅读笔记/" class="archive-article-date">
-  	<time datetime="2017-12-14T06:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/cpp11-1.jpg" alt="ccss"></p>
-<p>由 王宇 原创并发布：</p>
-<h2 id="一-新标准的诞生"><a href="#一-新标准的诞生" class="headerlink" title="一 新标准的诞生"></a>一 新标准的诞生</h2><h3 id="从使用上分类方法"><a href="#从使用上分类方法" class="headerlink" title="从使用上分类方法"></a>从使用上分类方法</h3><ul>
-<li>类作者需要的</li>
-<li>库作者需要的</li>
-<li>所有人需要的</li>
-<li>部分人需要的</li>
+<p>Accessing Instance Variables and Data Encapsulation</p>
+<p>You’ve seen how the methods that deal with fractions can access the two instance variables numerator and denominator directly by name. In fact, an instance method can always directly access its instance variables.A class method can’t(不可以直接访问类的成员数据，要通过method去实现，比如get set), however, because it’s dealing only with the class itself, not with any instances of the class (think about that for a<br>    second).</p>
+<p>Summary</p>
+<p>Now you know how to define your own class, create objects or instances of that class, and send messages to those objects.We return to the Fraction class in later chapters.You’ll learn how to pass multiple arguments to your methods, how to divide your class definitions into separate files, and also how to use key concepts such as inheritance and dynamic binding. However, now it’s time to learn more about data types and writing expressions in Objective-C. First, try the exercises that follow to test your understanding of the important points covered in this chapter.</p>
+<ol start="4">
+<li>Data Types and Expressions</li>
+</ol>
+<p>Data Types and Constants</p>
+<p>There are four basic data types:</p>
+<p>int</p>
+<p>float</p>
+<p>dbouble</p>
+<p>char</p>
+<p>Qualifiers: long, long long short, unsigned, and signed</p>
+<p>Type id is used to store an object of any type.</p>
+<p>Arithmetic Expressions<br>Operator Precedence + - * /</p>
+<p>Integer Arithmetic and the Unary Minus Operator</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    int a = 25;<br>    int b = 2;<br>    float c = 25.0;<br>    float d = 2.0;<br>    NSLog (@”6 + a / 5 * b = %i”, 6 + a / 5 * b);<br>    NSLog (@”a / b * b = %i”, a / b * b);<br>    NSLog (@”c / d * d = %f”, c / d * d);<br>    NSLog (@”-a = %i”, -a);<br>  }<br>  return 0;<br>}</p>
+<p>Program 4.3 Output<br>6 + a / 5 * b = 16<br>a / b * b = 24<br>c / d * d = 25.000000<br>-a = -25</p>
+<p>The Modulus Operator</p>
+<p>Program 4.4<br>// The modulus operator</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    int a = 25, b = 5, c = 10, d = 7;<br>    NSLog (@”a %% b = %i”, a % b);<br>    NSLog (@”a %% c = %i”, a % c);<br>    NSLog (@”a %% d = %i”, a % d);<br>    NSLog (@”a / d * d + a %% d = %i”, a / d * d + a % d);<br>  }<br>  return 0;<br>}<br>Program 4.4 Output<br>a % b = 0<br>a % c = 5<br>a % d = 4<br>a / d * d + a % d = 25<br>Integer and Floating-Point Conversions</p>
+<p>The Type Cast Operator: f2=(float) i2 / 100;</p>
+<p>Assignment Operators += -= /+</p>
+<ol start="5">
+<li><p>Program Looping<br>The for Statement<br>for ( init_expression; loop_condition; loop_expression )<br>program statement</p>
+<p>The While Statement<br>while ( expression )<br>program statement</p>
+<p>The do Statement<br>do<br>program statement<br>while ( expression );</p>
+<p>The break Statement</p>
+<p>The continue Statment</p>
+</li>
+</ol>
+<p>  6 Making Decisions<br>  The if Statement<br>if ( expression )<br>  program statement 1<br>  else<br>  program statement 2</p>
+<p>  The switch statement<br>switch ( expression )<br>{<br>  case value1:<br>    program statement<br>      program statement<br>      …<br>      break;<br>  case value2:<br>    program statement<br>      program statement<br>      …<br>      break;<br>    …<br>  case valuen:<br>      program statement<br>        program statement<br>        …<br>        break;<br>  default:<br>      program statement<br>        program statement<br>        …<br>        break;<br>}</p>
+<p>The conditional operator<br>condition ? expression1 : expression2</p>
+<ol start="7">
+<li>More on Classes</li>
+</ol>
+<p>Separate Interface and Implementation files</p>
+<p>Fraction.h // for interface<br>Fraction.m // for implementation</p>
+<p>Synthesized Accessor Methods</p>
+<p>The first step is to use the @property directive in your interface section to identify your properties</p>
+<p>Objective-C compiler automatically generate or synthesize getter and setter for us by @synthesize directive in the implementation section</p>
+<p>Accessing Properties Using the Dot Operator</p>
+<p>[myFraction numerator]<br>myFraction.numerator</p>
+<p>Multiple Arguments to Methods</p>
+<p>[myFraction setTo: 1 over:3] // setTo is method name ‘over’ is arguments name.</p>
+<p>Again, choosing good method names is important for program readability</p>
+<p>Methods Without Argumen Names<br>-(int) set: (int) n: (int) d;<br>[aFraction set: 1 :3];</p>
+<p>Operations on Fractions<br>-(int) add: (Fraction *) f;</p>
+<p>Local Variables</p>
+<ul>
+<li>(void) reduce<br>{<br>int u= numerator;    // local variables<br>int v= denominator;  // local variables<br>inttemp;             // local variables<br>while(v != 0) {<br>  temp= u % v;<br>  u= v;<br>  v= temp;<br>}<br>numerator/= u;<br>denominator/= u;<br>}<br>Method Arguments</li>
 </ul>
-        
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/#more">more >></a>
-        
+<p>-(void) calculate: (double) x<br>{<br>  x *= 2;<br>  …<br>}</p>
+<p>[myData calculate: ptVal];</p>
+<p>Whatever value was contained in the variable ptVal would be copied into the local variable x when the calculate method was executed.</p>
+<p>The static Keyword</p>
+<p>-(int) showPage<br>{<br>  static int pageCount = 0;<br>  …</p>
+<pre><code>++pageCount;</code></pre><p>  …<br>    return pageCount;<br>}</p>
+<p>The local static variable would be set to 0 only once when the program started and would retain its value through successive invocations of the showPage method.</p>
+<p>The self Keyword</p>
+<p>You can use the keyword self to refer to the object that is the receiver of the current message</p>
+<p>[self reduce]</p>
+<p>Allocating and Returning Objects from Methods<br>-(Fraction <em>) add: (Fraction *) f<br>{<br>  // To add two fractions:<br>  // a/b + c/d = ((a</em>d) + (b*c)) / (b * d)<br>  // result will store the result of the addition<br>  Fraction *result = [[Fraction alloc]init];<br>  result.numerator = numerator * f.denominator + denominator *f.numerator;<br>  result.denominator = denominator * f.denominator;<br>  [result reduce];<br>  return result;<br>}</p>
+<p>resultFraction = [aFraction add: bFraction];</p>
+<ol start="8">
+<li>Inheritance</li>
+</ol>
+<p>It All Begins at the Root</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>// ClassA declaration and definition<br>@interface ClassA: NSObject<br>{<br>  int x;<br>}<br>-(void) initVar;<br>@end<br>@implementation ClassA<br>-(void) initVar<br>{<br>  x = 100;<br>}<br>@end<br>// Class B declaration and definition<br>@interface ClassB : ClassA<br>-(void) printVar;<br>@end<br>@implementation ClassB<br>-(void) printVar<br>{<br>  NSLog (@”x = %i”, x);<br>}<br>  @end<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    ClassB *b = [[ClassB alloc] init];<br>    [b initVar]; // will use inherited method<br>    [b printVar]; // reveal value of x;<br>  }<br>  return 0;<br>}<br>Finding the Right Method<br>First, the class to which the object belongs is checked to see whether a method is explicitly defined in that class with the specific name. If it is, that’s the method that is used. If it’s not defined there, the parent class is checked. If the method is defined there, that’s what is used. If not, the search<br>continues.</p>
+<p>Extension Through Inheritance: Adding New Methods<br>A Point Class and Object Allocation</p>
+<p>The @class Directive<br>Using the @class directive is more efficient because the compiler doesn’t need to import and therefore process the entire XYPoint.h file (even though it is quite small); it just needs to know that XYPoint is the name of a class. If you needed to reference one of the XYPoint class’ methods (say in the implementation section), the @class directive would not suffice because the compiler would need more information; it would need to know how many arguments the method takes, what their types are, and what the method’s return type is.</p>
+<p>Classes Owning Their Objects</p>
+<p>#import “Rectangle.h”</p>
+<p>#import “XYPoint.h”<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool{<br>    Rectangle *myRect = [[Rectanglealloc]init];<br>    XYPoint *myPoint = [[XYPointalloc]init];</p>
+<pre><code>[myPoint setX: 100andY:200];
+[myRect setWidth: 5andHeight:8];
+
+myRect.origin=myPoint; // 将对象赋值给另外一个对象的成员
+
+NSLog (@&quot;Origin at (%i, %i)&quot;,myRect.origin.x,myRect.origin.y);
+
+[myPoint setX: 50andY:50];
+
+NSLog (@&quot;Origin at (%i, %i)&quot;,myRect.origin.x,myRect.origin.y);</code></pre><p>  }<br>  return0;<br>}</p>
+<p>  Origin at (100, 200<br>      Origin at (50, 50)</p>
+<pre><code>-(void) setOrigin: (XYPoint *) pt
+{
+origin = pt;
+}
+
+Overriding Methods
+
+
+
+
+
+
+
+
+Which Method is Selected?</code></pre><p>#import &lt;Foundation/Foundation.h&gt;<br>      // insert definitions for ClassA and ClassB here<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool{<br>    ClassA *a = [[ClassAalloc]init];<br>    ClassB *b = [[ClassBalloc]init];<br>    [a initVar]; // usesClassAmethod<br>    [a printVar]; // reveal valueofx;<br>    [b initVar]; // use overridingClassBmethod<br>    [b printVar]; // reveal valueofx;<br>  }<br>  return0;<br>}</p>
+<p>warning: ‘ClassA’ may not respond to ‘-printVar’ // ClassA 中没有定义printVar, 此时选择ClassB中的printVar</p>
+<p>Abstract Classes</p>
+<ol start="9">
+<li>Polymorphism, Dynamic Typing, and Dynamic Binding</li>
+</ol>
+<p>Polymorphism Same Name, Different Class<br>// Interface file for Complex class</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>@interface Complex: NSObject<br>@property double real, imaginary;<br>-(void) print;<br>-(void) setReal: (double) a andImaginary: (double) b;<br>-(Complex *) add: (Complex *) f;<br>@end</p>
+<p>// Implementation file for Complex class</p>
+<p>#import “Complex.h”<br>@implementation Complex<br>@synthesize real, imaginary;<br>-(void) print<br>{<br>  NSLog (@” %g + %gi “, real, imaginary);<br>}<br>-(void) setReal: (double) a andImaginary: (double) b<br>{<br>  real = a;<br>  imaginary = b;<br>}<br>-(Complex *) add: (Complex *) f<br>{<br>  Complex *result = [[Complex alloc] init];<br>  result.real = real + f.real;<br>  result.imaginary = imaginary + f.imaginary;<br>  return result;<br>}<br>@end</p>
+<p>// Shared Method Names: Polymorphism</p>
+<p>#import “Fraction.h”</p>
+<p>#import “Complex.h”<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    Fraction *f1 = [[Fraction alloc] init];<br>    Fraction *f2 = [[Fraction alloc] init];<br>    Fraction *fracResult;</p>
+<pre><code>Complex *c1 = [[Complex alloc] init];
+Complex *c2 = [[Complex alloc] init];
+Complex *compResult;
+
+[f1 setTo: 1 over: 10];
+[f2 setTo: 2 over: 15];
+[c1 setReal: 18.0 andImaginary: 2.5];
+[c2 setReal: -5.0 andImaginary: 3.2];
+
+// add and print 2 complex numbers
+[c1 print]; NSLog (@&quot; +&quot;); [c2 print];
+NSLog (@&quot;---------&quot;);
+compResult = [c1 add: c2]; // 多态
+[compResult print];
+NSLog (@&quot;\n&quot;);
+
+// add and print 2 fractions
+[f1 print]; NSLog (@&quot; +&quot;); [f2 print];
+NSLog (@&quot;----&quot;);
+fracResult = [f1 add: f2]; // 多态
+[fracResult print];</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Dynamic Binding and the id Type</p>
+<p>#import “Fraction.h”</p>
+<p>#import “Complex.h”<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    id dataValue;<br>    Fraction *f1 = [[Fraction alloc] init];<br>    Complex *c1 = [[Complex alloc] init];</p>
+<pre><code>[f1 setTo: 2 over: 5];
+[c1 setReal: 10.0 andImaginary: 2.5];
+
+// first dataValue gets a fraction
+dataValue = f1;  // id Type
+[dataValue print];
+
+// now dataValue gets a complex number
+dataValue = c1;
+[dataValue print];</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Compile Time Versus Runtime Checking</p>
+<p>id变量中的对象类型在编译时无法确定，所以一些测试推迟到运行时运行</p>
+<p>The id Data Type and Static Typing</p>
+<p>不可以把所有的对象都声明为id类型：</p>
+<p>变量定义为特定类的对象时，使用的是static形式。“static”这个词指的是这个变量总是用于存储特定类的对象，这样，存储在这种形态中的对象的类是预定(predeterminate)的</p>
+<p>it makes your progreams more readable</p>
+<p>Argument and Return Types with Dynamic Typing</p>
+<p>Asking Questions About Classes</p>
+<p>One enables you to ask whether an object conforms to a protocol (see Chapter 11,“Categories and Protocols”). Others enable you to<br>ask about dynamically resolving methods (not covered in this text).</p>
+<p>[Square clase] // 返回类的名字</p>
+<p>@selector</p>
+<p>Exception Handing Using @try<br>@try {<br>  statement<br>    statement<br>    …<br>}<br>@catch (NSException *exception) {<br>  statement<br>    statement<br>    …<br>}</p>
+<ol start="10">
+<li>More on Variables and Data Types</li>
+</ol>
+<p>Initialzing Objects<br>We didn’t write our own init method here; we use the one we inherited from the parent class, which is NSObject.</p>
+<p>Fraction *myFract = [[Fraction alloc] init];<br>A class that contains many methods and instance variables in it commonly has several initialization methods as well. For example, the Foundation framework’s NSArray class contains the following six initialization methods:</p>
+<p>  There’s a standard “template” that’s used for overriding init,</p>
+<ul>
+<li><p>(id)init  // 注意这个返回类型<br>{<br>self = [super init];  // 执行父类的初始化</p>
+<p>if (self) {<br>// Initialization code here.<br>}<br>return self;<br>}</p>
+</li>
+</ul>
+<p>Scope Revisited<br>Directives for Controlling Instance Variable Scope</p>
+<p>@protected— Methods defined in the class and any subclasses can directly access<br>the instance variables that follow.This is the default for instance variables defined in<br>the interface section.</p>
+<p>@private— Methods defined in the class can directly access the instance variables<br>that follow, but subclasses cannot.This is the default for instance variables defined in<br>the implementation section.</p>
+<p>@public— Methods defined in the class and any other classes or modules can<br>directly access the instance variables that follow.</p>
+<p>@package— For 64-bit images, the instance variable can be accessed anywhere<br>within the image that implements the class.</p>
+<p>@interface Printer<br>{<br>  @private<br>    int pageCount;<br>  int tonerLevel;<br>  @protected<br>    // other instance variables<br>}<br>…<br>@end<br>More on Properties, Synthesized Accessors, and Instance Variables</p>
+<p>@synthesize window=_window;</p>
+<p>it says to synthesize the getter and setter for the property named window and to associate that property with an instance variable called _window (which does not have to be explicitly declared).This helps to distinguish the use of the instance variable from the property and to encourage you to set and retrieve the value of the instance variable through the setter and getter methods.That is, writing something like this</p>
+<p>[window makeKeyAndVisible]; // This won’t work</p>
+<p>will fail, as there is no instance variable named window. Instead, you have to either name the instance variable directly by its name, such as</p>
+<p>[_window makeKeyAndVisible];</p>
+<p>or, preferably, use the accessor method:<br>[self.window makeKeyAndVisible]</p>
+<p>Global Variables</p>
+<p>#import “Foo.h”</p>
+<p>int gGlobalVar = 5;  // this is global variables</p>
+<p>int main (int argc, char *argc[])<br>{<br>  @autoreleasepool {<br>    Foo *myFoo = [[Foo alloc] init];<br>    NSLog (@”%i “, gGlobalVar);<br>    [myFoo setgGlobalVar: 100];<br>    NSLog (@”%i”, gGlobalVar);<br>  }<br>  return 0;<br>}</p>
+<p>The definition of the global variable gGlobalVar in the previous program makes its value accessible by any method (or function) that uses an appropriate extern declaration. Suppose your Foo method setgGlobalVar: looks like this:</p>
+<p>-(void) setgGlobalVar: (int) val<br>{<br>  extern int gGlobalVar;  // 引用全局变量<br>  gGlobalVar = val;</p>
+<p>}<br>Static Variables</p>
+<p>static 定义全局的，但不是外部的</p>
+<p>static in gGlobalVar = 0;</p>
+<p>以上声明在任何方法函数之外，那么在该文件中，所有位于这条语句之后的方法或函数都可以访问gGlobalVar的值， 而其他文件中的方法和函数不行</p>
+<p>Enumerate Data Types</p>
+<p>enum flag { false, true };</p>
+<p>#import &lt;Foundation/Foundation.h&gt;</p>
+<p>// print the number of days in a month<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    enum month { january = 1, february, march, april, may, june, july, august, september, october, november, december };</p>
+<pre><code>enum month amonth; // 枚举
+
+int days;
+
+NSLog (@&quot;Enter month number: &quot;);
+scanf (&quot;%i&quot;, &amp;amonth);
+
+switch (amonth) {
+  case january:
+  case march:
+  case may:
+  case july:
+  case august:
+  case october:
+  case december:
+    days = 31;
+    break;
+  case april:
+  case june:
+  case september:
+  case november:
+    days = 30;
+    break;
+  case february:
+    days = 28;
+    break;
+  default:
+    NSLog (@&quot;bad month number&quot;);
+    days = 0;
+    break;
+}
+if ( days != 0 )
+  NSLog (@&quot;Number of days is %i&quot;, days);
+if ( amonth == february )
+  NSLog (@&quot;...or 29 if it&apos;s a leap year&quot;);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>The typedef Statement<br>// 1<br>typedef int Counter;<br>Counter j, n;</p>
+<p>// 2<br>typedef NSNumber *NumberObject;<br>NSNumber *myValue1, *myValue2, *myResult;</p>
+<p>// 3<br>typedef enum { east, west, south, north } Direction;<br>Direction step1, step2;</p>
+<p>Data Type Conversions</p>
+<p>Conversion Rules</p>
+<p>If either operand is of type long double, the other is converted to long double, and that is the type of the result.</p>
+<p>If either operand is of type double, the other is converted to double, and that is the type of the result.</p>
+<p>If either operand is of type float, the other is converted to float, and that is the type of the result.</p>
+<p>If either operand is of type _Bool, char, short int, or bit field,1 or of an enumerated data type, it is converted to int.</p>
+<p>If either operand is of type long long int, the other is converted to long long int, and that is the type of the result.</p>
+<p>If either operand is of type long int, the other is converted to long int, and that is the type of the result.</p>
+<p>Ifthis step is reached, both operands are oftype int, and that is the type ofthe result.</p>
+<p>Bit Operators</p>
+<p>Symbol Operation<br>&amp; Bitwise AND<br>| Bitwise inclusive-OR<br>^ Bitwise OR<br>~ Ones complement<br>&lt;&lt; Left shift</p>
+<blockquote>
+<blockquote>
+<p>Right shift</p>
+</blockquote>
+</blockquote>
+<p>The Bitwise AND Operator</p>
+<p>The Bitwise Inclusive-OR Operator</p>
+<p>The Bitwise Exclusive-OR Operator</p>
+<p>The Ones Complement Operator</p>
+<p>The Left Shift Operator</p>
+<p>The Right Shift Operator</p>
+<ol start="11">
+<li>Categories and Protocols</li>
+</ol>
+<p>Categories</p>
+<p>A category provides an easy way for you to modularize the definition of a class into groups or categories of related methods.It also gives you an easy way to extend an existing class definition without even having access to the original source code for the class and without having to create a subclass.This is a powerful yet easy concept for you to learn.</p>
+<p>#import “Fraction.h”  // 必须包含原始接口部分<br>@interface Fraction (MathOps) // This tells the compiler that you<br>  // are defining a new category for the<br>  // Fraction class<br>  // and that its name is MathOps.<br>  -(Fraction *) add: (Fraction *) f;<br>  -(Fraction *) mul: (Fraction *) f;<br>  -(Fraction *) sub: (Fraction *) f;<br>  -(Fraction *) div: (Fraction *) f;<br>  @end</p>
+<p>@implementation Fraction (MathOps) //<br>  -(Fraction <em>) add: (Fraction *) f<br>{<br>  // To add two fractions:<br>  // a/b + c/d = ((a</em>d) + (b<em>c)) / (b * d)<br>  Fraction *result = [[Fraction alloc] init];<br>  result.numerator = (self.numerator * f.denominator) +<br>    (self.denominator * f.numerator);<br>  result.denominator = self.denominator * f.denominator;<br>  [result reduce];<br>  return result;<br>}<br>-(Fraction *) sub: (Fraction *) f<br>{<br>  // To sub two fractions:<br>  // a/b - c/d = ((a</em>d) - (b*c)) / (b * d)<br>  Fraction *result = [[Fraction alloc] init];<br>  result.numerator = (self.numerator * f.denominator) -<br>    (self.denominator * f.numerator);<br>  result.denominator = self.denominator * f.denominator;<br>  [result reduce];<br>  return result;<br>}<br>-(Fraction *) mul: (Fraction *) f<br>{<br>  Fraction *result = [[Fraction alloc] init];<br>  result.numerator = self.numerator * f.numerator;<br>  result.denominator = self.denominator * f.denominator;<br>  [result reduce];<br>  return result;<br>}<br>-(Fraction *) div: (Fraction *) f<br>{<br>  Fraction *result = [[Fraction alloc] init];<br>  result.numerator = self.numerator * f.denominator<br>    result.denominator = self.denominator * f.numerator;<br>  [result reduce];<br>  return result;<br>}<br>  @end<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    Fraction *a = [[Fraction alloc] init];<br>    Fraction *b = [[Fraction alloc] init];</p>
+<pre><code>Fraction *result;
+
+[a setTo: 1 over: 3];
+[b setTo: 2 over: 5];
+[a print]; NSLog (@&quot; +&quot;); [b print]; NSLog (@&quot;-----&quot;);
+result = [a add: b];
+[result print];
+NSLog (@&quot;\n&quot;);
+
+[a print]; NSLog (@&quot; -&quot;); [b print]; NSLog (@&quot;-----&quot;);
+result = [a sub: b];
+[result print];
+NSLog (@&quot;\n&quot;);
+
+[a print]; NSLog (@&quot; *&quot;); [b print]; NSLog (@&quot;-----&quot;);
+result = [a mul: b];
+[result print];
+NSLog (@&quot;\n&quot;);
+
+[a print]; NSLog (@&quot; /&quot;); [b print]; NSLog (@&quot;-----&quot;);
+result = [a div: b];
+[result print];
+NSLog (@&quot;\n&quot;);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Note<br>By convention, the base name of the .h and .m files for a category is the class name followed by the category name. In our example, we would put the interface section for the category in a file named FractionMathOps.h and the implementation section in a file called<br>FractionMathOps.m. Some programmers use a ‘+’ sign to separate the name of the category from the class, as in Fraction+MathOps.h.</p>
+<p>Class Extensions</p>
+<p>There is a special case of creating a category without a name, that is no name is specified<br>between the ( and ) .This special syntax defines what is known as a class extension.</p>
+<p>#import “GraphicObject.h”<br>// Class extension<br>@interface GraphicObject () // 注意这里的(), 为class extension 或理解为 Categories without name<br>  @property int uniqueID;<br>  -(void) doStuffWithUniqueID: (int) theID;<br>  @end</p>
+<p>  //————————————–<br>  @implementation GraphicObject<br>  @synthesize uniqueID;</p>
+<p>  -(void) doStuffWithUniqueID: (int) myID<br>{<br>  self.uniqueID = myID;<br>  …<br>}<br>…<br>// Other GraphicObject methods<br>…<br>@end<br>Some Notes About Categories</p>
+<p>Protocols and Delegation</p>
+<p>Protocols<br>A protocol is a list of methods that is shared among classes.Defining a protocol is easy:You simply use the @protocol directive followed by the name of the protocol, which is up to you.</p>
+<p>@protocol NSCopying</p>
+<ul>
+<li>(id)copyWithZone: (NSZone *)zone;<br>@end<br>adopt<br>If you adopt the NSCopying protocol in your class, you must implement a method called copyWithZone: .You tell the compiler that you are adopting a protocol by listing the protocol name inside a pair of angular brackets (&lt;…&gt;) on the @interface line.The protocol name comes after the name of the class and its parent class, as in the following</li>
+</ul>
+<p>@interface AddressBook: NSObject <nscopying></nscopying></p>
+<p>This says that AddressBook is an object whose parent is NSObject and states that it conforms to the NSCopying protocol.<br>check protocols</p>
+<p>if ([currentObject conformsToProtocol: @protocol (Drawing)] == YES)<br>{<br>  // Send currentObject paint, erase and/or outline msgs<br>  …<br>}</p>
+<p>id <drawing> currentObject;</drawing></p>
+<p>extend the protocols</p>
+<p>@protocol Drawing3D <drawing></drawing></p>
+<p>@optional<br>@required</p>
+<p>Delegation</p>
+<p>Delegate本身应该称为一种设计模式，是把一个类自己需要做的一部分事情，让另一个类（也可以就是自己本身）来完成，而实际做事的类为delegate。而protocol是一种语法，它的主要目标是提供接口给遵守协议的类使用，而这种方式提供了一个很方便的、实现delegate模式的机会。</p>
+<p>参考：<a href="http://www.cnblogs.com/qingyuan/p/3616870.html" target="_blank" rel="noopener">http://www.cnblogs.com/qingyuan/p/3616870.html</a><br>1,先定义一个协议(Protocol) ProtocolName, 协议ProtocolName中定义了两个方法: first ,second<br>2,现在这里定义两个类StudentA和StudentB来实现协议ProtocolName中的方法.<br>3,然后新建一个Object C类Student,但是这个类并没有去遵循协议ProtocolName 去实现其他的方法，而是通过委托来代理实现协议方法的调用。</p>
+<p>#import &lt;Foundation/Foundation.h&gt;</p>
+<p>#import “ProtocolName.h”</p>
+<p>@interface Student : NSObject{<br>  id<protocolname> delegate; // 委托<br>}</protocolname></p>
+<p>@property (retain) id<protocolname> delegate; // 将委托设置为一个属性</protocolname></p>
+<p>-(void) setMethod;</p>
+<p>@end</p>
+<p>// 使用委托<br>Student *stu=[[Student alloc] init];<br>StudentA *stua=[[StudentA alloc] init];<br>StudentB *stub=[[StudentB alloc] init];<br>stu.delegate=stua;<br>[stu.delegate first];<br>[stu setMethod];</p>
+<p>stu.delegate=stub;<br>[stu setMethod];</p>
+<p>Informal Protocols</p>
+<p>Composite Objects</p>
+<p>@interface Square: NSObject<br>{<br>  Rectangle *rect; // 合成对象，而不是继承对象<br>}<br>-(int) setSide: (int) s;<br>-(int) side;<br>-(int) area;<br>-(int) perimeter;<br>@end</p>
+<ol start="12">
+<li>The Preprocessor</li>
+</ol>
+<p>The #define Statement</p>
+<p>The #import Statement</p>
+<p>Conditional Compilation<br>The #ifdef, #endif, #else, and #ifndef Statements</p>
+<p>The #if and #elif Preprocessor Statements</p>
+<p>The #undef Statement</p>
+<ol start="13">
+<li>Underlying C Language Feartures</li>
+</ol>
+<p>Arrays<br>Initializing Array Elements</p>
+<p>int integers[5] = { 0, 1, 2, 3, 4 } ;<br>char letters[5] = { ‘a’, ‘b’, ‘c’, ‘d’, ‘e’ } ;</p>
+<p>Character Arrays</p>
+<p>char word[] = { ‘H’, ‘e’, ‘l’, ‘l’, ‘o’, ‘!’ } ;<br>Multidimensional Arrays</p>
+<p>int M[4][7] = {<br>  { 10, 5, -3, 17, 82 } ,<br>  { 9, 0, 0, 8, -7 } ,<br>  { 32, 20, 1, 0, 14 } ,<br>  { 0, 0, 8, 7, 6 }<br>} ;</p>
+<p>Functions<br>Arguments and Local Variables</p>
+<p>#import &lt;Foundation/Foundation.h&gt;</p>
+<p>// Function to calculate the nth triangular number<br>void calculateTriangularNumber (int n)<br>{<br>  int i, triangularNumber = 0;<br>  for ( i = 1; i &lt;= n; ++i )<br>    triangularNumber += i;<br>  NSLog (@”Triangular number %i is %i”, n, triangularNumber);<br>}</p>
+<p>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    calculateTriangularNumber (10);<br>    calculateTriangularNumber (20);<br>    calculateTriangularNumber (50);<br>  }<br>  return 0;<br>}<br>Returning Function Results</p>
+<p>int gcd (int u, int v)<br>{<br>  return u * v;<br>}<br>result = gcd (150, 35);<br>Functions, Methods, and Arrays</p>
+<p>Blocks</p>
+<p>块从本质上来说是一个闭包，即其拥有代码逻辑和运行该段代码逻辑需要的变量。这一切在定义代码时就已经确定，因此，一个块在定义时访问了某个上文变量，即使之后该上下文变量发生了变化，块中仍然使用是定义时的值，可以认为块只是在定义的时候拷贝了一个变量值到自己的作用域。定义完之后，和原来的那个上下文变量就没有关系了。</p>
+<p>void printMessage (void)<br>{<br>  NSLog (@”Programming is fun.”);<br>}</p>
+<p>^(void)<br>{<br>  NSLog (@”Programming is fun.”);<br>}</p>
+<p>void (^printMessage)(void) =<br>^(void){<br>  NSLog (@”Programming is fun.”);<br>} ;</p>
+<p>Structures<br>struct date<br>{<br>  int month;<br>  int day;<br>  int year;<br>} ;</p>
+<p>struct date today;</p>
+<p>Initilizing Structurs</p>
+<p>struct date today = { 7, 2, 2011 } ;</p>
+<p>struct date today = { .month = 7, .day = 2, .year = 2011 } ;</p>
+<p>Structures Within Structures</p>
+<p>/* Points. */<br>struct CGPoint {<br>  CGFloat x;<br>  CGFloat y;<br>} ;</p>
+<p>typedef struct CGPoint CGPoint;</p>
+<p>/* Sizes. */<br>struct CGSize {<br>  CGFloat width;<br>  CGFloat height;<br>} ;</p>
+<p>typedef struct CGSize CGSize;</p>
+<p>additional Details About Stgructures</p>
+<p>struct date<br>{<br>  int month;<br>  int day;<br>  int year;<br>} todaysDate, purchaseDate;</p>
+<p>struct date<br>{<br>  int month;<br>  int day;<br>  int year;<br>} todaysDate = { 9, 25, 2011 } ;</p>
+<p>struct<br>{<br>  int month;<br>  int day;<br>  int year;<br>} dates[100];</p>
+<p>Pointers</p>
+<p>To understand the way pointers operate, you first must understand the concept of indirection</p>
+<p>the address operator (&amp;) and the indirection operator (*).</p>
+<p>Pointers and Structures</p>
+<p>struct date<br>{<br>  int month;<br>  int day;<br>  int year;<br>} ;</p>
+<p>struct date todaysDate;<br>struct date *datePtr;</p>
+<p>datePtr = &todaysDate;<br>Pinters, Methods, and Functions<br>You can pass a pointer as an argument to a method or function in the normal fashion, and you can have a function or method return a pointer as its result.</p>
+<p>Pointers and Arrays</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int arraySum (int array[], int n)<br>{<br>  int sum = 0, *ptr;<br>  int *arrayEnd = array + n;<br>  for ( ptr = array; ptr &lt; arrayEnd; ++ptr )<br>    sum += *ptr;<br>  return (sum);<br>}<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    int arraySum (int array[], int n);<br>    int values[10] = { 3, 7, -9, 3, 6, -1, 7, 9, 1, -5 } ;<br>    NSLog (@”The sum is %i”, arraySum (values, 10));<br>  }<br>  return 0;<br>}<br>Is It an Array, or Is It a Pointer?</p>
+<p>Pointers to Character Strings</p>
+<p>Constant Character Strings and Pointers<br>Constant string object should be used ‘@’</p>
+<p>The Increment and Decrement Operators Revisited</p>
+<p>for ( ; <em>from != ‘\ 0’; )  // 指针定义以后，使用时为什么还要用</em>号<br>*to++ = *from++;<br>Operations on Pointers</p>
+<p>Pointers to Functions</p>
+<p>int (*fnPtr) (void);<br>Pointers and Memory Addresses</p>
+<p>They’re Not Objects!</p>
+<p>Miscellaneous Language Features<br>Compund Literals</p>
+<p>The goto Statement</p>
+<p>The null Statement</p>
+<p>The Comma Operator</p>
+<p>The sizeof Operator</p>
+<p>Command-Line Arguments</p>
+<p>How Things Work<br>Fact #1: Instance Variables Are Stored in Structures</p>
+<p>Fact #2: An Object Variable Is Really a Pointer</p>
+<p>Fact #3: Methods Are Functions, and Message Expressions Are Function Calls</p>
+<p>Fact #4: The id Type Is a Generic Pointer Type</p>
+<p>14 Introduction to the Foundation Framework<br>Foundation Documentation</p>
+<p>Quick reference for NSString</p>
+<ol start="15">
+<li>Numbers, Strings, and Collections<br>#import &lt;Foundation/Foundation.h&gt;</li>
+</ol>
+<p>Number Objects</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSNumber *myNumber, *floatNumber, *intNumber;<br>    NSInteger myInt;</p>
+<pre><code>// integer value
+intNumber = [NSNumber numberWithInteger: 100];
+myInt = [intNumber integerValue];
+NSLog (@&quot;%li&quot;, (long) myInt);
+
+// long value
+myNumber = [NSNumber numberWithLong: 0xabcdef];
+NSLog (@&quot;%lx&quot;, [myNumber longValue]);
+
+// char value
+myNumber = [NSNumber numberWithChar: &apos;X&apos;];
+NSLog (@&quot;%c&quot;, [myNumber charValue]);
+
+// float value
+floatNumber = [NSNumber numberWithFloat: 100.00];
+NSLog (@&quot;%g&quot;, [floatNumber floatValue]);
+
+// double
+myNumber = [NSNumber numberWithDouble: 12345e+15];
+NSLog (@&quot;%lg&quot;, [myNumber doubleValue]);
+
+// Wrong access here
+NSLog (@&quot;%li&quot;, (long) [myNumber integerValue]);
+
+// Test two Numbers for equality
+if ([intNumber isEqualToNumber: floatNumber] == YES)
+  NSLog (@&quot;Numbers are equal&quot;);
+else
+  NSLog (@&quot;Numbers are not equal&quot;);
+
+// Test if one Number is &lt;, ==, or &gt; second Number
+if ([intNumber compare: myNumber] == NSOrderedAscending)
+  NSLog (@&quot;First number is less than second&quot;);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Note: Table 15.1 NSNumber Creation and Retrieval Methods</p>
+<p>String Objects<br>More on the NSLog Function</p>
+<p>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSString *str = @”Programming is fun”;<br>    NSLog (@”%@”, str);<br>  }<br>  return 0;<br>}<br>The description Method<br>In fact, they can be used to display objects from your own classes as well, as long as you override the description method inherited by your class.</p>
+<p>-(NSString *) description<br>{<br>  return [NSString stringWithFormat: @”%i/%i”, numerator, denominator];<br>}<br>Mutable Versus Immutable Objects<br>you might want to delete some characters from a string or perform a search-and-replace operation on a string. These types of strings are handled through the NSMutableString class.</p>
+<p>Mutable Strings</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSString *str1 = @”This is string A”;<br>    NSString *search, *replace;<br>    NSMutableString *mstr;<br>    NSRange substr;</p>
+<pre><code>// Create mutable string from nonmutable
+mstr = [NSMutableString stringWithString: str1];
+NSLog (@&quot;%@&quot;, mstr);
+
+// Insert characters
+[mstr insertString: @&quot; mutable&quot; atIndex: 7];
+NSLog (@&quot;%@&quot;, mstr);
+
+// Effective concatentation if insert at end
+[mstr insertString: @&quot; and string B&quot; atIndex: [mstr length]];
+NSLog (@&quot;%@&quot;, mstr);
+
+// Or can use appendString directly
+[mstr appendString: @&quot; and string C&quot;];
+NSLog (@&quot;%@&quot;, mstr);
+
+// Delete substring based on range
+[mstr deleteCharactersInRange: NSMakeRange (16, 13)];
+NSLog (@&quot;%@&quot;, mstr);
+
+// Find range first and then use it for deletion
+substr = [mstr rangeOfString: @&quot;string B and “];
+if (substr.location != NSNotFound) {
+  [mstr deleteCharactersInRange: substr];
+  NSLog (@&quot;%@&quot;, mstr);
+}
+
+// Set the mutable string directly
+[mstr setString: @&quot;This is string A&quot;];
+NSLog (@&quot;%@&quot;, mstr);
+
+// Now let’s replace a range of chars with another
+[mstr replaceCharactersInRange: NSMakeRange(8, 8)
+  withString: @&quot;a mutable string&quot;];
+NSLog (@&quot;%@&quot;, mstr);
+
+// Search and replace
+search = @&quot;This is&quot;;
+replace = @&quot;An example of&quot;;
+substr = [mstr rangeOfString: search];
+if (substr.location != NSNotFound) {
+  [mstr replaceCharactersInRange: substr
+    withString: replace];
+  NSLog (@&quot;%@&quot;, mstr);
+}
+
+// Search and replace all occurrences
+search = @&quot;a&quot;;
+replace = @&quot;X&quot;;
+substr = [mstr rangeOfString: search];
+while (substr.location != NSNotFound) {
+  [mstr replaceCharactersInRange: substr
+    withString: replace];
+  substr = [mstr rangeOfString: search];
+}
+NSLog (@&quot;%@&quot;, mstr);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Array Objects</p>
+<p>Immutable arrays are handled by the NSArray class, whereas mutable ones are handled by NSMutableArray.</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  int i;<br>  @autoreleasepool {<br>    // Create an array to contain the month names<br>    NSArray *monthNames = [NSArray arrayWithObjects:<br>      @”January”, @”February”, @”March”, @”April”,<br>      @”May”, @”June”, @”July”, @”August”, @”September”,<br>      @”October”, @”November”, @”December”, nil ];<br>    // Now list all the elements in the array<br>    NSLog (@”Month Name”);<br>    NSLog (@”===== ====”);<br>    for (i = 0; i &lt; 12; ++i)<br>      NSLog (@” %2i %@”, i + 1, [monthNames objectAtIndex: i]);<br>  }<br>  return 0;<br>}<br>Making an Address Book</p>
+<p>Sorting Arrays</p>
+<p>Dictionary Objects</p>
+<p>A dictionary is a collection of data consisting of key-object pairs</p>
+<p>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSMutableDictionary *glossary = [NSMutableDictionary dictionary];</p>
+<pre><code>// Store three entries in the glossary
+[glossary setObject: @&quot;A class defined so other classes can inherit from it&quot;
+  forKey: @&quot;abstract class&quot; ];
+[glossary setObject: @&quot;To implement all the methods defined in a protocol&quot;
+  forKey: @&quot;adopt&quot;];
+[glossary setObject: @&quot;Storing an object for later use&quot;
+  forKey: @&quot;archiving&quot;];
+
+// Retrieve and display them
+NSLog (@&quot;abstract class: %@&quot;, [glossary objectForKey: @&quot;abstract class&quot;]);
+NSLog (@&quot;adopt: %@&quot;, [glossary objectForKey: @&quot;adopt&quot;]);
+NSLog (@&quot;archiving: %@&quot;, [glossary objectForKey: @&quot;archiving&quot;]);</code></pre><p>  }<br>  return 0;<br>}<br>Enumerating a Dictionary</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSDictionary *glossary =<br>      [NSDictionary dictionaryWithObjectsAndKeys:<br>      @”A class defined so other classes can inherit from it”,<br>      @”abstract class”,<br>      @”To implement all the methods defined in a protocol”,<br>      @”adopt”,<br>      @”Storing an object for later use”,<br>      @”archiving”,<br>      nil<br>      ];</p>
+<pre><code>// Print all key-value pairs from the dictionary
+for ( NSString *key in glossary )
+  NSLog (@&quot;%@: %@&quot;, key, [glossary objectForKey: key]);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Set Objects</p>
+<p>A set is a collection of unique objects, and it can be mutable or immutable.</p>
+<p>#import &lt;Foundation/Foundation.h&gt;</p>
+<p>// Create an integer object</p>
+<p>#define INTOBJ(v) [NSNumber numberWithInteger: v]<br>// Add a print method to NSSet with the Printing category<br>@interface NSSet (Printing)<br>  -(void) print;<br>  @end</p>
+<p>@implementation NSSet (Printing)<br>  -(void) print {<br>    printf (“{ “);<br>    for (NSNumber *element in self)<br>      printf (“ %li “, (long) [element integerValue]);<br>    printf (“} \n”);<br>  }<br>@end</p>
+<p>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSMutableSet *set1 = [NSMutableSet setWithObjects:<br>      INTOBJ(1), INTOBJ(3), INTOBJ(5), INTOBJ(10), nil];<br>    NSSet *set2 = [NSSet setWithObjects:<br>      INTOBJ(-5), INTOBJ(100), INTOBJ(3), INTOBJ(5), nil];<br>    NSSet *set3 = [NSSet setWithObjects:<br>      INTOBJ(12), INTOBJ(200), INTOBJ(3), nil];<br>    NSLog (@”set1: “);<br>    [set1 print];<br>    NSLog (@”set2: “);<br>    [set2 print];<br>    // Equality test<br>    if ([set1 isEqualToSet: set2] == YES)<br>      NSLog (@”set1 equals set2”);<br>    else<br>      NSLog (@”set1 is not equal to set2”);<br>    // Membership test<br>    if ([set1 containsObject: INTOBJ(10)] == YES)<br>      NSLog (@”set1 contains 10”);<br>    else<br>      NSLog (@”set1 does not contain 10”);<br>    if ([set2 containsObject: INTOBJ(10)] == YES)<br>      NSLog (@”set2 contains 10”);<br>    else<br>      NSLog (@”set2 does not contain 10”);<br>    // add and remove objects from mutable set set1<br>    [set1 addObject: INTOBJ(4)];<br>    [set1 removeObject: INTOBJ(10)];<br>    NSLog (@”set1 after adding 4 and removing 10: “);<br>    [set1 print];<br>    // get intersection of two sets<br>    [set1 intersectSet: set2];<br>    NSLog (@”set1 intersect set2: “);<br>    [set1 print];<br>    // union of two sets<br>    [set1 unionSet:set3];<br>    NSLog (@”set1 union set3: “);<br>    [set1 print];<br>  }<br>  return 0;<br>}</p>
+<ol start="16">
+<li>Working with Files</li>
+</ol>
+<p>Managing Files and Directories: NSFileManager</p>
+<p>A file or directory is uniquely identified to NSFileManager using a pathname to the file.A pathname is an NSString object that can either be a relative or full pathname.A relative pathname is one that is relative to the current directory.<br>The special tilde character (~) is used as an abbreviation for a user’s home directory.</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, const char * argv[]) {<br>  @autoreleasepool {<br>    NSString *fName = @”testfile”;<br>    NSFileManager *fm;<br>    NSDictionary *attr;</p>
+<pre><code>// Need to create an instance of the file manager
+fm = [NSFileManager defaultManager];
+
+// Let&apos;s make sure our test file exists first
+if ([fm fileExistsAtPath: fName] == NO) {
+  NSLog(@&quot;File doesn&apos;t exist!&quot;);
+  return 1;
+}
+
+//now lets make a copy
+
+if ([fm copyItemAtPath: fName toPath: @&quot;newfile&quot; error: NULL] == NO) {
+  NSLog(@&quot;File Copy failed!&quot;);
+  return 2;
+}
+// Now let&apos;s test to see if the two files are equal
+if ([fm contentsEqualAtPath: fName andPath: @&quot;newfile&quot;] == NO) {
+  NSLog(@&quot;Files are Not Equal!&quot;);
+  return 3;
+}
+// Now lets rename the copy
+if ([fm moveItemAtPath: @&quot;newfile&quot; toPath: @&quot;newfile2&quot;
+    error: NULL] == NO){
+  NSLog(@&quot;File rename Failed&quot;);
+  return 4;
+}
+// get the size of the newfile2
+if ((attr = [fm attributesOfItemAtPath: @&quot;newfile2&quot; error: NULL])
+    == nil) {
+  NSLog(@&quot;Couldn&apos;t get file attributes!&quot;);
+  return 5;
+}
+NSLog(@&quot;File size is %llu bytes&quot;,
+    [[attr objectForKey: NSFileSize] unsignedLongLongValue]);
+
+// And finally, let&apos;s delete the original file
+if ([fm removeItemAtPath: fName error: NULL] == NO) {
+  NSLog(@&quot;file removal failed&quot;);
+  return 6;
+}
+NSLog(@&quot;All operations were successful&quot;);
+
+// Display the contents of the newly-created file
+NSLog(@&quot;%@&quot;, [NSString stringWithContentsOfFile:
+    @&quot;newfile2&quot; encoding:NSUTF8StringEncoding error:NULL]);</code></pre><p>  }<br>  return 0;<br>}<br>Working with the NSData Class</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSFileManager *fm;<br>    NSData *fileData;<br>    fm = [NSFileManager defaultManager];</p>
+<pre><code>// Read the file newfile2
+fileData = [fm contentsAtPath: @&quot;newfile2&quot;];
+if (fileData == nil) {
+  NSLog (@&quot;File read failed!&quot;);
+  return 1;
+}
+
+// Write the data to newfile3
+if ([fm createFileAtPath: @&quot;newfile3&quot; contents: fileData
+    attributes: nil] == NO) {
+  NSLog (@&quot;Couldn&apos;t create the copy!&quot;);
+  return 2;
+}
+NSLog (@&quot;File copy was successful!&quot;);</code></pre><p>  }<br>  return 0;<br>}<br>Working with Directories</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSString *dirName = @”testdir”;<br>    NSString *path;<br>    NSFileManager *fm;</p>
+<pre><code>// Need to create an instance of the file manager
+fm = [NSFileManager defaultManager];
+
+// Get current directory
+path = [fm currentDirectoryPath];
+NSLog (@&quot;Current directory path is %@&quot;, path);
+
+// Create a new directory
+if ([fm createDirectoryAtPath: dirName withIntermediateDirectories: YES
+    attributes: nil error: NULL] == NO) {
+  NSLog (@&quot;Couldn&apos;t create directory!&quot;);
+  return 1;
+}
+
+// Rename the new directory
+if ([fm moveItemAtPath: dirName toPath: @&quot;newdir&quot; error: NULL] == NO) {
+  NSLog (@&quot;Directory rename failed!&quot;);
+  return 2;
+}
+// Change directory into the new directory
+
+if ([fm changeCurrentDirectoryPath: @&quot;newdir&quot;] == NO) {
+  NSLog (@&quot;Change directory failed!&quot;);
+  return 3;
+}
+
+// Now get and display current working directory
+path = [fm currentDirectoryPath];
+NSLog (@&quot;Current directory path is %@&quot;, path);
+NSLog (@&quot;All operations were successful!&quot;);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Enumeratiing the Contents of a Directory</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSString *path;<br>    NSFileManager *fm;<br>    NSDirectoryEnumerator *dirEnum;<br>    NSArray *dirArray;</p>
+<pre><code>// Need to create an instance of the file manager
+fm = [NSFileManager defaultManager];
+// Get current working directory path
+path = [fm currentDirectoryPath];
+
+// Enumerate the directory
+dirEnum = [fm enumeratorAtPath: path];
+NSLog (@&quot;Contents of %@&quot;, path);
+while ((path = [dirEnum nextObject]) != nil)
+  NSLog (@&quot;%@&quot;, path);
+
+// Another way to enumerate a directory
+dirArray = [fm contentsOfDirectoryAtPath:
+  [fm currentDirectoryPath] error: NULL];
+NSLog (@&quot;Contents using contentsOfDirectoryAtPath:error:&quot;);
+for ( path in dirArray )
+  NSLog (@&quot;%@&quot;, path);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Working with Paths: NSPathUtilities.h</p>
+<p>Basic File Operations: NSFileHandle</p>
+<p>The NSURL Class</p>
+<p>The NSBundle Class</p>
+<ol start="17">
+<li>Memory Management and Automatic Reference Counting</li>
+</ol>
+<p>Automatic Garbage Collection</p>
+<p>The iOS runtime environment doesn’t support garbage collection, so you don’t have the option to use it when developing programs for that platform.That is, you can only use it when developing Mac OS X applications.</p>
+<p>Manual Reference Counting</p>
+<p>Automatic Reference Counting (ARC)</p>
+<p>  The general concept is as follows:When an object is created, its initial reference count is set to 1. Each time you need to ensure that the object be kept around, you effectively create a reference to it by incrementing its reference count by 1.This is done by sending the object a retain message, like so:</p>
+<p>  [myFraction retain];</p>
+<p>  When you no longer need an object, you decrement its reference count by 1 by sending it a release message, like this:</p>
+<p>  [myFraction release];</p>
+<p>  When the reference count of an object reaches 0, the system knows that the object is no longer being used (because, in theory, it is no longer being referenced anywhere in the application), so it frees up (deallocates) its memory.</p>
+<p>  Object Reference and the Autorelease Pool<br>  You might need to write a method that first creates an object (say with alloc) and then returns that object as the result of the method call. Here’s the dilemma: Even though the method is done using the object, it can’t release it, as it needs to return its value.The NSAutoreleasePool class was created in order to help solve problems like these by keeping track of objects to be released at a later time in an object known as an autorelease pool.That later time is when the pool gets drained, which is done by sending the autorelease pool object a drain message. In order to add an object to the list of objects maintained by the autorelease pool, you send that object an autorelease message, like so:</p>
+<p>  [result autorelease];</p>
+<p>  When dealing with programs that use classes from the Foundation, UIKit, or AppKit frameworks, you must create an autorelease pool because classes from these frameworks can create and return autoreleased objects.You do that in your application with a statement like this:</p>
+<p>  NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];</p>
+<p>  Xcode generates a template file with this statement at the start of main if you create a new project without ARC enabled. As noted, after the pool is set up, framework methods automatically add new objects such as arrays, strings, dictionaries, views, buttons, and other objects to the list maintained by the autorelease pool.</p>
+<p>  When you’re done using the pool, you send it a drain message:</p>
+<p>  [pool drain];</p>
+<p>  The Event Loop and Memeory Allocation</p>
+<p>  当一次Event Loop 发生时，系统会偏离 pool 中 auto release 数组，并且释放资源</p>
+<p>  Summary of Manual Memory Management Rules<br>  If you need to hold onto an object to make sure it doesn’t get destroyed by someone else, you should retain it. Make sure to release the object when you’re done with it.</p>
+<p>  Sending a release message does not necessarily destroy an object.When an object’s reference count is decremented to 0, the object is destroyed.The system does this by sending the dealloc message to the object to free its memory.</p>
+<p>  Release any objects that you have retained or have created using a copy, mutableCopy, alloc, or new method.This includes properties that have the retain or copy attribute.You can override dealloc to release your instance variables at the time your object is to be destroyed.</p>
+<p>  The autorelease pool provides for the automatic release ofobjects when the pool itselfis drained.The system does this by sending a release message to each object in the pool for each time it was autoreleased. Each object in the autorelease pool whose reference count goes down to 0 is sent a dealloc message to destroy the object.</p>
+<p>  If you no longer need an object from within a method but need to return it, send it an autorelease message to mark it for later release.The autorelease message does not affect the reference count of the object.</p>
+<p>  When your application terminates, all the memory your objects take up is released, regardless of whether they were in the autorelease pool.</p>
+<p>  When you develop Cocoa or iOS applications, autorelease pools will be created and drained throughout execution of the program (this will happen each time an event occurs). In such cases, if you want to ensure that an autoreleased object survives automatic deallocation when the autorelease pool is drained, you need to retain it.All objects that have a reference count greater than the number of autorelease messages they have been sent will survive the release of the pool.</p>
+<p>Automactic Reference Counting(ARC)</p>
+<p>  Stong Variables</p>
+<p>  By default, all object pointer variables are strong variables.That means that assigning an object reference to such a variable causes that object to be automatically retained</p>
+<p>  Week Variables</p>
+<p>  To declare a weak variable you use the _ _weak keyword:</p>
+<p>  _ _weak UIView *parentView;</p>
+<p>  or you use the weak attribute for a property:</p>
+<p>  @property (weak, nonatomic) UIView *parentView;</p>
+<p>  @autoreleasepool Blocks<br>  @autoreleasepool {}<br>  替换<br>  NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];</p>
+<p>  [pool drain];</p>
+<p>  Method Names and Non-ARC Complied Code</p>
+<ol start="18">
+<li><p>Copying Objects</p>
+<p>The copy and mutableCopy Methods</p>
+<p>The Foundation classes implement methods known as copy and mutableCopy that you can use to create a copy of an object.This is done by implementing a method in conformance with the protocol for making copies. If your class needs to distinguish between making mutable and immutable copies of an object, you must implement a method according to the protocol as well.You learn how to do that later in this section.</p>
+</li>
+</ol>
+<p>  dataArray2 = [dataArray mutableCopy];</p>
+<p>  这个例子中，数组中放的是字符串</p>
+<p>  Shallow Versus Deep Copying<br>  // Shallow copy, 仅仅复制了数组的地址，没有复制数组中的元素<br>  dataArray2 = [dataArray mutableCopy];</p>
+<p>  这个例子中，数组中放的是指针</p>
+<p>  浅复制，仅仅复制地址, 例如　obj1 = obj2;<br>  深复制，复制对象, 例如 obj2 = [obj1 mutableCopy];</p>
+<p>  Implementing the Protocl<br>  <strong>* -[AddressBook copyWithZone:]: selector not recognized<br>  *</strong> Uncaught exception:<br>  *** -[AddressBook copyWithZone:]: selector not recognized</p>
+<p>  @interface Fraction: NSObject <nscopying></nscopying></p>
+<p>  Fraction is a subclass of NSObject and conforms to the NSCopying protocol. In the implementation file Fraction.m, add the following definition for your new method:</p>
+<p>  -(id) copyWithZone: (NSZone *) zone<br>{<br>  Fraction *newFract = [[Fraction allocWithZone: zone] init];<br>  [newFract setTo: numerator over: denominator];</p>
+<p>  return newFract;<br>}</p>
+<p>Copying Objects in Setter and Getter Methods<br>-(void) setName: (NSString *) theName<br>{<br>  name = [theName copy];<br>}</p>
+<ol start="19">
+<li>Archiving</li>
+</ol>
+<p>Archiving with XML Property Lists</p>
+<p>Mac OS X applications use XML propertylists (or plists) for storing things such as your default preferences, application settings, and configuration information, so it’s useful to know how to create them and read them back in.</p>
+<p>If your objects are of type NSString, NSDictionary, NSArray, NSDate, NSData, or NSNumber, you can use the writeToFile:atomically: method implemented in these classes to write your data to a file</p>
+<p>#import &lt;Foundation/Foundation.h&gt;</p>
+<p>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSDictionary *glossary=<br>      [NSDictionarydictionaryWithObjectsAndKeys:<br>      @”A class defined so other classes can inheritfromit.”,<br>      @”abstractclass”,<br>      @”To implement all the methods defined inaprotocol”,<br>      @”adopt”,<br>      @”Storing an object for lateruse.”,<br>      @”archiving”,<br>      nil<br>      ];</p>
+<pre><code>if ([glossary writeToFile: @&quot;glossary&quot; atomically: YES] ==NO)
+  NSLog (@&quot;Save to filefailed!&quot;);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Archiving with NSKeyedArchiver</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSDictionary *glossary =<br>      [NSDictionary dictionaryWithObjectsAndKeys:<br>      @”A class defined so other classes can inherit from it”,<br>      @”abstract class”,<br>      @”To implement all the methods defined in a protocol”,<br>      @”adopt”,<br>      @”Storing an object for later use”,<br>      @”archiving”,<br>      nil<br>      ];</p>
+<pre><code>[NSKeyedArchiver archiveRootObject: glossary toFile: @&quot;glossary.archive&quot;];</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{</p>
+<p>  @autoreleasepool {<br>    NSDictionary *glossary;</p>
+<pre><code>glossary = [NSKeyedUnarchiver unarchiveObjectWithFile: @&quot;glossary.archive&quot;];
+
+for ( NSString *key in glossary )
+  NSLog (@&quot;%@: %@&quot;, key, [glossary objectForKey: key]);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Writing Encoding and Decoding Methods</p>
+<p>Using NSData to Create Custom Archives</p>
+<p>#import “AddressBook.h”</p>
+<p>#import “Foo.h”<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    Foo *myFoo1 = [[Foo alloc] init];</p>
+<pre><code>NSMutableData *dataArea;
+NSKeyedArchiver *archiver;
+AddressBook *myBook;
+
+// Insert code from Program 19.7 to create an Address Book
+// in myBook containing four address cards
+[myFoo1 setStrVal: @&quot;This is the string&quot;];
+[myFoo1 setIntVal: 12345];
+[myFoo1 setFloatVal: 98.6];
+
+// Set up a data area and connect it to an NSKeyedArchiver object
+dataArea = [NSMutableData data];
+archiver = [[NSKeyedArchiver alloc]
+  initForWritingWithMutableData: dataArea];
+
+// Now we can begin to archive objects
+[archiver encodeObject: myBook forKey: @&quot;myaddrbook&quot;];
+[archiver encodeObject: myFoo1 forKey: @&quot;myfoo1&quot;];
+[archiver finishEncoding];
+
+// Write the archived data area to a file
+if ([dataArea writeToFile: @&quot;myArchive&quot; atomically: YES] == NO)
+  NSLog (@&quot;Archiving failed!&quot;);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>Using the Archiver to Copy Objects</p>
+<p>You can use the Foundation’s archiving capabilities to create a deep copy of an object.</p>
+<p>#import &lt;Foundation/Foundation.h&gt;<br>int main (int argc, char * argv[])<br>{<br>  @autoreleasepool {<br>    NSData *data;</p>
+<pre><code>NSMutableArray *dataArray = [NSMutableArray arrayWithObjects:
+  [NSMutableString stringWithString: @&quot;one&quot;],
+  [NSMutableString stringWithString: @&quot;two&quot;],
+  [NSMutableString stringWithString: @&quot;three&quot;],
+  nil
+];
+
+  NSMutableArray *dataArray2;
+  NSMutableString *mStr;
+
+  // Make a deep copy using the archiver
+  data = [NSKeyedArchiver archivedDataWithRootObject: dataArray];
+
+  dataArray2 = [NSKeyedUnarchiver unarchiveObjectWithData: data];
+
+  mStr = [dataArray2 objectAtIndex: 0];
+  [mStr appendString: @&quot;ONE&quot;];
+  NSLog (@&quot;dataArray: &quot;);
+
+  for ( NSString *elem in dataArray )
+    NSLog (@&quot;%@&quot;, elem);
+  NSLog (@&quot;\ndataArray2: &quot;);
+
+  for ( NSString *elem in dataArray2 )
+    NSLog (@&quot;%@&quot;, elem);</code></pre><p>  }<br>  return 0;<br>}</p>
+<p>20 Introduction to CoCoa and Cocoa Touch</p>
+<p>Cocoa Touch<br>Whereas the Cocoa frameworks are designed for application development for Mac OS X desktop and notebook computers, the Cocoa Touch frameworks are for applications targeted for iOS devices.<br>Both Cocoa and Cocoa Touch have the Foundation and Core Data frameworks in common. However, the UIKit replaces the AppKit framework under Cocoa Touch, providing support for many of the same types of objects, such as windows, views, buttons, text fields, and so on. In addition, Cocoa Touch provides classes for working with the accelerometer, gyroscope, triangulating your location with GPS and Wi-Fi signals, and the touch-driven interface, and also eliminates classes that aren’t needed.</p>
+<ol start="21">
+<li>Writing iOS Application<br>This iOS SDK</li>
+</ol>
+<p>Your First IPhone Application</p>
+<p>An iPhone Fraction Calculator</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -671,16 +1107,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2016/04/14/Programming-in-Object-C-4th-阅读笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/04/28/通过一个程序代码来总结Objective-C的知识点/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          通过一个程序代码来总结Objective-C的知识点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/14/Redis学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis学习笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -695,364 +1199,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK与图形学相关的基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/VTK与图形学相关的基本概念/">VTK与图形学相关的基本概念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/VTK与图形学相关的基本概念/" class="archive-article-date">
-  	<time datetime="2017-10-26T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念</li>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
-        
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-VTK7-1-1安装部署记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/VTK7-1-1安装部署记录/">VTK7.1.1安装部署记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/VTK7-1-1安装部署记录/" class="archive-article-date">
-  	<time datetime="2017-07-10T09:09:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk7-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念<ul>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-        
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kafka与Storm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/Kafka与Storm整合/">Kafka与Storm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/Kafka与Storm整合/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/kafka-storm-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="整合Storm的概念"><a href="#整合Storm的概念" class="headerlink" title="整合Storm的概念"></a>整合Storm的概念</h2><ul>
-<li><p>整合场景</p>
-<blockquote>
-<p>A spout is a source of streams. For example, <font color="red">a spout may read tuples off a Kafka Topic</font> and emit them as a stream. <font color="red">A bolt consumes input streams, process and possibly emits new streams.</font> Bolts can do anything from running functions, filtering tuples, do streaming aggregations, streaming joins, <font color="red">talk to databases</font>, and more. Each node in a Storm topology executes in parallel. A topology runs indefinitely until you terminate it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if the machines go down and messages are dropped.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JSON学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/JSON学习笔记/">JSON学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/JSON学习笔记/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/json-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="JSON-是如何存储信息"><a href="#JSON-是如何存储信息" class="headerlink" title="JSON 是如何存储信息"></a>JSON 是如何存储信息</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"book"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"01"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"Java"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"third"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"Herbert Schildt"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"07"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"C++"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"second"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"E.Balagurusamy"</span></span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>
-        
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1075,8 +1247,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

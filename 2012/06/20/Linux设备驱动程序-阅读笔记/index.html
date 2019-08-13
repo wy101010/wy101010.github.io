@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>码农随笔</title>
+  <title>Linux设备驱动程序-阅读笔记 | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Linux C C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码农随笔">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="LINUX设备驱动程序(LINUX DEVICE DRIVERS )–阅读笔记 由  王宇 原创并发布 ： 设备驱动程序简介  设备驱动程序的作用  内核功能划分  进程管理 内存管理 文件系统 设备控制 网络功能 可装在模块 insmod将模块链接到内核 rmmode将模块移除内核 设备和模块的分类  字符模块 块模块 网络模块 安全问题 版本编号 许可证条款  加入内核开发社区  构造和运行模">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux设备驱动程序-阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2012/06/20/Linux设备驱动程序-阅读笔记/index.html">
 <meta property="og:site_name" content="码农随笔">
+<meta property="og:description" content="LINUX设备驱动程序(LINUX DEVICE DRIVERS )–阅读笔记 由  王宇 原创并发布 ： 设备驱动程序简介  设备驱动程序的作用  内核功能划分  进程管理 内存管理 文件系统 设备控制 网络功能 可装在模块 insmod将模块链接到内核 rmmode将模块移除内核 设备和模块的分类  字符模块 块模块 网络模块 安全问题 版本编号 许可证条款  加入内核开发社区  构造和运行模">
 <meta property="og:locale" content="cn">
+<meta property="og:updated_time" content="2019-08-12T10:44:46.824Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农随笔">
+<meta name="twitter:title" content="Linux设备驱动程序-阅读笔记">
+<meta name="twitter:description" content="LINUX设备驱动程序(LINUX DEVICE DRIVERS )–阅读笔记 由  王宇 原创并发布 ： 设备驱动程序简介  设备驱动程序的作用  内核功能划分  进程管理 内存管理 文件系统 设备控制 网络功能 可装在模块 insmod将模块链接到内核 rmmode将模块移除内核 设备和模块的分类  字符模块 块模块 网络模块 安全问题 版本编号 许可证条款  加入内核开发社区  构造和运行模">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -197,378 +201,734 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenGL学习记录-着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Linux设备驱动程序-阅读笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/OpenGL学习记录-着色/">OpenGL学习记录-着色</a>
+    <h1 class="article-title" itemprop="name">
+      Linux设备驱动程序-阅读笔记
     </h1>
   
 
         
-        <a href="/2018/06/20/OpenGL学习记录-着色/" class="archive-article-date">
-  	<time datetime="2018-06-20T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+        <a href="/2012/06/20/Linux设备驱动程序-阅读笔记/" class="archive-article-date">
+  	<time datetime="2012-06-20T09:28:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-06-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blog-image/zsq-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="着色器-运行在GPU上的小程序"><a href="#着色器-运行在GPU上的小程序" class="headerlink" title="着色器 - 运行在GPU上的小程序"></a>着色器 - 运行在GPU上的小程序</h2><p>从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。</p>
-<ul>
-<li>GLSL - 包含一些针对向量和矩阵操作的有用特性。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version version_number</span></span><br><span class="line">in type in_variable_name;</span><br><span class="line">in type in_variable_name;</span><br><span class="line"></span><br><span class="line">out type out_variable_name;</span><br><span class="line"></span><br><span class="line">uniform type uniform_name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 处理输入并进行一些图形操作</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 输出处理过的结果到输出变量</span></span><br><span class="line">  out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/#more">more >></a>
-        
+        <p>LINUX设备驱动程序(LINUX DEVICE DRIVERS )–阅读笔记</p>
+<p>由  王宇 原创并发布 ：</p>
+<p>设备驱动程序简介 </p>
+<p>设备驱动程序的作用 </p>
+<p>内核功能划分 </p>
+<p>进程管理</p>
+<p>内存管理</p>
+<p>文件系统</p>
+<p>设备控制</p>
+<p>网络功能</p>
+<p>可装在模块</p>
+<p>insmod将模块链接到内核</p>
+<p>rmmode将模块移除内核</p>
+<p>设备和模块的分类 </p>
+<p>字符模块</p>
+<p>块模块</p>
+<p>网络模块</p>
+<p>安全问题</p>
+<p>版本编号</p>
+<p>许可证条款 </p>
+<p>加入内核开发社区 </p>
+<p>构造和运行模块 </p>
+<p>设置测试系统</p>
+<p>HelloWorld模块 </p>
+<p>insmod模块安装工具</p>
+<p>rmmod模块移去工具</p>
+<p>核心模块与应用程序的对比 </p>
+<p>模块预先注册自己，用于服务某种请求</p>
+<p>模块退出时需要释放资源</p>
+<p>模块错误会影响到整个系统</p>
+<p>用户空间和内核空间</p>
+<p>不同地址空间</p>
+<p>编译和装载</p>
+<p>内核符号表 </p>
+<p>预备知识</p>
+<p>初始化和关闭</p>
+<p>模块参数 </p>
+<p>在用户空间编写驱动程序</p>
+<p>快速参考 </p>
+<p>用来装载模块到正运行的内核和移除模块的用户空间工具： </p>
+<p>insmod</p>
+<p>modprobe</p>
+<p>modprobe功能就是，对系统里的模块进行增、减、安装、删除等等操作。类似于insmod</p>
+<p>rmmod</p>
+<p>用于指定模块的初始化和清除函数的宏(可选的)</p>
+<p>  __init</p>
+<p>  __initdata</p>
+<p>  __exit</p>
+<p>  __exitdata</p>
+<p>  最重要的头文件之一包含驱动程序使用的大部分内核API的定义 </p>
+<p>#include&lt;sched.h&gt;</p>
+<p>  当前进程：structtask_struct*current;</p>
+<p>  当前进程的进程ID和命令:current-&gt;pidcurent-&gt;comm</p>
+<p>  必要的头文件，它必须包含在模块代码中： </p>
+<p>#include&lt;linux/module.h&gt;</p>
+<p>  构造内核版本信息的头文件 </p>
+<p>#include&lt;linux/version.h&gt;</p>
+<p>  整数宏，在处理版本依赖的预处理条件语句中非常有用 </p>
+<p>  LINUX_VERSION_CODE</p>
+<p>  用于导出单个符号到内核的宏 </p>
+<p>  EXPORT_SYMBOL（symbol）</p>
+<p>EXPORT_SYBMOL_GPL(symbol)</p>
+<p>  用来声明模块初始化和清除函数的宏 </p>
+<p>  module_init(int_function);</p>
+<p>  module_exit(exit_function);</p>
+<p>  在目标文件中添加关于模块的文档信息 </p>
+<p>  MODULE_AUTHER(author);</p>
+<p>  MODULE_DESCRIPTION();</p>
+<p>  MODULE_VERSION();</p>
+<p>MODULE_DEVICE_TABLE()</p>
+<p>MODULE_ALIAS()</p>
+<p>  用来创建块参数的宏，用户可在装载模块时调整这些参数的值</p>
+<p>#include&lt;linux/moduleparam.h&gt;</p>
+<p>  module_param(varible,type,perm);</p>
+<p>  函数printk的内核代码 </p>
+<p>#include&lt;linux/kernel.h&gt;</p>
+<p>  intprintk(constchar*fmt,…); </p>
+<p>  字符设备驱动程序 </p>
+<p>  scull的设计 </p>
+<p>  全局</p>
+<p>  持久</p>
+<p>  FIFO（先入先出）</p>
+<p>  主设备号和次设备号 </p>
+<p>  在dev目录下ls-l </p>
+<p>  字符设备用“c”识别</p>
+<p>  块设备用“b”识别</p>
+<p>  主设备号标识设备对应的驱动程序，第一列</p>
+<p>  次版本号由内核使用，第二列</p>
+<p>  设备编号的内部表达 </p>
+<p>  linux/types.h中定义</p>
+<p>  分配和释放设备编号</p>
+<p>  动态分配主设备号</p>
+<p>  /proc/devices中表示主版本号</p>
+<p>  增加文件节点</p>
+<p>#mknod/dev/sc_devc2500</p>
+<p>  一些重要的数据结构（非常重要） </p>
+<p>  file_operations </p>
+<p>  open、write、read、release、close等函数关联到file_operations数据结构中 </p>
+<p>  初始化设备时，初始化数据结构file_operations</p>
+<p>init_modules()</p>
+<p>  cdev_init();等</p>
+<p>  书中55页的file_operations方法清单</p>
+<p>  file </p>
+<p>  代表一个打开的文件</p>
+<p>  inode </p>
+<p>  内核在内部表示文件</p>
+<p>执行流程：获取设备号-&gt;注册设备-&gt;关联Fileoperations结构-&gt;open(打开设备)-&gt;write-&gt;read-&gt;release资源-&gt;close(关闭设备) </p>
+<p>  字符设备的注册 </p>
+<p>  open和release </p>
+<p>  Open方法提供初始化的能力</p>
+<p>  检查设备特定的错误</p>
+<p>  设备首次打开则初始化</p>
+<p>  有必要，则更新f_op指针</p>
+<p>  分配并填写置于filp-&gt;private_data里的数据结构</p>
+<p>  Release方法 </p>
+<p>  释放由Open分配的、保存在filp-&gt;private_data中的所有内容</p>
+<p>  在最后一次关闭操作时关闭设备</p>
+<p>  scull的内存使用</p>
+<p>  read和write</p>
+<p>  试试新设备</p>
+<p>  快速参考 </p>
+<p>  dev_t是内核中用来表示设备编号的数据类型</p>
+<p>#include&lt;linux/types.h&gt;</p>
+<p>  dev_t</p>
+<p>  从设备编号中抽取出主、次设备号 </p>
+<p>intMAJOR(dev_tdev)</p>
+<p>intMINOR(dev_tdev)</p>
+<p>  由主次设备号构造一个dev_t数据项 </p>
+<p>  dev_tMKDEV(unsignedintmajor,unsignedintminor);</p>
+<p>  “文件系统”头文件，它是编写设备驱动程序必须的头文件，有很多的重要的函数和数据结构 </p>
+<p>#include&lt;linux/fs.h&gt;</p>
+<p>  intregister_chrdev_region(dev_tfirst,unsignedintcount,char*name);</p>
+<p>  提供给驱动程序用来分配和释放设备编号范围的函数</p>
+<p>  intalloc_chrdev_region(dev_tfirst,unsignedintfirstminor,unsignedintcount,char*name);</p>
+<p>  动态分配，使用alloc_chrdev_region</p>
+<p>  intunregister_chrdev(unsignedintmajor,constchar*name);</p>
+<p>  用于注销驱动程序</p>
+<p>  三个重要的数据结构 </p>
+<p>  struct file_operation;保存了字符驱动程序的方法</p>
+<p>  struc tfile表示一个打开的文件</p>
+<p>  struct inode表示一个磁盘上的文件 </p>
+<p>用来管理cdev(用来代表字符设备)结构的函数，内核中使用该结构表示字符设备(过时不用了) </p>
+<p>#include&lt;linux/cdev.h&gt;</p>
+<p>  struct cdev*cdev_alloc(void);</p>
+<p>  void cdev_init(structcdev<em>dev,structfile_operation</em>fops);</p>
+<p>  int cdev_add(structcdev*dev,dev_tnum,unsignedintcount);</p>
+<p>  void cdev_del(structcdev*dev);</p>
+<p>  从包含在某个结构中的指针获得结构本身的指针</p>
+<p>#include&lt;linux/kernel.h&gt;</p>
+<p>  container_of(pointer,type,field);</p>
+<p>  在内核代码和用户空间之间移动数据的函数 </p>
+<p>  unsigned longcopy_from_user(void<em>to,constvoid</em>from,unsignedlongcount);</p>
+<p>  unsigned longcopy_to_user(void<em>to,constvoid</em>from,unsignedlongcount);</p>
+<p>  调试技术 </p>
+<p>  内核中的调试支持 </p>
+<p>  编译内核，打开相关选项 </p>
+<p>  make menuconfig</p>
+<p>  选择kernel-hacking项 </p>
+<p>  按”?”现实帮助，会显示出变量名称。CONFIG_*</p>
+<p>  参考书中的内容</p>
+<p>  按“/”查找信息</p>
+<p>  symbol:查询的符号</p>
+<p>  prompt:提示。应该是菜单名称</p>
+<p>  definds:定义</p>
+<p>  dependson:依赖</p>
+<p>  打印调试 </p>
+<p>  使用printk </p>
+<p>  使用dmesg来查看信息</p>
+<p>  查询最后几条：dmesg|tail</p>
+<p>  驱动开发用得最多的还是printk啦</p>
+<p>  重定向控制台消息</p>
+<p>  消息记录 </p>
+<p>  klogd</p>
+<p>  klogd是一个专门截获并记录Linux内核消息的守护进程</p>
+<p>  klogd守护进程获得并记录Linux内核信息。通常，syslogd会记录klogd传来的所有信息，然而，如果调用带有-ffilename变量的klogd时，klogd就在filename中记录所有信息，而不是传给syslogd。</p>
+<p>  /var/log/message等文件中记录</p>
+<p>  开启及关闭消息</p>
+<p>  速度限制</p>
+<p>  打印设备编号 </p>
+<p>  查询调试 </p>
+<p>  使用/proc文件系统 ** </p>
+<p>  每一个文件对应一个设备</p>
+<p>  在/proc中实现文件</p>
+<p>  老的/proc接口</p>
+<p>  创建自己的/proc文件</p>
+<p>  seq_file接口</p>
+<p>  ioctl方法</p>
+<p>  内核向外界导出信息</p>
+<p>  监视调试 </p>
+<p>  strace（重点使用） </p>
+<p>  是一个非常强大的工具，可以显示由用户空间程序所发出的所有系统调用</p>
+<p>  输出结果，不知道如何分析</p>
+<p>  调试系统故障 </p>
+<p>  内核大多数错误只会导致oops消息</p>
+<p>  系统挂起 </p>
+<p>  工具SysRq</p>
+<p>  调试器和相关工具 </p>
+<p>  使用gdb </p>
+<p>  不能执行典型的调试命令，例如：设置断点或者修改变量值</p>
+<p>  kdb内核调试器 </p>
+<p>  首先获得补丁，对内核进行patch操作。</p>
+<p>  kgdb补丁</p>
+<p>  用户模式的linux虚拟机</p>
+<p>  linux跟踪工具包 </p>
+<p>  内核调试技术（培训教材中）</p>
+<p>  通过打印函数</p>
+<p>  获取内核信息</p>
+<p>  处理出错信息</p>
+<p>  内核代码调试</p>
+<p>  并发和竟态 </p>
+<p>  scull的缺陷 </p>
+<p>  竞态 </p>
+<p>  导致对共享数据的非控制访问，结果是内存泄露、系统崩溃等问题</p>
+<p>  并发及其管理 </p>
+<p>  规则一：只要可能，就应该避免资源的共享 </p>
+<p>  避免使用全局变量</p>
+<p>  硬规则：显式地管理对该资源的访问</p>
+<p>  访问管理常见技术：“锁定”、“互斥”</p>
+<p>  重要规则：对象必须在还有其他组件引用自己时保持存在</p>
+<p>  访问管理的常见技术称为锁定或互斥 </p>
+<p>  信号量和互斥体 </p>
+<p>  临界区：任意给定的时刻，代码只能被一个线程执行 </p>
+<p>  进入临界区调用函数P，信号量大于零进程继续，否则进程等待。解锁调用函数V</p>
+<p>  信号量本质上是一个整数值，有时也称为一个“互斥体”</p>
+<p>  互斥（锁定）：避免多个进程同时在一个临界区中运行 </p>
+<p>  信号量值应初始化为1</p>
+<p>  LINUX信号量的实现</p>
+<p>  在scull中使用信号量</p>
+<p>  读取者/写入者信号量 </p>
+<p>  信号量对所有的调用者执行互斥，但是许多任务可以划分为两种不同的工作类型：</p>
+<p>  一、只需要读取受保护的数据结构</p>
+<p>  二、必须做出修改</p>
+<p>  信号量和互斥概念 </p>
+<p>  互斥：即两个线程不能同时进入被互斥保护的代码。</p>
+<p>  信号量的使用主要是用来保护共享资源,使的资源在一个时刻只有一个进程所拥有.为此我们可以使用一个信号灯.当信号灯的值为某个值的时候,就表明此时资源不可以使用.否则就表&gt;示可以使用.</p>
+<p>  Completion </p>
+<p>  轻量级的机制 </p>
+<p>  LINUX信号量的实现</p>
+<p>  它允许一个线程告诉另一线程某个工作已经完成</p>
+<p>  自旋锁 </p>
+<p>  自旋锁比信号量性能更高</p>
+<p>  自旋锁API介绍</p>
+<p>  自旋锁和原子上下文</p>
+<p>  任何拥有自旋锁的代码都必须是原子的</p>
+<p>  自旋锁函数</p>
+<p>  读取者/写入者自旋锁</p>
+<p>  锁陷阱 </p>
+<p>  不明确的规则 </p>
+<p>  锁模式在开始就要安排好，否则以后改进非常困难</p>
+<p>  不允许锁拥有者第二次获得这个锁</p>
+<p>  提供给外部调用的函数则必须显式地处理锁定</p>
+<p>  锁的顺序规则 </p>
+<p>  必须获得多个锁时，应该始终以相同的顺序获得</p>
+<p>  细粒度锁和粗粒度锁的对比</p>
+<p>  除了锁之外的方法 </p>
+<p>  免锁算法</p>
+<p>  原子变量</p>
+<p>  位操作</p>
+<p>  seqlock</p>
+<p>  读取-复制-更新</p>
+<p>  快速参考 </p>
+<p>  信号量定义的包：#include&lt;asm/semaphore.h&gt; </p>
+<p>  声明和初始化用在互斥模式中的信号量得两个宏</p>
+<p>  DECLARE_MUTEX(name);</p>
+<p>  DECLARE_MUTEX_LOCKED(name);</p>
+<p>  运行时初始化</p>
+<p>  void init_MUTEX(structsemaphore*sem);</p>
+<p>  void init_MUTEX_LOCKED(structsemaphore*sem);</p>
+<p>  锁定和解锁信号量。如果必要，down会将调用进程至于不可中断的休眠状态；相反，down_interruptible可被信号中断.down_trylock不会休眠，并且会在信号量不可用时立即返回。锁定信号量的代码最后必须使用up解锁该信号量</p>
+<p>  void down(structsemaphore*sem);</p>
+<p>  int down_interruptible(structsemaphore*sem);</p>
+<p>  in tdown_try(structsemaphore*sem);</p>
+<p>  void up(structsemaphore*sem);</p>
+<p>  读取者、写入者</p>
+<p>  初始化</p>
+<p>  struct rw_semaphore;</p>
+<p>  init_rwsem(structrw_semaphore*sem);</p>
+<p>  读取访问</p>
+<p>  void down_read(structrw_semaphore*sem);</p>
+<p>  void down_read_trylock(structrw_semaphore*sem);</p>
+<p>void up_read(structrw_semaphore*sem)</p>
+<p>  写人访问</p>
+<p>  void down_write(structrw_semaphore*sem);</p>
+<p>  void down_write_trylock(structrw_semaphore*sem);</p>
+<p>  void up_write(structrw_semaphore*sem);</p>
+<p>  void downgrade_write(structrw_semaphore*sem);</p>
+<p>  completion机制的包含文件：#include&lt;linux/completion.h&gt; </p>
+<p>  DECLARE_COMPLETION(name);</p>
+<p>  int_completion(structcompletion*c);</p>
+<p>  INIT_COMPLETION(structcompletion*c);</p>
+<p>  等待一个completion事件的发生</p>
+<p>  void wait_for_completion(structcompletion*c);</p>
+<p>  发出completion事件信号</p>
+<p>  void completion(structcompletion*c);只唤醒一个等待的线程</p>
+<p>  void completion_all(structcompletion*c);唤醒所有的等待者</p>
+<p>  通过调用completion并调用当前线程的exit函数而发出completion事件信号</p>
+<p>  定义自旋锁接口的包含文件：#include&lt;linux/spinlock.h&gt; </p>
+<p>  spinlock_tlock=SPIN_LOCK_UNLOCKED;</p>
+<p>  spinlock_lock_init(spinlock_t*lock);</p>
+<p>  锁定自旋锁</p>
+<p>  void spin_lock(spinlock_t*lock);</p>
+<p>  void spin_lock_irqsave(spinlock_t*lock,unsignedlongflags);</p>
+<p>  void spin_lock_irq(spinlock_t*lock);</p>
+<p>  void spin_lock_bh(spinlock_t*lock);</p>
+<p>  未完，请参考书中的内容</p>
+<p>  高级字符驱动程序操作 </p>
+<p>  ioctl </p>
+<p>  通过设备驱动程序执行各种类型的硬件控制</p>
+<p>  比如，用户空间经常会请求设备锁门、弹出介质、报告错误信息、改变波特率或者执行自破坏</p>
+<p>  系统调用中，具有ioctlApi接口</p>
+<p>  选择ioctl命令</p>
+<p>  返回值</p>
+<p>  预定义命令</p>
+<p>  使用ioctl参数</p>
+<p>  权能与受限操作</p>
+<p>  ioctl命令的实现</p>
+<p>  非ioctl设备控制</p>
+<p>  阻塞型I/O </p>
+<p>  休眠的简单介绍</p>
+<p>  永远不要在原子上下文中进入休眠</p>
+<p>  当我们被唤醒时，永远无法知道休眠了多长时间，或者休眠期间都发生了些什么事情</p>
+<p>  除非我们知道有其他人会在其他地方唤醒我们，否则进程不能休眠。</p>
+<p>  简单休眠</p>
+<p>  阻塞和非阻塞型操作</p>
+<p>  一个阻塞I/O示例</p>
+<p>  高级休眠</p>
+<p>  进程如何休眠</p>
+<p>  手工休眠</p>
+<p>  独占等待</p>
+<p>  唤醒的相关细节</p>
+<p>  poll和select </p>
+<p>  与read和write的交互</p>
+<p>  底层数据结构</p>
+<p>  异步通知</p>
+<p>  定位设备</p>
+<p>  设备文件的访问控制</p>
+<p>  快速参考</p>
+<p>  ioctl命令的所有宏：#include&lt;linux/ioctl.h&gt;#include&lt;linux/fs.h&gt;</p>
+<p>  以下宏不知道如何使用</p>
+<p>  <strong>IOC</strong>NRBITS</p>
+<p>  <strong>IOC</strong>TYPEBITS</p>
+<p>  <strong>IOC</strong>SIZEBITS</p>
+<p>  <strong>IOC</strong>DIRBITS</p>
+<p>  <strong>IOC</strong>NONE</p>
+<p>  <strong>IOC</strong>READ</p>
+<p>  <strong>IOC</strong>WRITE</p>
+<p>  用于生成ioctl命令的宏</p>
+<p>__IOC(dir,type,nr,size)</p>
+<p>__IO(type,nr)</p>
+<p>__IOR(type,nr,size)</p>
+<p>__IOW(type,nr,size)</p>
+<p>__IOR(type,nr,size)</p>
+<p>  用于解码ioctl命令的宏</p>
+<p>__IOC_DIR(nr)</p>
+<p>__IOC_TYPE(nr)</p>
+<p>__IOC_NR(nr)</p>
+<p>__IOC_SIZe(nr)</p>
+<p>  用户空间的交互 </p>
+<p>  验证指向用户空间的指针是否可用，如果允许访问，access_ok返回非零值</p>
+<p>#include&lt;asm/uaccess.h&gt;</p>
+<p>int access_ok(inttype,constvoid*addr,unsignedlongsize)</p>
+<p>  用于向用户空间保存单个数据项的宏</p>
+<p>#include&lt;asm/uaccess.h&gt;</p>
+<p>  int put_user(datum,ptr);</p>
+<p>  int get_user(local,prt);</p>
+<p>  int __put_user(datum,prt);</p>
+<p>  int __get_user(local,prt);</p>
+<p>  定义有各种CAP_符号，用于描述用户空间进程可能拥有的权能操作</p>
+<p>#include&lt;linux/capability.h&gt;</p>
+<p>  int capable(intcapability);</p>
+<p>  等待队列 </p>
+<p>  预定义等待队列类型#include&lt;linux/wait.h&gt;</p>
+<p>  typedefstruct(/<em>..</em>/)wait_queue_head_t;</p>
+<p>  void init_waitqueue_head(wait_queue_head_t*queue);</p>
+<p>  DECLARE_WAIT_QUEUE(queue);</p>
+<p>  使进程在指定的队列上休眠，知道给定的condition值为真</p>
+<p>  void wait_event(wait_queue_head_tq,intcondition);</p>
+<p>  void wait_event_interruptible(wait_queue_head_tq,intcondition);</p>
+<p>  void wait_event_timeout(wait_queue_head_tq,intconditon,inttime);</p>
+<p>  void wait_event_interruptible_timeout(wait_queue_head_tq,intconditon,inttime);</p>
+<p>  唤醒休眠在队列q上的进程</p>
+<p>  void wait_up(structwait_queue**q);</p>
+<p>  void wait_up_interruptible(structwait-queue**q);</p>
+<p>  void wait_up_nr(structwait_queue**q);</p>
+<p>  voidwait_up_interruptible_nr(structwait_queue*q);</p>
+<p>  void wait_up_all(structwait_queue*q);</p>
+<p>  void wait_up_interruptible_all(structwait_queue*q);</p>
+<p>void wati_up_interruptibel_sync(structwait_queue*q)</p>
+<p>  设置当前进程的状态#include&lt;linux/schud.h&gt;</p>
+<p>set_current_state(intstate)</p>
+<p>  TASK_RUNNINGTASK_INTERRUPTIBLETASK_UNINTERRUPTIBLE</p>
+<p>  从运行队列中选择一个可运行的进程</p>
+<p>  void schedule（void）</p>
+<p>  用于将某个进程放置到一个等待队列中</p>
+<p>  init_waitqueue_entry(wait_queue_t<em>entry,structtask_struct</em>task);</p>
+<p>  可用于手工休眠代码的辅助函数</p>
+<p>void perpare_to_wait()</p>
+<p>void perpare_to_wait_exclusive()</p>
+<p>  void finish_wait</p>
+<p>  将当前进程置于某个等待队列但并不立即调度。主要用于poll方法</p>
+<p>#include&lt;linux/poll.h&gt;</p>
+<p>  voidpoll_wait(structfile<em>filp,wait_queue_heard</em>q,poll_table*p);</p>
+<p>  用来实现fasync设备方法的辅助函数</p>
+<p>  int fasync_helper(structinode<em>inode,structfile</em>filp,intmode,structfasync_struct*fa);</p>
+<p>  发送一个信号给注册在fa中的进程</p>
+<p>  int kill_fasync(structfasync_struct*fa,intsig,intband);</p>
+<p>  任何不支持定位的设备都应该在其open方法中调用nonseekable_open.这类设备还应该在其llseek方法中使用no_llseek</p>
+<p>  int nonseekable_open();</p>
+<p>  loff_tno_llseek();</p>
+<p>  阻塞、非阻塞、异步通知图解 </p>
+<p>  .</p>
+<p>  时间、延迟及延缓操作 </p>
+<p>  概述 </p>
+<p>  如何度量时间差，如何比较时间</p>
+<p>  如何获得当前时间</p>
+<p>  如何将操作延迟指定的一段时间</p>
+<p>  如何调度异步函数到指定的时间之后执行</p>
+<p>  度量时间差 </p>
+<p>  使用jiffiles计数器</p>
+<p>  处理器特定的寄存器</p>
+<p>  获取当前时间</p>
+<p>  延迟执行 </p>
+<p>  长延迟</p>
+<p>  忙等待</p>
+<p>  让出处理器</p>
+<p>  超时</p>
+<p>  短延迟</p>
+<p>  内核定时器 </p>
+<p>  定时器API</p>
+<p>  内核定时器的实现</p>
+<p>  tasklet </p>
+<p>  和内核定时器不同的是，我们不能要求tasklet在某个给定时间执行</p>
+<p>  工作队列 </p>
+<p>  共享队列</p>
+<p>  tasklet会在很短的时间段内很快执行，并且以原子模式执行，而工作队列函数可具有更长的延迟并且不必原子化</p>
+<p>  快速参考 </p>
+<p>  时钟：#include&lt;linux/param.h&gt; </p>
+<p>  HZ符号指出每秒钟产生的时钟滴答数</p>
+<p>  jiffies_64变量会在每个时钟滴答递增</p>
+<p>  volatieunsignedlongjiffies</p>
+<p>  u64jiffies_64</p>
+<p>  以安全方式比较：jiffies</p>
+<p>  int time_after(unsignedlonga,unsignedlongb);</p>
+<p>  int time_before(unsignedlonga,unsignedlongb);</p>
+<p>  int time_after_eq(unsignedlonga,unsignedlongb);</p>
+<p>  int time_before_eq(unsignedlonga,unsignedlongb);</p>
+<p>  无竞争地获得jiffies_64的值</p>
+<p>  u64 get_jiffies_64(void);</p>
+<p>  在jiffies表示的时间和其他表示法之间转换</p>
+<p>#include&lt;linux/time.h&gt;</p>
+<p>  unsigned long timespec_to_jiffies(structtimespec*value);</p>
+<p>  void jiffies_to_timespec(unsignedlongjiffies,structtimespec*value);</p>
+<p>  unsigned longtimeval_to_jiffies(structtimeval*value);</p>
+<p>  void timeval_to_jiffies(unsignedlongjiffies,structtimeval*value);</p>
+<p>  x86专用宏，用来读取时间瞬计数器</p>
+<p>#include&lt;asm/msr.h&gt;</p>
+<p>  rdtsc(low32,high32);</p>
+<p>  rdtscl(low32);</p>
+<p>  rdtscll(var32);</p>
+<p>  以平台无关的方式返回时间瞬计算器</p>
+<p>#include&lt;linux/timex.h&gt;</p>
+<p>cycle_tget_cycles(void)</p>
+<p>  根据6个无符号的int参数返回在Epoch以来的秒数</p>
+<p>#include&lt;time.h&gt;</p>
+<p>  unsigned long mktime(year,mon,day,h,m,s);</p>
+<p>  以自Epoch以来的秒数和毫秒数的形式返回当前时间</p>
+<p>  void do_gettimeofday(structtimeval*tv);</p>
+<p>  以jiffies为分辨率返回当前时间</p>
+<p>  struct timespeccurrent_kernel_time(void);</p>
+<p>  延时：#include&lt;linux/wait.h&gt; </p>
+<p>  是当前进程休眠在等待队列上，并指定用jiffies表达的超时值</p>
+<p>  longwait_event_interruptible_timeout(wait_queue_interruptible*q,intconditon,unsingedlongtimeout);</p>
+<p>  调用调度器，确保当前进程可在给定的超时值之后被唤醒</p>
+<p>#include&lt;linux/sched.h&gt;</p>
+<p>  signed long schedule_timeout(signedlongtimeout);</p>
+<p>  引入整数的纳秒、微秒、毫秒级延时</p>
+<p>#include&lt;linux/delay.h&gt;</p>
+<p>  void ndelay(unsignedlongnsec);</p>
+<p>  void udelay(unsignedlongusec);</p>
+<p>  void mdely(unsignedlongmsec);</p>
+<p>  使进程休眠给定的毫秒数</p>
+<p>  void msleep(unsignedlongmillisec);</p>
+<p>  unsigned long msleep_interruptible(unsignedlongmillisec);</p>
+<p>  void ssleep(unsignedintseconds);</p>
+<p>  内核定时器 </p>
+<p>  返回布尔值已告知调度代码是否在中断上下文或者在原子上下文中执行</p>
+<p>#include&lt;asm/hardirq.h&gt;</p>
+<p>  int in_interruptible(void);</p>
+<p>  int in_atomic(void);</p>
+<p>  初始化定时器</p>
+<p>#include&lt;linux/timer.h&gt;</p>
+<p>  void init_timer(structtimer_list*timer);</p>
+<p>  struct timer_listTIMER_INITIALIZER(_function,_expires,_data);</p>
+<p>  注册定时器结构，以在当前CPU上运行</p>
+<p>  voidadd_timer(structtimer_list*timer);</p>
+<p>  修改一个已经调度的定时器结构的到期时间</p>
+<p>  intmod_timer(structtimer_list*timer,unsignedlongexpires);</p>
+<p>  用来判断给定的定时器结构是否已经被注册运行</p>
+<p>int timer_pending(structtimer_list*timer)</p>
+<p>  从活动定时器清单中删除一个定时器</p>
+<p>  void del_timer(structtimer_list*timer);</p>
+<p>  void del_timer_sync(structtimer_list*timer);</p>
+<p>  tasklet </p>
+<p>  声明tasklet结构和初始化</p>
+<p>#include&lt;linux/interrupt.h&gt;</p>
+<p>  DECLARE_TASKLET(name,func,data);</p>
+<p>  DECLARE_TASKLET_DISABLED(name,func,data);</p>
+<p>  禁用或重新启用tasklet</p>
+<p>  void tasklet_disable(structtasklet_struct*t);</p>
+<p>  void tasklet_disable_nosync(structtasklet_struct*t);</p>
+<p>  void tasklet_enable(structtaslet_struct*t);</p>
+<p>  调度运行某个tasklet</p>
+<p>  void tasklet_schedule(structtasklet_struct*t);</p>
+<p>  void tasklet_hi_schedule(structtaskletstruct*t);</p>
+<p>  从活动列表中删除</p>
+<p>  void tasklet_kill(structtasklet_struct*t);</p>
+<p>  工作队列</p>
+<p>  结构和入口项</p>
+<p>#include&lt;linux/workqueue.h.&gt;</p>
+<p>  struct workqueue_struct;</p>
+<p>  struct work_struct;</p>
+<p>  用于创建和消除工作队列</p>
+<p>  struct workqueue_struct<em>create_workqueue(constchar</em>name);</p>
+<p>  struct workqueue_struct<em>create_singlethread_workqueue(constchar</em>name);</p>
+<p>  声明和初始化工作队列</p>
+<p>  DECLARE_WORK();</p>
+<p>  INIT_WORK();</p>
+<p>  PREPARE_WORK;</p>
+<p>  用于安排工作以便从工作队列中执行的函数</p>
+<p>int queue_work(structworkqueue_struct<em>queue,structwork_struct</em>work)</p>
+<p>  intqueue_delayed_work(structworkqueue_struct<em>queue,structwork_struct</em>work,unsignedlongdelay);</p>
+<p>  删除一个入口项</p>
+<p>  int cancel_delayed_work(structwork_struct*work);</p>
+<p>  void flush_workqueue(structworkqueue_struct*queue);</p>
+<p>  使用共享工作队列的函数</p>
+<p>  int schedule_work(structwork_struct*work);</p>
+<p>  int schedule_delayed_work(structwork_struct*work);</p>
+<p>  void flush_schedule_work(void);</p>
+<p>  分配内存 </p>
+<p>  kmalloc函数的内幕</p>
+<p>  后备高速缓存</p>
+<p>  get_free_page和相关函数</p>
+<p>  vmalloc及其辅助函数</p>
+<p>  per-CPU变量</p>
+<p>  获取大的缓冲区 </p>
+<p>  与硬件通讯 </p>
+<p>  I/O端口和I/O内存 </p>
+<p>  I/O寄存器和常规内存</p>
+<p>  I/O操作具有边际效应</p>
+<p>  外部设备寄存器和内存结构的映射可以有两种方法1映射到内存地址中，但是不占用物理内存；ARM体系结构采用这种方法。2映射到IO端口号中，使用专门的CPU命令INOUT进行处理；X86体系结构采用这种方法。</p>
+<p>  控制寄存器、状态寄存器和数据寄存器三大类</p>
+<p>  使用I/O端口 </p>
+<p>  I/O端口分配</p>
+<p>  操作I/O端口</p>
+<p>  在用户空间访问I/O端口</p>
+<p>  串操作</p>
+<p>  暂停时I/O</p>
+<p>  平台相关性</p>
+<p>  相关平台IO表</p>
+<p>  I/O端口示例 </p>
+<p>  并口介绍</p>
+<p>  示例驱动程序</p>
+<p>  使用I/O内存 </p>
+<p>  I/O内存分配和映射</p>
+<p>  访问I/O内存</p>
+<p>  像I/O内存一样使用端口</p>
+<p>  为I/O内存重用short</p>
+<p>  1MB地址空间之下的ISA内存</p>
+<p>  isa_readb及相关函数</p>
+<p>  快速参考 </p>
+<p>  内存屏蔽 </p>
+<p>  “软件”内存屏蔽</p>
+<p>#include&lt;linux/kernel.h&gt;</p>
+<p>  void barrier(void);</p>
+<p>  “硬件”内存屏蔽</p>
+<p>#include&lt;asm/system.h&gt;</p>
+<p>  void rmb(void);</p>
+<p>  void wmb(void);</p>
+<p>  void read_barrier_depends();</p>
+<p>  void mb();</p>
+<p>  用于读写I/O端口</p>
+<p>#include&lt;asm/io.h&gt;</p>
+<p>  unsigned inb(unsignedport);</p>
+<p>  void outb(unsignedcharbype,unsignedport);</p>
+<p>  unsigned inw(unsignedport);</p>
+<p>  void outw(unsignedshortword,unsignedport);</p>
+<p>  unsigned inl(unsignedport);</p>
+<p>  void outl(unsigneddoubleword,unsignedport);</p>
+<p>  如果用户空间有访问端口的权限</p>
+<p>  unsigned inb_p(unsignedport);….</p>
+<p>  端口 </p>
+<p>  为端口分配资源的函数</p>
+<p>  struct resourcerequest_region(unsignedlongstart,unsignedlonglen,char*name);</p>
+<p>  void release_region(unsignedlongstart,unsignedlonglen);</p>
+<p>  int check_region(unsignedlongstart,unsignedlonglen);</p>
+<p>  这类传输是通过对同一端口连续读/写count次实现</p>
+<p>  void insb(unsignedport,void*addr,longcount);</p>
+<p>  void outsb(unsinedport,void*addr,longcount);</p>
+<p>  void intwb(unsignedport,void*addr,longcount);</p>
+<p>  void outwb(unsignedport,void*addr,longcount);</p>
+<p>  void inlb(unsignedport,void*addr,longcount);</p>
+<p>  voidoutlb(unsignedport,void*addr,longcount);</p>
+<p>  内存IO </p>
+<p>  处理对内存区域的资源分配</p>
+<p>  struct resourcerequest_mem_region(unsignedlongstart,unsignedlonglen,char*name);</p>
+<p>  void release_mem_region(unsignedlongstart,unsignedlonglen);</p>
+<p>  int check_mem_reqion(unsignedlongstart,unsignedlonglen);</p>
+<p>  把一个物理地址范围重新映射到处理器的虚拟地址空间，以提供内核使用</p>
+<p>#include&lt;asm/io.h&gt;</p>
+<p>  void<em>ioremap(unsignedlong</em>phys_add,unsignedlongsize);</p>
+<p>  void<em>ioremap_nocache(unsignedlong</em>phys_add,unsignedlongsize);</p>
+<p>  voidiounmap(void*virt_addr);</p>
+<p>  用来访问I/O内存</p>
+<p>#inlcude&lt;as/io.h&gt;</p>
+<p>  unsigned int ioread8(void*addr);</p>
+<p>  unsigned int ioread16(void*addr);</p>
+<p>  unsigned int ioread32(void*addr);</p>
+<p>  voidio write8(u8value,void*addr);</p>
+<p>  voidio write16(u16value,void*addr);</p>
+<p>  voidio write32(u32value,void*addr);</p>
+<p>  重复版本</p>
+<p>  void ioread8_req(void<em>addr,void</em>buf,unsignedlongcount);</p>
+<p>  void iowrite8_req(void<em>addr,void</em>buf,unsignedlongcount);</p>
+<p>  不安全的老IO内存函数</p>
+<p>  unsigned readb(address);</p>
+<p>  unsigned readw(address);</p>
+<p>  unsigned readl(address);</p>
+<p>  void writeb(unsignedvalue,address);。。。</p>
+<p>  如果驱动程序作者希望将I/O端口作为I/O内存一样进行操作</p>
+<p>  void*ioport_map(unsignedlongport,unsignedintcount);</p>
+<p>  voidioport_unmap(void*addr);</p>
+<p>  中断处理 </p>
+<p>  准备并口</p>
+<p>  安装中断处理例程</p>
+<p>  实现中断处理例程</p>
+<p>  顶半部和底半部</p>
+<p>  中断共享</p>
+<p>  中断驱动的I/O </p>
+<p>  快速参考 </p>
+<p>  注册和注销中断处理例程 </p>
+<p>#include&lt;linux/interrupt.h&gt;</p>
+<p>  int request_irq(unsignedintirq,irqrequst_t(<em>handler)(),unsigndlongflags,constchar</em>dev_name,void*dev_id);</p>
+<p>  void free_irq(unsignedintirq,void*dev_id);</p>
+<p>  i386和x86_64体系架构上可用 </p>
+<p>  int can_request_irq(unsignedintirq,unsignedlongflag);</p>
+<p>  request_irq函数的标志 </p>
+<p>#include&lt;asm/signal.h&gt;</p>
+<p>  SA_INTERRUPT安装一个快速的处理例程</p>
+<p>  SA_SHIRQ安装一个共享的处理例程</p>
+<p>  SA_SAMPLE_RANDOM中断时间瞬可用来产生系统X</p>
+<p>  文件系统节点用于汇报关于硬件中断和已安装处理例程的信息 </p>
+<p>  /proc/interrupts</p>
+<p>  /proc/stat</p>
+<p>  当驱动程序不得不深探测设备，以确定该设备使用那根中断信号线时 </p>
+<p>  unsigned long probe_irq_on(void);</p>
+<p>  int probe_irq_off(unsignedlong);</p>
+<p>  中断处理例程的可能返回值 </p>
+<p>  IRQ_NONE</p>
+<p>  IRQ_HANDLE</p>
+<p>  IRQ_RETVAL</p>
+<p>  驱动程序可以启动和禁止中断报告 </p>
+<p>  voiddisable_irq(intirq);</p>
+<p>  voiddisable_irq_nosync(intirq);</p>
+<p>  voidenable_irq(intirq);</p>
+<p>  禁止和启用本地处理器上的中断 </p>
+<p>  void local_irq_save(unsignedlongflags);</p>
+<p>  void local_irq_restore(unsignedlongflags);</p>
+<p>  用于无条件禁用和启用当前处理器中断的函数 </p>
+<p>  void local_irq_disable(void);</p>
+<p>  void local_irq_enable(void);</p>
+<p>  内核的数据类型 </p>
+<p>  内核开发人员移植遇到若干问题都和不正确数据类型有关</p>
+<p>  使用标准C语言类型</p>
+<p>  为数据项分配确定的空间大小</p>
+<p>  接口特定的类型</p>
+<p>  其他有关移植性的问题</p>
+<p>  链表 </p>
+<p>  PCI驱动程序</p>
+<p>  USB驱动程序</p>
+<p>  Linux设备模型</p>
+<p>  内存映射和DMA</p>
+<p>  块设备驱动程序</p>
+<p>  网络驱动程序</p>
+<p>  TTY驱动程序</p>
+
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/OpenGL学习记录-纹理/">OpenGL学习记录-纹理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/OpenGL学习记录-纹理/" class="archive-article-date">
-  	<time datetime="2018-06-19T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/wl-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><ul>
-<li>纹理概述<br>为了能够把纹理映射(Map)到三角形上，我们需要指定三角形的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个<font color="red">纹理坐标(Texture Coordinate)</font>，用来标明该从纹理图像的哪个部分<font color="red">采样</font>（译注：采集片段颜色）。之后在图形的其它片段上进行片段<font color="red">插值</font>(Fragment Interpolation)。</li>
-</ul>
-<p>纹理坐标在x和y轴上，范围为0到1之间（注意我们使用的是2D纹理图像）。使用纹理坐标获取纹理颜色叫做<font color="red">采样(Sampling)</font>。纹理坐标起始于(0, 0)，也就是纹理图片的左下角，终始于(1, 1)，即纹理图片的右上角。</p>
-        
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/OpenGL学习记录-基础篇/">OpenGL学习记录-基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/OpenGL学习记录-基础篇/" class="archive-article-date">
-  	<time datetime="2018-06-18T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/gljc-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="教程地址："><a href="#教程地址：" class="headerlink" title="教程地址："></a>教程地址：</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
-<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><ul>
-<li>Khronos组织制定并维护的规范</li>
-<li>立即渲染模式: OpenGL3.2 开始废弃</li>
-<li>核心模式(Core-profile)</li>
-<li>扩展</li>
-<li>状态机(State Machine)</li>
-<li>对象</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-医学影像中呼吸门控的动态显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/医学影像中呼吸门控的动态显示/">医学影像中呼吸门控的动态显示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" class="archive-article-date">
-  	<time datetime="2018-05-22T09:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/menkong-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="呼吸门控概念"><a href="#呼吸门控概念" class="headerlink" title="呼吸门控概念"></a>呼吸门控概念</h2><p>由于受到呼吸运动的影响，位于胸腹部的病灶具有较大幅度的移动。在传统放疗方式中考虑呼吸运动则需要增加较大的计划靶区（PTV），导致受照正常组织显着增加。呼吸门控技术 （respiratory gating technology）是指在放射治疗过程中监测患者呼吸运动，在特定呼吸时相触发射线照射，降低正常组织受照剂量。</p>
-        
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">应用实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">ROS(Robot OS)Tutorial 学习记录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/" class="archive-article-date">
-  	<time datetime="2018-03-31T07:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/ros-1.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<p>注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。</p>
-<p>官方教程：<a href="http://wiki.ros.org/ROS/Tutorials" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials</a></p>
-<h2 id="Beginner-Level"><a href="#Beginner-Level" class="headerlink" title="Beginner Level"></a>Beginner Level</h2><h3 id="1-安装配置ROS环境"><a href="#1-安装配置ROS环境" class="headerlink" title="1. 安装配置ROS环境"></a>1. 安装配置ROS环境</h3><h4 id="安装ROS"><a href="#安装ROS" class="headerlink" title="安装ROS"></a>安装ROS</h4><ul>
-<li><p>官方推荐 ROS Kinettic Kame   <a href="http://wiki.ros.org/Distributions" target="_blank" rel="noopener">http://wiki.ros.org/Distributions</a></p>
-</li>
-<li><p>安装步骤： <a href="http://wiki.ros.org/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">http://wiki.ros.org/kinetic/Installation/Ubuntu</a></p>
-<h4 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h4></li>
-<li><p>概念 ：<font color="red">notion of combining spaces using the shell environment </font></p>
-</li>
-<li><p>检查环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> printenv | grep ROS</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source /opt/ros/kinetic/setup.bash</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -588,16 +948,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2012/06/20/Linux设备驱动程序-阅读笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2012/07/01/家庭文件共享，FreeNas服务器的搭建过程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          家庭文件共享，FreeNas服务器的搭建过程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/06/20/Linux-C-编程实战-阅读笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux C 编程实战 阅读笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -612,447 +1040,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="cpp-深入理解C-11阅读笔记" class="article article-type-cpp  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/深入理解C-11阅读笔记/">深入理解C++11阅读笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/14/深入理解C-11阅读笔记/" class="archive-article-date">
-  	<time datetime="2017-12-14T06:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/cpp11-1.jpg" alt="ccss"></p>
-<p>由 王宇 原创并发布：</p>
-<h2 id="一-新标准的诞生"><a href="#一-新标准的诞生" class="headerlink" title="一 新标准的诞生"></a>一 新标准的诞生</h2><h3 id="从使用上分类方法"><a href="#从使用上分类方法" class="headerlink" title="从使用上分类方法"></a>从使用上分类方法</h3><ul>
-<li>类作者需要的</li>
-<li>库作者需要的</li>
-<li>所有人需要的</li>
-<li>部分人需要的</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-VTK与图形学相关的基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/VTK与图形学相关的基本概念/">VTK与图形学相关的基本概念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/VTK与图形学相关的基本概念/" class="archive-article-date">
-  	<time datetime="2017-10-26T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念</li>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
-        
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK7-1-1安装部署记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/VTK7-1-1安装部署记录/">VTK7.1.1安装部署记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/VTK7-1-1安装部署记录/" class="archive-article-date">
-  	<time datetime="2017-07-10T09:09:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk7-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念<ul>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-        
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kafka与Storm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/Kafka与Storm整合/">Kafka与Storm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/Kafka与Storm整合/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/kafka-storm-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="整合Storm的概念"><a href="#整合Storm的概念" class="headerlink" title="整合Storm的概念"></a>整合Storm的概念</h2><ul>
-<li><p>整合场景</p>
-<blockquote>
-<p>A spout is a source of streams. For example, <font color="red">a spout may read tuples off a Kafka Topic</font> and emit them as a stream. <font color="red">A bolt consumes input streams, process and possibly emits new streams.</font> Bolts can do anything from running functions, filtering tuples, do streaming aggregations, streaming joins, <font color="red">talk to databases</font>, and more. Each node in a Storm topology executes in parallel. A topology runs indefinitely until you terminate it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if the machines go down and messages are dropped.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JSON学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/JSON学习笔记/">JSON学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/JSON学习笔记/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/json-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="JSON-是如何存储信息"><a href="#JSON-是如何存储信息" class="headerlink" title="JSON 是如何存储信息"></a>JSON 是如何存储信息</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"book"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"01"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"Java"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"third"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"Herbert Schildt"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"07"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"C++"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"second"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"E.Balagurusamy"</span></span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>
-        
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1075,8 +1088,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

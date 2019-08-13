@@ -6,16 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>码农随笔</title>
+  <title>OpenGL学习记录-着色 | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Linux C C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码农随笔">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="由 王宇 原创并发布 ： 着色器 - 运行在GPU上的小程序从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。  GLSL - 包含一些针对向量和矩阵操作的有用特性。  123456789101112131415#version version_numberin type in_variable_n">
+<meta name="keywords" content="图形图像">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL学习记录-着色">
+<meta property="og:url" content="http://yoursite.com/2018/06/20/OpenGL学习记录-着色/index.html">
 <meta property="og:site_name" content="码农随笔">
+<meta property="og:description" content="由 王宇 原创并发布 ： 着色器 - 运行在GPU上的小程序从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。  GLSL - 包含一些针对向量和矩阵操作的有用特性。  123456789101112131415#version version_numberin type in_variable_n">
 <meta property="og:locale" content="cn">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/zsq-t.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/zsq-1.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/zsq-vbo.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/zsq-2.jpg">
+<meta property="og:updated_time" content="2019-08-13T07:40:26.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农随笔">
+<meta name="twitter:title" content="OpenGL学习记录-着色">
+<meta name="twitter:description" content="由 王宇 原创并发布 ： 着色器 - 运行在GPU上的小程序从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。  GLSL - 包含一些针对向量和矩阵操作的有用特性。  123456789101112131415#version version_numberin type in_variable_n">
+<meta name="twitter:image" content="http://yoursite.com/assets/blog-image/zsq-t.jpg">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -197,16 +206,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenGL学习记录-着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-OpenGL学习记录-着色" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/OpenGL学习记录-着色/">OpenGL学习记录-着色</a>
+    <h1 class="article-title" itemprop="name">
+      OpenGL学习记录-着色
     </h1>
   
 
@@ -225,620 +232,181 @@
 <li>GLSL - 包含一些针对向量和矩阵操作的有用特性。</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version version_number</span></span><br><span class="line">in type in_variable_name;</span><br><span class="line">in type in_variable_name;</span><br><span class="line"></span><br><span class="line">out type out_variable_name;</span><br><span class="line"></span><br><span class="line">uniform type uniform_name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 处理输入并进行一些图形操作</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 输出处理过的结果到输出变量</span></span><br><span class="line">  out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/#more">more >></a>
-        
-      
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<a id="more"></a>
 
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/OpenGL学习记录-纹理/">OpenGL学习记录-纹理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/OpenGL学习记录-纹理/" class="archive-article-date">
-  	<time datetime="2018-06-19T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/wl-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><ul>
-<li>纹理概述<br>为了能够把纹理映射(Map)到三角形上，我们需要指定三角形的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个<font color="red">纹理坐标(Texture Coordinate)</font>，用来标明该从纹理图像的哪个部分<font color="red">采样</font>（译注：采集片段颜色）。之后在图形的其它片段上进行片段<font color="red">插值</font>(Fragment Interpolation)。</li>
+<ul>
+<li><p>数据类型</p>
+<ul>
+<li>GLSL中包含C等其它语言大部分的默认基础数据类型：int、float、double、uint和bool</li>
+<li>GLSL也有两种容器类型，分别是向量(Vector)和矩阵(Matrix)</li>
 </ul>
-<p>纹理坐标在x和y轴上，范围为0到1之间（注意我们使用的是2D纹理图像）。使用纹理坐标获取纹理颜色叫做<font color="red">采样(Sampling)</font>。纹理坐标起始于(0, 0)，也就是纹理图片的左下角，终始于(1, 1)，即纹理图片的右上角。</p>
-        
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/OpenGL学习记录-基础篇/">OpenGL学习记录-基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/OpenGL学习记录-基础篇/" class="archive-article-date">
-  	<time datetime="2018-06-18T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/gljc-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="教程地址："><a href="#教程地址：" class="headerlink" title="教程地址："></a>教程地址：</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
-<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><ul>
-<li>Khronos组织制定并维护的规范</li>
-<li>立即渲染模式: OpenGL3.2 开始废弃</li>
-<li>核心模式(Core-profile)</li>
-<li>扩展</li>
-<li>状态机(State Machine)</li>
-<li>对象</li>
+</li>
+<li><p>向量<br>GLSL中的向量是一个可以包含有1、2、3或者4个分量的容器，分量的类型可以是前面默认基础类型的任意一个。它们可以是下面的形式（n代表分量的数量）：</p>
+<ul>
+<li>一个向量的分量可以通过vec.x这种方式获取</li>
+<li>重组：分量选择方式</li>
 </ul>
-        
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/#more">more >></a>
-        
-      
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vec2 someVec;</span><br><span class="line">vec4 differentVec = someVec.xyxx;</span><br><span class="line">vec3 anotherVec = differentVec.zyw;</span><br><span class="line">vec4 otherVec = someVec.xxxx + anotherVec.yxzy;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-医学影像中呼吸门控的动态显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/医学影像中呼吸门控的动态显示/">医学影像中呼吸门控的动态显示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" class="archive-article-date">
-  	<time datetime="2018-05-22T09:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/menkong-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="呼吸门控概念"><a href="#呼吸门控概念" class="headerlink" title="呼吸门控概念"></a>呼吸门控概念</h2><p>由于受到呼吸运动的影响，位于胸腹部的病灶具有较大幅度的移动。在传统放疗方式中考虑呼吸运动则需要增加较大的计划靶区（PTV），导致受照正常组织显着增加。呼吸门控技术 （respiratory gating technology）是指在放射治疗过程中监测患者呼吸运动，在特定呼吸时相触发射线照射，降低正常组织受照剂量。</p>
-        
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">应用实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">ROS(Robot OS)Tutorial 学习记录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/" class="archive-article-date">
-  	<time datetime="2018-03-31T07:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/ros-1.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<p>注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。</p>
-<p>官方教程：<a href="http://wiki.ros.org/ROS/Tutorials" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials</a></p>
-<h2 id="Beginner-Level"><a href="#Beginner-Level" class="headerlink" title="Beginner Level"></a>Beginner Level</h2><h3 id="1-安装配置ROS环境"><a href="#1-安装配置ROS环境" class="headerlink" title="1. 安装配置ROS环境"></a>1. 安装配置ROS环境</h3><h4 id="安装ROS"><a href="#安装ROS" class="headerlink" title="安装ROS"></a>安装ROS</h4><ul>
-<li><p>官方推荐 ROS Kinettic Kame   <a href="http://wiki.ros.org/Distributions" target="_blank" rel="noopener">http://wiki.ros.org/Distributions</a></p>
-</li>
-<li><p>安装步骤： <a href="http://wiki.ros.org/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">http://wiki.ros.org/kinetic/Installation/Ubuntu</a></p>
-<h4 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h4></li>
-<li><p>概念 ：<font color="red">notion of combining spaces using the shell environment </font></p>
-</li>
-<li><p>检查环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> printenv | grep ROS</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source /opt/ros/kinetic/setup.bash</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-        
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="cpp-深入理解C-11阅读笔记" class="article article-type-cpp  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/深入理解C-11阅读笔记/">深入理解C++11阅读笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/14/深入理解C-11阅读笔记/" class="archive-article-date">
-  	<time datetime="2017-12-14T06:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/cpp11-1.jpg" alt="ccss"></p>
-<p>由 王宇 原创并发布：</p>
-<h2 id="一-新标准的诞生"><a href="#一-新标准的诞生" class="headerlink" title="一 新标准的诞生"></a>一 新标准的诞生</h2><h3 id="从使用上分类方法"><a href="#从使用上分类方法" class="headerlink" title="从使用上分类方法"></a>从使用上分类方法</h3><ul>
-<li>类作者需要的</li>
-<li>库作者需要的</li>
-<li>所有人需要的</li>
-<li>部分人需要的</li>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">vecn</td>
+<td align="left">包含n个float分量的默认向量</td>
+</tr>
+<tr>
+<td align="left">bvecn</td>
+<td align="left">包含n个bool分量的向量</td>
+</tr>
+<tr>
+<td align="left">ivecn</td>
+<td align="left">包含n个int分量的向量</td>
+</tr>
+<tr>
+<td align="left">uvecn</td>
+<td align="left">包含n个unsigned int分量的向量</td>
+</tr>
+<tr>
+<td align="left">dvecn</td>
+<td align="left">包含n个double分量的向量</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>输入与 输出<br>虽然着色器是各自独立的小程序，但是它们都是一个整体的一部分，出于这样的原因，我们希望每个着色器都有输入和输出，这样才能进行数据交流和传递。GLSL定义了in和out关键字专门来实现这个目的。每个着色器使用这两个关键字设定输入和输出，只要一个输出变量与下一个着色器阶段的输入<font color="red">匹配</font>，它就会传递下去。但在顶点和片段着色器中会有点不同。</p>
+<ul>
+<li>顶点着色器应该接收的是一种特殊形式的输入,它从顶点数据中直接接收输入<ul>
+<li>location: 这一元数据指定输入变量，这样我们才可以在CPU上配置顶点属性。这一元数据指定输入变量，这样我们才可以在CPU上配置顶点属性。</li>
+<li>layout: 顶点着色器需要为它的输入提供一个额外的标识，这样我们才能把它链接到顶点数据</li>
 </ul>
-        
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK与图形学相关的基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/VTK与图形学相关的基本概念/">VTK与图形学相关的基本概念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/VTK与图形学相关的基本概念/" class="archive-article-date">
-  	<time datetime="2017-10-26T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念</li>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
+</li>
+<li>另一个例外是片段着色器，它需要一个vec4颜色输出变量，因为片段着色器需要生成一个最终输出的颜色。</li>
+<li>顶点着色器</li>
 </ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
-        
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">layout (location = <span class="number">0</span>) in vec3 aPos; <span class="comment">// 位置变量的属性位置值为0</span></span><br><span class="line"></span><br><span class="line">out vec4 vertexColor; <span class="comment">// 为片段着色器指定一个颜色输出</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gl_Position = vec4(aPos, <span class="number">1.0</span>); <span class="comment">// 注意我们如何把一个vec3作为vec4的构造器的参数</span></span><br><span class="line">    vertexColor = vec4(<span class="number">0.5</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>); <span class="comment">// 把输出变量设置为暗红色</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+</li>
+</ul>
+<ul>
+<li><p>片段着色器</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">out vec4 FragColor;</span><br><span class="line"></span><br><span class="line">in vec4 vertexColor; <span class="comment">// 从顶点着色器传来的输入变量（名称相同、类型相同）</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FragColor = vertexColor;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
+<p><img src="/assets/blog-image/zsq-1.jpg" alt></p>
+</li>
+</ul>
+<ul>
+<li><p>Uniform<br>Uniform是一种从CPU中的应用向GPU中的着色器发送数据的方式</p>
+<ul>
+<li><p>uniform和顶点属性有些不同:</p>
+<ul>
+<li>uniform是全局的(Global)。全局意味着uniform变量必须在每个着色器程序对象中都是独一无二的，而且它可以被着色器程序的任意着色器在任意阶段访问。</li>
+<li>无论你把uniform值设置成什么，uniform会一直保存它们的数据，直到它们被重置或更新。</li>
+<li>例子</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">out vec4 FragColor;</span><br><span class="line"></span><br><span class="line">uniform vec4 ourColor; <span class="comment">// 在OpenGL程序代码中设定这个变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FragColor = ourColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  
-    <article id="post-VTK7-1-1安装部署记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/VTK7-1-1安装部署记录/">VTK7.1.1安装部署记录</a>
-    </h1>
-  
+<p>随时间变化赋值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> timeValue = glfwGetTime();</span><br><span class="line"><span class="keyword">float</span> greenValue = (<span class="built_in">sin</span>(timeValue) / <span class="number">2.0f</span>) + <span class="number">0.5f</span>;</span><br><span class="line"><span class="keyword">int</span> vertexColorLocation = glGetUniformLocation(shaderProgram, <span class="string">"ourColor"</span>);</span><br><span class="line">glUseProgram(shaderProgram);</span><br><span class="line">glUniform4f(vertexColorLocation, <span class="number">0.0f</span>, greenValue, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br></pre></td></tr></table></figure>
 
-        
-        <a href="/2017/07/10/VTK7-1-1安装部署记录/" class="archive-article-date">
-  	<time datetime="2017-07-10T09:09:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk7-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念<ul>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
+<ul>
+<li>使用uniform 渲染</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!glfwWindowShouldClose(window))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 输入</span></span><br><span class="line">    processInput(window);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 渲染</span></span><br><span class="line">    <span class="comment">// 清除颜色缓冲</span></span><br><span class="line">    glClearColor(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 记得激活着色器</span></span><br><span class="line">    glUseProgram(shaderProgram);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 更新uniform颜色</span></span><br><span class="line">    <span class="keyword">float</span> timeValue = glfwGetTime();</span><br><span class="line">    <span class="keyword">float</span> greenValue = <span class="built_in">sin</span>(timeValue) / <span class="number">2.0f</span> + <span class="number">0.5f</span>;</span><br><span class="line">    <span class="keyword">int</span> vertexColorLocation = glGetUniformLocation(shaderProgram, <span class="string">"ourColor"</span>);</span><br><span class="line">    glUniform4f(vertexColorLocation, <span class="number">0.0f</span>, greenValue, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 绘制三角形</span></span><br><span class="line">    glBindVertexArray(VAO);</span><br><span class="line">    glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 交换缓冲并查询IO事件</span></span><br><span class="line">    glfwSwapBuffers(window);</span><br><span class="line">    glfwPollEvents();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>更多属性</p>
+<ul>
+<li><p>将色彩加入到顶点数据中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> vertices[] = &#123;</span><br><span class="line">   <span class="comment">// 位置              // 颜色</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,   <span class="comment">// 右下</span></span><br><span class="line">   <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,   <span class="comment">// 左下</span></span><br><span class="line">    <span class="number">0.0f</span>,  <span class="number">0.5f</span>, <span class="number">0.0f</span>,  <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>    <span class="comment">// 顶部</span></span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调整一下顶点着色器, 用layout标识符来把aColor属性的位置值设置为1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">layout (location = <span class="number">0</span>) in vec3 aPos;   <span class="comment">// 位置变量的属性位置值为 0 </span></span><br><span class="line">layout (location = <span class="number">1</span>) in vec3 aColor; <span class="comment">// 颜色变量的属性位置值为 1</span></span><br><span class="line"></span><br><span class="line">out vec3 ourColor; <span class="comment">// 向片段着色器输出一个颜色</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gl_Position = vec4(aPos, <span class="number">1.0</span>);</span><br><span class="line">    ourColor = aColor; <span class="comment">// 将ourColor设置为我们从顶点数据那里得到的输入颜色</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改一下片段着色器.不再使用uniform来传递片段的颜色了，现在使用ourColor输出变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">out vec4 FragColor;  </span><br><span class="line">in vec3 ourColor;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FragColor = vec4(ourColor, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>VBO内存中的数据</p>
+<p><img src="/assets/blog-image/zsq-vbo.jpg" alt></p>
+</li>
+<li><p>使用glVertexAttribPointer函数更新顶点格式</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 位置属性</span></span><br><span class="line">glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">6</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)<span class="number">0</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 颜色属性</span></span><br><span class="line">glVertexAttribPointer(<span class="number">1</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">6</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)(<span class="number">3</span>* <span class="keyword">sizeof</span>(<span class="keyword">float</span>)));</span><br><span class="line">glEnableVertexAttribArray(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/blog-image/zsq-2.jpg" alt></p>
+</li>
 </ul>
 </li>
 </ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-        
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/#more">more >></a>
-        
+<ul>
+<li><p>我们自己的着色器类</p>
+<ul>
+<li>从硬盘读取着色器，然后编译并链接它们，并对它们进行错误检测</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> SHADER_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SHADER_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glad/glad.h&gt;; // 包含glad来获取所有的必须OpenGL头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shader</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 程序ID</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> ID;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造器读取并构建着色器</span></span><br><span class="line">    Shader(<span class="keyword">const</span> GLchar* vertexPath, <span class="keyword">const</span> GLchar* fragmentPath);</span><br><span class="line">    <span class="comment">// 使用/激活程序</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">use</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// uniform工具函数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setBool</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">bool</span> value)</span> <span class="keyword">const</span></span>;  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setInt</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">int</span> value)</span> <span class="keyword">const</span></span>;   </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setFloat</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">float</span> value)</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>use用来激活着色器程序，所有的set…函数能够查询一个unform的位置值并设置它的值。</p>
+</li>
+<li><p>从文件读取</p>
+<ul>
+<li>使用C++文件流读取着色器内容，储存到几个string对象里使用C++文件流读取着色器内容，储存到几个<code>string</code>对象里</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">  Shader(<span class="keyword">const</span> <span class="keyword">char</span>* vertexPath, <span class="keyword">const</span> <span class="keyword">char</span>* fragmentPath)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 1. 从文件路径中获取顶点/片段着色器</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> vertexCode;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> fragmentCode;</span><br><span class="line">    <span class="built_in">std</span>::ifstream vShaderFile;</span><br><span class="line">    <span class="built_in">std</span>::ifstream fShaderFile;</span><br><span class="line">    <span class="comment">// 保证ifstream对象可以抛出异常：</span></span><br><span class="line">    vShaderFile.exceptions (<span class="built_in">std</span>::ifstream::failbit | <span class="built_in">std</span>::ifstream::badbit);</span><br><span class="line">    fShaderFile.exceptions (<span class="built_in">std</span>::ifstream::failbit | <span class="built_in">std</span>::ifstream::badbit);</span><br><span class="line">    <span class="keyword">try</span> </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 打开文件</span></span><br><span class="line">        vShaderFile.open(vertexPath);</span><br><span class="line">        fShaderFile.open(fragmentPath);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">stringstream</span> vShaderStream, fShaderStream;</span><br><span class="line">        <span class="comment">// 读取文件的缓冲内容到数据流中</span></span><br><span class="line">        vShaderStream &lt;&lt; vShaderFile.rdbuf();</span><br><span class="line">        fShaderStream &lt;&lt; fShaderFile.rdbuf();       </span><br><span class="line">        <span class="comment">// 关闭文件处理器</span></span><br><span class="line">        vShaderFile.close();</span><br><span class="line">        fShaderFile.close();</span><br><span class="line">        <span class="comment">// 转换数据流到string</span></span><br><span class="line">        vertexCode   = vShaderStream.str();</span><br><span class="line">        fragmentCode = fShaderStream.str();     </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(<span class="built_in">std</span>::ifstream::failure e)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* vShaderCode = vertexCode.c_str();</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* fShaderCode = fragmentCode.c_str();</span><br><span class="line">    [...]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译和链接着色器</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2. 编译着色器</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> vertex, fragment;</span><br><span class="line">  <span class="keyword">int</span> success;</span><br><span class="line">  <span class="keyword">char</span> infoLog[<span class="number">512</span>];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 顶点着色器</span></span><br><span class="line">  vertex = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line">  glShaderSource(vertex, <span class="number">1</span>, &amp;vShaderCode, <span class="literal">NULL</span>);</span><br><span class="line">  glCompileShader(vertex);</span><br><span class="line">  <span class="comment">// 打印编译错误（如果有的话）</span></span><br><span class="line">  glGetShaderiv(vertex, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line">  <span class="keyword">if</span>(!success)</span><br><span class="line">  &#123;</span><br><span class="line">      glGetShaderInfoLog(vertex, <span class="number">512</span>, <span class="literal">NULL</span>, infoLog);</span><br><span class="line">      <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"</span> &lt;&lt; infoLog &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 片段着色器也类似</span></span><br><span class="line">  [...]</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 着色器程序</span></span><br><span class="line">  <span class="keyword">this</span>-&gt;Program = glCreateProgram();</span><br><span class="line">  glAttachShader(<span class="keyword">this</span>-&gt;Program, vertex);</span><br><span class="line">  glAttachShader(<span class="keyword">this</span>-&gt;Program, fragment);</span><br><span class="line">  glLinkProgram(<span class="keyword">this</span>-&gt;Program);</span><br><span class="line">  <span class="comment">// 打印连接错误（如果有的话）</span></span><br><span class="line">  glGetProgramiv(<span class="keyword">this</span>-&gt;Program, GL_LINK_STATUS, &amp;success);</span><br><span class="line">  <span class="keyword">if</span>(!success)</span><br><span class="line">  &#123;</span><br><span class="line">      glGetProgramInfoLog(<span class="keyword">this</span>-&gt;Program, <span class="number">512</span>, <span class="literal">NULL</span>, infoLog);</span><br><span class="line">      <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::PROGRAM::LINKING_FAILED\n"</span> &lt;&lt; infoLog &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 删除着色器，它们已经链接到我们的程序中了，已经不再需要了</span></span><br><span class="line">  glDeleteShader(vertex);</span><br><span class="line">  glDeleteShader(fragment);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>use函数非常简单</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">Use</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glUseProgram(<span class="keyword">this</span>-&gt;Program);</span><br><span class="line">&#125;<span class="function"><span class="keyword">void</span> <span class="title">Use</span><span class="params">()</span> </span>&#123; glUseProgram(<span class="keyword">this</span>-&gt;Program); &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>uniform的setter函数也很类似</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">setBool</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">bool</span> value)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"></span>&#123;         </span><br><span class="line">    glUniform1i(glGetUniformLocation(ID, name.c_str()), (<span class="keyword">int</span>)value); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setInt</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">int</span> value)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    glUniform1i(glGetUniformLocation(ID, name.c_str()), value); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setFloat</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">float</span> value)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    glUniform1f(glGetUniformLocation(ID, name.c_str()), value); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用这个着色器类很简单；只要创建一个着色器对象，从那一点开始我们就可以开始使用了：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function">Shader <span class="title">ourShader</span><span class="params">(<span class="string">"path/to/shaders/shader.vs"</span>, <span class="string">"path/to/shaders/shader.fs"</span>)</span></span>;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">while</span>(...)</span><br><span class="line">&#123;</span><br><span class="line">    ourShader.use();</span><br><span class="line">    ourShader.setFloat(<span class="string">"someUniform"</span>, <span class="number">1.0f</span>);</span><br><span class="line">    DrawStuff();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -858,16 +426,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/20/OpenGL学习记录-着色/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/19/OpenGL学习记录-纹理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OpenGL学习记录-纹理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -882,177 +509,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kafka与Storm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/Kafka与Storm整合/">Kafka与Storm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/Kafka与Storm整合/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/kafka-storm-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="整合Storm的概念"><a href="#整合Storm的概念" class="headerlink" title="整合Storm的概念"></a>整合Storm的概念</h2><ul>
-<li><p>整合场景</p>
-<blockquote>
-<p>A spout is a source of streams. For example, <font color="red">a spout may read tuples off a Kafka Topic</font> and emit them as a stream. <font color="red">A bolt consumes input streams, process and possibly emits new streams.</font> Bolts can do anything from running functions, filtering tuples, do streaming aggregations, streaming joins, <font color="red">talk to databases</font>, and more. Each node in a Storm topology executes in parallel. A topology runs indefinitely until you terminate it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if the machines go down and messages are dropped.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#着色器-运行在GPU上的小程序"><span class="toc-number">1.</span> <span class="toc-text">着色器 - 运行在GPU上的小程序</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-JSON学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/JSON学习笔记/">JSON学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/JSON学习笔记/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/json-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="JSON-是如何存储信息"><a href="#JSON-是如何存储信息" class="headerlink" title="JSON 是如何存储信息"></a>JSON 是如何存储信息</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"book"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"01"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"Java"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"third"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"Herbert Schildt"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"07"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"C++"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"second"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"E.Balagurusamy"</span></span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>
-        
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1075,8 +557,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

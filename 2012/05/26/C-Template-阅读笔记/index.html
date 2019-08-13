@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>码农随笔</title>
+  <title>C++ Template 阅读笔记 | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Linux C C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码农随笔">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="由  王宇 原创并发布 ： 第2章函数模板2.1初探函数模板2.1.1定义模板12template&amp;lt;typename T&amp;gt;inline T max(T const&amp;amp;a,T const&amp;amp;b)&amp;#123;&amp;#125;  class,typename是等价的，推荐使用typename 2.1.2使用模板:函数模板的隐形使用：max(a,b);具体类型替代模板参数的过程叫做实例">
+<meta name="keywords" content="cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ Template 阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2012/05/26/C-Template-阅读笔记/index.html">
 <meta property="og:site_name" content="码农随笔">
+<meta property="og:description" content="由  王宇 原创并发布 ： 第2章函数模板2.1初探函数模板2.1.1定义模板12template&amp;lt;typename T&amp;gt;inline T max(T const&amp;amp;a,T const&amp;amp;b)&amp;#123;&amp;#125;  class,typename是等价的，推荐使用typename 2.1.2使用模板:函数模板的隐形使用：max(a,b);具体类型替代模板参数的过程叫做实例">
 <meta property="og:locale" content="cn">
+<meta property="og:updated_time" content="2019-08-12T10:10:32.863Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农随笔">
+<meta name="twitter:title" content="C++ Template 阅读笔记">
+<meta name="twitter:description" content="由  王宇 原创并发布 ： 第2章函数模板2.1初探函数模板2.1.1定义模板12template&amp;lt;typename T&amp;gt;inline T max(T const&amp;amp;a,T const&amp;amp;b)&amp;#123;&amp;#125;  class,typename是等价的，推荐使用typename 2.1.2使用模板:函数模板的隐形使用：max(a,b);具体类型替代模板参数的过程叫做实例">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -197,461 +201,306 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenGL学习记录-着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-C-Template-阅读笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/OpenGL学习记录-着色/">OpenGL学习记录-着色</a>
+    <h1 class="article-title" itemprop="name">
+      C++ Template 阅读笔记
     </h1>
   
 
         
-        <a href="/2018/06/20/OpenGL学习记录-着色/" class="archive-article-date">
-  	<time datetime="2018-06-20T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+        <a href="/2012/05/26/C-Template-阅读笔记/" class="archive-article-date">
+  	<time datetime="2012-05-26T09:28:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-05-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blog-image/zsq-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="着色器-运行在GPU上的小程序"><a href="#着色器-运行在GPU上的小程序" class="headerlink" title="着色器 - 运行在GPU上的小程序"></a>着色器 - 运行在GPU上的小程序</h2><p>从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。</p>
+        <p>由  王宇 原创并发布 ：</p>
+<h2 id="第2章函数模板"><a href="#第2章函数模板" class="headerlink" title="第2章函数模板"></a>第2章函数模板</h2><h3 id="2-1初探函数模板"><a href="#2-1初探函数模板" class="headerlink" title="2.1初探函数模板"></a>2.1初探函数模板</h3><h4 id="2-1-1定义模板"><a href="#2-1-1定义模板" class="headerlink" title="2.1.1定义模板"></a>2.1.1定义模板</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> T <span class="title">max</span><span class="params">(T <span class="keyword">const</span>&amp;a,T <span class="keyword">const</span>&amp;b)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>class,typename是等价的，推荐使用typename</p>
+<h4 id="2-1-2使用模板-函数模板的隐形使用：max-a-b"><a href="#2-1-2使用模板-函数模板的隐形使用：max-a-b" class="headerlink" title="2.1.2使用模板:函数模板的隐形使用：max(a,b);"></a>2.1.2使用模板:函数模板的隐形使用：max(a,b);</h4><p>具体类型替代模板参数的过程叫做实例化</p>
+<a id="more"></a>
+
+<h3 id="2-2实参的演绎"><a href="#2-2实参的演绎" class="headerlink" title="2.2实参的演绎"></a>2.2实参的演绎</h3><p>调用参数的类型构造自模板参数，所以模板参数和调用参数通常是相关的。我们把这个概念称为：函数模板的实参演绎</p>
+<p>max(4,7); //ok隐形</p>
+<p>max(4,4.2); //error T不能够自动转换</p>
+<p>解决办法：</p>
 <ul>
-<li>GLSL - 包含一些针对向量和矩阵操作的有用特性。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version version_number</span></span><br><span class="line">in type in_variable_name;</span><br><span class="line">in type in_variable_name;</span><br><span class="line"></span><br><span class="line">out type out_variable_name;</span><br><span class="line"></span><br><span class="line">uniform type uniform_name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 处理输入并进行一些图形操作</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 输出处理过的结果到输出变量</span></span><br><span class="line">  out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/OpenGL学习记录-纹理/">OpenGL学习记录-纹理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/OpenGL学习记录-纹理/" class="archive-article-date">
-  	<time datetime="2018-06-19T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/wl-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><ul>
-<li>纹理概述<br>为了能够把纹理映射(Map)到三角形上，我们需要指定三角形的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个<font color="red">纹理坐标(Texture Coordinate)</font>，用来标明该从纹理图像的哪个部分<font color="red">采样</font>（译注：采集片段颜色）。之后在图形的其它片段上进行片段<font color="red">插值</font>(Fragment Interpolation)。</li>
-</ul>
-<p>纹理坐标在x和y轴上，范围为0到1之间（注意我们使用的是2D纹理图像）。使用纹理坐标获取纹理颜色叫做<font color="red">采样(Sampling)</font>。纹理坐标起始于(0, 0)，也就是纹理图片的左下角，终始于(1, 1)，即纹理图片的右上角。</p>
-        
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/OpenGL学习记录-基础篇/">OpenGL学习记录-基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/OpenGL学习记录-基础篇/" class="archive-article-date">
-  	<time datetime="2018-06-18T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/gljc-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="教程地址："><a href="#教程地址：" class="headerlink" title="教程地址："></a>教程地址：</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
-<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><ul>
-<li>Khronos组织制定并维护的规范</li>
-<li>立即渲染模式: OpenGL3.2 开始废弃</li>
-<li>核心模式(Core-profile)</li>
-<li>扩展</li>
-<li>状态机(State Machine)</li>
-<li>对象</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-医学影像中呼吸门控的动态显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/医学影像中呼吸门控的动态显示/">医学影像中呼吸门控的动态显示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" class="archive-article-date">
-  	<time datetime="2018-05-22T09:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/menkong-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="呼吸门控概念"><a href="#呼吸门控概念" class="headerlink" title="呼吸门控概念"></a>呼吸门控概念</h2><p>由于受到呼吸运动的影响，位于胸腹部的病灶具有较大幅度的移动。在传统放疗方式中考虑呼吸运动则需要增加较大的计划靶区（PTV），导致受照正常组织显着增加。呼吸门控技术 （respiratory gating technology）是指在放射治疗过程中监测患者呼吸运动，在特定呼吸时相触发射线照射，降低正常组织受照剂量。</p>
-        
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">应用实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">ROS(Robot OS)Tutorial 学习记录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/" class="archive-article-date">
-  	<time datetime="2018-03-31T07:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/ros-1.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<p>注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。</p>
-<p>官方教程：<a href="http://wiki.ros.org/ROS/Tutorials" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials</a></p>
-<h2 id="Beginner-Level"><a href="#Beginner-Level" class="headerlink" title="Beginner Level"></a>Beginner Level</h2><h3 id="1-安装配置ROS环境"><a href="#1-安装配置ROS环境" class="headerlink" title="1. 安装配置ROS环境"></a>1. 安装配置ROS环境</h3><h4 id="安装ROS"><a href="#安装ROS" class="headerlink" title="安装ROS"></a>安装ROS</h4><ul>
-<li><p>官方推荐 ROS Kinettic Kame   <a href="http://wiki.ros.org/Distributions" target="_blank" rel="noopener">http://wiki.ros.org/Distributions</a></p>
+<li><p>(1)max(static_cast<double>(4),4.2);</double></p>
 </li>
-<li><p>安装步骤： <a href="http://wiki.ros.org/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">http://wiki.ros.org/kinetic/Installation/Ubuntu</a></p>
-<h4 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h4></li>
-<li><p>概念 ：<font color="red">notion of combining spaces using the shell environment </font></p>
+<li><p>(2)max<double>(4,4.2);//显式</double></p>
 </li>
-<li><p>检查环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> printenv | grep ROS</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source /opt/ros/kinetic/setup.bash</span><br></pre></td></tr></table></figure>
-
+<li><p>(3)指定两个参数可以具有不同的类型</p>
 </li>
 </ul>
-        
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/#more">more >></a>
-        
-      
+<h3 id="2-3模板参数"><a href="#2-3模板参数" class="headerlink" title="2.3模板参数"></a>2.3模板参数</h3><p>template<typenamet>//T模板参数，可以定义多个不同的参数    </typenamet></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RT,<span class="keyword">typename</span> T1,<span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> RT <span class="title">max</span><span class="params">(T1 <span class="keyword">const</span> &amp;a,T2 <span class="keyword">const</span>&amp;b)</span></span>;</span><br><span class="line">max&lt;<span class="keyword">double</span>&gt;(<span class="number">4</span>,<span class="number">4.2</span>); <span class="comment">//RT为double,T1为int,T2为double</span></span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<h3 id="2-4重载函数模板"><a href="#2-4重载函数模板" class="headerlink" title="2.4重载函数模板"></a>2.4重载函数模板</h3><p>对于非模板函数和同名的函数模板，如果其他条件都是相同的话，那么在调用的时候，重载解析过程通常会调用非模板函数，而不会从该模板产生出一个实例</p>
+<p>模板是不允许自动类型转化的；但普通函数可以进行自动类型转换，所以最后一个调用将使用非模板函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="keyword">const</span> &amp;<span class="title">max</span><span class="params">(<span class="keyword">int</span> <span class="keyword">const</span> &amp;a,<span class="keyword">int</span> <span class="keyword">const</span> &amp;b)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> T <span class="keyword">const</span> &amp;<span class="title">max</span><span class="params">(T <span class="keyword">const</span> &amp;a,T <span class="keyword">const</span> &amp;b)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">::max(<span class="number">7</span>,<span class="number">42</span>);<span class="comment">//使用非模板函数</span></span><br><span class="line"></span><br><span class="line">::max(<span class="string">'a'</span>,<span class="number">42.7</span>);<span class="comment">//使用非模板函数</span></span><br></pre></td></tr></table></figure>
 
-      
+<h2 id="第3章类模板"><a href="#第3章类模板" class="headerlink" title="第3章类模板"></a>第3章类模板</h2><h3 id="3-1类模板Stack的实现"><a href="#3-1类模板Stack的实现" class="headerlink" title="3.1类模板Stack的实现"></a>3.1类模板Stack的实现</h3><h4 id="3-1-1类模板的声明"><a href="#3-1-1类模板的声明" class="headerlink" title="3.1.1类模板的声明"></a>3.1.1类模板的声明</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="comment">//可以使用class</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>&#123;</span>&#125;;</span><br></pre></td></tr></table></figure>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">展开全文 >></a>
-        </p>
-      
+<h4 id="3-1-2成员函数的实现"><a href="#3-1-2成员函数的实现" class="headerlink" title="3.1.2成员函数的实现"></a>3.1.2成员函数的实现</h4><p>voidStack<t>::push(Tconst&amp;elem);</t></p>
+<h3 id="3-2类模板Stack的使用"><a href="#3-2类模板Stack的使用" class="headerlink" title="3.2类模板Stack的使用"></a>3.2类模板Stack的使用</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;<span class="keyword">int</span>&gt; intStack;</span><br><span class="line">Stack&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; strStack;</span><br><span class="line">Stack&lt;Stack&lt;<span class="keyword">int</span>&gt;&gt; intStackStack; <span class="comment">//Error，&gt;&gt;不允许使用，中间需放入一个空格，&gt; &gt;</span></span><br></pre></td></tr></table></figure>
 
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+<h3 id="3-3类模板的特化"><a href="#3-3类模板的特化" class="headerlink" title="3.3类模板的特化"></a>3.3类模板的特化</h3><p>为了特化一个类模板，你必须在起始处声明一个template&lt;&gt;,接下来声明用来特化类模板的类型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>&lt;std::string&gt;&#123;</span>&#125;;</span><br></pre></td></tr></table></figure>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="cpp-深入理解C-11阅读笔记" class="article article-type-cpp  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/深入理解C-11阅读笔记/">深入理解C++11阅读笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/14/深入理解C-11阅读笔记/" class="archive-article-date">
-  	<time datetime="2017-12-14T06:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/cpp11-1.jpg" alt="ccss"></p>
-<p>由 王宇 原创并发布：</p>
-<h2 id="一-新标准的诞生"><a href="#一-新标准的诞生" class="headerlink" title="一 新标准的诞生"></a>一 新标准的诞生</h2><h3 id="从使用上分类方法"><a href="#从使用上分类方法" class="headerlink" title="从使用上分类方法"></a>从使用上分类方法</h3><ul>
-<li>类作者需要的</li>
-<li>库作者需要的</li>
-<li>所有人需要的</li>
-<li>部分人需要的</li>
+<h3 id="3-4局部特化"><a href="#3-4局部特化" class="headerlink" title="3.4局部特化"></a>3.4局部特化</h3><ul>
+<li>相同类型：</li>
 </ul>
-        
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/#more">more >></a>
-        
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;T,T&gt;&#123;</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>int参数：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;T,int&gt;&#123;</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>指针类型：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line">classMyClass&lt;T1*,T2*&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MyClass&lt;<span class="keyword">int</span>,<span class="keyword">float</span>&gt;mif;<span class="comment">//MyClass&lt;T1,T2&gt;</span></span><br><span class="line"></span><br><span class="line">MyClass&lt;<span class="keyword">float</span>,<span class="keyword">float</span>&gt;mif;<span class="comment">//MyClass&lt;T,T&gt;</span></span><br><span class="line"></span><br><span class="line">MyClass&lt;<span class="keyword">float</span>,<span class="keyword">int</span>&gt;mif;<span class="comment">//MyClass&lt;T,int&gt;</span></span><br><span class="line"></span><br><span class="line">MyClass&lt;<span class="keyword">int</span>*,<span class="keyword">float</span>*&gt;mp;<span class="comment">//MyClass&lt;T1*,T2*&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5缺省模板实参"><a href="#3-5缺省模板实参" class="headerlink" title="3.5缺省模板实参"></a>3.5缺省模板实参</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span> CONT=<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;T&gt; &gt;</span><br><span class="line"></span><br><span class="line">classStack&#123;</span><br><span class="line"></span><br><span class="line">  CONT elems;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(T <span class="keyword">const</span> &amp;elem)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第4章非类型模板参数 </p>
+<p>4.1非类型的类模板参数</p>
+<p>template&lt;typenameT,intMAXSIZE&gt;</p>
+<p>claseStack{</p>
+<p>  if(MAXSIZE&gt;0){};</p>
+<p>}</p>
+<p>Stack&lt;int,20&gt;intStack;</p>
+<p>4.2非类型的函数模板参数 </p>
+<p>template&lt;typenameT,intVAL&gt;</p>
+<p>TaddValue(Tconst&amp;x){returnT+VAL;};</p>
+<p>4.3非类型模板参数的限制 </p>
+<p>不能使用浮点数(double)和类对象，以及全局指针作为模板参数，这是历史原因。</p>
+<p>第5章技巧性基础知识 </p>
+<p>5.1关键字typename </p>
+<p>引入关键字typename是为了说明：模板内部的标识符可以是一个类型</p>
+<p>template<typenamet></typenamet></p>
+<p>classMyClass{</p>
+<p>  typenameT::SubType*ptr;//声明一个指针</p>
+<p>}</p>
+<p>5.2使用this-&gt; </p>
+<p>对于具有基类的类模板，自身使用名称x并不一定等同于this-&gt;x.即使该x是从基类继承获得的</p>
+<p>template<typenamet></typenamet></p>
+<p>classBase{</p>
+<p>  public:</p>
+<pre><code>voidexit();</code></pre><p>};</p>
+<p>template<typenamet></typenamet></p>
+<p>classDerived:Base<t>{</t></p>
+<p>  voidfoo(){</p>
+<pre><code>exit();//Error,应该使用this-&gt;exit</code></pre><p>  }</p>
+<p>};</p>
+<p>5.3成员模板 </p>
+<p>重载操作符=</p>
+<p>5.4模板的模板参数 </p>
+<p>让模板参数本身成为模板是很有用的</p>
+<p>template&lt;typenameT,template<typenameelem>classCONT=std::deque&gt;</typenameelem></p>
+<p>5.5零初始化</p>
+<p>template<typenamet></typenamet></p>
+<p>voidfoo(){</p>
+<p>  intx;//error</p>
+<p>  Tx;//error</p>
+<p>  Tx=T();//ok</p>
+<p>}</p>
+<p>5.6使用字符串作为函数模板的实参 </p>
+<p>template<typenamet></typenamet></p>
+<p>inlineTconst&amp;max(Tconst&amp;a,Tconst&amp;b){};//可以修改成(Tconsta,Tconstb)//导致无用的拷贝</p>
+<p>::max(“apple”,”peach”);//OK相同类型，长度一样</p>
+<p>::max(“apple”,”tomato”);//Error不同类型，长度不同</p>
+<p>std::strings;</p>
+<p>::max(“apple”,s);//Error不同类型</p>
+<p>无通用的解决办法：</p>
+<p>1、使用非引用参数，取代引用参数，导致无用的拷贝</p>
+<p>2、进行重载，编写接收引用参数和非引用参数的两个重载函数，这可能会导致二义性</p>
+<p>3、对具体类型进行重载</p>
+<p>4、强制要求应用程序程序员使用显示类型转换</p>
+<p>第6章模板实战 </p>
+<p>6.1包含模型 </p>
+<p>6.1.1链接器错误</p>
+<p>把模板放在doc-C（cpp）文件中使用，链接器报错，找不到函数，原因是没有被实例化。</p>
+<p>6.1.2头文件中的模板</p>
+<p>把模板的定义放在头文件中，这种组织方式为包含模式</p>
+<p>不足：增加的头文件的开销</p>
+<p>6.2显式实例化 </p>
+<p>由关键字template和紧接其后的我们所需要实例化的实体（可以是类、函数、成员函数等）的声明组成，而且，该声明是一个已经用实参完全替换参数之后的声明            </p>
+<p>缺点：我们必须仔细跟踪每个需要实例化的实体。对于大项目而言，这种跟踪很快就会带来巨大负担：因此，我们不建议使用这种方式</p>
+<p>优点：实例化可以在需要的时候才进行</p>
+<p>6.22整合包含模型和显式实例化</p>
+<p>6.3分离模型,（不建议使用） </p>
+<p>导出模板，这种机制通常也被称为C++模板的分离模型</p>
+<p>6.3.1关键字export</p>
+<p>6.4模板和内联 </p>
+<p>对于许多不属于类定义一部分的短小模板函数，你应该使用关键字inline类声明它们</p>
+<p>6.5预编译头文件</p>
+<p>6.6调试模板</p>
+<p>第7章模板术语 </p>
+<p>7.1“类模板”还是“模板类” </p>
+<p>class和struct的唯一区别在于：缺省访问权限：class:private;struct:public.C++推荐class,C推荐struct</p>
+<pre><code>7.2实例化和特化 </code></pre><p>模板实例化是一个通过使用具有值替换模板实参，从模板产生出普通类、函数或者成员函数的过程。这个过程最后获得的实体（譬如类、函数或者成员函数）就是我们通常所说的特化(specialization)</p>
+<p>  7.3声明和定义 </p>
+<p>  声明：引用了一个名字到某个作用域中</p>
+<p>  定义：声明并分配内存</p>
+<p>  7.4一处定义原则 </p>
+<p>  ODR原则：</p>
+<p>  和全局变量与静态数据成员一样，在整个程序中，非内联函数和成员函数只能被定义一次</p>
+<p>  类类型和内联函数在每个翻译单元中最多只能被定义一次，如果存在多个翻译单元，则其所有的定义都必须是等同的</p>
+<p>  7.5模板实参和模板参数 </p>
+<p>  模板参数：位于模板声明或定义内部，关键字template后面所列举的名字</p>
+<p>  模板实参：用来替换模板参数的各个对象</p>
+<p>  一个基本原则：模板实参必须是一个可以在编译期确定的模板实体或者值</p>
+<p>  第14章模板与设计 </p>
+<p>  14.1动多态 </p>
+<p>  继承和虚函数实现的多态</p>
+<p>  14.2静多态 </p>
+<p>  模板实现的多态</p>
+<p>  14.3动多态和静多态 </p>
+<p>  通过继承实现的多态是绑定的和动态的</p>
+<p>  绑定：对于参与多态行为的类型，它们的接口是在公共基类的设计中就预先确定的</p>
+<p>  动态：接口的绑定是在运行期完成的</p>
+<p>  通过模板实现的多态是非绑定的和静态的</p>
+<p>  非绑定：对于参与多态行为的类型，它们的接口是没有预先确定的</p>
+<p>  静态：接口的绑定是在编译期完成的</p>
+<p>  与动多态相比，静多态被认为具有更好的类型安全性    </p>
+<p>  14.4新形式的设计模板</p>
+<p>  14.5泛型程序设计 </p>
+<p>  泛型程序设计定义为运用模板的程序设计，就像面向对象的程序设计被看成是运用虚函数的程序设计</p>
+<p>  在一个框架中，设计模板的目的是为了能够得到多种有用的组合（类型）</p>
+<p>  STL实际上是一个框架，它提供了许多有用的操作，我们也把这些操作称为算法；它同时也为对象集合提供了许多线性数据结构，我们把这些数据结构称为容器，而且，算法和容器都是模板。</p>
+<p>  第15章trait与plicy类 </p>
+<p>  15.1一个实例：累加一个序列 </p>
+<p>  15.1.1fixedtrait</p>
+<p>  使用模板，实现不同类型(intcharshortfloat)的累加</p>
+<p>  定义：定义模板，并特化：</p>
+<p>  template<typenamet></typenamet></p>
+<p>  classAccumulationTraits;</p>
+<p>  template&lt;&gt;</p>
+<p>  classAccumulationTraits<char>{</char></p>
+<pre><code>public:
+
+  typedefcharAccT;</code></pre><p>  };</p>
+<p>classAccumulationTraits<int>{</int></p>
+<p>  public:</p>
+<pre><code>typedefintAccT;</code></pre><p>};</p>
+<p>classAccumulationTraits<double>{</double></p>
+<p>  public:</p>
+<pre><code>typedefdoubleAcct;</code></pre><p>};</p>
+<p>实现模板函数：</p>
+<p>template<typenamet></typenamet></p>
+<p>AccumulationTraits<t>::AccTaccum(Tconst<em>beg,Tconst</em>end){</t></p>
+<p>  typedeftypenameAccumulationTrains<t>::AccTAccT;//特化演绎</t></p>
+<p>  AccTtotal=Acct();</p>
+<p>  while(beg!=end){</p>
+<pre><code>total+=beg;
+
+++beg;</code></pre><p>  }</p>
+<p>}</p>
+<p>15.1.2valuetrait</p>
+<p>–    缺点：C++只允许我们对整形和枚举类型初始化静态成员变量    </p>
+<p>15.1.3参数化trait</p>
+<p>15.1.4policy和policy类</p>
+<p>针对accum()的所有操作，唯一需要改变的只是total+=*beg操作，于是，我们就把这个操作称为该累积过程的一个policy.因此，一个policy类就是一个提供了一个接口的类，该操作能够在算法中应用一个或多个policy</p>
+<p>template&lt;typenameT,typenamePlicy=SumPolicy,typenameTraits=AccumulationTraits<t>&gt;</t></p>
+<p>classAccum{</p>
+<p>  public:</p>
+<pre><code>typedeftypenameTraits::AccTAccT;
+
+staticAccTaccum(Tconst*beg,Tconst*end)
+
+{
+
+  Accttotal=Traits::zero();
+
+  while(beg!=end){
+
+    Policy::accumulate(total,*beg);//this is policy
+
+    ++beg;
+
+  }
+
+}</code></pre><p>};</p>
+<p>15.1.5trait和policy：区别</p>
+<p>trait字面上：用来刻划一个事物的(与众不同)特性</p>
+<p>policy字面上：为了某种有益或有利的目的而采用的一系列动作</p>
+<p>policy更加注重于行为，而trait则更加注重于类型</p>
+<p>实现形式上：</p>
+<p>trait是用特化演绎</p>
+<p>policy是模板参数 </p>
+<p>15.2类型函数 </p>
+<p>15.2.1确定元素的类型</p>
+<p>15.2.2确定class类型</p>
+<p>15.2.3引用和限定符</p>
+<p>15.3policytrait </p>
+<p>第16章模板与继承 </p>
+<p>16.1命名模板参数</p>
+<p>16.2空基类优化</p>
+<p>16.3奇特的递归模板模式</p>
+<p>16.4参数化虚拟性</p>
+<p>第17章metaprogram </p>
+<p>metaprogramming含有“对一个程序进行编程”的意思，换句话说，编程系统将会执行我们所写的代码，来生成新的代码，而这些新代码才真正实现了我们所期望的功能。（递归模板）</p>
+<p>17.1metaprogram的第一个实例</p>
+<p>template<intn></intn></p>
+<p>classPow3{</p>
+<p>  public:</p>
+<pre><code>enum{result=3*Pow3&lt;N-1&gt;::result};</code></pre><p>};</p>
+<p>template&lt;&gt;</p>
+<p>classPow3&lt;0&gt;{</p>
+<p>  public:</p>
+<pre><code>enum{result=1};</code></pre><p>};</p>
+<p>Pow3&lt;&gt;模板，包括特化，被称为一个metagrogramming</p>
+<p>17.2枚举值和静态常量</p>
+<p>staticintconstFour=4;</p>
+<p>静态成员变量只能是左值。</p>
+<p>17.3第2个例子：计算平方根</p>
+<p>17.4使用归纳变量</p>
+<p>17.5计算完整性</p>
+<p>17.6递归实例化和递归模板实参</p>
+<p>17.7使用metaprogram来展开循环</p>
+<p>第18章表示式模板 </p>
+<p>18.1临时变量和分割循环</p>
+<p>18.2在模板实参中编码表达式</p>
+<p>18.3表达式模板的性能与约束</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -671,16 +520,79 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2012/05/26/C-Template-阅读笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2012/06/10/C-GUI-Qt4编程-阅读笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C++ GUI Qt4编程-阅读笔记
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -695,364 +607,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK与图形学相关的基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/VTK与图形学相关的基本概念/">VTK与图形学相关的基本概念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/VTK与图形学相关的基本概念/" class="archive-article-date">
-  	<time datetime="2017-10-26T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念</li>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
-        
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第2章函数模板"><span class="toc-number">1.</span> <span class="toc-text">第2章函数模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1初探函数模板"><span class="toc-number">1.1.</span> <span class="toc-text">2.1初探函数模板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1定义模板"><span class="toc-number">1.1.1.</span> <span class="toc-text">2.1.1定义模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2使用模板-函数模板的隐形使用：max-a-b"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.1.2使用模板:函数模板的隐形使用：max(a,b);</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2实参的演绎"><span class="toc-number">1.2.</span> <span class="toc-text">2.2实参的演绎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3模板参数"><span class="toc-number">1.3.</span> <span class="toc-text">2.3模板参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4重载函数模板"><span class="toc-number">1.4.</span> <span class="toc-text">2.4重载函数模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第3章类模板"><span class="toc-number">2.</span> <span class="toc-text">第3章类模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1类模板Stack的实现"><span class="toc-number">2.1.</span> <span class="toc-text">3.1类模板Stack的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1类模板的声明"><span class="toc-number">2.1.1.</span> <span class="toc-text">3.1.1类模板的声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2成员函数的实现"><span class="toc-number">2.1.2.</span> <span class="toc-text">3.1.2成员函数的实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2类模板Stack的使用"><span class="toc-number">2.2.</span> <span class="toc-text">3.2类模板Stack的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3类模板的特化"><span class="toc-number">2.3.</span> <span class="toc-text">3.3类模板的特化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4局部特化"><span class="toc-number">2.4.</span> <span class="toc-text">3.4局部特化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5缺省模板实参"><span class="toc-number">2.5.</span> <span class="toc-text">3.5缺省模板实参</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-VTK7-1-1安装部署记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/VTK7-1-1安装部署记录/">VTK7.1.1安装部署记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/VTK7-1-1安装部署记录/" class="archive-article-date">
-  	<time datetime="2017-07-10T09:09:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk7-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念<ul>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-        
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kafka与Storm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/Kafka与Storm整合/">Kafka与Storm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/Kafka与Storm整合/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/kafka-storm-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="整合Storm的概念"><a href="#整合Storm的概念" class="headerlink" title="整合Storm的概念"></a>整合Storm的概念</h2><ul>
-<li><p>整合场景</p>
-<blockquote>
-<p>A spout is a source of streams. For example, <font color="red">a spout may read tuples off a Kafka Topic</font> and emit them as a stream. <font color="red">A bolt consumes input streams, process and possibly emits new streams.</font> Bolts can do anything from running functions, filtering tuples, do streaming aggregations, streaming joins, <font color="red">talk to databases</font>, and more. Each node in a Storm topology executes in parallel. A topology runs indefinitely until you terminate it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if the machines go down and messages are dropped.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JSON学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/JSON学习笔记/">JSON学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/JSON学习笔记/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/json-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="JSON-是如何存储信息"><a href="#JSON-是如何存储信息" class="headerlink" title="JSON 是如何存储信息"></a>JSON 是如何存储信息</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"book"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"01"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"Java"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"third"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"Herbert Schildt"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"07"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"C++"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"second"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"E.Balagurusamy"</span></span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>
-        
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1075,8 +655,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

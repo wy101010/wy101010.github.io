@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>码农随笔</title>
+  <title>UNIX环境高级编程-文件及标准IO | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Linux C C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码农随笔">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="由 王宇 原创并发布 ： 第3章文件I/O 3.1引言  文件I/O函数–打开文件、读文件、写文件等。UNIX系统中的大多数文件I/O只需用到5个函数：open、read、write、lseek以及close。  术语不带缓冲指的是每个read和write都调用内核中的一个系统调用。 这些不带缓冲的I/O函数不是ISO C的组成部分，但是，它们是POSIX.1和SingleUNIXSpecific">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UNIX环境高级编程-文件及标准IO">
+<meta property="og:url" content="http://yoursite.com/2012/12/06/UNIX环境高级编程-文件及标准IO/index.html">
 <meta property="og:site_name" content="码农随笔">
+<meta property="og:description" content="由 王宇 原创并发布 ： 第3章文件I/O 3.1引言  文件I/O函数–打开文件、读文件、写文件等。UNIX系统中的大多数文件I/O只需用到5个函数：open、read、write、lseek以及close。  术语不带缓冲指的是每个read和write都调用内核中的一个系统调用。 这些不带缓冲的I/O函数不是ISO C的组成部分，但是，它们是POSIX.1和SingleUNIXSpecific">
 <meta property="og:locale" content="cn">
+<meta property="og:updated_time" content="2019-08-13T05:01:49.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农随笔">
+<meta name="twitter:title" content="UNIX环境高级编程-文件及标准IO">
+<meta name="twitter:description" content="由 王宇 原创并发布 ： 第3章文件I/O 3.1引言  文件I/O函数–打开文件、读文件、写文件等。UNIX系统中的大多数文件I/O只需用到5个函数：open、read、write、lseek以及close。  术语不带缓冲指的是每个read和write都调用内核中的一个系统调用。 这些不带缓冲的I/O函数不是ISO C的组成部分，但是，它们是POSIX.1和SingleUNIXSpecific">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -197,378 +201,739 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenGL学习记录-着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-UNIX环境高级编程-文件及标准IO" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/OpenGL学习记录-着色/">OpenGL学习记录-着色</a>
+    <h1 class="article-title" itemprop="name">
+      UNIX环境高级编程-文件及标准IO
     </h1>
   
 
         
-        <a href="/2018/06/20/OpenGL学习记录-着色/" class="archive-article-date">
-  	<time datetime="2018-06-20T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+        <a href="/2012/12/06/UNIX环境高级编程-文件及标准IO/" class="archive-article-date">
+  	<time datetime="2012-12-06T09:22:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-12-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blog-image/zsq-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="着色器-运行在GPU上的小程序"><a href="#着色器-运行在GPU上的小程序" class="headerlink" title="着色器 - 运行在GPU上的小程序"></a>着色器 - 运行在GPU上的小程序</h2><p>从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。</p>
-<ul>
-<li>GLSL - 包含一些针对向量和矩阵操作的有用特性。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version version_number</span></span><br><span class="line">in type in_variable_name;</span><br><span class="line">in type in_variable_name;</span><br><span class="line"></span><br><span class="line">out type out_variable_name;</span><br><span class="line"></span><br><span class="line">uniform type uniform_name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 处理输入并进行一些图形操作</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 输出处理过的结果到输出变量</span></span><br><span class="line">  out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/#more">more >></a>
-        
+        <p>由 王宇 原创并发布 ：</p>
+<p>第3章文件I/O</p>
+<p>3.1引言 </p>
+<p>文件I/O函数–打开文件、读文件、写文件等。UNIX系统中的大多数文件I/O只需用到5个函数：open、read、write、lseek以及close。 </p>
+<p>术语不带缓冲指的是每个read和write都调用内核中的一个系统调用。 这些不带缓冲的I/O函数不是ISO C的组成部分，但是，它们是POSIX.1和SingleUNIXSpecification的组成部分</p>
+<p>本章将进一步讨论在多个进程间如何共享文件，以及所涉及的内核数据结构：dup、fcntl sysnc  fsysnc ioctl</p>
+<p>3.2文件描述 </p>
+<p>对于内核而言，所有打开的文件都通过文件描述符引用。文件描述符是一个非负整数。当打开一个现有文件或创建一个新文件时，内核向进程返回一个文件描述符。当读或写一个文件时，使用open或creat返回的文件描述符标识该文件，将其作为参数传递给read或write </p>
+<p>按照惯例，UNIX系统shell使用文件描述符0(STDIN_FILENO )与进程的标准输入相关联，文件描述符1(STDOUT_FILENO )与标准输出相关联，文件描述符2(STDERR_FILENO)与标准出错输出相关联。这些常量定义在&lt;unistd.h&gt;中</p>
+<p>文件描述符的变化范围0~OPEN_MAX</p>
+<p>3.3 open函数 ：打开或创建一个文件 </p>
+<p>函数声明：</p>
+<p>参数：mode:</p>
+<p>O_RDONLY:只读打开</p>
+<p>O_WRONLY:只写打开</p>
+<p>O_RDWR:读写打开 </p>
+<p>O_EXCL:如果同时指定了O_CREAT,而文件已经存在，则会出错。用此可以测试一个文件是否存在，如果不存在，则创建文件，这使测试和创建两者成为一个原子操作</p>
+<p>O_TRUNC:如果此文件存在，而且为只写或读写成功打开，则将其长度截短为0</p>
+<p>O_NOCTTY:如果pathname指的是终端设备，则不将该设备分配作为此进程的控制终端</p>
+<p>O_NONBLOCK:如果pathname指的是一个FIFO、一个块特殊文件或一个字符特殊文件，则此选项为文件的本次打开操作和后续的I/O操作设置为非阻塞模式</p>
+<p>O_DSYNC:使每次write等待物理I/O操作完成，但是如果写操作并不影响读取刚写入的数据，则不等待文件属性被更新</p>
+<p>O_RSYSC:使每一个以文件描述符作为参数的read操作等待，直至任何对文件同一部分进行的未决写操作都完成</p>
+<p>O_SYNC:使每次write等待物理I/O操作完成，包括由write操作引起的文件属性更新所需的I/O.(写时，同步更新文件属性)</p>
+<p>返回值：返回的文件描述符一定是最小的未用描述符数值 ,否则返回-1 。 </p>
+<p>3.4 create函数 ：创建一个新文件 </p>
+<p>函数声明：</p>
+<p>参数：同open的参数等效</p>
+<p>不足之处以只写方式打开所创建的文件。</p>
+<p>返回值：</p>
+<p>3.5 close函数 ：关闭一个打开的文件 </p>
+<p>函数声明：</p>
+<p>3.6 lseek函数 </p>
+<p>每个打开的文件都有一个与其相关联的“当前文件偏移量”(currentfileoffset).它通常是一个非负整数，用以度量从文件开始处计算的字节数</p>
+<p>按系统默认的情况，当打开一个文件时，除非指定O_APPEND选项，否则该偏移量被设置为0</p>
+<p>函数声明：</p>
+<p>3.7 read函数 :从打开文件中读数据 </p>
+<p>函数声明：</p>
+<p>参数：    </p>
+<p>返回值：如read成功，则返回读到的字节数，如已到达文件结尾，则返回0 </p>
+<p>3.8 write函数 :向打开的文件写数据 </p>
+<p>函数声明：</p>
+<p>参数：</p>
+<p>返回值：其返回值通常与参数n bytes的值相同，否则表示出错。 </p>
+<p>3.9 I/O的效率 </p>
+<p>程序清单：3-3</p>
+<p>它从标准输入读，写至标准输出，这就假定在执行本程序之前，这些标准输入、输出已经由shell安排好</p>
+<p>很多应用程序假定标准输入是文件描述符0（STDIN_FILENO），标准输出是文件描述符1（STDOUT_FILENO） </p>
+<p>进程终止时，UNIX系统内核会关闭该进程的所有打开的文件描述符，所以本程序没有关闭输入和输出 </p>
+<p>对UNIX系统内核而言，文本文件和二进制文件并无区别</p>
+<p>**如何选取BUFFSIZE值 ，表3-2</p>
+<p>此测试所用的文件系统是Linux ext2文件系统，其块长为4096字节 ，系统CPU时间的最小值出现在BUFFSIZE为4096 </p>
+<p>3.10 文件共享 </p>
+<p>UNIX系统支持在不同进程间共享打开的文件</p>
+<p>内核使用三种数据结构表示打开的文件，它们之间的关系决定了在文件共享方面一个进程对另一个进程可能产生的影响。</p>
+<p>图3-1</p>
+<p>图3-2</p>
+<p>参考《深入理解linux内核》文件</p>
+<p>3.11 原子操作 </p>
+<p>[1]添写至一个文件</p>
+<p>问题出在逻辑操作“定位到文件尾端处，然后写”上，它使用了两个分开的函数调用。解决问题的方法是使这两个操作对于其他进程而言成为一个原子操作。</p>
+<p>UNIX系统提供了一种方法使这种操作成为原子操作，该方法是在打开文件时设置O_APPEND标志。正如前一节中所述，这就使内核每次对这种文件进行写之前，都将进程的当前偏移量设置到该文件的尾端处，于是在每次写之前就不再需要调用lseek</p>
+<p>[2]pread和pwrite函数</p>
+<p>Single UNIX Specification包含了XSI扩展，该扩展允许原子性定位搜索(seek)和执行I/O</p>
+<p>pread和pwrite函数格式：</p>
+<p>[3]创建一个文件</p>
+<p>一般而言，原子操作(atomicoperation)指的是由多步组成的操作，如果该操作原子地执行，则要么执行完所有步骤，要么一步也不执行，不可能只执行所有步骤的一个子集。        </p>
+<p>3.12 dup和dup2函 数：用来复制一个现存的文件描述符</p>
+<p>函数定义</p>
+<p>图3-3**</p>
+<p>复制文件描述符可以用作重定向。复制一个文件描述符，具有两个，关闭一个，另一个不被关闭。复制与打开同一个文件，获得文件描述符的区别是，复制具有同一个文件表，而打开具有不同的文件表</p>
+<p>3.13 sync、fsync和fdatasync函数 </p>
+<p>当将数据写入文件时，内核通常先将该数据复制到其中一个缓冲区中，如果该缓冲区尚未写满，则并不将其排入输出队列，而是等待其写满或者当内核需要重用该缓冲区以便存放其他磁盘块数据时，再将该缓冲排入输出队列，然后待其到达队首时，才进行实际的I/O操作。这种输出方式被称为延迟写     </p>
+<p>为了保证磁盘上实际文件系统与缓冲区高速缓存中内容的一致性，UNIX系统提供了sync、fsync、fdatasync 三个函数</p>
+<p>函数定义：</p>
+<p>sync函数只是将所有修改过的块缓冲区排入写队列，然后就返回，它并不等待实际写磁盘操作结束</p>
+<p>fsync函数只对文件描述符filesets指定的单一文件起作用，并且等待写磁盘结束，然后返回。</p>
+<p>fdatasync函数类似于fsync函数，但它只影响文件的数据部分，而除数据外，fsync还会同步更新文件的属性</p>
+<p>3.14 fcntl函数：改变已打开文件的性质</p>
+<p>函数定义：</p>
+<p>fcntl有5种功能：</p>
+<p>复制一个现有的描述符：cmd=F_DUPFD</p>
+<p>获得、设置文件描述符：cmd=F_GETFDF_SETFD</p>
+<p>获得、设置文件状态标志：cmd=F_GETFLF_SETFL</p>
+<p>获得、设置异步I/O所有权：cmd=F_GETOWNF_SETOWN</p>
+<p>获得、设置记录锁：cmd=F_GETLKF_SETLKF_SETLKW</p>
+<p>程序清单：3-43-5    </p>
+<p>3.15 ioctl函数 </p>
+<p>函数定义：    </p>
+<p>3.16 /dev/fd </p>
+<p>较新的系统都提供名为/dev/fd的目录，其目录项是名为0,1,2等的文件，打开文件/dev/fd/n等效于复制描述符n</p>
+<p>fd=open(“/dev/fd/0”,mode);等效fd=dup(0);</p>
+<p>第4章文件和目录 </p>
+<p>4.1引言 </p>
+<p>4.2stat、fstat和lstat函数 </p>
+<p>函数定义：</p>
+<p>stat函数 就返回与此命名文件有关的信息结构</p>
+<p>fstat函数 获取已在描述符filedes上打开文件的有关信息</p>
+<p>lstat函数 与stat类似，但是当命名的文件是一个符号链接时，lstat返回该符号链接的有关信息</p>
+<p>struct stat结构体</p>
+<p>4.3文件类型 </p>
+<p>普通文件</p>
+<p>目录文件</p>
+<p>块特殊文件</p>
+<p>字符特殊文件</p>
+<p>FIFO</p>
+<p>套接字</p>
+<p>符号链接</p>
+<p>4.4设置用户ID和设置组ID </p>
+<p>与一个进程相关联的ID有6个或更多，表4-4**</p>
+<p>实际用户ID和实际组ID标识我们究竟是谁</p>
+<p>有效用户ID，有效阻ID以及附加组ID决定了我们的文件访问权限 </p>
+<p>保存的设置用户ID和保存的设置组ID在执行一个程序时包含了有效用户ID和有效阻ID的副本</p>
+<p>通常，有效用户ID等于实际用户ID，有效组ID等于实际组ID    </p>
+<p>每个文件都有一个所有者和组所有者，所有者由stat结构中的st_uid成员表示，组所有者则由st_gid成员表示</p>
+<p>4.5文件访问权限 </p>
+<p>所有文件类型都有访问权限，很多人认为只有普通文件有访问权限，这是一种误解 </p>
+<p>每个文件有9个访问限位，可将它们分为三类,见表4-5</p>
+<p>chmod(1)命令用于修改这9个权限位</p>
+<p>使用方式汇总：</p>
+<p>第一个规则是，我们用名字打开任一类型的文件时，对该名字中包含的每一个目录，包括它可能隐含的当前工作目录都应具有执行权限 。例如：打开文件：/usr/include/stdio.h需要对目录/、/usr和/usr/include具有执行权限</p>
+<p>对于一个文件的读权限决定了我们是否能够打开该文件进行读操作</p>
+<p>对于一个文件的写权限决定了我们是否能够打开该文件进行写操作</p>
+<p>为了在open函数中对一个文件指定O_TRUNC标志，必须对该文件具有写权限</p>
+<p>为了在一个目录中创建一个新文件，必须对该目录具有写权限和执行权限</p>
+<p>为了在一个目录中删除一个现有文件，必须对该目录具有写权限和执行权限 </p>
+<p>如果用6个exec函数中的任何一个执行某个文件，都必须对该文件具有执行权限。</p>
+<p>进程每次打开、创建或删除一个文件时，内核就进行文件访问权限测试 ：</p>
+<p>(1)若进程的有效用户ID是0（超级用户）,则允许访问</p>
+<p>(2)若进程的有效用户ID等于文件的所有者ID，那么：若所有者适当的访问权限被设置，则允许访问，否则拒绝访问。</p>
+<p>(3)若进程的有效组ID或进程的附加组ID之一等于文件的组ID，那么：若组适当的访问权限被设置，则允许访问，否则拒绝访问。</p>
+<p>(4)若其他用户适当的访问权限位被设置，则允许访问，否则拒绝访问</p>
+<p>4.6新文件和目录的所有权 </p>
+<p>新文件的用户ID设置为进程的有效用户ID</p>
+<p>(1)新文件的组ID可以是进程的有效组ID</p>
+<p>(2)新文件的组ID可以是它所在目录的组ID</p>
+<p>4.7access函数 </p>
+<p>当用open函数打开一个文件时，内核以进程的有效用户ID和有效组ID为基础执行其访问权限测试。有时，进程也希望按其实际用户ID和实际组ID来测试其访问能力 </p>
+<p>access函数是按实际用户ID和实际组ID进行访问权限测试的 </p>
+<p>函数定义：表4-6</p>
+<p>4.8umask函数： 为进程设置文件模式创建屏蔽字，并返回以前的值(屏蔽权限) </p>
+<pre><code>函数定义：
+
+
+
+进程创建一个新文件或新目录时，就一定会使用文件模式创建屏蔽字
+
+
+
+4.9chmod和fchmod函数:更改现有文件的访问权限 
+
+函数定义：
+
+
+
+chmod函数在指定的文件上进程操作，而fchmod函数则对已打开的文件进行操作
+
+为了改变一个文件的权限位，进程的有效用户ID必须等于文件的所有者ID，或者该进程必须具有超级用户权限
+
+
+
+4.10粘住位 
+
+4.11chown、fchown和lchown函数：更改文件的用户ID和组ID 
+
+函数定义：
+
+
+
+4.12文件长度 
+
+stat结构成员st_size表示以字节为单位的文件长度。此字段只对普通文件、目录文件和符号链接有意义 
+
+大多数UNIX系统提供字段st_balsize和st_blocks.其中，第一个是对文件I/O较合适的块长度，第二个是所分配的实际512字节数量
+
+文件中的空洞：是由所设置的偏移量超过文件尾端，并写了某些数据后造成的 
+
+4.13文件截短 
+
+需要在文件尾端处截去一些数据以缩短文件。 
+
+函数定义：
+
+
+
+4.14文件系统 
+
+为了说明文件链接的概念，先要介绍UNIX文件系统的基本结构。同时，了解i节点和指向i节点的目录项之间的区别也是很有益的。
+
+我们可以把一个磁盘分成一个或多个分区。每个分区可以包含一个文件系统。图4-1** 
+
+
+
+i节点是固定长度的记录项，它包含有关文件的大部分信息
+
+图：4-2较详细的柱面组的i节点和数据块
+
+
+
+节点号相同，不同文件名
+
+图：4-3
+
+
+
+
+4.15link、unlink、remove和rename 
+
+任何一个文件可以有多个目录项指向其i节点，创建一个指向现有文件的链接的方法是使用link函数
+
+函数定义：
+
+
+
+删除一个现有的目录项，可以调用unlink函数：
+
+函数定义：
+
+
+
+remove函数解除对一个文件或目录的链接
+
+函数定义：
+
+
+
+4.16符号链接 
+
+符号链接是指向一个文件的间接指针，它与上一节所述的硬链接有所不同，硬链接直接指向文件的i节点。引入符号链接的原因是为了避开硬链接的一些限制： 
+
+硬链接通常要求链接和文件位于同一文件系统中
+
+只有超级用户才能创建指向目录的硬链接
+
+对符号链接以及它指向何种对象并无任何文件系统限制，任何用户都可创建指向目录的符号链接。符号链接一般用于将一个文件或整个目录结构移到系统中的另一个位置    
+
+4.17synlink和readlink函数： 创建和读取符号链接 
+
+函数定义：
+
+
+
+4.18文件的时间 
+
+对每个文件保持有三个时间字段，表4-10
+
+注意修改时间(st_time)和更改状态时间(st_ctime)之间的区别。修改时间是文件内容最后一次被修改的时间。更改状态时间是该文件的i节点最后一次被修改的时间
+
+4.19utime函数： 一个文件的访问和修改时间可以用utime函数更改
+
+函数定义：
+
+
+
+4.20mkdir和rmdir函数： 创建和删除目录 
+
+函数定义：
+
+
+
+4.21读目录 
+
+对某个目录具有访问权限的任一用户都可读该目录，但是，为了防止文件系统产生混乱，只有内核才能写目录
+
+函数定义：
+
+
+
+4.22chdir、fchdir和getcmd函数: 更改获得当前目录 
+
+每个进程都有一个当前工作目录，此目录是搜索所有相对路径名的起点
+
+函数定义：
+
+
+
+4.23设备特殊文件 
+
+st_dev和st_rdev这两个字段经常引起混淆，有关规则：
+
+每个文件系统所在的存储设备都由其主、次设备号表示。设备号所用的数据类型是基本系统数据类型dev_t.主设备号标识设备驱动程序，有时编码为与通信的外设板；此设备号标识特定的子设备
+
+我们通常可以使用两个宏即major和minor来访问主、次设备号，大多数实现都定义了这两个宏
+
+系统中与每个文件名关联的st_dev值是文件系统的设备号，该文件系统包含了这一文件名以及其对应的i节点
+
+只有字符特殊文件和块特殊文件才有st_rdev值，此值包含实际设备的设备号
+
+4.24文件访问权限位小结 
+
+表4-12文件访问权限位小结
+
+第5章标准I/O库 
+
+5.1引言 
+
+5.2流和FILE对象 
+
+所有I/O函数都是针对文件描述符的。当打开一个文件时，即返回一个文件描述符，然后该文件描述符就用于后续的I/O操作。而对于标准I/O库，它们的操作则是围绕流进行的。当用标准I/O库打开或创建一个文件时，我们已使一个流与一个文件相关联。 
+
+对于ASCII字符集，一个字符用一个字节表示.对于国际字符集，一个字符可用多个字节表示。标准I/O文件流可用于单字节或多字节(&quot;宽&quot;)字符集。流的定向决定了所读、字符集是单字节还是多字节。当一个流最初被创建时，它并没有定向。如若在未定向的数据流上使用一个多字节I/O函数，则将该流的定向设置为宽定向的。若在为定向的流上使用一个单字节I/O流函数，则将该流的定向设置为字节定向的。只有两个函数可以改变流的定向。freopen函数清除一个流的定向；fwide函数设置流的定向 
+
+函数定义：
+
+
+
+当打开一个流时，标准I/O函数fopen返回一个指向FIFE对象 的指针。该对象通常是一个结构，它包含了标准I/O库为管理流所需要的所有信息。包括：用于实际I/O的文件描述符，指向用于该流缓冲区的指针、缓冲区的长度、当前在缓冲区中的字符数以及出错标志等等。
+
+5.3标准输入、标准输出和标准出错 
+
+对一个进程预定义了三个流 ，并且这三个流可以自动地被进程使用，它们是：标准输入、标准输出和错误输出 。
+
+文件描述符：STDIN_FILENO STDOUT_FILENO STDERR_FILENO 
+
+标准I/O流通过预定义文件指针stdinstdout和stderr加以引用&lt;stdio.h&gt;
+
+5.4缓冲 
+
+标准I/O库提供缓冲的目的是尽可能减少使用read和write调用的次数 
+
+标准I/O提供了三个类型的缓冲 ：
+
+(1)全缓冲 ：在填满标准I/O缓冲区后才进行实际I/O操作。对于驻留在磁盘上的文件通常是由标准I/O库实施全缓冲的。在一个流上执行第一次I/O操作时，相关标准I/O函数通常调用malloc获得需使用的缓冲区。
+
+术语冲洗（flush）：说明标准I/O缓冲区的写操作。缓冲区可由标准I/O例程自动冲洗，或者可以调用fflush冲洗一个流。
+
+flush有两种意思：
+
+在标准I/O库方面，flush意味着将缓冲区的内容写到磁盘上。
+
+在终端驱动程序方面，flush表示丢弃已经存在缓冲区中的数据
+
+(2)行缓冲 ：当在输入和输出中遇到换行符时，标准I/O库执行I/O操作。
+
+行缓存的两个限制：
+
+因为标准I/O库用来收集每一行的缓冲区的长度是固定的，所以只要填满了缓冲区，那么即使还没有写一个换行符，也进行I/O操作。
+
+任何时候只要通过标准I/O库要求从一个不带缓冲区的流，或者一个行缓冲区的流得到输入数据，那么就会造成冲洗所有行缓冲区输出流。
+
+(3)不带缓冲 ：标准I/O库不对字符进行缓冲存储
+
+标准出错流stderr通常是不带缓冲区的，这就使得出错信息可以尽快显示出来，而不管它们是否有一个换行符
+
+IOS C要求缓冲特征：
+
+当且仅当标准输入和标准输出并不涉及交互设备时，它们才是全缓冲的。 
+
+标准出错绝不会是全缓冲的
+
+标准出错是不带缓冲的 
+
+如若是涉及终端设备的其他流，则它们是行缓冲的；否则是全缓冲的 
+
+两个更改缓冲区类型函数定义：
+
+
+
+setbuf函数打开或关闭缓冲机制
+
+setvbuf可以精确地制定缓冲区的类型，mode：
+
+_IOFBF全缓冲
+
+_IOLBF行缓冲
+
+_IONBF不带缓冲
+
+fflush:强制冲洗流
+
+函数定义：
+
+
+
+5.5打开流
+
+函数定义：
+
+
+
+fopen打开一个指定的文件 
+
+freopen在一个指定的流上打开一个指定的文件，如若该流已经打开，则先关闭该留。若该流已经定向，则freopen清楚该定向。此函数一般用于将一个指定的文件打开为一个预定义的流：标准输入、标准输出和标准出错
+
+fdopen获取一个现有的文件描述符，并是一个标准的I/O流与该描述符相结合。此函数常用于创建管道和网络通信通道函数返回的描述符。
+
+表5-2
+
+
+
+表5-3
+
+
+
+fclose函数定义：
+
+
+
+当一个进程正常终止时，则所有带未写缓冲数据的标准I/O流都会被冲洗，所有打开的标准I/O流都会被关闭 
+
+5.6读和写流 
+
+一旦打开了流，则可在三种不同类型的非格式化I/O中进行选择 ，对其进行读写操作：
+
+(1)每次一个字符的I/ O，一次读和写一个字符，如果流是带缓冲的，则标准I/O函数会处理所有缓冲。
+
+(2)每次一行的I/O ，如果想要一次读或写一行，则使用fgets和fputs。每行都以一个换行符结束。当调用fgets时，应说明能处理的最大行数
+
+(3)直接I/O, fread和fwrite函数支持这种类型的I/O，每次I/O操作读或写某种数量的对象，而每个对象具有指定的长度。这两个函数常用于从二进制文件中每次读或写一个结构。
+
+输入函数
+
+可用于一次读一个字符
+
+函数定义：
+
+
+
+函数getchar等价于getc(stdin)。前两个函数的区别是getc可被实现为宏，而fgetc不能实现为宏。这意味着：
+
+(1)getc的参数不应道具有副作用的表达式
+
+(2)因为fgetc()一定是一个函数，所以可以得到其地址。这就允许将fgetc的地址作为一个参数传递给另一个函数。
+
+(3)调用fgetc所需的时间很可能长于调用getc，因为调用函数所需的时间长于调用宏。 
+
+这三个函数在返回下一个字符时，会将其unsigned char类型转换为int类型。说明为不带符号的理由是，如果最高位为1也不会使返回值为负。要求整数返回值的理由是，这样就可以返回所以可能的返回值再加上一个出错或已到达文件尾端的指示值。在&lt;stdio.h&gt;中的常量EOF被要求是一个负值，其值经常是-1.
+
+注意，不管是出错还是到达文件尾端，这三个函数都返回同样的值，为了区分这两种不同的情况，必须调用ferror和feof
+
+函数定义：
+
+
+
+从流中读取数据以后，可以调用ungetc将字符再压回流中
+
+函数定义：
+
+
+
+压送回流中的字符以后又可以从流中读出，但读出字符的顺序与压送回的顺序相反。应当了解，虽然ISOc允许实现支持任何次数的回送，但它要求实现提供一次只送回一个字符。我们不能期望一次能送回多个字符。
+
+输出函数
+
+函数定义：
+
+
+
+与输入函数一样，putchar(c)等效于putc(c,stdin),putc可以实现为宏，fputc不能实现为宏
+
+5.7每次一行I/O 
+
+两个函数实现每次输入一行的功能：
+
+函数定义：
+
+
+
+这两个函数都制定了缓冲区的地址，读入的行将送入其中。gets从标准输入读，而fgets则从指定的流中读。
+
+对于fgets必须制定缓冲区的长度n。此函数一直读到下一个换行符为止，但是不超过n-1个字符，读入的字符被送到缓冲区。该缓冲区以null字符结尾。如若该行的字符数超过n-1,则fgets只返回一个不完整的行，但是，缓冲区总是以null结尾。对fgets的下一次调用会继续读入该行。
+
+gets是一个不推荐使用的函数。其问题是调用者在使用gets时不能指定缓冲区的长度。这样就可能造成缓冲区溢出，写到缓冲区之后的存储空间中，从而产生不可预料的后果。 
+
+gets与fgets另一个区别是，gets并不将换行符存入缓冲区中。
+
+即使IOSC要求实现提供gets，但请使用fgets，而不要使用gets。
+
+fputs和puts提供每次输入一行的功能：
+
+函数定义：
+
+
+
+fputs将一个以null符终止的字符串写到指定的流、尾端的终止符null不写出。注意，这并不一定是每次输出一行，因为它并不要求每次在null之前一定是一个换行符。通常，在null之前是一个换行符，但并不要求总是如此。
+
+puts将一个以null符终止的字符串写到标准输出，终止符不写出。但是，puts然后又将一个换行符写到标准输出。
+
+puts并不像它所对应的gets那样不安全，但是我们还是应该避免使用它，以免需要记住它在最后是否添加了一个换行符。
+
+如果总是使用fgets和fputs，那么就会熟知在每行终止处我们必须自己处理换行符
+
+5.8标准I/O的效率 
+
+程序清单：5-15-1
+
+系统CPU时间几乎相同，原因是所有这些程序对内核提出的读、写请求数基本相同。注意，使用标准I/O的一个好处是无需考虑缓冲及最佳I/O长度的选择。在使用fgets时需要考虑最佳行长，但是与选择最佳I/O长度比较，这要方便的多。 
+
+使用getc和putc的版本与使用fgetc和fputc的版本在文本空间长度方面大体相同。？？
+
+5.9二进制I/O 
+
+函数定义：
+
+
+
+(1)读或写一个二进制数组：例如,将浮点组的第2-5个元素写至一个文件中
+
+float data[10];
+
+if(fwrite(&amp;data[2],sizeof(float),4,fp)!=4) perror(&quot;fwriteerror!&quot;);
+
+(2)读或写一个结构，例如，
+
+struct{
+
+    short count;
+
+    long total;
+
+    char name[NAMESIZE];
+
+}item;</code></pre><p>if((fwrite(&amp;item,sizeof(item),1,fp))!=1) perror(“fwriteerror!”);</p>
+<p>fread和fwrite返回读或写的对象数，对于读，如果出错或到达文件尾端，则返回数字可以少于nobj(n)。在这种情况下，应该调用ferror或feof以判断究竟应该属于哪一种情况。对于写，如果返回值少于所要求的nobj,则出错。    </p>
+<p>使用二进制I/O的基本问题是，它只能用于读在同一系统上已写的数据。</p>
+<p>5.10定位流 </p>
+<p>有三种方法定位I/O流： </p>
+<p>(1)ftell和fseek函数，这两个函数自V7以来就存在了，但是它们都假定文件的位置可以存放在一个长整型中。</p>
+<p>(2)ftello和fseeko函数，SingleUNIXSpecification引入了它们，可以使文件的偏移量不必一定使用长整型，它们使用了off_t数据类型替代了长整型。</p>
+<p>(3)fgetpos和fsetpos函数，这两个函数是由IOSC引入的。它们使用一个抽象数据类型fpos_t记录文件的位置。这种数据类型可以定义为记录一个文件位置所需的长度。 </p>
+<p>函数定义：</p>
+<p>对于一个二进制文件，其文件位置指示器是从文件开始位置开始度量,并以字节为计量单位。ftell用于二进制文件时，其返回值就是这个字节的位置。</p>
+<p>SET_SET:表示从文件的开始位置开始</p>
+<p>SET_CUR:表示从文件的当前位置开始</p>
+<p>SET_END:表示从文件的尾端开始</p>
+<p>5.11格式化I/O </p>
+<p>(1)格式化输出：执行格式化输出处理的是4个函数</p>
+<p>函数定义：</p>
+<p>printf将格式化数据写到标准输出</p>
+<p>fprintf写至指定的流</p>
+<p>sprintf将格式化的字符送入数组buf中，它在该数组的尾端自动加一个null字节，但该字节不包含在返回值中。</p>
+<p>注意，sprintf函数可能造成由buf指定的缓冲区的溢出。调用者有责任确保缓冲区足够大。为了解决这种缓冲区问题，引入了snprintf函数，在该函数中，缓冲区长度是一个显示参数，超过缓冲区尾端写入的任何字符都会被丢失。如果缓冲区足够大，snprintf函数就会返回写入缓冲区的字符数。</p>
+<p>转换说明以字符%开始，除转换说明外，格式字符中的其他字符将按原样，不经任何修改的复制输出。</p>
+<p>一个转换说明格式有4个可选部分 ：</p>
+<p>%<a href="说明转换的最小字段宽度。如果转换的字符较少，则用空格填充它。字符宽度是一个非负十进制数，或是一个型号(*)">flags</a><a href="说明参数长度：表5-6">precision</a>convtype</p>
+<p>宽度和精度字段两者皆可为*</p>
+<p>convtype:不是可选。它控制如何解释参数:表5-7</p>
+<p>下列4中printf族的变体类：</p>
+<p>函数定义：</p>
+<p>(2)格式化输入:三个scanf函数</p>
+<p>函数定义：    </p>
+<p>一个转换说明有三个可选部分： </p>
+<p>%<a href="说明转换的最小字段宽度。如果转换的字符较少，则用空格填充它。字符宽度是一个非负十进制数，或是一个型号(*)">*</a><a href="说明参数长度：表5-6">lenmodifier</a>convtype </p>
+<p>可选的前导星号(*)用于抑制转换。按照转换说明的其余部分对输入进行转换，但转换的结果并不存放在参数中。</p>
+<p><a href="说明参数长度：表5-6">lenmodifier</a>要用转换结果初始化的参数大小。由printf函数族支持的长度修饰符同样得到scanf函数族的支持</p>
+<p>5.12实现细节 </p>
+<p>标准I/O库最终都要调用I/O例程。每个标准I/O流都有一个与其相关的文件描述符，可以对一个流调用fileno函数以获其描述符</p>
+<p>函数定义：</p>
+<p>为了了解你所使用的系统的标准I/O库的实现，最好从头文件&lt;stdio.h&gt; 开始</p>
+<p>5.13临时文件 </p>
+<p>IOS C标准I/O库提供了两个函数以帮助创建临时文件：</p>
+<p>函数定义：</p>
+<p>tempnam函数产生一个与现有文件名不同的一个有效路径名字符串</p>
+<p>tmpfile创建一个临时二进制文件(类型wb+),在关闭该文件或程序结束时将自动删除这种文件</p>
+<p>5.14标准I/O的替代软件 </p>
+<p>标准I/O库并不完善。 </p>
+<p>标准I/O库的一个不足之处是效率不高 ，这与它需要复制的数据有关。当时每次一行函数fgets和fputs时，通常需要复制两次数据：一次是在内核和标准I/O缓冲之间，第二次是在标准I/O缓冲区和用户程序中的行缓冲区之间。快速I/O库(AT&amp;Tfio（3）) 避免了这一点。其方法是使读一行的函数返回指向该行的指针，而不是将该行复制到另一个缓冲区中</p>
+<p>Korn和Vo[1991] 说明了标准I/O库的另一个替代版本：sfio推广了I/O流，使其不仅可以代表文件，也可以代表存储区：可以编写处理模块，并以栈方式将其压入I/O流，这样就可以改变一个流的操作；较好的异常处理等。</p>
+<p>许多标准I/O库的实现可用于C函数库中，这种C函数库是为内存较小的系统（如嵌入式）设计的</p>
+<p>第6章系统数据文件和信息 </p>
+<p>6.1引言 </p>
+<p>UNIX系统的正常运行需要大量与系统有关的数据文件 ，例如：口令文件/etc/passwd组文件/etc/group就是经常由多种程序使用的两个文件</p>
+<p>由于历史原因，这些数据文件都是ASCII文本文件 ，并且使用标准I/O库读这些文件</p>
+<p>6.2口令文件 </p>
+<p>/etc/passwd文件格式注意 ：</p>
+<p>通常有一个用户名为root的登录项，其用户ID是0(超级用户)</p>
+<pre><code>加密口令字段包括了一个占位字符
+
+口令文件项中的某些字段可能是空的
+
+shell字段包括了一个可执行程序名，它被用作该用户的登录shell。若字段为空，则取系统默认值，通常是/bin/sh。阻止一个用户登录时，此字段为：/dev/null;阻止登录其他的两种方法：/bin/false和/bin/true
+
+使用nobody用户名的目的是，使任何人都可登录至系统
+
+提供finger(1)命令的某些UNIX系统支持注释字段中的附加信息
+
+POSIX定义了两个获取口令文件项的函数:getpwuid()getpwnam()
+
+函数定义：</code></pre><p>查看整个口令文件：getpwent() setpwent() endpwent()</p>
+<pre><code>函数定义：
+
+
+
+6.3阴影口令 
+
+加密口令是经单向加密算法处理过的用户口令副本。因为此算法是单向的，所以不能从加密口令猜测到原来的口令。 
+
+难以获得原始资料，现在，某些系统将加密口令存放在另一个通常称为阴影口令(shadowpassword)的文件中,该文件至少要包括用户名和加密口令（etc/shadow）
+
+阴影口令文件不应是一般用户可以读取的。但有少数几个程序需要存取加密口令，例如：login(1)和passwd(1)这些程序常常是设置用户ID为root的程序 
+
+另一组函数可用于访问阴影口令文件：
+
+函数定义：
+
+
+
+6.4组文件
+
+&lt;grp.h&gt;/etc/group    
+
+POSIX定义的函数来查看组名或数值组ID
+
+函数定义
+
+
+
+需要搜索组文件，则需要使用另外几个函数：
+
+函数定义
+
+
+
+6.5附加组ID 
+
+在V7中，每个用户在任何时候都只属于一个组。4.2BSD引入了附加组ID(supplementary groupID)的概念，我们不仅可以属于口令文件记录项中组ID所对应的组，也可以属于多达16个另外的组。文件访问权限检查相应被修改为：不仅将进程的有效组ID与文件的组ID相比较，而且也将所有附件组ID与文件组ID相比较。
+
+使用附加组的优点是不必显示地经常更改组。一个用户会参加多个项目，因此也就要同时属于多个组。 
+
+获取和设置附加组ID，三个函数：
+
+函数定义
+
+
+
+6.6实现的区别 
+
+表6-4
+
+
+
+6.7其他数据文件 </code></pre><p>BSD网络软件有一个记录各网络服务器所提供服务的数据文件(/etc/services),有一个记录协议信息的数据文件(/etc/protoclols),还有一个则是记录网络信息的数据文件(/etc/networks)</p>
+<pre><code>一般情况下，对于每个文件至少有三个函数：
+
+(1)get函数
+
+(2)set函数
+
+(3)end函数
+
+6.8登录账号记录 
+
+大多数UNIX系统都提供下列两个数据文件：utmp文件，它记录当前登录进系统的各个用户；wtmp文件，它跟踪各个登录和注销事件
+
+6.9系统标识 
+
+POSIX定义了uname函数 ，它返回与当前主机和操作系统有关的信息
+
+函数定义：
+
+
+
+BSD派生的系统提供了gethostname函数，它返回主机名，该名字通常就是TCP/IP网络上主机的名字
+
+函数定义:
+
+
+
+6.10时间和日期例程 
+
+time函数返回当前时间和日期：
+
+函数定义
+
+
+
+与time函数相比，gettimeofday提供了更高的分辨率（最高为微妙级）这对某些应用很重要
+
+函数定义
+
+
+
+localtime和gettime之间的区别是：localtime将日历时间转换成本地时间，而gettime将日历时间转换为国际时间
+
+函数定义
+
+
+
+函数mktime以本地时间的年、月、日等作为参数，将其转换为time_t值
+
+函数定义
+
+
+
+asctime和ctime函数产生大家都熟悉的26字节的字符串，这与data(1)命令的系统默认输出形式类似
+
+函数定义：
+
+
+
+strftime，它是非常复杂的类似printf的时间值函数&lt;Paste&gt;</code></pre>
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/OpenGL学习记录-纹理/">OpenGL学习记录-纹理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/OpenGL学习记录-纹理/" class="archive-article-date">
-  	<time datetime="2018-06-19T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/wl-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><ul>
-<li>纹理概述<br>为了能够把纹理映射(Map)到三角形上，我们需要指定三角形的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个<font color="red">纹理坐标(Texture Coordinate)</font>，用来标明该从纹理图像的哪个部分<font color="red">采样</font>（译注：采集片段颜色）。之后在图形的其它片段上进行片段<font color="red">插值</font>(Fragment Interpolation)。</li>
-</ul>
-<p>纹理坐标在x和y轴上，范围为0到1之间（注意我们使用的是2D纹理图像）。使用纹理坐标获取纹理颜色叫做<font color="red">采样(Sampling)</font>。纹理坐标起始于(0, 0)，也就是纹理图片的左下角，终始于(1, 1)，即纹理图片的右上角。</p>
-        
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/OpenGL学习记录-基础篇/">OpenGL学习记录-基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/OpenGL学习记录-基础篇/" class="archive-article-date">
-  	<time datetime="2018-06-18T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/gljc-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="教程地址："><a href="#教程地址：" class="headerlink" title="教程地址："></a>教程地址：</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
-<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><ul>
-<li>Khronos组织制定并维护的规范</li>
-<li>立即渲染模式: OpenGL3.2 开始废弃</li>
-<li>核心模式(Core-profile)</li>
-<li>扩展</li>
-<li>状态机(State Machine)</li>
-<li>对象</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-医学影像中呼吸门控的动态显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/医学影像中呼吸门控的动态显示/">医学影像中呼吸门控的动态显示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" class="archive-article-date">
-  	<time datetime="2018-05-22T09:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/menkong-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="呼吸门控概念"><a href="#呼吸门控概念" class="headerlink" title="呼吸门控概念"></a>呼吸门控概念</h2><p>由于受到呼吸运动的影响，位于胸腹部的病灶具有较大幅度的移动。在传统放疗方式中考虑呼吸运动则需要增加较大的计划靶区（PTV），导致受照正常组织显着增加。呼吸门控技术 （respiratory gating technology）是指在放射治疗过程中监测患者呼吸运动，在特定呼吸时相触发射线照射，降低正常组织受照剂量。</p>
-        
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">应用实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">ROS(Robot OS)Tutorial 学习记录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/" class="archive-article-date">
-  	<time datetime="2018-03-31T07:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/ros-1.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<p>注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。</p>
-<p>官方教程：<a href="http://wiki.ros.org/ROS/Tutorials" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials</a></p>
-<h2 id="Beginner-Level"><a href="#Beginner-Level" class="headerlink" title="Beginner Level"></a>Beginner Level</h2><h3 id="1-安装配置ROS环境"><a href="#1-安装配置ROS环境" class="headerlink" title="1. 安装配置ROS环境"></a>1. 安装配置ROS环境</h3><h4 id="安装ROS"><a href="#安装ROS" class="headerlink" title="安装ROS"></a>安装ROS</h4><ul>
-<li><p>官方推荐 ROS Kinettic Kame   <a href="http://wiki.ros.org/Distributions" target="_blank" rel="noopener">http://wiki.ros.org/Distributions</a></p>
-</li>
-<li><p>安装步骤： <a href="http://wiki.ros.org/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">http://wiki.ros.org/kinetic/Installation/Ubuntu</a></p>
-<h4 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h4></li>
-<li><p>概念 ：<font color="red">notion of combining spaces using the shell environment </font></p>
-</li>
-<li><p>检查环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> printenv | grep ROS</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source /opt/ros/kinetic/setup.bash</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -588,16 +953,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2012/12/06/UNIX环境高级编程-文件及标准IO/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2013/04/22/eSpeak安装部署记录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          eSpeak安装部署记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/11/17/深入理解Linux内核-定是测量/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入理解Linux内核-定是测量</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -612,447 +1045,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="cpp-深入理解C-11阅读笔记" class="article article-type-cpp  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/深入理解C-11阅读笔记/">深入理解C++11阅读笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/14/深入理解C-11阅读笔记/" class="archive-article-date">
-  	<time datetime="2017-12-14T06:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/cpp11-1.jpg" alt="ccss"></p>
-<p>由 王宇 原创并发布：</p>
-<h2 id="一-新标准的诞生"><a href="#一-新标准的诞生" class="headerlink" title="一 新标准的诞生"></a>一 新标准的诞生</h2><h3 id="从使用上分类方法"><a href="#从使用上分类方法" class="headerlink" title="从使用上分类方法"></a>从使用上分类方法</h3><ul>
-<li>类作者需要的</li>
-<li>库作者需要的</li>
-<li>所有人需要的</li>
-<li>部分人需要的</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-VTK与图形学相关的基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/VTK与图形学相关的基本概念/">VTK与图形学相关的基本概念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/VTK与图形学相关的基本概念/" class="archive-article-date">
-  	<time datetime="2017-10-26T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念</li>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
-        
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK7-1-1安装部署记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/VTK7-1-1安装部署记录/">VTK7.1.1安装部署记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/VTK7-1-1安装部署记录/" class="archive-article-date">
-  	<time datetime="2017-07-10T09:09:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk7-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念<ul>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-        
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kafka与Storm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/Kafka与Storm整合/">Kafka与Storm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/Kafka与Storm整合/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/kafka-storm-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="整合Storm的概念"><a href="#整合Storm的概念" class="headerlink" title="整合Storm的概念"></a>整合Storm的概念</h2><ul>
-<li><p>整合场景</p>
-<blockquote>
-<p>A spout is a source of streams. For example, <font color="red">a spout may read tuples off a Kafka Topic</font> and emit them as a stream. <font color="red">A bolt consumes input streams, process and possibly emits new streams.</font> Bolts can do anything from running functions, filtering tuples, do streaming aggregations, streaming joins, <font color="red">talk to databases</font>, and more. Each node in a Storm topology executes in parallel. A topology runs indefinitely until you terminate it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if the machines go down and messages are dropped.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JSON学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/JSON学习笔记/">JSON学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/JSON学习笔记/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/json-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="JSON-是如何存储信息"><a href="#JSON-是如何存储信息" class="headerlink" title="JSON 是如何存储信息"></a>JSON 是如何存储信息</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"book"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"01"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"Java"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"third"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"Herbert Schildt"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"07"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"C++"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"second"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"E.Balagurusamy"</span></span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>
-        
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1075,8 +1093,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

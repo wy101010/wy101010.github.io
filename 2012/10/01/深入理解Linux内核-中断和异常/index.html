@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>码农随笔</title>
+  <title>深入理解Linux内核-中断和异常 | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Linux C C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码农随笔">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="由 王宇 原创并发布 ： 第四章中断和异常  中断通常被定义为一个事件，该事件改变处理器执行的指令。这样的事件与CPU芯片内外部硬件电路产生的电信号相对应。 中断通常分为同步中断 和异步中断 ： 同步中断是当指令执行时由CPU控制单元 产生的，之所以称为同步，是因为只有在一条指令终止执行后CPU才会发出中断。 异步中断是由其他硬件设备 依照CPU时钟信号随机产生的 在intel微处理器手册中，把同">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解Linux内核-中断和异常">
+<meta property="og:url" content="http://yoursite.com/2012/10/01/深入理解Linux内核-中断和异常/index.html">
 <meta property="og:site_name" content="码农随笔">
+<meta property="og:description" content="由 王宇 原创并发布 ： 第四章中断和异常  中断通常被定义为一个事件，该事件改变处理器执行的指令。这样的事件与CPU芯片内外部硬件电路产生的电信号相对应。 中断通常分为同步中断 和异步中断 ： 同步中断是当指令执行时由CPU控制单元 产生的，之所以称为同步，是因为只有在一条指令终止执行后CPU才会发出中断。 异步中断是由其他硬件设备 依照CPU时钟信号随机产生的 在intel微处理器手册中，把同">
 <meta property="og:locale" content="cn">
+<meta property="og:updated_time" content="2019-08-13T05:59:29.213Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农随笔">
+<meta name="twitter:title" content="深入理解Linux内核-中断和异常">
+<meta name="twitter:description" content="由 王宇 原创并发布 ： 第四章中断和异常  中断通常被定义为一个事件，该事件改变处理器执行的指令。这样的事件与CPU芯片内外部硬件电路产生的电信号相对应。 中断通常分为同步中断 和异步中断 ： 同步中断是当指令执行时由CPU控制单元 产生的，之所以称为同步，是因为只有在一条指令终止执行后CPU才会发出中断。 异步中断是由其他硬件设备 依照CPU时钟信号随机产生的 在intel微处理器手册中，把同">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -197,378 +201,292 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenGL学习记录-着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-深入理解Linux内核-中断和异常" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/OpenGL学习记录-着色/">OpenGL学习记录-着色</a>
+    <h1 class="article-title" itemprop="name">
+      深入理解Linux内核-中断和异常
     </h1>
   
 
         
-        <a href="/2018/06/20/OpenGL学习记录-着色/" class="archive-article-date">
-  	<time datetime="2018-06-20T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+        <a href="/2012/10/01/深入理解Linux内核-中断和异常/" class="archive-article-date">
+  	<time datetime="2012-10-01T09:24:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-10-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blog-image/zsq-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="着色器-运行在GPU上的小程序"><a href="#着色器-运行在GPU上的小程序" class="headerlink" title="着色器 - 运行在GPU上的小程序"></a>着色器 - 运行在GPU上的小程序</h2><p>从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。</p>
-<ul>
-<li>GLSL - 包含一些针对向量和矩阵操作的有用特性。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version version_number</span></span><br><span class="line">in type in_variable_name;</span><br><span class="line">in type in_variable_name;</span><br><span class="line"></span><br><span class="line">out type out_variable_name;</span><br><span class="line"></span><br><span class="line">uniform type uniform_name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 处理输入并进行一些图形操作</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 输出处理过的结果到输出变量</span></span><br><span class="line">  out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/#more">more >></a>
-        
+        <p>由 王宇 原创并发布 ：</p>
+<p>第四章中断和异常 </p>
+<p>中断通常被定义为一个事件，该事件改变处理器执行的指令。这样的事件与CPU芯片内外部硬件电路产生的电信号相对应。</p>
+<p>中断通常分为同步中断 和异步中断 ：</p>
+<p>同步中断是当指令执行时由CPU控制单元 产生的，之所以称为同步，是因为只有在一条指令终止执行后CPU才会发出中断。</p>
+<p>异步中断是由其他硬件设备 依照CPU时钟信号随机产生的</p>
+<p>在intel微处理器手册中，把同步和异步终端分别称为异常和中断 。当然有时我们也用术语“中断信号 “指着两种类型</p>
+<p>中断是由间隔定时器和I/O设备产生的 ，例如，用户的一次按键会引起一个中断</p>
+<p>另一方面，异常是由程序的错误产生的，或者是由内核必须处理的异常条件产生的 。第一种情况下，内核通过发送一个每个Unix程序员都熟悉的信号来处理异常。第二种情况下，内核执行恢复异常需要的所有步骤，例如：缺页，或对内核服务的一个请求</p>
+<p>I/O设备产生IRQ</p>
+<p>1、中断信号的作用 </p>
+<p>中断信号提供了一种特殊的方式，使处理器转而去运行正常控制流之外的代码。当一个中断信号到达时，CPU必须停止它当前正在做的事情，并且切换到一个新的活动。 为了做到这一点，就要在内核态堆栈保存程序计数器的当前值，并把与中断类型相关的一个地址放入程序计数器。</p>
+<p>中断处理与进程切换有一个明显的差异：由中断或异常处理程序执行的代码不是一个进程。更确切地说，它是一个内核控制路径，代表中断发生时正在运行的进程。 </p>
+<p>中断处理是由内核执行的最敏感的任务之一，因为它必须满足下列约束 ：</p>
+<p>[1]当内核正打算去完成一些别的事情时，中断随时会到来。因此，内核和目标就是让中断尽可能快地处理完，尽其所能把更多的处理向后推迟 。因此，内核响应中断后需要进行的操作分为两部分：关键而紧急的部分，内核立即执行；其余推迟的部分内核随后执行。</p>
+<p>[2]因为中断随时会到来，所以内核可能正在处理其中的一个中断时，另一个中断又发生了。应该尽可能多地允许这种情况发生，因此这能维持更多的I/O设备处于忙状态。因此，中断处理程序必须编写成是相应的内核控制路径能以嵌套的方式执行。 当最后一个内核控制路径终止时，内核必须能恢复被中断进程的执行，或者，如果中断信号已导致了重新调度，内核能切换到另外的进程。</p>
+<p>[3]尽管内核在处理前一个中断时可以接受一个新的中断，但在内核代码中还是存在一些临界区 ，在临界区中，中断必须被禁止。必须尽可能地限制这样的临界区，因为根据以前的要求，内核，尤其是中断处理程序，应该在大部分时间内以开中断的方式运行 。 </p>
+<p>2、中断和异常 </p>
+<p>Intel文档把中断和异常分为以下几类：</p>
+<p>中断： </p>
+<p>可屏蔽中断 </p>
+<p>I/O设备发出的所有中断请求都产生可屏蔽中断。可屏蔽中断可以处于两种状态：屏蔽的或非屏蔽的；一个屏蔽的中断只要还是屏蔽的，控制单元就忽略它。</p>
+<p>非屏蔽中断 </p>
+<p>只有几个危急事件（如硬件故障）才引起非屏蔽中断。非屏蔽中断总是由CPU辨认。</p>
+<p>异常 ：</p>
+<p>故障 ：通常可以纠正</p>
+<p>陷阱 ：在陷阱指令执行后立即报告；主要用于是为了调试程序。在这种情况下，中断信号的作用是通知调试程序一条特殊指令已被执行。</p>
+<p>异常中止 ：发生一个严重的错误</p>
+<p>编程异常 ：在编程者发出请求时发生</p>
+<p>每个中断和异常是由0-255之间的一个数来标识。因为一些未知的原因，Intel把这个8位的无符号整数叫做一个向量。非屏蔽中断的向量和异常的向量是固定的，而可屏蔽中断的向量可以通过对中断控制器的编程来改变。 </p>
+<p>[1]IRQ和中断 </p>
+<p>每个能够发出中断请求的硬件设备控制器都有一条名为IRQ的输出线。所有现有的IRQ线都与一个名为可编程中断控制器的硬件电路的输入引脚相连 ，可编程中断控制器执行下列动作：</p>
+<p>(1)监视IRQ线，检查产生的信号</p>
+<p>(2)如果一个引发信号出现在IRQ线上：</p>
+<p>a.把接收到的引发信号转换成对应的向量</p>
+<p>b.把这个向量存放在中断控制器的一个I/O端口，从而允许CPU通过数据总线读此向量</p>
+<p>c.把引发信号发送到处理器的INTR引脚，即产生一个中断</p>
+<p>d.等待，直到CPU通过把这个中断信号写进可编程中断控制器的一个I/O端口来确认它；当这种情况发生时，清INTR线。</p>
+<p>(3)返回到第1步</p>
+<p>IRQ线是从0开始顺序编号的，因此，第一条IRQ线通常表示成IRQ0.与IRQn并联的Intel的缺省向量是n+32.</p>
+<p>可以有选择地禁止每条IRQ线。因此，可以对PIC编程从而禁止IRQ，也就是说，可以告诉PIC停止对给定的IRQ线发布中断，或者激活它们。禁止的中断时丢失不了的，它们一旦被激活，PIC就又把它们发送到CPU。这个特点被大多数中断处理程序使用，因为这允许中断处理程序逐次地处理同一类型的IRQ</p>
+<p>有选择地激活/禁止IRQ线不同于可屏蔽中断的全局屏蔽/非屏蔽</p>
+<p>[2]高级可编程中断控制器 </p>
+<p>为了充分发挥SMP体系结构的并行性，能够把中断传递给系统中的每个CPU至关重要。基于此理由，Intel从PentiumIII开始引入了一种名为I/O高级可编程控制器(I/O Advanced Programmable InterruptController APIC)</p>
+<p>图4-1</p>
+<p>[3]异常 </p>
+<p>80x86微处理器发布了大约20种不同的异常。内核必须为每种异常提供一个专门的异常处理程序。更多信息可以在Intel的技术文档中找到</p>
+<p>表4-1由异常处理程序发送的信号</p>
+<p>[4]中断描述符表 </p>
+<p>中断描述符(Interrupt Descriptor Table IDT)是一个系统表，它与每一个中断或异常向量相关联，每一个向量在表中有相应的中断或异常处理程序的入口地址。 内核在允许中断发生前，必须适当地初始化IDT</p>
+<p>图4-2</p>
+<p>任务门 (task gate)</p>
+<p>当中断信号发生时，必须取代当前进程的那个进程的TSS选择符存放在任务门中。</p>
+<p>中断门 (interupt gate)</p>
+<p>包含段选择符和中断或异常处理程序的段内偏移量。当控制权转移到一个适当的段时，处理器清IF标志，从而关闭将来会发生的可屏蔽中断</p>
+<p>陷阱门 (Trap gate)</p>
+<p>与中断门相似，只是控制权传递到一个适当的段时处理器不修改IF标志</p>
+<p>Linux利用中断门处理中断，利用陷阱门处理异常 </p>
+<p>[5]中断和异常的硬件处理 </p>
+<p>操作：参考P145-146 </p>
+<p>3、中断和异常处理程序的嵌套执行 </p>
+<p>每个中断或异常都会引起一个内核控制路径，或者说代表当前进程在内核态执行单独的指令序列。 例如：当I/O设备发出一个中断时，相应的内核控制路径的第一部分指令就是那些把寄存器的内容保存在内核堆栈的指令，而最后一部分指令就是恢复寄存器内容并让CPU返回到用户态的那些指令</p>
+<p>内核控制路径可以任意嵌套 ：一个中断处理程序可以被另一个中断处理程序“中断”，因此引起内核控制路径的嵌套执行，如图4-3所示。其结果是，对中断进行处理的内核控制路径，其最后一部分指令并不总能使当前进程返回到用户态：如果嵌套深度大于1，这些指令将执行上次被打断的内核控制路径,此时的CPU依然运行在内核态</p>
+<p>允许内核控制路径嵌套执行必须付出代价，那就是中断处理程序必须永不阻塞，换句话说，中断处理程序运行期间不能发生进程切换。 事实上，嵌套的内核控制路径恢复执行时，需要的所有数据都存放在内核态堆栈中，这个栈毫无疑义的属于当前进程。</p>
+<p>事实上，异常要么是由编程错误引起，要么是有调试程序触发。然而，“Page Fault（缺页）”异常发生在内核态。</p>
+<p>与异常形成对照的是，尽管处理中断的内核控制路径代表当前进程运行，但由I/O设备产生的中断并不引用当前进程的专有数据结构。事实上，当一个给定的中断发生时，要预测那个进程将会运行是不可能的。</p>
+<p>一个中断处理程序即可以抢占其他的中断处理程序，也可以抢占异常处理程序。相反，异常处理程序从不抢占中断处理程序。 在内核态能触发的唯一异常就是刚刚描述的缺页异常。但是，中断处理程序从不执行可以导致缺页得操作。</p>
+<p>基于以下两个主要原因，Linux交错执行内核控制路径 ：</p>
+<p>为了调高可编程中断控制器和设备控制器的吞吐量。 假定设备控制器在一条IRQ线上产生了一个信号，PIC把这个信号转换成一个外部中断，然后PIC和设备控制器保持阻塞，一直到PIC从CPU处接收到一条应答信息 。由于内核控制路径的交错执行，内核即使正在处理前一个中断，也能发送应答。</p>
+<p>为了实现一种没有优先级的中断模型 。因为每个中断处理程序都可以被另一个中断处理程序延缓，因此，在硬件设备之间没必要建立预定义优先级。这就简化了内核代码，提高了内核的可移植性</p>
+<p>4、初始化中断描述符表（IDT） </p>
+<p>[1]中断门、陷阱门、及系统门 </p>
+<p>Intel提供了三种类型的中断描述符，Linux使用与Intel稍有不同的细目分类和术语，把它们分类：</p>
+<p>中断门 </p>
+<p>用户态的进程不能访问的一个Intel中断门。所有的Linux中断处理程序都通过中断门激活，并全部限制在内核态</p>
+<p>系统门 </p>
+<p>用户态的进程可以访问的一个Intel陷阱门。通过系统门来激活三个Linux异常处理程序，它们的向量是4,5及128，因此，在用户态下，可以发布intobound及int$0x85三条汇编语言指令</p>
+<p>系统中断门 </p>
+<p>能够被用户态进程访问的Intel中断门。与向量3相关的异常处理程序是由系统中断门激活的，因此，在用户态可以使用汇编语言指令int3</p>
+<p>陷阱门 </p>
+<p>用户态的进程不能访问的一个Intel陷阱门。大部分Linux异常处理程序都通过陷阱门来激活。 </p>
+<p>任务门 </p>
+<p>不能被用户态进程访问的Intel任务门。Linux对“Double fault”异常的处理程序是由任务门激活的</p>
+<p>[2]IDT的初步初始化 </p>
+<p>当计算机还运行在实模式时，IDT被初始化并由BIOS例程使用。然而，一旦Linux接管，IDT就被移动到RAM的另一个区域，并进行第二次初始化，因此Linux没有利用任何BIOS例程 </p>
+<p>IDT存放在idt_table表中，有256个表项 </p>
+<p>5、异常处理 </p>
+<p>CPU产生的大部分异常都由Linux解释为出错条件。当其中一个异常发生时，内核就向引起异常的进程发送一个信号向它通知一个反常条件。 </p>
+<p>但是，在两种情况下，Linux利用CPU异常更有效地管理硬件资源：</p>
+<p>“Devicenotavaileble”异常与cr0寄存器的TS标志一起用来把新值装入浮点寄存器。</p>
+<p>“PageFault”异常，该异常推迟给进程分配新的页框，直到不能再推迟为止。相应的处理程序比较复杂，因为异常可能表示一个错误条件，页可能不表示一个错误条件</p>
+<p>异常处理程序有一个标准的结构，由以下三部分组成</p>
+<p>1、在内核堆栈中保存大多数寄存器的内容</p>
+<p>2、用高级的C函数处理异常</p>
+<p>3、通过ret_from_exception()函数从异常处理程序退出</p>
+<p>[1]为异常处理程序保存寄存器的值</p>
+<p>[2]进入和离开异常处理程序 </p>
+<p>6、中断处理 </p>
+<p>给当前进程发送一个Unix信号，这种方法并不适合中断</p>
+<p>中断处理依赖于中断类型： </p>
+<p>I/O中断： 某些I/O设备需要关注；相应的中断处理程序必须查询设备以确定适当的操作过程</p>
+<p>时钟中断： 某种时钟产生一个中断；这种中断告诉内核一个固定的时间间隔已经过去。这些中断大部分是作为I/O中断来处理的</p>
+<p>处理器间中断 :多处理器系统中一个CPU对另一个CPU发出一个中断</p>
+<p>[1]I/O中断处理 </p>
+<p>I/O中断处理程序必须做够灵活以给多个设备同时提供服务。例如在PCI总线的体系结构中，几个设备可以共享同一个IRQ线。这就意味着仅仅中断向量不能说明所有问题，同一个向量43即分配给USB端口，也分配给声卡。</p>
+<p>中断处理程序的灵活性是以两种不同的方式实现： </p>
+<p>IRQ共享： </p>
+<p>中断处理程序执行多个中断服务例程(interrupt servicer outine,ISR),每个ISR是一个与单独设备（共享IRQ线）相关的函数。因为不可能预先知道那个特定的设备产生IRQ，因此，每个ISR都被执行，以验证它的设备是否需要关注；如果是，当前设备产生中断时，就执行需要执行的所有操作</p>
+<p>IRQ动态分配： </p>
+<p>一条IRQ线在可能的最后时刻才与一个设备驱动程序相关联</p>
+<p>当一个中断发生时，并不是所有的操作都具有相同的急迫性。事实上，把所有的操作都放进中断处理程序本身并不合适。需要时间长的、非重要的操作应该推后，因为当一个中断处理程序正在运行时，相应的IRQ线上发出的信号就被暂时忽略。更重要的是，中断处理程序是代表进程执行的，它代表的进程必须总处于TASK_RUNNING状态，否则，就可能出现系统僵死情况。因此，中断处理程序不能执行任何阻塞过程，如磁盘I/O操作。因此，Linux把紧随中断要执行的操作分为三类：</p>
+<p>紧急的</p>
+<p>非紧急的</p>
+<p>非紧急可延迟的</p>
+<p>所有的I/O中断处理程序都执行四个相同的基本操作 ：</p>
+<p>(1)在内核态堆栈中保存IRQ的值和寄存器的内容。</p>
+<p>(2)为正在给IRQ线服务的PIC发送一个应答，这将允许PIC进一步发送中断</p>
+<p>(3)执行共享这个IRQ的所有设备的中断服务例程(ISR)</p>
+<p>(4)跳到ret_from_intr()的地址终止</p>
+<p>**图4-4I/O中断处理 </p>
+<p>[2]中断向量 </p>
+<p>**表4-2，物理IRQ可以分配给32-238范围内的任何向量。不过，Linux使用向量128实现系统调用。</p>
+<p>为IRQ可配置设备选择一条线有三种方式：</p>
+<p>设置一些硬件跳接器</p>
+<p>安装设备时执行一个实用程序</p>
+<p>在系统启动时执行一个硬件协议</p>
+<p>内核必须在启动中断前发现IRQ号与I/O设备之间的对应，否则，内核在不知道哪个向量对应哪个设备的情况下，怎么能处理来自这个设备的信号呢？</p>
+<p>[3]IRQ数据结构 </p>
+<p>每个中断向量都有它自己的irq_desc_t描述符 ，参考表4-4</p>
+<p>图4-5IRQ描述符</p>
+<p>[4]IRQ在多处理器系统上的分发 </p>
+<p>Linux遵循对称多处理器模型(SMP);这就意味着，内核从本质上对任何一个CPU都不应该有偏爱。因而，内核视图以轮转的方式把来自硬件设备的IRQ信号在所有CPU之间分发。因此所有CPU服务于I/O中断的执行时间片几乎相同</p>
+<p>简而言之，当硬件设备产生了一个中断信号时，多APIC系统就选择其中一个CPU，并把该信号传递给相应的本地APIC，本地APIC又依次中断它的CPU。这个事件不通报给其他所有的CPU</p>
+<p>多APIC系统初始化后无需内核费心。遗憾的是在有些情况下，硬件不能以公平的方式在微处理器之间成功地分配中断，在必要的时候，Linux2.6利用叫做krqd的特殊内核线程来纠正对CPU进行的IRQ的自动分配</p>
+<p>内核线程为多APIC系统开发了一种优良特性，叫做CPU的IRQ亲和力</p>
+<p>[5]多种类型的内核栈 </p>
+<p>如果thread_union结构的大小为8KB，那么当前进程的内核栈被用于所有类型的内核控制路径：异常、中断和可延迟的函数。相反，如果thread_union结构的大小为4KB,内核就使用三种类型的内核栈：异常栈、硬中断请求栈、软中断请求栈</p>
+<p>[6]为中断处理程序保存寄存器的值 </p>
+<p>当CPU接收一个中断时，就开始执行相应的中断处理程序代码，该代码的地址存放在IDT的相应门中，与其他上下文切换一样，需要保存寄存器这一点给内核开发者留下有点复杂的编码工作，因为寄存器的保存和恢复必须用汇编语言代码，但是，在这些操作内部，又期望处理器从C函数调用的返回。</p>
+<p>保存寄存器是中断处理程序做的第一件事情</p>
+<p>保存寄存器的值以后，栈顶的地址被存放到eax寄存器中，然后中断处理程序调用do_IRQ（）函数。执行do_IRQ()的ret执行时，控制转到ret_from_intr()</p>
+<p>[7]do_IRQ()函数 </p>
+<p>调用do_IRQ()函数执行与一个中断相关的所有中断服务例程:操作参考p166</p>
+<p>[8]__do_IRQ()函数 </p>
+<p>接受IRQ号(通过eax寄存器)和指向pt_regs结构的指针(通过edx寄存器，用户态寄存器的值已经存在其中)作为它的参数</p>
+<p>[9]挽救丢失的中断 </p>
+<p>在多处理器系统上事情可能不会这么顺利。</p>
+<p>假定CPU有一条激活的IRQ线。一个硬件设备出现在这条IRQ线程上，且多APIC系统选择我们的CPU处理中断。在CPU应答中断前，这条IRQ线被另一个CPU屏蔽掉；结果，IRQ_DISABLED标志被设置。随后，我们的CPU开始处理挂起的中断；因此，do_IRQ()函数应答这个中断，然后返回，但没有执行中断服务例程，因为它发现IRQ_DISABLED标志被设置了，因此，在IRQ线禁用之前出现的中断丢失了。</p>
+<p>为了应付这种局面，内核用来激活IRQ线的enable_irq()函数先检查是否发生了中断丢失，如果是，该函数就强迫硬件让丢失的中断再产生一次</p>
+<p>[10]中断服务例程 </p>
+<p>一个中断服务例程(ISR)实现一种特定设备的操作。当中断处理程序必须执行ISR时，它就调用hand_IRQ_event()函数。步骤：参考p170</p>
+<p>[11]IRQ线的动态分配 </p>
+<p>在激活一个准备利用IRQ线的设备之前，其相应的驱动程序调用request_irq()。这个函数建立一个新的irqaction函数，并用参数值初始化它。然后调用setup_irq()函数把这个描述符插入到适合的IRQ链表。如果setup_irq()返回一个出错码，设备驱动程序中止操作，这意味着IRQ线已有另一个设备所使用，而这个设备不允许中断共享。当设备操作结束时，驱动程序调用free_irq()函数从IRQ链表中删除这个描述符，并释放相应的内存区。</p>
+<p>request_irq()</p>
+<p>free_irq()</p>
+<p>[12]处理器间中断处理 </p>
+<p>处理器间中断允许一个CPU向系统中的其他CPU发送中断信号。</p>
+<p>Linux定义了三种处理器间中断：</p>
+<p>CALL_FUNCTION_VECTOR:发送所有的CPU(不包含发送者)，强制这些CPU运行发送者传递过来的函数。相应的中断处理程序叫做call_function_interrupe()</p>
+<p>RESCHEDULE_VECTOR:当一个CPU接收这种类型的中断时，相应的处理程序限定自己来应答中断。</p>
+<p>INVALIDATE_TLB_VECTOR:发往所有的CPU(不包含发送者)，强制它们的转换后援缓冲器(TLB)变为无效</p>
+<p>处理器间中断处理程序的汇编语言代码是由BUILD_INTERRUPTE宏产生的</p>
+<p>7、软中断及tasklet </p>
+<p>在由内核执行的几个任务之间有些不是紧急的：在必要情况下它们可以延迟一段时间。把可延迟中断从中断处理程序中抽出来有助于使内核保持较短的响应时间。这对于那些期望它们的中断能在几毫秒内得到处理的“急迫”应用来说是非常重要的 </p>
+<p>软中断和tasklet有密切的关系，tasklet是在软中断之上实现。 事实上，出现在内核代码中的术语“软中断(softirq)”常常表示可延迟函数的所有种类。另外一种被广泛使用的术语是“中断上下文”：表示内核当前正在执行一个中断处理程序或一个可延迟的函数。</p>
+<p>软中断的分配是静态的（即在编译时定义），而tasklet的分配和初始化可以在运行时进行 （例如：安装一个内核模块时）。</p>
+<p>软中断（即便是同一种类型的软中断)可以并发地运行在多个CPU上。 因此，软中断是可重入函数 而且必须明确地使用自旋保护其数据结构。tasklet不必担心这些问题，因为内核对tasklet的执行进行了更加严格的控制。相同类型的tasklet总是被串行地执行， 换句话说就是：不能在两个CPU上同时运行相同类型的taklet .但是，类型不同的tasklet可以在几个CPU上并发执行。tasklet的串行化使tasklet函数不必是可重入的 ，因此简化了设备驱动程序开发者的工作。</p>
+<p>（重入即表示重复进入，它意味着这个函数可以被中断）</p>
+<p>可延迟函数上可以执行四种操作：</p>
+<p>初始化 ：</p>
+<p>定义一个新的可延迟函数；这个操作通常在内核自身初始化或加载模块时进行。</p>
+<p>激活 ：</p>
+<p>标记一个可延迟函数为“挂起”（在可延迟函数的下一轮调度中执行）。激活可以在任何时候进行（即使正在处理中断）</p>
+<p>屏蔽 ：</p>
+<p>有选择地屏蔽一个可延迟函数，这样，即使它被激活，内核也不执行它。</p>
+<p>执行 ：</p>
+<p>执行一个挂起的可延迟函数和同类型的其他所有挂起的可延迟函数；执行是在特定的时间进行的。</p>
+<p>激活和执行不知何故总是捆绑在一起：由给定CPU激活的一个可延迟函数必须在同一个CPU上执行</p>
+<p>软中断： </p>
+<p>Linux2.6使用有限个软中断。在很多场合，tasklet是足够用的，且更容易编写，因为tasklet不必是可重入的。</p>
+<p>目前只定义了六种软中断 ：表4-9**</p>
+<p>一个软中断的下标决定了它的优先级：低下标意味着高优先级，因为软中断函数将从下标0开始执行</p>
+<p>[1]软中断所使用的数据结构 </p>
+<p>表示软中断的主要数据结构是softirq_veq数组，改数组包含类型为softirq_action 的32个元素。一个软中断的优先级是相应的softeirq_aciton元素的数组内的下标</p>
+<p>softirq_action数据结构包含两个字段：指向软中断函数的一个action指针和指向软中断函数需要的通用数据结构的data指针</p>
+<p>另外一个关键的字段是32位的preempt_count字段，用它来跟踪内核抢占和内核控制路径的嵌套，该字段存放在每个进程描述符的thread_info字段中</p>
+<p>[2]处理软中断 </p>
+<p>open_softirq()函数 处理软中断的初始化。它使用三个参数：软中断下标、指向要执行的软中断函数的指针及指向可能由软中断函数使用的数据结构的指针。</p>
+<p>raise_softirq()函数 用来激活软件中断，操作：参考p177</p>
+<p>[3]do_softirq()函数 </p>
+<p>如果在这样的一个检查点(local_softirq_pending()不为0)检测到挂起的软中断，内核就调用do_softirq()来处理它们。操作：参考p178</p>
+<p>[4]__do_softirq() </p>
+<p><strong>do_softirq()函数读取本地CPU的软中断掩码并执行与每个设置位相关的可延迟函数。由于正在执行一个软中断函数时可能出现新挂起的软中断，所以为了保证可延迟函数的低延迟性，</strong>do_softirq()一直运行到执行完所有挂起的软中断，但是，这种机制可能迫使<strong>do_softirq()运行很长一段时间，因而大大延迟用户态进程的执行。因此，</strong>do_softirq()只做固定次数的循环，然后就返回。如果还有其余挂起的软中断，内核线程ksoftirqd将会在预期的时间内处理它们。</p>
+<p>[5]ksoftirqd内核线程 </p>
+<p>在最近的内核版中，每个CPU都有自己的ksoftirqd/n内核线程。每个ksoftirqd/n内核线程都运行ksoftirqd()函数·</p>
+<p>tasklet: </p>
+<p>tasklet是I/O驱动程序中实现可延迟函数的首选方法 。tasklet建立在两个叫做HI_SOFTIRQ 和TASKLET_SOFTIRQ 的软中断之上。几个tasklet可以与同一个软中断相关联，每个tasklet执行自己的函数。两个软中断之间没有真正的区别 ，只不过do_softirq()先执行HI_SOFTIRQ的tasklet,后执行TASKLET_SOFTIRQ的tasklet</p>
+<p>tasklet描述符是一个tasklet_struct类型 的数据结构：表4-11**</p>
+<p>两个标志：</p>
+<p>TASKLET_STATE_SCHED</p>
+<p>该标志被设置时，表示tasklet是挂起的（曾被调度执行）；也意味着tasklet描述符被插入到tasklet_vec和task_hi_vec数组的其中国一个链表中</p>
+<p>TASKLET_STATE_RUN</p>
+<p>该标志设置时，表示tasklet正在被执行，在单处理器系统上不使用这个标志，因为没有必要检查特定的tasklet是否在运行</p>
+<p>让我们假定，你正在写一个设备驱动程序，且想使用tasklet，应该做什么呢？首先，你应该分配一个新的tasklet_struct数据结构，并调用tasklet_init()初始化它；该函数接收的参数为tasklet描述符的地址、tasklet函数的地址和它的可选整型参数。</p>
+<p>调用tasklet_disable_nosync()或tasklet_disable()可以选择性地禁止tasklet。这两个函数都增加tasklet描述符的count字段，但是后一个函数只有在tasklet函数已经运行的实例结束后才返回。为了重新激活你的tasklet，调用tasklet_enable()</p>
+<p>为了激活tasklet,你应该根据自己tasklet需要的优先级，调用tasklet_schedule() 函数或tasklet_hi_schedule()函数，其中每个都执行下列操作：</p>
+<p>(1)检查TASKLET_STATE_SCHED标志；如果设置则返回(tasklet已经被调度)</p>
+<p>(2)调用local_irq_save保存IF标志的状态并禁用本地中断</p>
+<p>(3)在tasklet_vec[n]或tasklet_hi_vec[n]指向的链表的起始处增加tasklet描述符(n表示本地CPU的逻辑号)</p>
+<p>(4)调用raise_softirq_irqoff()激活TASKLET_SOFTIRQ或HI_SOFTIRQ类型的软中断</p>
+<p>(5)调用local_irq_restor恢复IF标志的状态</p>
+<p>让我们看一下tasklet如何执行，软中断函数一旦被激活，就由do_softirq()函数执行。与HI_SOFTIRQ软中断相关的软中断函数叫做tasklet_hi_action(),而与TASKLET_SOFTIRQ相关的函数叫做tasklet_action().这两个函数非常相似，它们都执行下列操作：</p>
+<p>(1)禁用本地中断</p>
+<p>(2)获得本地CPU的逻辑号n</p>
+<p>(3)把tasklet_vec[n]或tasklet_hi_vec[n]指向的链表的地址存入局部变量list</p>
+<p>(4)把tasklet_vec[n]或tasklet_hi_vec[n]的值赋为NULL,因此，已调度的tasklet描述符的链表被清空</p>
+<p>(5)打开本地中断</p>
+<p>(6)对于list指向的链表中的每个tasklet描述符</p>
+<p>注意，除非tasklet函数重新激活自己，否则，tasklet的每次激活至多触发tasklet函数的一次执行</p>
+<p>8、工作队列 </p>
+<p>允许内核函数（非常像可延迟函数）被激活，而且稍后由一种叫做工作者线程 (workerthread)的特殊内核线程来执行。尽管可延迟函数和工作队列非常相似，但是它们的区别还是很大的。主要区别在于：可延迟函数运行在中断上下文中，而工作队列中的函数运行在进程上下文中。 执行可阻塞函数(例如：需要访问磁盘数据块的函数)的唯一方式是在进程上下文中运行。在中断上下文中不可能发生进程切换。可延迟函数的工作队列中的函数都不能访问进程的用户态地址空间。事实上，可延迟函数被执行时不可能有任何正在运行的进程。另一方面，工作队列中的函数是由内核线程来执行的，因此根本不存在它要访问的用户态地址空间</p>
+<p>[1]工作队列的数据结构 </p>
+<p>workqueue_struct描述符表4-12 </p>
+<p>[2]工作队列函数 </p>
+<p>creat_workqueue(“foo”)函数 ，返回新创建工作队列的workqueue_struct描述符的地址</p>
+<p>queue_work()把函数插入工作队列 ，步骤：参考p184</p>
+<p>每个工作者线程在worker_thead()函数内部不断地执行循环操作，因而，线程在绝大多数时间里处于睡眠状态并等待某些工作被插入队列。工作线程一旦被唤醒就调用run_workqueue()函数，该函数从工作者线程的工作列链表中删除所有work_struct描述符并执行相应的挂起函数。由于工作队列函数可以阻塞，因此，可以让工作者线程睡眠，甚至可以让它迁移到另一个CPU上恢复执行</p>
+<p>有些时候，内核必须等待工作队列中的所有挂起函数执行完毕。flush_workqueue()函数接收workqueue_struct描述符的地址，并且在工作队列中的所有挂起函数结束之前使调用进程一直处于阻塞状态</p>
+<p>[3]预定义工作队列 </p>
+<p>在绝大多数情况下，为了运行一个函数而创建整个工作者线程开销太大了 。因此，内核引入叫做events的预定义工作队列，所有的内核开发者都可以随意使用它。预定义工作队列只是一个包括不同内核层函数和I\O驱动程序的标准工作队列，它的workqueue_struct描述符存放在keventd_wq数组中</p>
+<p>9、从中断和异常返回 </p>
+<p>尽管终止阶段的主要目的很清楚，即恢复某个程序的执行，但是，在这样做之前，还需要考虑几个问题：</p>
+<p>内核控制路径并发执行的数量</p>
+<p>挂起进程的切换请求</p>
+<p>挂起的信号</p>
+<p>单步执行模式</p>
+<p>[1]入口点</p>
+<p>[2]恢复内核控制路径</p>
+<p>[3]检查内核抢占</p>
+<p>[4]恢复用户态程序</p>
+<p>[5]检查重调度标志</p>
+<p>[6]处理挂起信号，虚拟8086模式和单步执行</p>
+
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/OpenGL学习记录-纹理/">OpenGL学习记录-纹理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/OpenGL学习记录-纹理/" class="archive-article-date">
-  	<time datetime="2018-06-19T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/wl-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><ul>
-<li>纹理概述<br>为了能够把纹理映射(Map)到三角形上，我们需要指定三角形的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个<font color="red">纹理坐标(Texture Coordinate)</font>，用来标明该从纹理图像的哪个部分<font color="red">采样</font>（译注：采集片段颜色）。之后在图形的其它片段上进行片段<font color="red">插值</font>(Fragment Interpolation)。</li>
-</ul>
-<p>纹理坐标在x和y轴上，范围为0到1之间（注意我们使用的是2D纹理图像）。使用纹理坐标获取纹理颜色叫做<font color="red">采样(Sampling)</font>。纹理坐标起始于(0, 0)，也就是纹理图片的左下角，终始于(1, 1)，即纹理图片的右上角。</p>
-        
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/OpenGL学习记录-基础篇/">OpenGL学习记录-基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/OpenGL学习记录-基础篇/" class="archive-article-date">
-  	<time datetime="2018-06-18T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/gljc-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="教程地址："><a href="#教程地址：" class="headerlink" title="教程地址："></a>教程地址：</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
-<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><ul>
-<li>Khronos组织制定并维护的规范</li>
-<li>立即渲染模式: OpenGL3.2 开始废弃</li>
-<li>核心模式(Core-profile)</li>
-<li>扩展</li>
-<li>状态机(State Machine)</li>
-<li>对象</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-医学影像中呼吸门控的动态显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/医学影像中呼吸门控的动态显示/">医学影像中呼吸门控的动态显示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" class="archive-article-date">
-  	<time datetime="2018-05-22T09:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/menkong-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="呼吸门控概念"><a href="#呼吸门控概念" class="headerlink" title="呼吸门控概念"></a>呼吸门控概念</h2><p>由于受到呼吸运动的影响，位于胸腹部的病灶具有较大幅度的移动。在传统放疗方式中考虑呼吸运动则需要增加较大的计划靶区（PTV），导致受照正常组织显着增加。呼吸门控技术 （respiratory gating technology）是指在放射治疗过程中监测患者呼吸运动，在特定呼吸时相触发射线照射，降低正常组织受照剂量。</p>
-        
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">应用实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">ROS(Robot OS)Tutorial 学习记录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/" class="archive-article-date">
-  	<time datetime="2018-03-31T07:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/ros-1.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<p>注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。</p>
-<p>官方教程：<a href="http://wiki.ros.org/ROS/Tutorials" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials</a></p>
-<h2 id="Beginner-Level"><a href="#Beginner-Level" class="headerlink" title="Beginner Level"></a>Beginner Level</h2><h3 id="1-安装配置ROS环境"><a href="#1-安装配置ROS环境" class="headerlink" title="1. 安装配置ROS环境"></a>1. 安装配置ROS环境</h3><h4 id="安装ROS"><a href="#安装ROS" class="headerlink" title="安装ROS"></a>安装ROS</h4><ul>
-<li><p>官方推荐 ROS Kinettic Kame   <a href="http://wiki.ros.org/Distributions" target="_blank" rel="noopener">http://wiki.ros.org/Distributions</a></p>
-</li>
-<li><p>安装步骤： <a href="http://wiki.ros.org/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">http://wiki.ros.org/kinetic/Installation/Ubuntu</a></p>
-<h4 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h4></li>
-<li><p>概念 ：<font color="red">notion of combining spaces using the shell environment </font></p>
-</li>
-<li><p>检查环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> printenv | grep ROS</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source /opt/ros/kinetic/setup.bash</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -588,16 +506,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2012/10/01/深入理解Linux内核-中断和异常/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2012/10/22/深入理解Linux内核-信号/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          深入理解Linux内核-信号
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/09/23/深入理解Linux内核-文件系统/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入理解Linux内核-文件系统</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -612,447 +598,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="cpp-深入理解C-11阅读笔记" class="article article-type-cpp  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/深入理解C-11阅读笔记/">深入理解C++11阅读笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/14/深入理解C-11阅读笔记/" class="archive-article-date">
-  	<time datetime="2017-12-14T06:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/cpp11-1.jpg" alt="ccss"></p>
-<p>由 王宇 原创并发布：</p>
-<h2 id="一-新标准的诞生"><a href="#一-新标准的诞生" class="headerlink" title="一 新标准的诞生"></a>一 新标准的诞生</h2><h3 id="从使用上分类方法"><a href="#从使用上分类方法" class="headerlink" title="从使用上分类方法"></a>从使用上分类方法</h3><ul>
-<li>类作者需要的</li>
-<li>库作者需要的</li>
-<li>所有人需要的</li>
-<li>部分人需要的</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-VTK与图形学相关的基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/VTK与图形学相关的基本概念/">VTK与图形学相关的基本概念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/VTK与图形学相关的基本概念/" class="archive-article-date">
-  	<time datetime="2017-10-26T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念</li>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
-        
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK7-1-1安装部署记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/VTK7-1-1安装部署记录/">VTK7.1.1安装部署记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/VTK7-1-1安装部署记录/" class="archive-article-date">
-  	<time datetime="2017-07-10T09:09:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk7-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念<ul>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-        
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kafka与Storm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/Kafka与Storm整合/">Kafka与Storm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/Kafka与Storm整合/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/kafka-storm-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="整合Storm的概念"><a href="#整合Storm的概念" class="headerlink" title="整合Storm的概念"></a>整合Storm的概念</h2><ul>
-<li><p>整合场景</p>
-<blockquote>
-<p>A spout is a source of streams. For example, <font color="red">a spout may read tuples off a Kafka Topic</font> and emit them as a stream. <font color="red">A bolt consumes input streams, process and possibly emits new streams.</font> Bolts can do anything from running functions, filtering tuples, do streaming aggregations, streaming joins, <font color="red">talk to databases</font>, and more. Each node in a Storm topology executes in parallel. A topology runs indefinitely until you terminate it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if the machines go down and messages are dropped.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JSON学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/JSON学习笔记/">JSON学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/JSON学习笔记/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/json-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="JSON-是如何存储信息"><a href="#JSON-是如何存储信息" class="headerlink" title="JSON 是如何存储信息"></a>JSON 是如何存储信息</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"book"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"01"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"Java"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"third"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"Herbert Schildt"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"07"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"C++"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"second"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"E.Balagurusamy"</span></span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>
-        
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1075,8 +646,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

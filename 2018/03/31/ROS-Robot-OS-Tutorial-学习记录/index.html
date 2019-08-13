@@ -6,16 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>码农随笔</title>
+  <title>ROS(Robot OS)Tutorial 学习记录 | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Linux C C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码农随笔">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="由  王宇 原创并发布 ： 注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。 官方教程：http://wiki.ros.org/ROS/Tutorials Beginner Level1. 安装配置ROS环境安装ROS 官方推荐 ROS Kinettic Kame   http://wiki.ros.org/Dist">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS(Robot OS)Tutorial 学习记录">
+<meta property="og:url" content="http://yoursite.com/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/index.html">
 <meta property="og:site_name" content="码农随笔">
+<meta property="og:description" content="由  王宇 原创并发布 ： 注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。 官方教程：http://wiki.ros.org/ROS/Tutorials Beginner Level1. 安装配置ROS环境安装ROS 官方推荐 ROS Kinettic Kame   http://wiki.ros.org/Dist">
 <meta property="og:locale" content="cn">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/ros-1.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/ros-11.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/ros-2.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/ros-3.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/ros-4.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/ros-55.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/ros-5.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/ros-6.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/ros-7.jpg">
+<meta property="og:updated_time" content="2019-08-13T08:38:11.231Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农随笔">
+<meta name="twitter:title" content="ROS(Robot OS)Tutorial 学习记录">
+<meta name="twitter:description" content="由  王宇 原创并发布 ： 注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。 官方教程：http://wiki.ros.org/ROS/Tutorials Beginner Level1. 安装配置ROS环境安装ROS 官方推荐 ROS Kinettic Kame   http://wiki.ros.org/Dist">
+<meta name="twitter:image" content="http://yoursite.com/assets/blog-image/ros-1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -197,343 +211,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenGL学习记录-着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/OpenGL学习记录-着色/">OpenGL学习记录-着色</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/20/OpenGL学习记录-着色/" class="archive-article-date">
-  	<time datetime="2018-06-20T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/zsq-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="着色器-运行在GPU上的小程序"><a href="#着色器-运行在GPU上的小程序" class="headerlink" title="着色器 - 运行在GPU上的小程序"></a>着色器 - 运行在GPU上的小程序</h2><p>从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。</p>
-<ul>
-<li>GLSL - 包含一些针对向量和矩阵操作的有用特性。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version version_number</span></span><br><span class="line">in type in_variable_name;</span><br><span class="line">in type in_variable_name;</span><br><span class="line"></span><br><span class="line">out type out_variable_name;</span><br><span class="line"></span><br><span class="line">uniform type uniform_name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 处理输入并进行一些图形操作</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 输出处理过的结果到输出变量</span></span><br><span class="line">  out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/OpenGL学习记录-纹理/">OpenGL学习记录-纹理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/OpenGL学习记录-纹理/" class="archive-article-date">
-  	<time datetime="2018-06-19T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/wl-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><ul>
-<li>纹理概述<br>为了能够把纹理映射(Map)到三角形上，我们需要指定三角形的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个<font color="red">纹理坐标(Texture Coordinate)</font>，用来标明该从纹理图像的哪个部分<font color="red">采样</font>（译注：采集片段颜色）。之后在图形的其它片段上进行片段<font color="red">插值</font>(Fragment Interpolation)。</li>
-</ul>
-<p>纹理坐标在x和y轴上，范围为0到1之间（注意我们使用的是2D纹理图像）。使用纹理坐标获取纹理颜色叫做<font color="red">采样(Sampling)</font>。纹理坐标起始于(0, 0)，也就是纹理图片的左下角，终始于(1, 1)，即纹理图片的右上角。</p>
-        
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/OpenGL学习记录-基础篇/">OpenGL学习记录-基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/OpenGL学习记录-基础篇/" class="archive-article-date">
-  	<time datetime="2018-06-18T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/gljc-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="教程地址："><a href="#教程地址：" class="headerlink" title="教程地址："></a>教程地址：</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
-<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><ul>
-<li>Khronos组织制定并维护的规范</li>
-<li>立即渲染模式: OpenGL3.2 开始废弃</li>
-<li>核心模式(Core-profile)</li>
-<li>扩展</li>
-<li>状态机(State Machine)</li>
-<li>对象</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-医学影像中呼吸门控的动态显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/医学影像中呼吸门控的动态显示/">医学影像中呼吸门控的动态显示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" class="archive-article-date">
-  	<time datetime="2018-05-22T09:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/menkong-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="呼吸门控概念"><a href="#呼吸门控概念" class="headerlink" title="呼吸门控概念"></a>呼吸门控概念</h2><p>由于受到呼吸运动的影响，位于胸腹部的病灶具有较大幅度的移动。在传统放疗方式中考虑呼吸运动则需要增加较大的计划靶区（PTV），导致受照正常组织显着增加。呼吸门控技术 （respiratory gating technology）是指在放射治疗过程中监测患者呼吸运动，在特定呼吸时相触发射线照射，降低正常组织受照剂量。</p>
-        
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">应用实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">ROS(Robot OS)Tutorial 学习记录</a>
+    <h1 class="article-title" itemprop="name">
+      ROS(Robot OS)Tutorial 学习记录
     </h1>
   
 
@@ -564,11 +249,258 @@
 
 </li>
 </ul>
-        
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/#more">more >></a>
-        
+<a id="more"></a>
+
+<h4 id="创建ROS工作空间"><a href="#创建ROS工作空间" class="headerlink" title="创建ROS工作空间"></a>创建ROS工作空间</h4><ul>
+<li><p>Build空间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mkdir -p ~/catkin_ws/src</span><br><span class="line"><span class="meta">$</span> cd ~/catkin_ws</span><br><span class="line"><span class="meta">$</span> catkin_make</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>catkin : <a href="http://wiki.ros.org/catkin" target="_blank" rel="noopener">http://wiki.ros.org/catkin</a></p>
+</li>
+<li><p>设置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source devel/setup.bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确认环境变量： $ROS_PACKAGE_PAHT<br>/home/youruser/catkin_ws/src:/opt/ros/kinetic/share</p>
+<h3 id="2-ROS文件系统"><a href="#2-ROS文件系统" class="headerlink" title="2. ROS文件系统"></a>2. ROS文件系统</h3><h4 id="预备"><a href="#预备" class="headerlink" title="预备"></a>预备</h4><ul>
+<li>安装教程预先准备的Package<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get install ros-&lt;distro&gt;-ros-tutorials</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Overview-文件系统概念"><a href="#Overview-文件系统概念" class="headerlink" title="Overview 文件系统概念"></a><font color="red">Overview 文件系统概念</font></h4><ul>
+<li><p>Package : Package 组织ROS单元代码的抽象组织结构，每个Package能够包含库，可以执行文件，脚本和其他部分</p>
+</li>
+<li><p>Manifests（package.xml) : Manifest是对Package的描述，它定义Package的依赖，明确Package的元数据，像版本，License等。</p>
+<h4 id="文件系统工具"><a href="#文件系统工具" class="headerlink" title="文件系统工具"></a>文件系统工具</h4></li>
+<li><p>使用 rospack - 得到Packages中的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rospack find [package_name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 roscd - 更改目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> roscd [locationname [/subdir]]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>roscd log - 切换到日志目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> roscd log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 rosls - 查询目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosls [locationname [/subdir]]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="Tab-补全"><a href="#Tab-补全" class="headerlink" title="Tab 补全"></a>Tab 补全</h4><h3 id="3-创建ROS-Package"><a href="#3-创建ROS-Package" class="headerlink" title="3.创建ROS Package"></a>3.创建ROS Package</h3><ul>
+<li><p>Package 由什么组成的？</p>
+<ul>
+<li>package.xml 提供Package的元数据描述</li>
+<li>catkin使用的CMakeList.txt</li>
+<li>每个Package必须有它自己的目录</li>
+</ul>
+</li>
+<li><p>在 catkin工作空间中的Package<br><img src="/assets/blog-image/ros-11.jpg" alt></p>
+</li>
+<li><p>创建catkin Package<br>使用catkin_create_pkg脚本创建 catkin Package</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd ~/catkin_ws/src</span><br><span class="line"><span class="meta">$</span> catkin_create_pkg beginner_tutorials std_msgs rospy roscpp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译和设置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd ~/catkin_ws</span><br><span class="line"><span class="meta">$</span> catkin_make</span><br><span class="line"><span class="meta">$</span> . ~/catkin_ws/devel/setup.bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>package 依赖</p>
+</li>
+<li><p>自定义你的Package</p>
+</li>
+</ul>
+<h3 id="4-编译ROS-Package"><a href="#4-编译ROS-Package" class="headerlink" title="4. 编译ROS Package"></a>4. 编译ROS Package</h3><h4 id="编译-Packages"><a href="#编译-Packages" class="headerlink" title="编译 Packages"></a>编译 Packages</h4><ul>
+<li><p>使用 catkin_make - 类似于cmake make工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> catkin_make --source my_src</span><br><span class="line"><span class="meta">$</span> catkon_make install --source my_src</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建你的Package</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd ~/catkin_ws/</span><br><span class="line"><span class="meta">$</span> ls src</span><br><span class="line">beginner_turorials/CMakeLists.txt</span><br><span class="line"><span class="meta">$</span> catkin_make</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="5-理解ROS-Nodes节点"><a href="#5-理解ROS-Nodes节点" class="headerlink" title="5. 理解ROS Nodes节点"></a>5. 理解ROS Nodes节点</h3><h4 id="预备-同ROS文件系统"><a href="#预备-同ROS文件系统" class="headerlink" title="预备- 同ROS文件系统"></a>预备- 同ROS文件系统</h4><h4 id="Overview-Graph-概念"><a href="#Overview-Graph-概念" class="headerlink" title="Overview Graph 概念"></a><font color="red">Overview Graph 概念</font></h4><ul>
+<li>Node : 用ROS（roscore）协同其他node的可以执行体</li>
+<li>Message: 当使用subscribing和publishing topic时，被使用的数据类型</li>
+<li>Topics：subscribing和publishing 时的主题</li>
+<li>Master：ROS的服务名</li>
+<li>rosout：ROS的 stdout stderr</li>
+<li>roscore： Master + rosout + parameter server</li>
+</ul>
+<h4 id="Nodes"><a href="#Nodes" class="headerlink" title="Nodes"></a>Nodes</h4><ul>
+<li>ROS nodes 使用 ROS 客户端库与其他节点通讯。</li>
+<li>Nodes可以发布和订阅一个主题。Node</li>
+<li>Node能够提供和使用服务</li>
+</ul>
+<h4 id="客户端库"><a href="#客户端库" class="headerlink" title="客户端库"></a>客户端库</h4><p>ROS客户端库允许nodes使用不同的程序语言编写，用于通讯，例如Python和C++</p>
+<h4 id="roscore"><a href="#roscore" class="headerlink" title="roscore"></a>roscore</h4><ul>
+<li><p>运行roscore</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ roscore</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变更权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R &lt;your_username&gt; ~/.ros</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>网络设置： <a href="http://wiki.ros.org/ROS/NetworkSetup#Single_machine_configuration" target="_blank" rel="noopener">http://wiki.ros.org/ROS/NetworkSetup#Single_machine_configuration</a></p>
+</li>
+</ul>
+<h4 id="使用-rosnode"><a href="#使用-rosnode" class="headerlink" title="使用 rosnode"></a>使用 rosnode</h4><ul>
+<li>查询Node信息<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosnode list</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>从rosout中查看内容</p>
+<ul>
+<li>rosnode info 命令查看特定node信息</li>
+</ul>
+<h4 id="使用rosrun"><a href="#使用rosrun" class="headerlink" title="使用rosrun"></a>使用rosrun</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosrun [package_name] [node_name]</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-理解ROS-Topics主题"><a href="#6-理解ROS-Topics主题" class="headerlink" title="6. 理解ROS Topics主题"></a>6. 理解ROS Topics主题</h3><h4 id="启动一个例子"><a href="#启动一个例子" class="headerlink" title="启动一个例子"></a>启动一个例子</h4><ul>
+<li><p>启动 roscore</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> roscore</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行 turtlesim - <font color="red">turtlesim是package，turtlesim_node 和 turtle_turtle_teleop_key是 node</font></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosrun turtlesim turtlesim_node</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>turtle键盘遥控</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosrun turtlesim turtle_teleop_key</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><img src="/assets/blog-image/ros-2.jpg" alt></p>
+<h4 id="ROS-Topics"><a href="#ROS-Topics" class="headerlink" title="ROS Topics"></a>ROS Topics</h4><p>The turtlesim_node 和 turtle_teleop_key 节点使用各自的ROS Topic进行通讯。turtle_teleop_key是发布键盘消息的topic， turtlesim 订阅相同topic，去接受键盘消息。让我们使用rqt_graph(能够显示nodes和topics)去运行</p>
+<ul>
+<li><p>使用 rqt_graph<br>rqt_graph在系统中，建立一个实时动态图像。rqt_graph是rqt package的一部分。</p>
+<ul>
+<li><p>安装 rqt_graph</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get install ros-&lt;distro&gt;-rqt</span><br><span class="line"><span class="meta">$</span> sudo apt-get install ros-&lt;distro&gt;-rqt-common-plugins</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rqt_graph的显示效果<br><img src="/assets/blog-image/ros-3.jpg" alt></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>介绍rostopic<br>rostopic 工具允许你获得关于ROS topics的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rostopic -h</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 Using rostopic echo<br>rostopic echo显示在topic上的被发布数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rostopic echo [topic]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 rostopic list<br>rostopic list返回所有当前发布和订阅主题列表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rostopic list -h</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="ROS-Message"><a href="#ROS-Message" class="headerlink" title="ROS Message"></a>ROS Message</h4><p>在nodes之间，topics上凭借发送的ROS Message去通讯。因为发布和订阅通讯，它们必须发送接收相同类型的信息。这意味着，topic类型凭借message 类型发布被定义。</p>
+<ul>
+<li>使用 rostopic type<br>rostopic type 返回topic发布的message类型。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rostopic type [topic]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="rostopic-continued"><a href="#rostopic-continued" class="headerlink" title="rostopic continued"></a>rostopic continued</h4><ul>
+<li><p>使用 rostopic pub<br>rostopic pub 发布数据给当前被公布的topic</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rostopic pub [topic] [msg_type] [args]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用rostopic hz<br>rostopic 报告被发布数据的频率。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rostopic hz [topic]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用rqt_plot<br>rqt_plot显示一个在topic上被发布数据的实时滚动图<br><img src="/assets/blog-image/ros-4.jpg" alt></p>
+</li>
+</ul>
+<h3 id="7-理解ROS-的服务和参数"><a href="#7-理解ROS-的服务和参数" class="headerlink" title="7. 理解ROS 的服务和参数"></a>7. 理解ROS 的服务和参数</h3><h4 id="ROS-服务"><a href="#ROS-服务" class="headerlink" title="ROS 服务"></a>ROS 服务</h4><p><font color="red">服务是使node与其他node通讯的另外一种途径。服务允许node发送一个请求和接收一个回应</font></p>
+<h4 id="使用rosservice"><a href="#使用rosservice" class="headerlink" title="使用rosservice"></a>使用rosservice</h4><p>rosservice能够轻松的使用serives附加到ROS C/S框架结构。 rosservice有许多能够使用在topics上的命令。<br><img src="/assets/blog-image/ros-55.jpg" alt></p>
+<h3 id="8-使用rqt-console-and-roslaunch"><a href="#8-使用rqt-console-and-roslaunch" class="headerlink" title="8. 使用rqt_console and roslaunch"></a>8. 使用rqt_console and roslaunch</h3><p>ROS使用rqt_console 和 rqt_logger_level进行调试，使用roslaunch一次启动多个node</p>
+<h4 id="预备-1"><a href="#预备-1" class="headerlink" title="预备"></a>预备</h4><h4 id="使用rqt-console-和rqt-logger-level"><a href="#使用rqt-console-和rqt-logger-level" class="headerlink" title="使用rqt_console 和rqt_logger_level"></a>使用rqt_console 和rqt_logger_level</h4><p>rqt_console依附于ROS的日志框架，用于显示从node的输出信息。rqt_logger_level允许我去改变运行时node的调试级别（DEBUG WARN INFO ERROR）</p>
+<h3 id="9-使用rosed在ROS中编辑文件"><a href="#9-使用rosed在ROS中编辑文件" class="headerlink" title="9. 使用rosed在ROS中编辑文件"></a>9. 使用rosed在ROS中编辑文件</h3><h4 id="使用rosed"><a href="#使用rosed" class="headerlink" title="使用rosed"></a>使用rosed</h4><p>rosbash : <a href="http://wiki.ros.org/rosbash" target="_blank" rel="noopener">http://wiki.ros.org/rosbash</a><br>rosed是rosbash套件中的一部分。它允许你直接在package内编辑文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosed [package_name] [filename]</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用rosed-用-tab补全"><a href="#使用rosed-用-tab补全" class="headerlink" title="使用rosed 用 tab补全"></a>使用rosed 用 tab补全</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosed [package_name] &lt;tab&gt;&lt;tab&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h4><p>rosed默认编辑器是vim。 更加友好的编辑器nano通过默认Ubuntu 安装时被包含。你能够通过编辑你的~/.bashr文件去使用它们。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export EDITOR='nano -w'</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-创建ROS-msg-和-srv"><a href="#10-创建ROS-msg-和-srv" class="headerlink" title="10. 创建ROS msg 和 srv"></a>10. 创建ROS msg 和 srv</h3><h4 id="介绍msg-和-srv"><a href="#介绍msg-和-srv" class="headerlink" title="介绍msg 和 srv "></a><font color="red">介绍msg 和 srv </font></h4><ul>
+<li>msg：msg files是描述ROS信息字段的样例文本文件。它们用于生成不同语言信息的源代码</li>
+<li>srv：srv file表示一个服务。由两部分组成： a request , a response</li>
+</ul>
+<p>msg files 被保存在package 的msg目录中， svr files 被保存在srv目录中</p>
+<ul>
+<li>字段类型<br><img src="/assets/blog-image/ros-5.jpg" alt></li>
+</ul>
+<p>在ROS还有一些特殊的类型： Hear，它包含一个时间戳和在ROS中被使用的坐标参照信息。你将在msg file中第一行频繁的看到Hearder<br>例子：<br><img src="/assets/blog-image/ros-6.jpg" alt></p>
+<p>srv file就像msg files，除了他们包含两部分内容：request，respone。这两部分内容被“——-”行分开</p>
+<h4 id="使用msg"><a href="#使用msg" class="headerlink" title="使用msg"></a>使用msg</h4><ul>
+<li>创建msg<br>让我们定义一个在之前的教程被创建的package中的msg<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> roscd beginner_tutorials</span><br><span class="line"><span class="meta">$</span> mkdir msg</span><br><span class="line"><span class="meta">$</span> echo "int64 num" &gt; msg/Num.msg</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><font color="red"> 这部分内容待续</font></p>
+<ul>
+<li>使用rosmsg<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosmsg show [message type]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="使用srv"><a href="#使用srv" class="headerlink" title="使用srv"></a>使用srv</h4><ul>
+<li>创建srv</li>
+</ul>
+<p><font color="red"> 这部分内容待续</font></p>
+<ul>
+<li>使用rossrv<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rossrv show &lt;service type&gt;</span><br><span class="line"><span class="meta">$</span> rossrv show begineer_turoials/AddTwoInts</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="用于msg-和srv-常见步骤"><a href="#用于msg-和srv-常见步骤" class="headerlink" title="用于msg 和srv 常见步骤"></a>用于msg 和srv 常见步骤</h4><ul>
+<li>改变CMakeList.txt</li>
+</ul>
+<h4 id="获得帮助"><a href="#获得帮助" class="headerlink" title="获得帮助"></a>获得帮助</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosmsg -h</span><br><span class="line"><span class="meta">$</span> rosmsg show -h</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-用C-写一个Publisher和Subscriber的例子"><a href="#11-用C-写一个Publisher和Subscriber的例子" class="headerlink" title="11. 用C++写一个Publisher和Subscriber的例子"></a>11. 用C++写一个Publisher和Subscriber的例子</h3><p> <a href="http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29</a></p>
+<h3 id="12-用Python写一个Publisher和Subscriber的例子"><a href="#12-用Python写一个Publisher和Subscriber的例子" class="headerlink" title="12. 用Python写一个Publisher和Subscriber的例子"></a>12. 用Python写一个Publisher和Subscriber的例子</h3><p><a href="http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29</a></p>
+<h3 id="13-测试Publisher和Subscriber的例子"><a href="#13-测试Publisher和Subscriber的例子" class="headerlink" title="13. 测试Publisher和Subscriber的例子"></a>13. 测试Publisher和Subscriber的例子</h3><p><a href="http://wiki.ros.org/ROS/Tutorials/ExaminingPublisherSubscriber" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials/ExaminingPublisherSubscriber</a></p>
+<h3 id="14-用C-写一个Service-和-Client的例子"><a href="#14-用C-写一个Service-和-Client的例子" class="headerlink" title="14. 用C++写一个Service 和 Client的例子"></a>14. 用C++写一个Service 和 Client的例子</h3><p><a href="http://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28c%2B%2B%29" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28c%2B%2B%29</a></p>
+<h3 id="15-用Python写一个Service和Client的例子"><a href="#15-用Python写一个Service和Client的例子" class="headerlink" title="15. 用Python写一个Service和Client的例子"></a>15. 用Python写一个Service和Client的例子</h3><p><a href="http://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28python%29" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28python%29</a></p>
+<h3 id="16-测试Service和Client的例子"><a href="#16-测试Service和Client的例子" class="headerlink" title="16. 测试Service和Client的例子"></a>16. 测试Service和Client的例子</h3><p><a href="http://wiki.ros.org/ROS/Tutorials/ExaminingServiceClient" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials/ExaminingServiceClient</a></p>
+<h3 id="17-记录和播放数据"><a href="#17-记录和播放数据" class="headerlink" title="17. 记录和播放数据"></a>17. 记录和播放数据</h3><h4 id="记录数据-创建一个bag-文件"><a href="#记录数据-创建一个bag-文件" class="headerlink" title="记录数据-创建一个bag 文件"></a>记录数据-创建一个bag 文件</h4><ul>
+<li><p>启动roscore，运行两个node，一个是显示乌龟，一个是键盘操作</p>
+<ul>
+<li>Terminal1 : $ roscore </li>
+<li>Terminal2 : $ rosrun turtlesim turtlesim_node</li>
+<li>Terminal3 : $ rosrun turtlesim tutle_teleop_key</li>
+</ul>
+</li>
+<li><p>记录所有的 publisher topics</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mkdir ~/bagfiles</span><br><span class="line"><span class="meta">$</span> cd ~/bagfiles</span><br><span class="line"><span class="meta">$</span> rosbag record -a</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="测试和播放bag-file"><a href="#测试和播放bag-file" class="headerlink" title="测试和播放bag file"></a>测试和播放bag file</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rosbag info &lt;your bagfile&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="记录数据的子集"><a href="#记录数据的子集" class="headerlink" title="记录数据的子集"></a>记录数据的子集</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rosbag record -O subset /turtle1/cmd_vel /turtle1/pose</span><br></pre></td></tr></table></figure>
+
+<h4 id="rosbag-记录播放限制-（没搞懂）"><a href="#rosbag-记录播放限制-（没搞懂）" class="headerlink" title="rosbag 记录播放限制-（没搞懂）"></a>rosbag 记录播放限制-（没搞懂）</h4><h3 id="18-用roswtf开始"><a href="#18-用roswtf开始" class="headerlink" title="18. 用roswtf开始"></a>18. 用roswtf开始</h3><p>roswtf： 诊断ROS运行时错误的工具<br><a href="http://wiki.ros.org/roswtf" target="_blank" rel="noopener">http://wiki.ros.org/roswtf</a></p>
+<h3 id="19-导航ROS-wiki"><a href="#19-导航ROS-wiki" class="headerlink" title="19. 导航ROS wiki"></a>19. 导航ROS wiki</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/assets/blog-image/ros-7.jpg" alt></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -588,16 +520,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          医学影像中呼吸门控的动态显示
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/14/深入理解C-11阅读笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入理解C++11阅读笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -612,447 +612,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="cpp-深入理解C-11阅读笔记" class="article article-type-cpp  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/深入理解C-11阅读笔记/">深入理解C++11阅读笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/14/深入理解C-11阅读笔记/" class="archive-article-date">
-  	<time datetime="2017-12-14T06:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/cpp11-1.jpg" alt="ccss"></p>
-<p>由 王宇 原创并发布：</p>
-<h2 id="一-新标准的诞生"><a href="#一-新标准的诞生" class="headerlink" title="一 新标准的诞生"></a>一 新标准的诞生</h2><h3 id="从使用上分类方法"><a href="#从使用上分类方法" class="headerlink" title="从使用上分类方法"></a>从使用上分类方法</h3><ul>
-<li>类作者需要的</li>
-<li>库作者需要的</li>
-<li>所有人需要的</li>
-<li>部分人需要的</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">cpp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Beginner-Level"><span class="toc-number">1.</span> <span class="toc-text">Beginner Level</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装配置ROS环境"><span class="toc-number">1.1.</span> <span class="toc-text">1. 安装配置ROS环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装ROS"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装ROS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#管理环境"><span class="toc-number">1.1.2.</span> <span class="toc-text">管理环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建ROS工作空间"><span class="toc-number">1.1.3.</span> <span class="toc-text">创建ROS工作空间</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ROS文件系统"><span class="toc-number">1.2.</span> <span class="toc-text">2. ROS文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#预备"><span class="toc-number">1.2.1.</span> <span class="toc-text">预备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Overview-文件系统概念"><span class="toc-number">1.2.2.</span> <span class="toc-text">Overview 文件系统概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件系统工具"><span class="toc-number">1.2.3.</span> <span class="toc-text">文件系统工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tab-补全"><span class="toc-number">1.2.4.</span> <span class="toc-text">Tab 补全</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-创建ROS-Package"><span class="toc-number">1.3.</span> <span class="toc-text">3.创建ROS Package</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-编译ROS-Package"><span class="toc-number">1.4.</span> <span class="toc-text">4. 编译ROS Package</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#编译-Packages"><span class="toc-number">1.4.1.</span> <span class="toc-text">编译 Packages</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-理解ROS-Nodes节点"><span class="toc-number">1.5.</span> <span class="toc-text">5. 理解ROS Nodes节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#预备-同ROS文件系统"><span class="toc-number">1.5.1.</span> <span class="toc-text">预备- 同ROS文件系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Overview-Graph-概念"><span class="toc-number">1.5.2.</span> <span class="toc-text">Overview Graph 概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nodes"><span class="toc-number">1.5.3.</span> <span class="toc-text">Nodes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端库"><span class="toc-number">1.5.4.</span> <span class="toc-text">客户端库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#roscore"><span class="toc-number">1.5.5.</span> <span class="toc-text">roscore</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-rosnode"><span class="toc-number">1.5.6.</span> <span class="toc-text">使用 rosnode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用rosrun"><span class="toc-number">1.5.7.</span> <span class="toc-text">使用rosrun</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-理解ROS-Topics主题"><span class="toc-number">1.6.</span> <span class="toc-text">6. 理解ROS Topics主题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#启动一个例子"><span class="toc-number">1.6.1.</span> <span class="toc-text">启动一个例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ROS-Topics"><span class="toc-number">1.6.2.</span> <span class="toc-text">ROS Topics</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ROS-Message"><span class="toc-number">1.6.3.</span> <span class="toc-text">ROS Message</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rostopic-continued"><span class="toc-number">1.6.4.</span> <span class="toc-text">rostopic continued</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-理解ROS-的服务和参数"><span class="toc-number">1.7.</span> <span class="toc-text">7. 理解ROS 的服务和参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ROS-服务"><span class="toc-number">1.7.1.</span> <span class="toc-text">ROS 服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用rosservice"><span class="toc-number">1.7.2.</span> <span class="toc-text">使用rosservice</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-使用rqt-console-and-roslaunch"><span class="toc-number">1.8.</span> <span class="toc-text">8. 使用rqt_console and roslaunch</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#预备-1"><span class="toc-number">1.8.1.</span> <span class="toc-text">预备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用rqt-console-和rqt-logger-level"><span class="toc-number">1.8.2.</span> <span class="toc-text">使用rqt_console 和rqt_logger_level</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-使用rosed在ROS中编辑文件"><span class="toc-number">1.9.</span> <span class="toc-text">9. 使用rosed在ROS中编辑文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用rosed"><span class="toc-number">1.9.1.</span> <span class="toc-text">使用rosed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用rosed-用-tab补全"><span class="toc-number">1.9.2.</span> <span class="toc-text">使用rosed 用 tab补全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编辑器"><span class="toc-number">1.9.3.</span> <span class="toc-text">编辑器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-创建ROS-msg-和-srv"><span class="toc-number">1.10.</span> <span class="toc-text">10. 创建ROS msg 和 srv</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#介绍msg-和-srv"><span class="toc-number">1.10.1.</span> <span class="toc-text">介绍msg 和 srv </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用msg"><span class="toc-number">1.10.2.</span> <span class="toc-text">使用msg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用srv"><span class="toc-number">1.10.3.</span> <span class="toc-text">使用srv</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用于msg-和srv-常见步骤"><span class="toc-number">1.10.4.</span> <span class="toc-text">用于msg 和srv 常见步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获得帮助"><span class="toc-number">1.10.5.</span> <span class="toc-text">获得帮助</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-用C-写一个Publisher和Subscriber的例子"><span class="toc-number">1.11.</span> <span class="toc-text">11. 用C++写一个Publisher和Subscriber的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-用Python写一个Publisher和Subscriber的例子"><span class="toc-number">1.12.</span> <span class="toc-text">12. 用Python写一个Publisher和Subscriber的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-测试Publisher和Subscriber的例子"><span class="toc-number">1.13.</span> <span class="toc-text">13. 测试Publisher和Subscriber的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-用C-写一个Service-和-Client的例子"><span class="toc-number">1.14.</span> <span class="toc-text">14. 用C++写一个Service 和 Client的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-用Python写一个Service和Client的例子"><span class="toc-number">1.15.</span> <span class="toc-text">15. 用Python写一个Service和Client的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-测试Service和Client的例子"><span class="toc-number">1.16.</span> <span class="toc-text">16. 测试Service和Client的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-记录和播放数据"><span class="toc-number">1.17.</span> <span class="toc-text">17. 记录和播放数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#记录数据-创建一个bag-文件"><span class="toc-number">1.17.1.</span> <span class="toc-text">记录数据-创建一个bag 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试和播放bag-file"><span class="toc-number">1.17.2.</span> <span class="toc-text">测试和播放bag file</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#记录数据的子集"><span class="toc-number">1.17.3.</span> <span class="toc-text">记录数据的子集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rosbag-记录播放限制-（没搞懂）"><span class="toc-number">1.17.4.</span> <span class="toc-text">rosbag 记录播放限制-（没搞懂）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-用roswtf开始"><span class="toc-number">1.18.</span> <span class="toc-text">18. 用roswtf开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-导航ROS-wiki"><span class="toc-number">1.19.</span> <span class="toc-text">19. 导航ROS wiki</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-VTK与图形学相关的基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/VTK与图形学相关的基本概念/">VTK与图形学相关的基本概念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/VTK与图形学相关的基本概念/" class="archive-article-date">
-  	<time datetime="2017-10-26T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念</li>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
-        
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK7-1-1安装部署记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/VTK7-1-1安装部署记录/">VTK7.1.1安装部署记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/VTK7-1-1安装部署记录/" class="archive-article-date">
-  	<time datetime="2017-07-10T09:09:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk7-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念<ul>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-        
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kafka与Storm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/Kafka与Storm整合/">Kafka与Storm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/Kafka与Storm整合/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/kafka-storm-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="整合Storm的概念"><a href="#整合Storm的概念" class="headerlink" title="整合Storm的概念"></a>整合Storm的概念</h2><ul>
-<li><p>整合场景</p>
-<blockquote>
-<p>A spout is a source of streams. For example, <font color="red">a spout may read tuples off a Kafka Topic</font> and emit them as a stream. <font color="red">A bolt consumes input streams, process and possibly emits new streams.</font> Bolts can do anything from running functions, filtering tuples, do streaming aggregations, streaming joins, <font color="red">talk to databases</font>, and more. Each node in a Storm topology executes in parallel. A topology runs indefinitely until you terminate it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if the machines go down and messages are dropped.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JSON学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/JSON学习笔记/">JSON学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/JSON学习笔记/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/json-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="JSON-是如何存储信息"><a href="#JSON-是如何存储信息" class="headerlink" title="JSON 是如何存储信息"></a>JSON 是如何存储信息</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"book"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"01"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"Java"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"third"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"Herbert Schildt"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"07"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"C++"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"second"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"E.Balagurusamy"</span></span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>
-        
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1075,8 +660,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>码农随笔</title>
+  <title>Linux C 编程实战 阅读笔记 | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Linux C C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码农随笔">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="由  王宇 原创并发布 ： 第一篇Linux和C编程基础 (参考C相关书籍 )    第1章Linux系统概述   第2章C编程基础、Vi和Emacs编辑器   2.1C程序的结构   2.2C语言的基本数据类型   2.3运算符和表达式   2.4标准输入输出函数   2.5VI编辑器的使用   2.6Emacs编辑器的使用   2.7命名规范   2.7.1标识符   在程序设计中，变量名、函">
+<meta name="keywords" content="cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux C 编程实战 阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2012/06/20/Linux-C-编程实战-阅读笔记/index.html">
 <meta property="og:site_name" content="码农随笔">
+<meta property="og:description" content="由  王宇 原创并发布 ： 第一篇Linux和C编程基础 (参考C相关书籍 )    第1章Linux系统概述   第2章C编程基础、Vi和Emacs编辑器   2.1C程序的结构   2.2C语言的基本数据类型   2.3运算符和表达式   2.4标准输入输出函数   2.5VI编辑器的使用   2.6Emacs编辑器的使用   2.7命名规范   2.7.1标识符   在程序设计中，变量名、函">
 <meta property="og:locale" content="cn">
+<meta property="og:updated_time" content="2019-08-12T10:42:58.396Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码农随笔">
+<meta name="twitter:title" content="Linux C 编程实战 阅读笔记">
+<meta name="twitter:description" content="由  王宇 原创并发布 ： 第一篇Linux和C编程基础 (参考C相关书籍 )    第1章Linux系统概述   第2章C编程基础、Vi和Emacs编辑器   2.1C程序的结构   2.2C语言的基本数据类型   2.3运算符和表达式   2.4标准输入输出函数   2.5VI编辑器的使用   2.6Emacs编辑器的使用   2.7命名规范   2.7.1标识符   在程序设计中，变量名、函">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -197,461 +201,468 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-OpenGL学习记录-着色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Linux-C-编程实战-阅读笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/OpenGL学习记录-着色/">OpenGL学习记录-着色</a>
+    <h1 class="article-title" itemprop="name">
+      Linux C 编程实战 阅读笔记
     </h1>
   
 
         
-        <a href="/2018/06/20/OpenGL学习记录-着色/" class="archive-article-date">
-  	<time datetime="2018-06-20T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+        <a href="/2012/06/20/Linux-C-编程实战-阅读笔记/" class="archive-article-date">
+  	<time datetime="2012-06-20T09:26:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-06-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/blog-image/zsq-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="着色器-运行在GPU上的小程序"><a href="#着色器-运行在GPU上的小程序" class="headerlink" title="着色器 - 运行在GPU上的小程序"></a>着色器 - 运行在GPU上的小程序</h2><p>从基本意义上来说，着色器只是一种把输入转化为输出的程序。着色器也是一种非常独立的程序，因为它们之间不能相互通信；它们之间唯一的沟通只有通过输入和输出。</p>
-<ul>
-<li>GLSL - 包含一些针对向量和矩阵操作的有用特性。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version version_number</span></span><br><span class="line">in type in_variable_name;</span><br><span class="line">in type in_variable_name;</span><br><span class="line"></span><br><span class="line">out type out_variable_name;</span><br><span class="line"></span><br><span class="line">uniform type uniform_name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 处理输入并进行一些图形操作</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 输出处理过的结果到输出变量</span></span><br><span class="line">  out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/#more">more >></a>
-        
+        <p>由  王宇 原创并发布 ：</p>
+<p>第一篇Linux和C编程基础 (参考C相关书籍 ) </p>
+<p>  第1章Linux系统概述</p>
+<p>  第2章C编程基础、Vi和Emacs编辑器</p>
+<p>  2.1C程序的结构</p>
+<p>  2.2C语言的基本数据类型</p>
+<p>  2.3运算符和表达式</p>
+<p>  2.4标准输入输出函数</p>
+<p>  2.5VI编辑器的使用</p>
+<p>  2.6Emacs编辑器的使用</p>
+<p>  2.7命名规范</p>
+<p>  2.7.1标识符</p>
+<p>  在程序设计中，变量名、函数名、数组名等统称为标识符</p>
+<p>  标识符的第一个字符必须是字母或者下划线，不能是数字</p>
+<p>  2.7.2关键字</p>
+<p>  2.7.3命名规范</p>
+<p>  1、变量名必须有一定的意义，并且意义准确。例如：number_of_book</p>
+<p>  2、不建议大小写混用，例如：不建议int nCount</p>
+<p>  3、在失去意义的情况下，尽量使用较短的变量名</p>
+<p>  4、不采用匈牙利命名法表示变量的类型</p>
+<p>  5、函数名应该以动词开头，因为函数是一组具有特定功能的语句块</p>
+<p>  6、尽量避免使用全局变量</p>
+<p>  2.8面试题选与实践精讲</p>
+<p>  第3章C程序控制结构和gcc编辑器</p>
+<p>  3.1C程序的控制结构</p>
+<p>  3.2分支控制结构</p>
+<p>  3.3循环控制结构</p>
+<p>  3.4gcc编译器</p>
+<p>  3.5面试题选与实践精讲</p>
+<p>  第4章C函数、数组、指针和调试器gdb</p>
+<p>  4.1函数</p>
+<p>  4.2数组</p>
+<p>  4.3指针</p>
+<p>  4.4字符串函数</p>
+<p>  4.5调试器gdb</p>
+<p>  第5章C语言预处理、结构体和make的使用</p>
+<p>  5.1C语言处理命令</p>
+<p>  5.1.1宏定义</p>
+<p>  1、无参数宏</p>
+<p>  2、有参数宏，注意：</p>
+<p>  宏名与形参表的圆括号之间不能有空格，否则会导致错误</p>
+<p>  在宏定义中，字符串内的形式参数最好用括号括起来，以避免错误</p>
+<p>  有参数宏的形式参数不是变量，不分配内存空间，无需说明数据类型</p>
+<p>  预处理器程序认为有参数宏的实参是字符串，并用它去替换形参</p>
+<p>  使用宏的次数较多时，宏替换后源程序一般会变成。而函数调用不会使程序变长。宏替换不会占用运行时间，只是编译的时间稍微变长一点。而函数调用则会占用运行时间。一般用宏来代表一些较为简单的表达式比较合适</p>
+<p>  5.1.2文件包含</p>
+<p>  5.1.3条件编译</p>
+<p>  实际上，不用条件编译而直接使用if…else语句也可以达到要求。采用条件编译，可以减少被编译的语句，从而减少可执行程序的长度，缩短程序运行时间。当条件编译的程序段比较多时，可执行程序的长度可以大大减少</p>
+<p>  5.2结构体和共用体</p>
+<p>  5.3位运算</p>
+<p>  5.4make的使用和Makefile的编写</p>
+<p>  第二篇Linux系统编程</p>
+<p>  第6章文件操作</p>
+<p>  6.1系统编程概述 </p>
+<p>  Linux下的系统编程是指程序员使用系统调用或C语言本身所携带的函数库来设计和编写具有某一特定功能的程序</p>
+<p>  实际上，C语言的函数库也是通过系统调用来实现的，他封装了系统调用，并在此基础上为方便程序员使用而增加了一些功能</p>
+<p>  这些系统调用都是以函数库的方式提供的</p>
+<p>  对于gcc不会自动连接的库，则在编译程序是需要制定所使用的库（编译程序时使用-l&lt;库名&gt;-L&lt;库所在的目录&gt;选项）</p>
+<p>  shell命令行下使用man命令来查看函数原型</p>
+<p>  有些函数名如mkdir既是Linux的命令，也是系统调用，这时可以通过输入man2mkdir获得该函数的原型</p>
+<p>  对于库函数，输入man3&lt;库函数名&gt;可以获得帮助信息</p>
+<p>  6.2Linux的文件结构 </p>
+<p>  文件主要包含两方面的内容：</p>
+<p>  一是文件本身所包含的数据</p>
+<p>  二是文件的属性，也称为元数据</p>
+<p>  目录也是一种文件，称为目录文件</p>
+<p>  文件结构：</p>
+<p>  /bin用于存放普通用户可执行的命令</p>
+<p>  /boot Linux的内核级启动系统时所需要的文件</p>
+<p>  /dev设备文件的存储目录，如硬盘、光驱等</p>
+<p>  /etc用于存放系统的配置文件</p>
+<p>  /home普通用户的主目录</p>
+<p>  /lib用于存放各种库文件</p>
+<p>  /proc该目录是一个虚拟文件系统，只有在系统运行时才存在</p>
+<p>  /root超级用户root的主目录</p>
+<p>  /sbin存放的适用于管理系统的命令</p>
+<p>  /tmp临时文件目录</p>
+<p>  /usr用于存放系统应用程序及相关文件，如说明文档、帮助文档等</p>
+<p>  /var用于存放系统中经常变化的文件，如日志文件，用户邮件等</p>
+<p>  6.2.1Linux的文件系统模型 </p>
+<p>  对于物理磁盘的访问则有两种途径：</p>
+<p>  一种是通过系统旭东本身提供的接口（带来很大的不稳定性）</p>
+<p>另一种是通过虚拟文件系统(Virtual Filesystem，VFS)</p>
+<p>  VFS是虚拟的，不存在，他和前面都是只存在于内存而不存在于磁盘之中的提到的/proc文件系统一样，都是只存在于内存而不存在于磁盘之中的，即只有在系统运行起来以后才存在</p>
+<p>  VFS提供一种机制，它将各种不同的文件系统整合在一起，并提供统一的应用程序编程接口（API）供上层的应用程序使用</p>
+<p>  VFS的使用体现了Linux文件系统最大的特点—支持多种不同的文件系统，如：ext2、ext3，也支持windowsvfat</p>
+<p>  6.2.2文件的分类 </p>
+<p>  普通文件“-”表示</p>
+<p>  目录文件“d”表示</p>
+<p>  字符特殊文件</p>
+<p>  块特殊文件“b”</p>
+<p>  FIFO：这种类型文件用于进程间的通信，也称为命名管道</p>
+<p>  套接字(soket)：主要用于网络通信</p>
+<p>  符号连接：指向另一个文件，是另一个文件的引用</p>
+<p>  6.2.3文件的访问权限控制：r=4 w=2 x=1     4+2+1=7,777</p>
+<p>  6.3文件的输入输出 </p>
+<p>  6.3.1文件的创建、打开与关闭 </p>
+<p>  open函数</p>
+<p>  create函数</p>
+<p>  close函数 </p>
+<p>  6.3.2文件的读写 </p>
+<p>  read函数</p>
+<p>  write函数 </p>
+<p>  6.3.3文件读写指针的移动** </p>
+<p>  lseek函数</p>
+<p>  6.3.4dup、dup2、fcntl、ioctl系统调用 </p>
+<p>  1、dup、dup2函数：用来复制文件描述符</p>
+<p>  2、fcntl函数：用来对已打开的文件描述符进行各种控制操作以打开文件的各种属性件描述符</p>
+<p>  3、ioctl函数：用来控制设备</p>
+<p>  6.4文件属性操作 </p>
+<p>  6.4.1获取文件属性 </p>
+<p>  函数：stat fstat lstat通过man2stat查看详细信息</p>
+<p>  structs tat*but结构体，说明文件状态信息</p>
+<p>  6.4.2设置文件属性</p>
+<p>  6.5文件的移动和删除 </p>
+<p>6.5.1文件的移动 ：rename()</p>
+<p>6.5.2文件的删除 ：unlink()remove()</p>
+<p>  6.6目录操作 </p>
+<p>  6.6.1目录的创建和删除 </p>
+<p>1、目录的创建：mkdir()</p>
+<p>2、目录的删除：rmdir()</p>
+<p>  6.6.2获取当前目录 </p>
+<p>getcwd()  get_current_dir_name()  getwd()</p>
+<p>  6.6.3设置工作目录 </p>
+<p>chdir()  fhdir()</p>
+<p>  6.6.64获取目录信息 </p>
+<p>  1、opendir</p>
+<p>  2、readdir</p>
+<p>  3、closedir</p>
+<p>  6.7编程实践：实现自己的ls命令 </p>
+<p>  第7章进程控制</p>
+<p>  7.1进程概述 </p>
+<p>  7.1.1Linux进程 </p>
+<p>  1、进程概念</p>
+<p>  2、进程标识：ID</p>
+<p>  3、进程的结构：代码段；数据段；堆栈段 </p>
+<p>  4、Linux进程状态</p>
+<p>  运行状态</p>
+<p>  可中断等待状态</p>
+<p>  不可中断等待状态</p>
+<p>  僵死状态</p>
+<p>  停止状态</p>
+<p>  7.1.2进程控制：创建进程、执行新程序、推出进程以及改变进程优先级等 </p>
+<p>  fork:创建进程</p>
+<p>  exit：终止进程</p>
+<p>  exec：执行一个应用程序</p>
+<p>  wait：将父进程挂起，等待子进程终止</p>
+<p>  getid:获取当前进程的进程ID</p>
+<p>  nice:改变进程的优先级 </p>
+<p>  7.1.3进程的内存映像 </p>
+<p>  1、Linux下程序转化进程</p>
+<p>  C程序的生成分为4各阶段：预编译，编译，汇编，连接</p>
+<p>  程序转化为进程的步骤：</p>
+<p>  内核将程序读入内存，为程序分配内存空间</p>
+<p>  内核为该进程分配进程标识符和其他所需资源</p>
+<p>  内核为该进程保存PID及相应的状态信息，把进程放到运行队列中等待执行。程序转化为进城后就可以被操作系统的调度程序调度执行了。</p>
+<p>  2、进程的内存映像</p>
+<p>  代码段</p>
+<p>  数据段</p>
+<p>  未初始化数据段</p>
+<p>  堆：程序运行中动态分配的变量</p>
+<p>  栈：用于函数调用，保存函数的返回地址、函数的参数、函数内部定义的局部变量 </p>
+<p>  7.2进程操作</p>
+<p>  7.2.1创建进程 </p>
+<p>  1、fork函数</p>
+<p>  2、孤儿进程</p>
+<p>  如果一个子进程的父进程先于子进程结束，子进程就成为一个孤儿进程，它由init进程收养，称为init进程的子进程</p>
+<p>  3、vfork函数</p>
+<p>  7.2.2创建守护进程 </p>
+<p>  编写创建守护进程程序要点：</p>
+<p>  让进程在后台执行：方法是调用fork产生一个子进程，然后使得父进程退出</p>
+<p>  调用setid创建一个新对话期。控制终端，登陆会话和进程组通常师父进程继承下来的，守护进程要拜托它们，不受它们的映像，其方法是调用setid使进程成为一个会话组长</p>
+<p>  禁止进程重新打开控制终端</p>
+<p>  关闭不再需要的文件描述符</p>
+<p>  将当前目录更改为根目录</p>
+<p>  将文件创建时使用的屏蔽字设置为0</p>
+<p>  处理SIGCHLD</p>
+<p>  7.2.3进程退出 </p>
+<p>  正常退出：exit_exit</p>
+<p>  异常退出：about函数或是进程收到某个信号，而该信号使程序终止</p>
+<p>  7.2.4执行新程序 </p>
+<p>execv() execve() execl() execle() execvp() execlp()</p>
+<p>  7.2.5等待进程结束 </p>
+<p>  7.3进程的其他操作 </p>
+<p>  7.3.1获得进程ID</p>
+<p>  7.3.2setuid和setgid</p>
+<p>  7.3.3改变进程的优先级 </p>
+<p>  7.4编程实践：实现自己的myshell </p>
+<p>  第8章线程控制</p>
+<p>  8.1线程和进程关系</p>
+<p>  1 地址空间 ：每个进程有独立的地址空间，线程共享进程的地址空间。因此创建进程需要的资源多于线程</p>
+<p>  2 数据空间 ：每个进程间有独立的数据空间，线程共享进程的数据空间，所以线程间的通信更加方便和省时</p>
+<p>  3 系统调用 ：由于进程地址空间独立而线程共享地址空间，所以线程间的切换速度远快于进程。</p>
+<p>  8.2创建线程 </p>
+<p>8.2.1线程创建函数 pthread_create()</p>
+<p>  8.2.2线程属性 </p>
+<p>  8.3线程终止 :phread_exit()</p>
+<p>  8.4私有数据:一键多值</p>
+<p>  pthead_key_create(); 创建一个键</p>
+<p>  pthead_setspecific(); 为一个键设置线程私有数据</p>
+<p>  pthead_getspecific(); 从一个键读取线程私有数据</p>
+<p>  pthead_key_delete(); 删除一个键</p>
+<p>  8.5线程同步 </p>
+<p>  线程同步问题：互斥锁、条件变量和异步信号</p>
+<p>  8.5.1互斥锁 </p>
+<p>  互斥锁通过锁机制来实现线程间的同步。在同一时刻它通常只允许一个线程执行一个关键部分的代码</p>
+<p>  使用互斥锁前必须先进行初始化操作。两种方法：</p>
+<p>  静态赋值法，将宏结构常量PTHREAD_MUTEX_INITIALIZER赋值互斥锁</p>
+<p>  通过pthread_mutex_init()初始化</p>
+<p>  加锁有两个函数：</p>
+<p>  pthread_mutex_lock() 如果mutex已经被锁住，当前尝试加锁的线程就会阻塞</p>
+<p>  phtread_mutex_trylock() mutex已经被加锁，它将立即返回错误码</p>
+<p>  用pthread_mutex_unlock() 函数解锁时，要满足两个条件：</p>
+<p>  互斥锁必须处于加锁状态</p>
+<p>  调用本函数的线程必须是给互斥锁加锁的线程，解锁后如果有其他线程在等待互斥锁，等待队列中的第一个线程将获得互斥锁</p>
+<p>当一个互斥锁使用完毕后，不需进行清除：pthread_mutex_destory()</p>
+<p>  临界区的两种机制：互斥锁、自旋锁（互斥锁、自旋锁是现实临界区得方法）</p>
+<p>  与自旋锁不同的是，互斥体在进入一个被占用的临界区之前不会原地打转，而是使当前线程进入睡眠状态。</p>
+<p>  .</p>
+<p>  8.5.2条件变量 </p>
+<p>  条件变量是利用线程间共享的全局变量进行同步的一种机制。</p>
+<p>  8.5.3异步信号</p>
+<p>  一个进程通过信号通知另一个进程发生了某事件，比如该进程所需要的输入数据已经能够就绪。线程同进程一样也可以接受和处理信号，信号也是一种线程间同步的手段。</p>
+<p>  多线程中有三个函数处理异步信号：</p>
+<p>pthread_kill()</p>
+<p>pthread_sigmask()</p>
+<p>  sigwait(); </p>
+<p>  8.6出错处理 </p>
+<p>  软件开发中，如果忽略了出错处理，往往会给软件产品带来毁灭性的后果，因此，在设计和编写程序时，要时刻注意检查错误发生的各种可能</p>
+<p>  8.6.1错误检查</p>
+<p>  8.6.2错误码</p>
+<p>8.6.3错误的提示信息：strerror()perror() </p>
+<p>  第9章信号及信号处理</p>
+<p>  9.1Linxu信号介绍 </p>
+<p>  9.1.1信号的来源 </p>
+<p>  1、硬件方式</p>
+<p>  当用户在终端上按下某些键时，例如：Ctrl+C</p>
+<p>  硬件异常产生信号</p>
+<p>  2、软件方式</p>
+<p>  用户在终端下调用kill命令向进程发送任意信号</p>
+<p>  进程调用Kill或sigqueue函数发送信号</p>
+<p>  当检测到某种软件条件已经具备时发出信号，如alermsettimer</p>
+<p>  9.1.2 信号的种类 </p>
+<p>  一共有64种，详见表9-1 </p>
+<p>  1、可靠信号与不可靠信号</p>
+<p>  （1号）到（31）号之间的信号都是继承UNIX系统，是不可靠信号；（33号）到（64号）之间的信号是可靠信号，也称为实时信号</p>
+<p>  信号的可靠性是指信号是否会丢失，或者说该信号是否支持排队</p>
+<p>  如果在进程解除对某个信号的阻塞之前，这种信号发生了多次，那么如果信号被递送多次（即信号在未决信号队列里面排队），则称之为可靠信号；只被递送一次的信号称为不可靠信号</p>
+<p>  2、信号的优先级</p>
+<p>  9.1.3进程对信号的响应 </p>
+<p>  捕捉信号</p>
+<p>  忽略信号</p>
+<p>  按照系统默认方式处理</p>
+<p>  9.2信号处理 </p>
+<p>  9.2.1信号的捕捉和处理 </p>
+<p>  1 signal函数 </p>
+<p>  signal函数用来设置进程在接收到信号时的动作</p>
+<p>  2 sigaction函数 </p>
+<p>  sigaction函数可以用来检查或设置进程在接收到信号时的动作</p>
+<p>  3 pause </p>
+<p>  pause函数使调用进程挂起直至捕捉到一个信号</p>
+<p>  9.2.2信号处理函数的返回 </p>
+<p>  1 setjmp/longjmp </p>
+<p>  使用longjmp可以跳转到setjmp设置的位置</p>
+<p>  2 sigsetjmp/siglongjmp </p>
+<p>  在信号处理期间自动屏蔽了正在被处理的信号，而使用setjmp/longjmp跳出信号处理程序时又</p>
+<p>  不会自动将信号屏蔽码，从而引起该信号被永久屏蔽。可以使用sigsetjmp/siglongjmp来解决这个一个问题。</p>
+<p>  9.2.3信号的发送 </p>
+<p>  1 kill函数 </p>
+<p>  kill函数用来发送信号给指定的进程</p>
+<p>  2 raise函数 </p>
+<p>  raise函数是ANSIC而非POSIX标准定义的，用来给调用它的进程发送信号</p>
+<p>  3 sigqueue函数 </p>
+<p>  它支持信号带有参数，从而可以与函数sigaction配合使用</p>
+<p>  4 alarm函数 </p>
+<p>  alarm函数可以用来设置定时器</p>
+<p>  5 getitimer/setitimer</p>
+<p>  6 abort函数 </p>
+<p>  abort函数用来向进程发送SIGABRT信号。</p>
+<p>  9.2.4信号的屏蔽 </p>
+<p>  1信号集 </p>
+<p>  mansigsetops查看原型</p>
+<p>  函数sigemptyset用来初始化一个信号集，使其不包括任何信号</p>
+<p>  函数sigfillset用来初始化一个信号集，使其包括所有信号</p>
+<p>  函数sigaddset用来向set指定的信号集中添加由signum指定的信号</p>
+<p>  函数sigdelset用来从set指定的信号集中删除由signum指定的信号</p>
+<p>  函数sigismember用来测试信号signum是否包含在set指定的信号集中</p>
+<p>  2 信号屏蔽 </p>
+<p>  mansigprocmask查看原型</p>
+<p>  信号屏蔽又称为信号阻塞</p>
+<p>  （1）sigprocmask函数 </p>
+<p>  每个进程都有一个信号屏蔽码，它规定了当前阻塞而不能递送给该进程的信号集。调用函数sigprocmask可以检测或更改进程的信号屏蔽码</p>
+<p>  (2)sigpending函数 </p>
+<p>  用来获取调用进程因被阻塞而不能递送和当前未决的信号集。</p>
+<p>  （3）siguspend函数 </p>
+<p>  将进程的信号屏蔽码设置为mask，然后与pause函数一样等待信号的发生并执行完信号处理函数   </p>
+<p>  9.3编程中如何获得帮助</p>
+<p>  9.4编程实践：</p>
+<p>  实例一：信号的发送与处理</p>
+<p>  实例二：信号应用于事件通知</p>
+<p>  第10章进程间通信</p>
+<p>  10.1进程间通信概述</p>
+<p>  10.2管道 </p>
+<p>  10.2.1管道的概念 </p>
+<p>  管道是一种两个进程间进行单向通信的机制</p>
+<p>  数据只能由一个进程流向另一个进程（其中一个写管道，另一个读管道）如果要进行全双工通信，需要</p>
+<p>  建立两个管道</p>
+<p>  管道只能用于父子进程或者兄弟进程间的通信，也就是说管道只能用于具有亲缘关系的进程间的通信，</p>
+<p>  无亲缘关系的进程不能使用管道</p>
+<p>  10.2.2管道的创建与读写 </p>
+<p>  1、管道的创建</p>
+<p>int pipe(intfd[2]) </p>
+<p>  2、从管道中读数据</p>
+<p>read() </p>
+<p>  3、向管道中写数据</p>
+<p>write() </p>
+<p>  4、dup()和dup2() 复制文件描述符的功能</p>
+<p>  10.3有名管道 </p>
+<p>  10.3.1有名管道的概念 </p>
+<p>  FIFO不同于管道之处在于它提供一个路径名与之关联，以FIFO的文件形式存储与文件系统中，有名管道</p>
+<p>  是一个设备文件，因此即使进程与创建FIFO的进程不存在亲缘关系，只要可以访问该路径，就能够通过FIFO相互通信。FIFO按照先</p>
+<p>  进先出的原则工作。</p>
+<p>  10.3.2有名管道的创建与读写 </p>
+<p>  &lt;sys/stat.h&gt;</p>
+<p>int mknod()</p>
+<p>int mkfifo()</p>
+<p>open()</p>
+<p>read()</p>
+<p>write() </p>
+<p>  10.3.2有名管道的应用实例 </p>
+<p>  10.4消息队列 </p>
+<p>  10.4.1消息队列的基本概念 </p>
+<p>  消息队列是一个存放在内核中的消息链表，每个消息队列由消息队列标示符</p>
+<p>  消息队列需要用到一些数据结构，熟悉这些数据结构是掌握消息队列的关键</p>
+<p>  1消息缓冲结构</p>
+<p>  &lt;linux/msg.h&gt; </p>
+<p>  struct msgbuf{</p>
+<pre><code>longmtype;
+
+charmtext[1];</code></pre><p>  }</p>
+<p>2msqid_ds内核数据结构</p>
+<p>struct msqid_ds{} 详见：P257</p>
+<p>10.4.2消息队列的创建与读写 </p>
+<p>1创建消息队列</p>
+<p>消息队列是随着内核的存在而存在的，每个消息队列在系统范围内对应惟一的键值。要获得一</p>
+<p>个消息队列的描述符，只需提供该消息队列的键值即可，该键值通常由函数ftok返回。</p>
+<p>&lt;sys/ipc.h&gt;</p>
+<p>key_t ftok() </p>
+<p>  ftok返回值提供给msgget,它根据键值创建一个新的消息队列或者访问一个已存在的消息队列。</p>
+<p>  &lt;sys/msg.h&gt;</p>
+<p>int msgget()</p>
+<p>  2写消息队列</p>
+<p>  函数msgsnd用于向消息队列发送（写）数据</p>
+<p>  &lt;sys/msg.h&gt;</p>
+<p>int msgsnd()</p>
+<p>  3读消息队列</p>
+<p>  &lt;sys/msg.h&gt;</p>
+<p>int msgrcv() </p>
+<p>  10.4.3获取和设置消息队列的属性 </p>
+<p>  消息队列的属性保存在系统维护的数据结构mspid_ds中，用户可以通过函数msgctl设置消息队列的属性    </p>
+<p>  &lt;sys/msg.h&gt;</p>
+<p>int msgctl()    </p>
+<p>  10.4.4消息队列的应用实例 </p>
+<p>  10.5信号量 </p>
+<p>  10.5.1信号量的基本概念 </p>
+<p>  信号量是一个计数器，常用于处理进程或线程的同步问题，特别是对临界资源访问的同步。临界资源可</p>
+<p>  以简单地理解为在某一时刻只能由一个进程或线程进行操作的资源，这里的资源可以是一段代码、一个变量或某种硬件资源。信号</p>
+<p>  量的值大于或等于0时表示可供并发进程使用的资源实体数：小于0时代表正在等待使用临界资源的进程数</p>
+<p>  10.5.2信号量的创建与使用 </p>
+<p>  1信号集的创建或打开</p>
+<p>  &lt;sys/sem.h&gt;</p>
+<p>int semget()</p>
+<p>  2信号量的操作</p>
+<p>  &lt;sys/sem.h&gt;</p>
+<p>PV操作通过调用函数intsemop()</p>
+<p>  struct sembuf{} </p>
+<p>  3信号集的控制</p>
+<p>  &lt;sys/sem.h&gt;</p>
+<p>  int semctl();           </p>
+<p>  10.5.3信号量的应用实例 </p>
+<p>  10.6共享内存 </p>
+<p>  10.6.1共享内存的数据结构 </p>
+<p>  共享内存就是分配一块能被其他进程访问的内存</p>
+<p>  &lt;linux/shm.h&gt;</p>
+<p>  struct shmid_ds{} 详见P270</p>
+<p>  10.6.2共享内存的创建与操作 </p>
+<p>  1共享内存区的创建</p>
+<p>  &lt;linux/shm.h&gt;</p>
+<p>int shmget() </p>
+<p>  2共享内存区的操作</p>
+<p>  &lt;linux/shm.h&gt;</p>
+<p>void * shmat() </p>
+<p>  3共享内存区的控制</p>
+<p>  &lt;linux/shm.h&gt;</p>
+<p>int shmctl() </p>
+<p>  10.6.3共享内存的应用实例 </p>
+<p>  10.7库的创建和使用 </p>
+<p>  10.7.1Linux库的概念 </p>
+<p>  库是一种软件组件技术，库里面封装了数据和函数，提供给用户程序调用</p>
+<p>Windows系统本身提供并使用了大量的库，包括静态链接库(.lib文件)和动态链接库(.dll文件)</p>
+<p>  Linux库文件名由前缀lib、库名以及后缀3部分组成，其中动态库以.so作为后缀，而静态库通常以.a作</p>
+<p>  为后缀。</p>
+<p>  在程序中使用静态库和动态库时，它们的载入顺序是不一样的。静态库的代码在编译时就拷贝到应用程序中，因此当多个应用程序同时引用一个静态函数时，内存中将会有调用函数的多个副本。动态库是在程序开始运行后调用库函数时才被载入，被调函数在内存中只有一个副本，并且动态库可以在程序运行期间释放动态库所占用的内存，腾出空间供其他程序使用 </p>
+<p>  10.7.2静态库的创建和使用 </p>
+<p>  步骤：</p>
+<p>  1、在一个头文件中声明静态库所导出的函数</p>
+<p>  2、在一个源文件中实现静态库所导出的函数</p>
+<p>  3、编译源文件，生成可执行代码</p>
+<p>  4、将可执行代码所在目标文件加入到某个静态库中，并将静态库拷贝到系统默认的存放库文件</p>
+<p>  的目录下</p>
+<p>  参见：P276</p>
+<p>  Linux下，可以使用ar命令 来创建和修改静态库</p>
+<p>  10.7.3动态库的创建和使用 </p>
+<p>  在Linux环境下，可以很方便地创建和使用动态链接库。只要在编译函数库源程序时加上-shared 选项即可</p>
+<p>  10.8进一步学习建议 </p>
+<p>  《UNIX环境高级编程》《Solaris系统编程》《深入理解Linux内核》《Linux设备驱动程序》 </p>
+<p>  第三篇Linux网络和图形界面编程（参考QT以及TCP/IP相关书籍 ）</p>
+<p>  第四篇Linux项目实践</p>
+
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/20/OpenGL学习记录-着色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/OpenGL学习记录-纹理/">OpenGL学习记录-纹理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/OpenGL学习记录-纹理/" class="archive-article-date">
-  	<time datetime="2018-06-19T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/wl-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><ul>
-<li>纹理概述<br>为了能够把纹理映射(Map)到三角形上，我们需要指定三角形的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个<font color="red">纹理坐标(Texture Coordinate)</font>，用来标明该从纹理图像的哪个部分<font color="red">采样</font>（译注：采集片段颜色）。之后在图形的其它片段上进行片段<font color="red">插值</font>(Fragment Interpolation)。</li>
-</ul>
-<p>纹理坐标在x和y轴上，范围为0到1之间（注意我们使用的是2D纹理图像）。使用纹理坐标获取纹理颜色叫做<font color="red">采样(Sampling)</font>。纹理坐标起始于(0, 0)，也就是纹理图片的左下角，终始于(1, 1)，即纹理图片的右上角。</p>
-        
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/19/OpenGL学习记录-纹理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OpenGL学习记录-基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/18/OpenGL学习记录-基础篇/">OpenGL学习记录-基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/18/OpenGL学习记录-基础篇/" class="archive-article-date">
-  	<time datetime="2018-06-18T09:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/gljc-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="教程地址："><a href="#教程地址：" class="headerlink" title="教程地址："></a>教程地址：</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">https://learnopengl-cn.github.io/</a></p>
-<h2 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h2><ul>
-<li>Khronos组织制定并维护的规范</li>
-<li>立即渲染模式: OpenGL3.2 开始废弃</li>
-<li>核心模式(Core-profile)</li>
-<li>扩展</li>
-<li>状态机(State Machine)</li>
-<li>对象</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/18/OpenGL学习记录-基础篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-医学影像中呼吸门控的动态显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/22/医学影像中呼吸门控的动态显示/">医学影像中呼吸门控的动态显示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/22/医学影像中呼吸门控的动态显示/" class="archive-article-date">
-  	<time datetime="2018-05-22T09:08:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/menkong-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="呼吸门控概念"><a href="#呼吸门控概念" class="headerlink" title="呼吸门控概念"></a>呼吸门控概念</h2><p>由于受到呼吸运动的影响，位于胸腹部的病灶具有较大幅度的移动。在传统放疗方式中考虑呼吸运动则需要增加较大的计划靶区（PTV），导致受照正常组织显着增加。呼吸门控技术 （respiratory gating technology）是指在放射治疗过程中监测患者呼吸运动，在特定呼吸时相触发射线照射，降低正常组织受照剂量。</p>
-        
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">应用实践</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/22/医学影像中呼吸门控的动态显示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="linux-ROS-Robot-OS-Tutorial-学习记录" class="article article-type-linux  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">ROS(Robot OS)Tutorial 学习记录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/" class="archive-article-date">
-  	<time datetime="2018-03-31T07:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/ros-1.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<p>注： 此文档仅仅是我阅读时的流水账，也因为本人英语水平有限，仅凭个人的自我理解所编写，不可避免的存在错误和偏差，请以官方原文为准。</p>
-<p>官方教程：<a href="http://wiki.ros.org/ROS/Tutorials" target="_blank" rel="noopener">http://wiki.ros.org/ROS/Tutorials</a></p>
-<h2 id="Beginner-Level"><a href="#Beginner-Level" class="headerlink" title="Beginner Level"></a>Beginner Level</h2><h3 id="1-安装配置ROS环境"><a href="#1-安装配置ROS环境" class="headerlink" title="1. 安装配置ROS环境"></a>1. 安装配置ROS环境</h3><h4 id="安装ROS"><a href="#安装ROS" class="headerlink" title="安装ROS"></a>安装ROS</h4><ul>
-<li><p>官方推荐 ROS Kinettic Kame   <a href="http://wiki.ros.org/Distributions" target="_blank" rel="noopener">http://wiki.ros.org/Distributions</a></p>
-</li>
-<li><p>安装步骤： <a href="http://wiki.ros.org/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">http://wiki.ros.org/kinetic/Installation/Ubuntu</a></p>
-<h4 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h4></li>
-<li><p>概念 ：<font color="red">notion of combining spaces using the shell environment </font></p>
-</li>
-<li><p>检查环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> printenv | grep ROS</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> source /opt/ros/kinetic/setup.bash</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/ROS-Robot-OS-Tutorial-学习记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="cpp-深入理解C-11阅读笔记" class="article article-type-cpp  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/深入理解C-11阅读笔记/">深入理解C++11阅读笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/14/深入理解C-11阅读笔记/" class="archive-article-date">
-  	<time datetime="2017-12-14T06:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/cpp11-1.jpg" alt="ccss"></p>
-<p>由 王宇 原创并发布：</p>
-<h2 id="一-新标准的诞生"><a href="#一-新标准的诞生" class="headerlink" title="一 新标准的诞生"></a>一 新标准的诞生</h2><h3 id="从使用上分类方法"><a href="#从使用上分类方法" class="headerlink" title="从使用上分类方法"></a>从使用上分类方法</h3><ul>
-<li>类作者需要的</li>
-<li>库作者需要的</li>
-<li>所有人需要的</li>
-<li>部分人需要的</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -671,16 +682,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/14/深入理解C-11阅读笔记/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2012/06/20/Linux-C-编程实战-阅读笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2012/06/20/Linux设备驱动程序-阅读笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Linux设备驱动程序-阅读笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/06/19/MSC-51单片机原理与接口技术-阅读笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MSC-51单片机原理与接口技术-阅读笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -695,364 +774,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VTK与图形学相关的基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/VTK与图形学相关的基本概念/">VTK与图形学相关的基本概念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/VTK与图形学相关的基本概念/" class="archive-article-date">
-  	<time datetime="2017-10-26T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念</li>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2>
-        
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/VTK与图形学相关的基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-VTK7-1-1安装部署记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/VTK7-1-1安装部署记录/">VTK7.1.1安装部署记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/VTK7-1-1安装部署记录/" class="archive-article-date">
-  	<time datetime="2017-07-10T09:09:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/vtk7-t.jpg" alt><br>由  王宇 原创并发布 ：</p>
-<h2 id="总结VTK学习路径"><a href="#总结VTK学习路径" class="headerlink" title="总结VTK学习路径"></a><font color="red">总结VTK学习路径</font></h2><ul>
-<li>下载编译VTK代码</li>
-<li>阅读编译后Example目录中的Tutorial代码，理解pipeline</li>
-<li>阅读VTK User‘s Guide。比较系统，但是不详细，详细内容还需进一步查阅wifi和代码</li>
-<li>阅读博客中的各种VTK效果</li>
-<li>图形学的基本概念<ul>
-<li>顶点</li>
-<li>坐标</li>
-<li>摄像机</li>
-<li>颜色</li>
-<li>光线</li>
-<li>纹理</li>
-<li>其他特效</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/www_doling_net/article/details/8763686" target="_blank" rel="noopener">http://blog.csdn.net/www_doling_net/article/details/8763686</a></p>
-<p>《VTK User’s Guide (11th Edition)》<br>《The Visualization Toolkit – AnObject-Oriented Approach To 3D Graphics (4th Edition)》</p>
-        
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图形图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/VTK7-1-1安装部署记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kafka与Storm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/Kafka与Storm整合/">Kafka与Storm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/Kafka与Storm整合/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/kafka-storm-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="整合Storm的概念"><a href="#整合Storm的概念" class="headerlink" title="整合Storm的概念"></a>整合Storm的概念</h2><ul>
-<li><p>整合场景</p>
-<blockquote>
-<p>A spout is a source of streams. For example, <font color="red">a spout may read tuples off a Kafka Topic</font> and emit them as a stream. <font color="red">A bolt consumes input streams, process and possibly emits new streams.</font> Bolts can do anything from running functions, filtering tuples, do streaming aggregations, streaming joins, <font color="red">talk to databases</font>, and more. Each node in a Storm topology executes in parallel. A topology runs indefinitely until you terminate it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if the machines go down and messages are dropped.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/Kafka与Storm整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JSON学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/JSON学习笔记/">JSON学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/JSON学习笔记/" class="archive-article-date">
-  	<time datetime="2016-12-02T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/assets/blog-image/json-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
-<h2 id="JSON-是如何存储信息"><a href="#JSON-是如何存储信息" class="headerlink" title="JSON 是如何存储信息"></a>JSON 是如何存储信息</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"book"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"01"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"Java"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"third"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"Herbert Schildt"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="attr">"id"</span>:<span class="string">"07"</span>,</span><br><span class="line">         <span class="attr">"language"</span>: <span class="string">"C++"</span>,</span><br><span class="line">         <span class="attr">"edition"</span>: <span class="string">"second"</span>,</span><br><span class="line">         <span class="attr">"author"</span>: <span class="string">"E.Balagurusamy"</span></span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2>
-        
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/JSON学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1075,8 +822,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
