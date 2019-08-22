@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Redis学习笔记 | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由  王宇 原创并发布 ： Redis 环境 安装Redis  1234$sudo apt-get update$sudo apt-get install redis-server   启动Redis  12$ redis-server   检察Redis 是否工作正常  123456$ redis-cliredis 127.0.0.1:6379&amp;gt; pingPONG   安装Redis 桌面">
+  <meta name="description" content="由 王宇 原创并发布 ： Redis 环境 安装Redis 12$sudo apt-get update$sudo apt-get install redis-server  启动Redis 1$ redis-server  检察Redis 是否工作正常 123$ redis-cliredis 127.0.0.1:6379&amp;gt; pingPONG">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis学习笔记">
 <meta property="og:url" content="http://yoursite.com/2016/04/14/Redis学习笔记/index.html">
 <meta property="og:site_name" content="码农随笔">
-<meta property="og:description" content="由  王宇 原创并发布 ： Redis 环境 安装Redis  1234$sudo apt-get update$sudo apt-get install redis-server   启动Redis  12$ redis-server   检察Redis 是否工作正常  123456$ redis-cliredis 127.0.0.1:6379&amp;gt; pingPONG   安装Redis 桌面">
+<meta property="og:description" content="由 王宇 原创并发布 ： Redis 环境 安装Redis 12$sudo apt-get update$sudo apt-get install redis-server  启动Redis 1$ redis-server  检察Redis 是否工作正常 123$ redis-cliredis 127.0.0.1:6379&amp;gt; pingPONG">
 <meta property="og:locale" content="cn">
-<meta property="og:updated_time" content="2019-08-13T05:04:27.995Z">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/redis-t.jpg">
+<meta property="og:updated_time" content="2019-08-22T10:35:57.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis学习笔记">
-<meta name="twitter:description" content="由  王宇 原创并发布 ： Redis 环境 安装Redis  1234$sudo apt-get update$sudo apt-get install redis-server   启动Redis  12$ redis-server   检察Redis 是否工作正常  123456$ redis-cliredis 127.0.0.1:6379&amp;gt; pingPONG   安装Redis 桌面">
+<meta name="twitter:description" content="由 王宇 原创并发布 ： Redis 环境 安装Redis 12$sudo apt-get update$sudo apt-get install redis-server  启动Redis 1$ redis-server  检察Redis 是否工作正常 123$ redis-cliredis 127.0.0.1:6379&amp;gt; pingPONG">
+<meta name="twitter:image" content="http://yoursite.com/assets/blog-image/redis-t.jpg">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -221,21 +223,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>由  王宇 原创并发布 ：</p>
+        <p><img src="/assets/blog-image/redis-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
 <h2 id="Redis-环境"><a href="#Redis-环境" class="headerlink" title="Redis 环境"></a>Redis 环境</h2><ul>
-<li>安装Redis</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$sudo apt-get update</span><br><span class="line"></span><br><span class="line">$sudo apt-get install redis-server</span><br></pre></td></tr></table></figure>
+<li><p>安装Redis</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo apt-get update</span><br><span class="line"><span class="meta">$</span>sudo apt-get install redis-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动Redis</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> redis-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检察Redis 是否工作正常</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> redis-cli</span><br><span class="line">redis 127.0.0.1:6379&gt; ping</span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>启动Redis</li>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ redis-server</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>检察Redis 是否工作正常</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ redis-cli</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; ping</span><br><span class="line"></span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
 <ul>
 <li>安装Redis 桌面管理工具</li>
@@ -245,20 +246,20 @@
 <li><p>配置文件：redis.conf</p>
 <ul>
 <li><p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET CONFIG_SETTING_NAME</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET CONFIG_SETTING_NAME</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET  loglevel</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET *</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET  loglevel</span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET *</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 <li><p>修改配置：</p>
 <ul>
 <li><p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG SET  CONFIG_SETTING_NAME NEW_CONFIG_VALUE</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; CONFIG SET  CONFIG_SETTING_NAME NEW_CONFIG_VALUE</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG SET loglevel &quot;notice&quot;</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET loglevel</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; CONFIG SET loglevel &quot;notice&quot;</span><br><span class="line">OK</span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET loglevel</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -268,368 +269,1011 @@
 <li>Strings-字符串</li>
 </ul>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; SET name &quot;tutorialspoint&quot;</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt;GET name</span><br><span class="line"></span><br><span class="line">&quot;tutorialspoint&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; SET name "tutorialspoint"</span><br><span class="line">OK</span><br><span class="line">redis 127.0.0.1:6379&gt;GET name</span><br><span class="line">"tutorialspoint"</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>Hashes-字典</p>
 <p>例子：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; HMSET user:1 username tutorialspoint password tutorialspoint points 200</span><br><span class="line">OK</span><br><span class="line">redis 127.0.0.1:6379&gt; HGETALL user:1</span><br><span class="line"></span><br><span class="line">1) "username"</span><br><span class="line">2) "tutorialspoint"</span><br><span class="line">3) "password"</span><br><span class="line">4) "tutorialspoint"</span><br><span class="line">5) "points"</span><br><span class="line">6) "200</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; HMSET user:1 username tutorialspoint password tutorialspoint points 200</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; HGETALL user:1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) &quot;username&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;tutorialspoint&quot;</span><br><span class="line"></span><br><span class="line">3) &quot;password&quot;</span><br><span class="line"></span><br><span class="line">4) &quot;tutorialspoint&quot;</span><br><span class="line"></span><br><span class="line">5) &quot;points&quot;</span><br><span class="line"></span><br><span class="line">6) &quot;200</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Lists-列表</li>
+<li><p>Lists-列表</p>
+</li>
 </ul>
 <p>时间复杂度：O(N)</p>
 <p> 例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; lpush tutoriallist redis</span><br><span class="line"></span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; lpush tutoriallist mongodb</span><br><span class="line"></span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; lpush tutoriallist rabitmq</span><br><span class="line"></span><br><span class="line">(integer) 3</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; lrange tutoriallist 0 10</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) &quot;rabitmq&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;mongodb&quot;</span><br><span class="line"></span><br><span class="line">3) &quot;redis&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; lpush tutoriallist redis</span><br><span class="line">(integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; lpush tutoriallist mongodb</span><br><span class="line">(integer) 2</span><br><span class="line">redis 127.0.0.1:6379&gt; lpush tutoriallist rabitmq</span><br><span class="line">(integer) 3</span><br><span class="line">redis 127.0.0.1:6379&gt; lrange tutoriallist 0 10</span><br><span class="line"></span><br><span class="line">1) "rabitmq"</span><br><span class="line">2) "mongodb"</span><br><span class="line">3) "redis"</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Sets-集合</li>
 </ul>
 <p>时间复杂度：O(1)</p>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; sadd tutoriallist redis</span><br><span class="line"></span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; sadd tutoriallist mongodb</span><br><span class="line"></span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; sadd tutoriallist rabitmq</span><br><span class="line"></span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; sadd tutoriallist rabitmq</span><br><span class="line"></span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; smembers tutoriallist</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) &quot;rabitmq&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;mongodb&quot;</span><br><span class="line"></span><br><span class="line">3) &quot;redis&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; sadd tutoriallist redis</span><br><span class="line">(integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; sadd tutoriallist mongodb</span><br><span class="line">(integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; sadd tutoriallist rabitmq</span><br><span class="line">(integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; sadd tutoriallist rabitmq</span><br><span class="line">(integer) 0</span><br><span class="line">redis 127.0.0.1:6379&gt; smembers tutoriallist</span><br><span class="line"></span><br><span class="line">1) "rabitmq"</span><br><span class="line">2) "mongodb"</span><br><span class="line">3) "redis"</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Stored Sets-有序集合</li>
 </ul>
 <p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; zadd tutoriallist 0 redis</span><br><span class="line"></span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; zadd tutoriallist 0 mongodb</span><br><span class="line"></span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; zadd tutoriallist 0 rabitmq</span><br><span class="line"></span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; zadd tutoriallist 0 rabitmq</span><br><span class="line"></span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; ZRANGEBYSCORE tutoriallist 0 1000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) &quot;redis&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;mongodb&quot;</span><br><span class="line"></span><br><span class="line">3) &quot;rabitmq&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; zadd tutoriallist 0 redis</span><br><span class="line">(integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; zadd tutoriallist 0 mongodb</span><br><span class="line">(integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; zadd tutoriallist 0 rabitmq</span><br><span class="line">(integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; zadd tutoriallist 0 rabitmq</span><br><span class="line">(integer) 0</span><br><span class="line">redis 127.0.0.1:6379&gt; ZRANGEBYSCORE tutoriallist 0 1000</span><br><span class="line"></span><br><span class="line">1) "redis"</span><br><span class="line">2) "mongodb"</span><br><span class="line">3) "rabitmq"</span><br></pre></td></tr></table></figure>
 
 <h2 id="Redis-命令"><a href="#Redis-命令" class="headerlink" title="Redis 命令"></a>Redis 命令</h2><ul>
 <li><p>服务器端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$redis-cli -h host -p port -a password</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>redis-cli -h host -p port -a password</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h2 id="Redis-操作Keys命令"><a href="#Redis-操作Keys命令" class="headerlink" title="Redis 操作Keys命令"></a>Redis 操作Keys命令</h2><p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    DEL key This command deletes the key, if exists|</p>
-<p>|2|    DUMP key This command returns a serialized version of the value stored at the specified key.|</p>
-<p>|3|    EXISTS key This command checks whether the key exists or not.|</p>
-<p>|4|    EXPIRE key seconds Expires the key after the specified time|</p>
-<p>|5|    EXPIREAT key timestamp Expires the key after the specified time. Here time is in Unix timestamp format|</p>
-<p>|6|    PEXPIRE key milliseconds  Set the expiry of key in milliseconds|</p>
-<p>|7|    PEXPIREAT key milliseconds-timestamp Set the expiry of key in unix timestamp specified as milliseconds|</p>
-<p>|8|    KEYS pattern Find all keys matching the specified pattern|</p>
-<p>|9|    MOVE key db Move a key to another database|</p>
-<p>|10|    PERSIST key Remove the expiration from the key|</p>
-<p>|11|    PTTL key Get the remaining time in keys expiry in milliseconds.|</p>
-<p>|12|    TTL key Get the remaining time in keys expiry.|</p>
-<p>|13|    RANDOMKEY Return a random key from redis|</p>
-<p>|14    |RENAME key newkey Change the key name|</p>
-<p>|15|    RENAMENX key newkey Rename key, if new key doesn’t exist|</p>
-<p>|16|    TYPE key Return the data type of value stored in key.|</p>
-<h2 id="Redis-Strings-命令列表"><a href="#Redis-Strings-命令列表" class="headerlink" title="Redis-Strings 命令列表"></a>Redis-Strings 命令列表</h2><p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    SET key value This command sets the value at the specified key|</p>
-<p>|2|    GET key Get the value of a key.|</p>
-<p>|3|    GETRANGE key start end  Get a substring of the string stored at a key|</p>
-<p>|4|    GETSET key value Set the string value of a key and return its old value|</p>
-<p>|5|    GETBIT key offset Returns the bit value at offset in the string value stored at key|</p>
-<p>|6|    MGET key1 [key2..] Get the values of all the given keys|</p>
-<p>|7|    SETBIT key offset value Sets or clears the bit at offset in the string value stored at key|</p>
-<p>|8|    SETEX key seconds value Set the value with expiry of a key|</p>
-<p>|9|    SETNX key value Set the value of a key, only if the key does not exist|</p>
-<p>|10|    SETRANGE key offset value Overwrite part of a string at key starting at the specified offset|</p>
-<p>|11|    STRLEN key Get the length of the value stored in a key|</p>
-<p>|12|    MSET key value [key value …] Set multiple keys to multiple values|</p>
-<p>|13|    MSETNX key value [key value …]  Set multiple keys to multiple values, only if none of the keys exist|</p>
-<p>|14|    PSETEX key milliseconds value Set the value and expiration in milliseconds of a key|</p>
-<p>|15|    INCR key Increment the integer value of a key by one|</p>
-<p>|16|    INCRBY key increment Increment the integer value of a key by the given amount|</p>
-<p>|17|    INCRBYFLOAT key increment Increment the float value of a key by the given amount|</p>
-<p>|18|    DECR key Decrement the integer value of a key by one|</p>
-<p>|19|    DECRBY key decrement Decrement the integer value of a key by the given number|</p>
-<p>|20|    APPEND key value Append a value to a key|</p>
-<h2 id="Redis-Hashes-命令列表"><a href="#Redis-Hashes-命令列表" class="headerlink" title="Redis-Hashes 命令列表"></a>Redis-Hashes 命令列表</h2><p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    HDEL key field2 [field2]  Delete one or more hash fields|</p>
-<p>|2|    HEXISTS key field  Determine whether a hash field exists or not|</p>
-<p>|3|    HGET key field Get the value of a hash field stored at specified key|</p>
-<p>|4|    HGETALL key Get all the fields and values stored in a hash at specified key|</p>
-<p>|5|    HINCRBY key field increment Increment the integer value of a hash field by the given number|</p>
-<p>|6|    HINCRBYFLOAT key field increment Increment the float value of a hash field by the given amount|</p>
-<p>|7|    HKEYS key Get all the fields in a hash|</p>
-<p>|8|    HLEN key Get the number of fields in a hash|</p>
-<p>|9|    HMGET key field1 [field2] Get the values of all the given hash fields|</p>
-<p>|10|    HMSET key field1 value1 [field2 value2 ] Set multiple hash fields to multiple values|</p>
-<p>|11|    HSET key field value Set the string value of a hash field|</p>
-<p>|12|    HSETNX key field value Set the value of a hash field, only if the field does not exist|</p>
-<p>|13|    HVALS key Get all the values in a hash|</p>
-<p>|14|    HSCAN key cursor [MATCH pattern] [COUNT count] Incrementally iterate hash fields and associated values|</p>
-<h2 id="Redis-Lists-命令列表"><a href="#Redis-Lists-命令列表" class="headerlink" title="Redis-Lists 命令列表"></a>Redis-Lists 命令列表</h2><p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    BLPOP key1 [key2 ] timeout Remove and get the first element in a list, or block until one is available|</p>
-<p>|2    |BRPOP key1 [key2 ] timeout Remove and get the last element in a list, or block until one is available|</p>
-<p>|3|    BRPOPLPUSH source destination timeout Pop a value from a list, push it to another list and return it; or block until one is available|</p>
-<p>|4|    LINDEX key index Get an element from a list by its index|</p>
-<p>|5    |LINSERT key BEFORE|AFTER pivot value Insert an element before or after another element in a list|</p>
-<p>|6    |LLEN key Get the length of a list|</p>
-<p>|7    |LPOP key Remove and get the first element in a list|</p>
-<p>|8    |LPUSH key value1 [value2] Prepend one or multiple values to a list|</p>
-<p>|9    |LPUSHX key value Prepend a value to a list, only if the list exists|</p>
-<p>|10|    LRANGE key start stop Get a range of elements from a list|</p>
-<p>|11    |LREM key count value Remove elements from a list|</p>
-<p>|12    |LSET key index value Set the value of an element in a list by its index|</p>
-<p>|13    |LTRIM key start stop Trim a list to the specified range|</p>
-<p>|14    |RPOP key Remove and get the last element in a list|</p>
-<p>|15    |RPOPLPUSH source destination Remove the last element in a list, append it to another list and return it|</p>
-<p>|16    |RPUSH key value1 [value2] Append one or multiple values to a list|</p>
-<p>|17    |RPUSHX key value Append a value to a list, only if the list exists|</p>
-<h2 id="Redis-Sets-命令列表"><a href="#Redis-Sets-命令列表" class="headerlink" title="Redis-Sets 命令列表"></a>Redis-Sets 命令列表</h2><p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    SADD key member1 [member2] Add one or more members to a set|</p>
-<p>|2    |SCARD key Get the number of members in a set|</p>
-<p>|3    |SDIFF key1 [key2] Subtract multiple sets|</p>
-<p>|4    |SDIFFSTORE destination key1 [key2] Subtract multiple sets and store the resulting set in a key|</p>
-<p>|5    |SINTER key1 [key2] Intersect multiple sets|</p>
-<p>|6    |SINTERSTORE destination key1 [key2] Intersect multiple sets and store the resulting set in a key|</p>
-<p>|7    |SISMEMBER key member Determine if a given value is a member of a set|</p>
-<p>|8    |SMEMBERS key Get all the members in a set|</p>
-<p>|9    |SMOVE source destination member Move a member from one set to another|</p>
-<p>|10    |SPOP key Remove and return a random member from a set|</p>
-<p>|11    |SRANDMEMBER key [count] Get one or multiple random members from a set|</p>
-<p>|12    |SREM key member1 [member2] Remove one or more members from a set|</p>
-<p>|13    |SUNION key1 [key2] Add multiple sets|</p>
-<p>|14    |SUNIONSTORE destination key1 [key2] Add multiple sets and store the resulting set in a key|</p>
-<p>|15    |SSCAN key cursor [MATCH pattern] [COUNT count] Incrementally iterate Set elements|</p>
-<h2 id="Redis-Sorted-Sets-命令列表"><a href="#Redis-Sorted-Sets-命令列表" class="headerlink" title="Redis-Sorted Sets 命令列表"></a>Redis-Sorted Sets 命令列表</h2><p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1    |ZADD key score1 member1 [score2 member2] Add one or more members to a sorted set, or update its score if it already exists|</p>
-<p>|2    |ZCARD key Get the number of members in a sorted set|</p>
-<p>|3    |ZCOUNT key min max Count the members in a sorted set with scores within the given values|</p>
-<p>|4    |ZINCRBY key increment member Increment the score of a member in a sorted set|</p>
-<p>|5    |ZINTERSTORE destination numkeys key [key …] Intersect multiple sorted sets and store the resulting sorted set in a new key|</p>
-<p>|6    |ZLEXCOUNT key min max Count the number of members in a sorted set between a given lexicographical range|</p>
-<p>|7    |ZRANGE key start stop [WITHSCORES] Return a range of members in a sorted set, by index|</p>
-<p>|8    |ZRANGEBYLEX key min max [LIMIT offset count] Return a range of members in a sorted set, by lexicographical range|</p>
-<p>|9    |ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT] Return a range of members in a sorted set, by score|</p>
-<p>|10    |ZRANK key member Determine the index of a member in a sorted set|</p>
-<p>|11    |ZREM key member [member …] Remove one or more members from a sorted set|</p>
-<p>|12    |ZREMRANGEBYLEX key min max Remove all members in a sorted set between the given lexicographical range|</p>
-<p>|13    |ZREMRANGEBYRANK key start stop Remove all members in a sorted set within the given indexes|</p>
-<p>|14    |ZREMRANGEBYSCORE key min max Remove all members in a sorted set within the given scores|</p>
-<p>|15    |ZREVRANGE key start stop [WITHSCORES] Return a range of members in a sorted set, by index, with scores ordered from high to low|</p>
-<p>|16    |ZREVRANGEBYSCORE key max min [WITHSCORES] Return a range of members in a sorted set, by score, with scores ordered from high to low|</p>
-<p>|17    |ZREVRANK key member Determine the index of a member in a sorted set, with scores ordered from high to low|</p>
-<p>|18    |ZSCORE key member Get the score associated with the given member in a sorted set|</p>
-<p>|19    |ZUNIONSTORE destination numkeys key [key …] Add multiple sorted sets and store the resulting sorted set in a new key|</p>
-<p>|20|    ZSCAN key cursor [MATCH pattern] [COUNT count] Incrementally iterate sorted sets elements and associated scores|</p>
+<h2 id="Redis-操作Keys命令"><a href="#Redis-操作Keys命令" class="headerlink" title="Redis 操作Keys命令"></a>Redis 操作Keys命令</h2><table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">DEL key This command deletes the key, if exists</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">DUMP key This command returns a serialized version of the value stored at the specified key.</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">EXISTS key This command checks whether the key exists or not.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">EXPIRE key seconds Expires the key after the specified time</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">EXPIREAT key timestamp Expires the key after the specified time. Here time is in Unix timestamp format</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">PEXPIRE key milliseconds  Set the expiry of key in milliseconds</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="left">PEXPIREAT key milliseconds-timestamp Set the expiry of key in unix timestamp specified as milliseconds</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="left">KEYS pattern Find all keys matching the specified pattern</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="left">MOVE key db Move a key to another database</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="left">PERSIST key Remove the expiration from the key</td>
+</tr>
+<tr>
+<td>11</td>
+<td align="left">PTTL key Get the remaining time in keys expiry in milliseconds.</td>
+</tr>
+<tr>
+<td>12</td>
+<td align="left">TTL key Get the remaining time in keys expiry.</td>
+</tr>
+<tr>
+<td>13</td>
+<td align="left">RANDOMKEY Return a random key from redis</td>
+</tr>
+<tr>
+<td>14</td>
+<td align="left">RENAME key newkey Change the key name</td>
+</tr>
+<tr>
+<td>15</td>
+<td align="left">RENAMENX key newkey Rename key, if new key doesn’t exist</td>
+</tr>
+<tr>
+<td>16</td>
+<td align="left">TYPE key Return the data type of value stored in key.</td>
+</tr>
+</tbody></table>
+<h2 id="Redis-Strings-命令列表"><a href="#Redis-Strings-命令列表" class="headerlink" title="Redis-Strings 命令列表"></a>Redis-Strings 命令列表</h2><table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">SET key value This command sets the value at the specified key</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">GET key Get the value of a key.</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">GETRANGE key start end  Get a substring of the string stored at a key</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">GETSET key value Set the string value of a key and return its old value</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">GETBIT key offset Returns the bit value at offset in the string value stored at key</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">MGET key1 [key2..] Get the values of all the given keys</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="left">SETBIT key offset value Sets or clears the bit at offset in the string value stored at key</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="left">SETEX key seconds value Set the value with expiry of a key</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="left">SETNX key value Set the value of a key, only if the key does not exist</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="left">SETRANGE key offset value Overwrite part of a string at key starting at the specified offset</td>
+</tr>
+<tr>
+<td>11</td>
+<td align="left">STRLEN key Get the length of the value stored in a key</td>
+</tr>
+<tr>
+<td>12</td>
+<td align="left">MSET key value [key value …] Set multiple keys to multiple values</td>
+</tr>
+<tr>
+<td>13</td>
+<td align="left">MSETNX key value [key value …]  Set multiple keys to multiple values, only if none of the keys exist</td>
+</tr>
+<tr>
+<td>14</td>
+<td align="left">PSETEX key milliseconds value Set the value and expiration in milliseconds of a key</td>
+</tr>
+<tr>
+<td>15</td>
+<td align="left">INCR key Increment the integer value of a key by one</td>
+</tr>
+<tr>
+<td>16</td>
+<td align="left">INCRBY key increment Increment the integer value of a key by the given amount</td>
+</tr>
+<tr>
+<td>17</td>
+<td align="left">INCRBYFLOAT key increment Increment the float value of a key by the given amount</td>
+</tr>
+<tr>
+<td>18</td>
+<td align="left">DECR key Decrement the integer value of a key by one</td>
+</tr>
+<tr>
+<td>19</td>
+<td align="left">DECRBY key decrement Decrement the integer value of a key by the given number</td>
+</tr>
+<tr>
+<td>20</td>
+<td align="left">APPEND key value Append a value to a key</td>
+</tr>
+</tbody></table>
+<h2 id="Redis-Hashes-命令列表"><a href="#Redis-Hashes-命令列表" class="headerlink" title="Redis-Hashes 命令列表"></a>Redis-Hashes 命令列表</h2><table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">HDEL key field2 [field2]  Delete one or more hash fields</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">HEXISTS key field  Determine whether a hash field exists or not</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">HGET key field Get the value of a hash field stored at specified key</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">HGETALL key Get all the fields and values stored in a hash at specified key</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">HINCRBY key field increment Increment the integer value of a hash field by the given number</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">HINCRBYFLOAT key field increment Increment the float value of a hash field by the given amount</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="left">HKEYS key Get all the fields in a hash</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="left">HLEN key Get the number of fields in a hash</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="left">HMGET key field1 [field2] Get the values of all the given hash fields</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="left">HMSET key field1 value1 [field2 value2 ] Set multiple hash fields to multiple values</td>
+</tr>
+<tr>
+<td>11</td>
+<td align="left">HSET key field value Set the string value of a hash field</td>
+</tr>
+<tr>
+<td>12</td>
+<td align="left">HSETNX key field value Set the value of a hash field, only if the field does not exist</td>
+</tr>
+<tr>
+<td>13</td>
+<td align="left">HVALS key Get all the values in a hash</td>
+</tr>
+<tr>
+<td>14</td>
+<td align="left">HSCAN key cursor [MATCH pattern] [COUNT count] Incrementally iterate hash fields and associated values</td>
+</tr>
+</tbody></table>
+<h2 id="Redis-Lists-命令列表"><a href="#Redis-Lists-命令列表" class="headerlink" title="Redis-Lists 命令列表"></a>Redis-Lists 命令列表</h2><table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">BLPOP key1 [key2 ] timeout Remove and get the first element in a list, or block until one is available</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">BRPOP key1 [key2 ] timeout Remove and get the last element in a list, or block until one is available</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">BRPOPLPUSH source destination timeout Pop a value from a list, push it to another list and return it; or block until one is available</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">LINDEX key index Get an element from a list by its index</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">LINSERT key BEFORE</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">LLEN key Get the length of a list</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="left">LPOP key Remove and get the first element in a list</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="left">LPUSH key value1 [value2] Prepend one or multiple values to a list</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="left">LPUSHX key value Prepend a value to a list, only if the list exists</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="left">LRANGE key start stop Get a range of elements from a list</td>
+</tr>
+<tr>
+<td>11</td>
+<td align="left">LREM key count value Remove elements from a list</td>
+</tr>
+<tr>
+<td>12</td>
+<td align="left">LSET key index value Set the value of an element in a list by its index</td>
+</tr>
+<tr>
+<td>13</td>
+<td align="left">LTRIM key start stop Trim a list to the specified range</td>
+</tr>
+<tr>
+<td>14</td>
+<td align="left">RPOP key Remove and get the last element in a list</td>
+</tr>
+<tr>
+<td>15</td>
+<td align="left">RPOPLPUSH source destination Remove the last element in a list, append it to another list and return it</td>
+</tr>
+<tr>
+<td>16</td>
+<td align="left">RPUSH key value1 [value2] Append one or multiple values to a list</td>
+</tr>
+<tr>
+<td>17</td>
+<td align="left">RPUSHX key value Append a value to a list, only if the list exists</td>
+</tr>
+</tbody></table>
+<h2 id="Redis-Sets-命令列表"><a href="#Redis-Sets-命令列表" class="headerlink" title="Redis-Sets 命令列表"></a>Redis-Sets 命令列表</h2><table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">SADD key member1 [member2] Add one or more members to a set</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">SCARD key Get the number of members in a set</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">SDIFF key1 [key2] Subtract multiple sets</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">SDIFFSTORE destination key1 [key2] Subtract multiple sets and store the resulting set in a key</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">SINTER key1 [key2] Intersect multiple sets</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">SINTERSTORE destination key1 [key2] Intersect multiple sets and store the resulting set in a key</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="left">SISMEMBER key member Determine if a given value is a member of a set</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="left">SMEMBERS key Get all the members in a set</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="left">SMOVE source destination member Move a member from one set to another</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="left">SPOP key Remove and return a random member from a set</td>
+</tr>
+<tr>
+<td>11</td>
+<td align="left">SRANDMEMBER key [count] Get one or multiple random members from a set</td>
+</tr>
+<tr>
+<td>12</td>
+<td align="left">SREM key member1 [member2] Remove one or more members from a set</td>
+</tr>
+<tr>
+<td>13</td>
+<td align="left">SUNION key1 [key2] Add multiple sets</td>
+</tr>
+<tr>
+<td>14</td>
+<td align="left">SUNIONSTORE destination key1 [key2] Add multiple sets and store the resulting set in a key</td>
+</tr>
+<tr>
+<td>15</td>
+<td align="left">SSCAN key cursor [MATCH pattern] [COUNT count] Incrementally iterate Set elements</td>
+</tr>
+</tbody></table>
+<h2 id="Redis-Sorted-Sets-命令列表"><a href="#Redis-Sorted-Sets-命令列表" class="headerlink" title="Redis-Sorted Sets 命令列表"></a>Redis-Sorted Sets 命令列表</h2><table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">ZADD key score1 member1 [score2 member2] Add one or more members to a sorted set, or update its score if it already exists</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">ZCARD key Get the number of members in a sorted set</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">ZCOUNT key min max Count the members in a sorted set with scores within the given values</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">ZINCRBY key increment member Increment the score of a member in a sorted set</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">ZINTERSTORE destination numkeys key [key …] Intersect multiple sorted sets and store the resulting sorted set in a new key</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">ZLEXCOUNT key min max Count the number of members in a sorted set between a given lexicographical range</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="left">ZRANGE key start stop [WITHSCORES] Return a range of members in a sorted set, by index</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="left">ZRANGEBYLEX key min max [LIMIT offset count] Return a range of members in a sorted set, by lexicographical range</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="left">ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT] Return a range of members in a sorted set, by score</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="left">ZRANK key member Determine the index of a member in a sorted set</td>
+</tr>
+<tr>
+<td>11</td>
+<td align="left">ZREM key member [member …] Remove one or more members from a sorted set</td>
+</tr>
+<tr>
+<td>12</td>
+<td align="left">ZREMRANGEBYLEX key min max Remove all members in a sorted set between the given lexicographical range</td>
+</tr>
+<tr>
+<td>13</td>
+<td align="left">ZREMRANGEBYRANK key start stop Remove all members in a sorted set within the given indexes</td>
+</tr>
+<tr>
+<td>14</td>
+<td align="left">ZREMRANGEBYSCORE key min max Remove all members in a sorted set within the given scores</td>
+</tr>
+<tr>
+<td>15</td>
+<td align="left">ZREVRANGE key start stop [WITHSCORES] Return a range of members in a sorted set, by index, with scores ordered from high to low</td>
+</tr>
+<tr>
+<td>16</td>
+<td align="left">ZREVRANGEBYSCORE key max min [WITHSCORES] Return a range of members in a sorted set, by score, with scores ordered from high to low</td>
+</tr>
+<tr>
+<td>17</td>
+<td align="left">ZREVRANK key member Determine the index of a member in a sorted set, with scores ordered from high to low</td>
+</tr>
+<tr>
+<td>18</td>
+<td align="left">ZSCORE key member Get the score associated with the given member in a sorted set</td>
+</tr>
+<tr>
+<td>19</td>
+<td align="left">ZUNIONSTORE destination numkeys key [key …] Add multiple sorted sets and store the resulting sorted set in a new key</td>
+</tr>
+<tr>
+<td>20</td>
+<td align="left">ZSCAN key cursor [MATCH pattern] [COUNT count] Incrementally iterate sorted sets elements and associated scores</td>
+</tr>
+</tbody></table>
 <h2 id="Redis-HyperLogLog-计算基数"><a href="#Redis-HyperLogLog-计算基数" class="headerlink" title="Redis-HyperLogLog-计算基数"></a>Redis-HyperLogLog-计算基数</h2><ul>
-<li>例子</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; PFADD tutorials &quot;redis&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) (integer) 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; PFADD tutorials &quot;mongodb&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) (integer) 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; PFADD tutorials &quot;mysql&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) (integer) 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; PFCOUNT tutorials</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(integer) 3</span><br></pre></td></tr></table></figure>
+<li>例子<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; PFADD tutorials &quot;redis&quot;</span><br><span class="line">1) (integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; PFADD tutorials &quot;mongodb&quot;</span><br><span class="line">1) (integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; PFADD tutorials &quot;mysql&quot;</span><br><span class="line">1) (integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; PFCOUNT tutorials</span><br><span class="line">(integer) 3</span><br></pre></td></tr></table></figure>
 
-<p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    PFADD key element [element …]  Adds the specified elements to the specified HyperLogLog.|</p>
-<p>|2|    PFCOUNT key [key …]  Return the approximated cardinality of the set(s) observed by the HyperLogLog at key(s).|</p>
-<p>|3|    PFMERGE destkey sourcekey [sourcekey …]  Merge N different HyperLogLogs into a single one.|</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">PFADD key element [element …]  Adds the specified elements to the specified HyperLogLog.</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">PFCOUNT key [key …]  Return the approximated cardinality of the set(s) observed by the HyperLogLog at key(s).</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">PFMERGE destkey sourcekey [sourcekey …]  Merge N different HyperLogLogs into a single one.</td>
+</tr>
+</tbody></table>
 <h2 id="Redis-Publish-Subscribe"><a href="#Redis-Publish-Subscribe" class="headerlink" title="Redis - Publish Subscribe"></a>Redis - Publish Subscribe</h2><p>Redis的pub sub 实现了发送、接受message 的系统。</p>
 <ul>
 <li>例子</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; SUBSCRIBE redisChat</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line"></span><br><span class="line">1) &quot;subscribe&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;redisChat&quot;</span><br><span class="line"></span><br><span class="line">3) (integer) 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; SUBSCRIBE redisChat</span><br><span class="line"></span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">1) "subscribe"</span><br><span class="line">2) "redisChat"</span><br><span class="line">3) (integer) 1</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; PUBLISH redisChat &quot;Redis is a great caching technique&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; PUBLISH redisChat &quot;Learn redis by tutorials point&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) &quot;message&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;redisChat&quot;</span><br><span class="line"></span><br><span class="line">3) &quot;Redis is a great caching technique&quot;</span><br><span class="line"></span><br><span class="line">1) &quot;message&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;redisChat&quot;</span><br><span class="line"></span><br><span class="line">3) &quot;Learn redis by tutorials point&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; PUBLISH redisChat "Redis is a great caching technique"</span><br><span class="line">(integer) 1</span><br><span class="line">redis 127.0.0.1:6379&gt; PUBLISH redisChat "Learn redis by tutorials point"</span><br><span class="line">(integer) 1</span><br><span class="line">1) "message"</span><br><span class="line">2) "redisChat"</span><br><span class="line">3) "Redis is a great caching technique"</span><br><span class="line">1) "message"</span><br><span class="line">2) "redisChat"</span><br><span class="line">3) "Learn redis by tutorials point"</span><br></pre></td></tr></table></figure>
 
-<p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    PSUBSCRIBE pattern [pattern …] Subscribe to channels matching the given patterns.|</p>
-<p>|2|    PUBSUB subcommand [argument [argument …]] Tells the state of pubsub system eg which clients are active on the server.|</p>
-<p>|3|    PUBLISH channel message Post a message to a channel.|</p>
-<p>|4|    PUNSUBSCRIBE [pattern [pattern …]]  Stop listening for messages posted to channels matching the given patterns.|</p>
-<p>|5|    SUBSCRIBE channel [channel …]  Listen for messages published to the given channels.|</p>
-<p>|6|    UNSUBSCRIBE [channel [channel …]]  Stop listening for messages posted to the given channels.|</p>
+<table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">PSUBSCRIBE pattern [pattern …] Subscribe to channels matching the given patterns.</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">PUBSUB subcommand [argument [argument …]] Tells the state of pubsub system eg which clients are active on the server.</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">PUBLISH channel message Post a message to a channel.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">PUNSUBSCRIBE [pattern [pattern …]]  Stop listening for messages posted to channels matching the given patterns.</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">SUBSCRIBE channel [channel …]  Listen for messages published to the given channels.</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">UNSUBSCRIBE [channel [channel …]]  Stop listening for messages posted to the given channels.</td>
+</tr>
+</tbody></table>
 <h2 id="Redis-Transaction-事务"><a href="#Redis-Transaction-事务" class="headerlink" title="Redis-Transaction 事务"></a>Redis-Transaction 事务</h2><p>执行一组命令</p>
 <ul>
-<li>例子</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; MULTI</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; SET tutorial redis</span><br><span class="line"></span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; GET tutorial</span><br><span class="line"></span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; INCR visitors</span><br><span class="line"></span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; EXEC</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) OK</span><br><span class="line"></span><br><span class="line">2) &quot;redis&quot;</span><br><span class="line"></span><br><span class="line">3) (integer) 1</span><br></pre></td></tr></table></figure>
+<li>例子<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; MULTI</span><br><span class="line">OK</span><br><span class="line">redis 127.0.0.1:6379&gt; SET tutorial redis</span><br><span class="line">QUEUED</span><br><span class="line">redis 127.0.0.1:6379&gt; GET tutorial</span><br><span class="line">QUEUED</span><br><span class="line">redis 127.0.0.1:6379&gt; INCR visitors</span><br><span class="line">QUEUED</span><br><span class="line">redis 127.0.0.1:6379&gt; EXEC</span><br><span class="line"></span><br><span class="line">1) OK</span><br><span class="line">2) "redis"</span><br><span class="line">3) (integer) 1</span><br></pre></td></tr></table></figure>
 
-<p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    DISCARD Discard all commands issued after MULTI|</p>
-<p>|2|    EXEC Execute all commands issued after MULTI|</p>
-<p>|3|    MULTI Mark the start of a transaction block|</p>
-<p>|4|    UNWATCH Forget about all watched keys|</p>
-<p>|5|    WATCH key [key …] Watch the given keys to determine execution of the MULTI/EXEC block|</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">DISCARD Discard all commands issued after MULTI</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">EXEC Execute all commands issued after MULTI</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">MULTI Mark the start of a transaction block</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">UNWATCH Forget about all watched keys</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">WATCH key [key …] Watch the given keys to determine execution of the MULTI/EXEC block</td>
+</tr>
+</tbody></table>
 <h2 id="Redis-Scripting"><a href="#Redis-Scripting" class="headerlink" title="Redis-Scripting"></a>Redis-Scripting</h2><ul>
 <li>语法</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; EVAL script numkeys key [key ...] arg [arg ...]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; EVAL script numkeys key [key ...] arg [arg ...]</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>例子</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; EVAL &quot;return &#123;KEYS[1],KEYS[2],ARGV[1],ARGV[2]&#125;&quot; 2 key1 key2 first second</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) &quot;key1&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;key2&quot;</span><br><span class="line"></span><br><span class="line">3) &quot;first&quot;</span><br><span class="line"></span><br><span class="line">4) &quot;second&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; EVAL &quot;return &#123;KEYS[1],KEYS[2],ARGV[1],ARGV[2]&#125;&quot; 2 key1 key2 first second</span><br><span class="line"></span><br><span class="line">1) &quot;key1&quot;</span><br><span class="line">2) &quot;key2&quot;</span><br><span class="line">3) &quot;first&quot;</span><br><span class="line">4) &quot;second&quot;</span><br></pre></td></tr></table></figure>
 
-<p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    EVAL script numkeys key [key …] arg [arg …]  Execute a Lua script.|</p>
-<p>|2|    EVALSHA sha1 numkeys key [key …] arg [arg …] Execute a Lua script.|</p>
-<p>|3|    SCRIPT EXISTS script [script …]  Check existence of scripts in the script cache.|</p>
-<p>|4|    SCRIPT FLUSH Remove all the scripts from the script cache.|</p>
-<p>|5|    SCRIPT KILL Kill the script currently in execution.|</p>
-<p>|6|    SCRIPT LOAD script Load the specified Lua script into the script cache.|</p>
+<table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">EVAL script numkeys key [key …] arg [arg …]  Execute a Lua script.</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">EVALSHA sha1 numkeys key [key …] arg [arg …] Execute a Lua script.</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">SCRIPT EXISTS script [script …]  Check existence of scripts in the script cache.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">SCRIPT FLUSH Remove all the scripts from the script cache.</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">SCRIPT KILL Kill the script currently in execution.</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">SCRIPT LOAD script Load the specified Lua script into the script cache.</td>
+</tr>
+</tbody></table>
 <h2 id="Redis-Connections"><a href="#Redis-Connections" class="headerlink" title="Redis - Connections"></a>Redis - Connections</h2><ul>
 <li>例子</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; AUTH &quot;password&quot;</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; PING</span><br><span class="line"></span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; AUTH &quot;password&quot;</span><br><span class="line">OK</span><br><span class="line">redis 127.0.0.1:6379&gt; PING</span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>链接命令</li>
+<li>链接命令<table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">AUTH password Authenticate to the server with given password</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">ECHO message Print the given string</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">PING Check whether server is running or not</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">QUIT Close the current connection</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">SELECT index Change the selected database for the current connection</td>
+</tr>
+</tbody></table>
+</li>
 </ul>
-<p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    AUTH password Authenticate to the server with given password|</p>
-<p>|2|    ECHO message Print the given string|</p>
-<p>|3|    PING Check whether server is running or not|</p>
-<p>|4|    QUIT Close the current connection|</p>
-<p>|5    |SELECT index Change the selected database for the current connection|</p>
 <h2 id="Redis-Server"><a href="#Redis-Server" class="headerlink" title="Redis - Server"></a>Redis - Server</h2><ul>
 <li>例子</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; INFO</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; INFO</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Redis server 命令列表</li>
 </ul>
-<p>|S.N.|Command &amp; Description|</p>
-<p>|—|:—|</p>
-<p>|1|    BGREWRITEAOF Asynchronously rewrite the append-only file|</p>
-<p>|2|    BGSAVE Asynchronously save the dataset to disk|</p>
-<p>|3|    CLIENT KILL [ip:port] [ID client-id] Kill the connection of a client|</p>
-<p>|4|    CLIENT LIST Get the list of client connections connection to the server|</p>
-<p>|5|    CLIENT GETNAME Get the name of current connection|</p>
-<p>|6|    CLIENT PAUSE timeout Stop processing commands from clients for specified time|</p>
-<p>|7|    CLIENT SETNAME connection-name Set the current connection name|</p>
-<p>|8|    CLUSTER SLOTS Get array of Cluster slot to node mappings|</p>
-<p>|9|    COMMAND Get array of Redis command details|</p>
-<p>|10|    COMMAND COUNT Get total number of Redis commands|</p>
-<p>|11|    COMMAND GETKEYS Extract keys given a full Redis command|</p>
-<p>|12|    BGSAVE Asynchronously save the dataset to disk|</p>
-<p>|13|    COMMAND INFO command-name [command-name …] Get array of specific Redis command details|</p>
-<p>|14|    CONFIG GET parameter Get the value of a configuration parameter|</p>
-<p>|15|    CONFIG REWRITE Rewrite the configuration file with the in memory configuration|</p>
-<p>|16|    CONFIG SET parameter value Set a configuration parameter to the given value|</p>
-<p>|17|    CONFIG RESETSTAT Reset the stats returned by INFO|</p>
-<p>|18|    DBSIZE Return the number of keys in the selected database|</p>
-<p>|19|    DEBUG OBJECT key Get debugging information about a key|</p>
-<p>|20|    DEBUG SEGFAULT Make the server crash|</p>
-<p>|21|    FLUSHALL Remove all keys from all databases|</p>
-<p>|22|    FLUSHDB Remove all keys from the current database|</p>
-<p>|23|    INFO [section] Get information and statistics about the server|</p>
-<p>|24|    LASTSAVE Get the UNIX time stamp of the last successful save to disk|</p>
-<p>|25|    MONITOR Listen for all requests received by the server in real time|</p>
-<p>|26|    ROLE Return the role of the instance in the context of replication|</p>
-<p>|27|    SAVE Synchronously save the dataset to disk|</p>
-<p>|28|    SHUTDOWN [NOSAVE] [SAVE] Synchronously save the dataset to disk and then shut down the server|</p>
-<p>|29|    SLAVEOF host port Make the server a slave of another instance, or promote it as master|</p>
-<p>|30|    SLOWLOG subcommand [argument] Manages the Redis slow queries log|</p>
-<p>|31|    SYNC command used for replication|</p>
-<p>|32|    TIME Return the current server time|</p>
+<table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command &amp; Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">BGREWRITEAOF Asynchronously rewrite the append-only file</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">BGSAVE Asynchronously save the dataset to disk</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">CLIENT KILL [ip:port] [ID client-id] Kill the connection of a client</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">CLIENT LIST Get the list of client connections connection to the server</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">CLIENT GETNAME Get the name of current connection</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">CLIENT PAUSE timeout Stop processing commands from clients for specified time</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="left">CLIENT SETNAME connection-name Set the current connection name</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="left">CLUSTER SLOTS Get array of Cluster slot to node mappings</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="left">COMMAND Get array of Redis command details</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="left">COMMAND COUNT Get total number of Redis commands</td>
+</tr>
+<tr>
+<td>11</td>
+<td align="left">COMMAND GETKEYS Extract keys given a full Redis command</td>
+</tr>
+<tr>
+<td>12</td>
+<td align="left">BGSAVE Asynchronously save the dataset to disk</td>
+</tr>
+<tr>
+<td>13</td>
+<td align="left">COMMAND INFO command-name [command-name …] Get array of specific Redis command details</td>
+</tr>
+<tr>
+<td>14</td>
+<td align="left">CONFIG GET parameter Get the value of a configuration parameter</td>
+</tr>
+<tr>
+<td>15</td>
+<td align="left">CONFIG REWRITE Rewrite the configuration file with the in memory configuration</td>
+</tr>
+<tr>
+<td>16</td>
+<td align="left">CONFIG SET parameter value Set a configuration parameter to the given value</td>
+</tr>
+<tr>
+<td>17</td>
+<td align="left">CONFIG RESETSTAT Reset the stats returned by INFO</td>
+</tr>
+<tr>
+<td>18</td>
+<td align="left">DBSIZE Return the number of keys in the selected database</td>
+</tr>
+<tr>
+<td>19</td>
+<td align="left">DEBUG OBJECT key Get debugging information about a key</td>
+</tr>
+<tr>
+<td>20</td>
+<td align="left">DEBUG SEGFAULT Make the server crash</td>
+</tr>
+<tr>
+<td>21</td>
+<td align="left">FLUSHALL Remove all keys from all databases</td>
+</tr>
+<tr>
+<td>22</td>
+<td align="left">FLUSHDB Remove all keys from the current database</td>
+</tr>
+<tr>
+<td>23</td>
+<td align="left">INFO [section] Get information and statistics about the server</td>
+</tr>
+<tr>
+<td>24</td>
+<td align="left">LASTSAVE Get the UNIX time stamp of the last successful save to disk</td>
+</tr>
+<tr>
+<td>25</td>
+<td align="left">MONITOR Listen for all requests received by the server in real time</td>
+</tr>
+<tr>
+<td>26</td>
+<td align="left">ROLE Return the role of the instance in the context of replication</td>
+</tr>
+<tr>
+<td>27</td>
+<td align="left">SAVE Synchronously save the dataset to disk</td>
+</tr>
+<tr>
+<td>28</td>
+<td align="left">SHUTDOWN [NOSAVE] [SAVE] Synchronously save the dataset to disk and then shut down the server</td>
+</tr>
+<tr>
+<td>29</td>
+<td align="left">SLAVEOF host port Make the server a slave of another instance, or promote it as master</td>
+</tr>
+<tr>
+<td>30</td>
+<td align="left">SLOWLOG subcommand [argument] Manages the Redis slow queries log</td>
+</tr>
+<tr>
+<td>31</td>
+<td align="left">SYNC command used for replication</td>
+</tr>
+<tr>
+<td>32</td>
+<td align="left">TIME Return the current server time</td>
+</tr>
+</tbody></table>
 <h2 id="Redis-备份"><a href="#Redis-备份" class="headerlink" title="Redis - 备份"></a>Redis - 备份</h2><ul>
-<li>语法 和例子</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SAVE</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<li><p>语法 和例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SAVE</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复Redis数据</p>
+</li>
+<li><p>通过CONFIG 命令获得数据的存储路径：</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; CONFIG get dir</span><br><span class="line">1) "dir"</span><br><span class="line">2) "/user/tutorialspoint/redis-2.8.13/src"</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>恢复Redis数据</p>
-<ul>
-<li><p>通过CONFIG 命令获得数据的存储路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; CONFIG get dir</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) &quot;dir&quot;</span><br><span class="line"></span><br><span class="line"> 2) &quot;/user/tutorialspoint/redis-2.8.13/src&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>恢复（BGSAVE）</p>
-</li>
+<li>恢复（BGSAVE）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; BGSAVE</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Background saving started</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; BGSAVE</span><br><span class="line">Background saving started</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h2 id="Redis-安全"><a href="#Redis-安全" class="headerlink" title="Redis - 安全"></a>Redis - 安全</h2><p>默认状态下，Redis没有密码，要在设置密码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; CONFIG set requirepass &quot;tutorialspoint&quot;</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; CONFIG get requirepass</span><br><span class="line"></span><br><span class="line">1) &quot;requirepass&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;tutorialspoint&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; AUTH &quot;tutorialspoint&quot;</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SET mykey &quot;Test value&quot;</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; GET mykey</span><br><span class="line"></span><br><span class="line">&quot;Test value&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; CONFIG set requirepass "tutorialspoint"</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; CONFIG get requirepass</span><br><span class="line">1) "requirepass"</span><br><span class="line">2) "tutorialspoint"</span><br><span class="line">127.0.0.1:6379&gt; AUTH "tutorialspoint"</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; SET mykey "Test value"</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; GET mykey</span><br><span class="line">"Test value"</span><br></pre></td></tr></table></figure>
 
 <h2 id="Redis-监控执行效率-Benchmarks"><a href="#Redis-监控执行效率-Benchmarks" class="headerlink" title="Redis 监控执行效率(Benchmarks)"></a>Redis 监控执行效率(Benchmarks)</h2><ul>
 <li>语法</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">redis-benchmark [option] [option value]</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line"></span><br><span class="line">redis-benchmark -n 100000</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-benchmark [option] [option value]</span><br><span class="line">例如：</span><br><span class="line">redis-benchmark -n 100000</span><br></pre></td></tr></table></figure>
 
-<p>|S.N.|Option| Description|Default Value|</p>
-<p>|—|:—|:—|:—|</p>
-<p>|1|    -h|    Specifies server host name|    127.0.0.1|</p>
-<p>|2|    -p|    Specifies server port|    6379|</p>
-<p>|3|    -s|    Specifies server socket    ||</p>
-<p>|4|    -c|    Specifies number of parallel connections|    50|</p>
-<p>|5|    -n|    Specifies total number of requests|    10000|</p>
-<p>|6|    -d|    Specifies data size of SET/GET value in bytes    |2|</p>
-<p>|7|    -k|    1=keep alive 0=reconnect|    1|</p>
-<p>|8|    -r|    Use random keys for SET/GET/INCR, random values for SADD    ||</p>
-<p>|9|    -p|    Pipeline <numreq> requests|    1|</numreq></p>
-<p>|10|    -q|    Forces Quiet to redis. Just show query/sec values|    |</p>
-<p>|11|    –csv|    Output in CSV format|    |</p>
-<p>|12|    -l|    Generates loop, Run the tests forever    ||</p>
-<p>|13|    -t|    Only run the comma-separated list of tests.    ||</p>
-<p>|14|    -I|    Idle mode. Just open N idle connections and wait.    ||</p>
+<table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Option</th>
+<th align="left">Description</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">-h</td>
+<td align="left">Specifies server host name</td>
+<td align="left">127.0.0.1</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">-p</td>
+<td align="left">Specifies server port</td>
+<td align="left">6379</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">-s</td>
+<td align="left">Specifies server socket</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">-c</td>
+<td align="left">Specifies number of parallel connections</td>
+<td align="left">50</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">-n</td>
+<td align="left">Specifies total number of requests</td>
+<td align="left">10000</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="left">-d</td>
+<td align="left">Specifies data size of SET/GET value in bytes</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="left">-k</td>
+<td align="left">1=keep alive 0=reconnect</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="left">-r</td>
+<td align="left">Use random keys for SET/GET/INCR, random values for SADD</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>9</td>
+<td align="left">-p</td>
+<td align="left">Pipeline <numreq> requests</numreq></td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td>10</td>
+<td align="left">-q</td>
+<td align="left">Forces Quiet to redis. Just show query/sec values</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>11</td>
+<td align="left">–csv</td>
+<td align="left">Output in CSV format</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>12</td>
+<td align="left">-l</td>
+<td align="left">Generates loop, Run the tests forever</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>13</td>
+<td align="left">-t</td>
+<td align="left">Only run the comma-separated list of tests.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>14</td>
+<td align="left">-I</td>
+<td align="left">Idle mode. Just open N idle connections and wait.</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
 <ul>
 <li>例子</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">redis-benchmark -h 127.0.0.1 -p 6379 -t set,lpush -n 100000 -q</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SET: 146198.83 requests per second</span><br><span class="line"></span><br><span class="line">LPUSH: 145560.41 requests per second</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-benchmark -h 127.0.0.1 -p 6379 -t set,lpush -n 100000 -q</span><br><span class="line">SET: 146198.83 requests per second</span><br><span class="line">LPUSH: 145560.41 requests per second</span><br></pre></td></tr></table></figure>
 
 <h2 id="Redis-客户端连接-Client-Connection"><a href="#Redis-客户端连接-Client-Connection" class="headerlink" title="Redis - 客户端连接(Client Connection)"></a>Redis - 客户端连接(Client Connection)</h2><ul>
 <li>客户端最大连接数</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">config get maxclients</span><br><span class="line"></span><br><span class="line">1) &quot;maxclients&quot;</span><br><span class="line"></span><br><span class="line">2) &quot;10000&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">config get maxclients</span><br><span class="line">1) "maxclients"</span><br><span class="line">2) "10000"</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>Client 命令列表</li>
+<li>Client 命令列表<table>
+<thead>
+<tr>
+<th>S.N.</th>
+<th align="left">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">CLIENT LIST</td>
+<td align="left">Returns the list of clients connected to redis server</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">CLIENT SETNAME</td>
+<td align="left">Assigns a name to the current connection</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">CLIENT GETNAME</td>
+<td align="left">Returns the name of the current connection as set by CLIENT SETNAME.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">CLIENT PAUSE</td>
+<td align="left">This is a connections control command able to suspend all the Redis clients for the specified amount of time (in milliseconds).</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="left">CLIENT KILL</td>
+<td align="left">This command closes a given client connection.</td>
+</tr>
+</tbody></table>
+</li>
 </ul>
-<p>|S.N.|Command| Description|</p>
-<p>|—|:—|:—|</p>
-<p>|1|    CLIENT LIST    |Returns the list of clients connected to redis server|</p>
-<p>|2|    CLIENT SETNAME    |Assigns a name to the current connection|</p>
-<p>|3|    CLIENT GETNAME    |Returns the name of the current connection as set by CLIENT SETNAME.|</p>
-<p>|4|    CLIENT PAUSE    |This is a connections control command able to suspend all the Redis clients for the specified amount of time (in milliseconds).|</p>
-<p>|5|    CLIENT KILL    |This command closes a given client connection.|</p>
 <h2 id="Redis-管道-Pipelining"><a href="#Redis-管道-Pipelining" class="headerlink" title="Redis 管道(Pipelining)"></a>Redis 管道(Pipelining)</h2><p>请求-应答模式</p>
 <h2 id="Redis-分区-Partitioning"><a href="#Redis-分区-Partitioning" class="headerlink" title="Redis - 分区(Partitioning)"></a>Redis - 分区(Partitioning)</h2><p>将数据分布到不同的redis实例中</p>
 <ul>
-<li>分区动机</li>
-</ul>
-<blockquote>
-<p>更好的利用多台机器的存储资源横向扩展，毕竟单台机器的存储资源是有限的。</p>
+<li>分区动机<blockquote>
+<p>更好的利用多台机器的存储资源横向扩展，毕竟单台机器的存储资源是有限的。<br>更好的利用多台计算机的处理器资源、网络带宽资源。</p>
 </blockquote>
-<blockquote>
-<p>更好的利用多台计算机的处理器资源、网络带宽资源。</p>
-</blockquote>
-<h2 id="Redis-Java"><a href="#Redis-Java" class="headerlink" title="Redis - Java"></a>Redis - Java</h2><ul>
-<li><p>安装下载: jedis.jar</p>
-<p>  <a href="https://github.com/xetorthio/jedis" target="_blank" rel="noopener">https://github.com/xetorthio/jedis</a></p>
-<p>  <a href="https://github.com/xetorthio/jedis/releases" target="_blank" rel="noopener">https://github.com/xetorthio/jedis/releases</a></p>
-<p> jedis-jedis-2.9.0.tar.gz</p>
 </li>
+</ul>
+<h2 id="Redis-Java"><a href="#Redis-Java" class="headerlink" title="Redis - Java"></a>Redis - Java</h2><ul>
+<li>安装下载: jedis.jar<br>  <a href="https://github.com/xetorthio/jedis" target="_blank" rel="noopener">https://github.com/xetorthio/jedis</a><br>  <a href="https://github.com/xetorthio/jedis/releases" target="_blank" rel="noopener">https://github.com/xetorthio/jedis/releases</a><br> jedis-jedis-2.9.0.tar.gz</li>
 </ul>
 <ul>
 <li>连接 Redis Server</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line">public class RedisJava &#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">      //Connecting to Redis server on localhost</span><br><span class="line"></span><br><span class="line">      Jedis jedis = new Jedis(&quot;localhost&quot;);</span><br><span class="line"></span><br><span class="line">      System.out.println(&quot;Connection to server sucessfully&quot;);</span><br><span class="line"></span><br><span class="line">      //check whether server is running or not</span><br><span class="line"></span><br><span class="line">      System.out.println(&quot;Server is running: &quot;+jedis.ping());</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$javac RedisJava.java</span><br><span class="line"></span><br><span class="line">$java RedisJava</span><br><span class="line"></span><br><span class="line">Connection to server sucessfully</span><br><span class="line"></span><br><span class="line">Server is running: PONG</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisJava</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//Connecting to Redis server on localhost</span></span><br><span class="line"></span><br><span class="line">      Jedis jedis = <span class="keyword">new</span> Jedis(<span class="string">"localhost"</span>);</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"Connection to server sucessfully"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//check whether server is running or not</span></span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"Server is running: "</span>+jedis.ping());</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$javac RedisJava.java</span><br><span class="line"></span><br><span class="line">$java RedisJava</span><br><span class="line"></span><br><span class="line">Connection to server sucessfully</span><br><span class="line"></span><br><span class="line">Server is running: PONG</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Redis Java String Example</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line">public class RedisStringJava &#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">      //Connecting to Redis server on localhost</span><br><span class="line"></span><br><span class="line">      Jedis jedis = new Jedis(&quot;localhost&quot;);</span><br><span class="line"></span><br><span class="line">      System.out.println(&quot;Connection to server sucessfully&quot;);</span><br><span class="line"></span><br><span class="line">      //set the data in redis string</span><br><span class="line"></span><br><span class="line">      jedis.set(&quot;tutorial-name&quot;, &quot;Redis tutorial&quot;);</span><br><span class="line"></span><br><span class="line">     // Get the stored data and print it</span><br><span class="line"></span><br><span class="line">     System.out.println(&quot;Stored string in redis:: &quot;+ jedis.get(&quot;tutorial-name&quot;));</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$javac RedisStringJava.java</span><br><span class="line"></span><br><span class="line">$java RedisStringJava</span><br><span class="line"></span><br><span class="line">Connection to server sucessfully</span><br><span class="line"></span><br><span class="line">Stored string in redis:: Redis tutorial</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisStringJava</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//Connecting to Redis server on localhost</span></span><br><span class="line"></span><br><span class="line">      Jedis jedis = <span class="keyword">new</span> Jedis(<span class="string">"localhost"</span>);</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"Connection to server sucessfully"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//set the data in redis string</span></span><br><span class="line"></span><br><span class="line">      jedis.set(<span class="string">"tutorial-name"</span>, <span class="string">"Redis tutorial"</span>);</span><br><span class="line"></span><br><span class="line">     <span class="comment">// Get the stored data and print it</span></span><br><span class="line"></span><br><span class="line">     System.out.println(<span class="string">"Stored string in redis:: "</span>+ jedis.get(<span class="string">"tutorial-name"</span>));</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$javac RedisStringJava.java</span><br><span class="line"></span><br><span class="line">$java RedisStringJava</span><br><span class="line"></span><br><span class="line">Connection to server sucessfully</span><br><span class="line"></span><br><span class="line">Stored string in redis:: Redis tutorial</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Redis Java List Example</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line">public class RedisListJava &#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">      //Connecting to Redis server on localhost</span><br><span class="line"></span><br><span class="line">      Jedis jedis = new Jedis(&quot;localhost&quot;);</span><br><span class="line"></span><br><span class="line">      System.out.println(&quot;Connection to server sucessfully&quot;);</span><br><span class="line"></span><br><span class="line">      //store data in redis list</span><br><span class="line"></span><br><span class="line">      jedis.lpush(&quot;tutorial-list&quot;, &quot;Redis&quot;);</span><br><span class="line"></span><br><span class="line">      jedis.lpush(&quot;tutorial-list&quot;, &quot;Mongodb&quot;);</span><br><span class="line"></span><br><span class="line">      jedis.lpush(&quot;tutorial-list&quot;, &quot;Mysql&quot;);</span><br><span class="line"></span><br><span class="line">     // Get the stored data and print it</span><br><span class="line"></span><br><span class="line">     List&lt;String&gt; list = jedis.lrange(&quot;tutorial-list&quot;, 0 ,5);</span><br><span class="line"></span><br><span class="line">     for(int i=0; i&lt;list.size(); i++) &#123;</span><br><span class="line"></span><br><span class="line">       System.out.println(&quot;Stored string in redis:: &quot;+list.get(i));</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$javac RedisListJava.java</span><br><span class="line"></span><br><span class="line">$java RedisListJava</span><br><span class="line"></span><br><span class="line">Connection to server sucessfully</span><br><span class="line"></span><br><span class="line">Stored string in redis:: Redis</span><br><span class="line"></span><br><span class="line">Stored string in redis:: Mongodb</span><br><span class="line"></span><br><span class="line">Stored string in redis:: Mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisListJava</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//Connecting to Redis server on localhost</span></span><br><span class="line"></span><br><span class="line">      Jedis jedis = <span class="keyword">new</span> Jedis(<span class="string">"localhost"</span>);</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"Connection to server sucessfully"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//store data in redis list</span></span><br><span class="line"></span><br><span class="line">      jedis.lpush(<span class="string">"tutorial-list"</span>, <span class="string">"Redis"</span>);</span><br><span class="line"></span><br><span class="line">      jedis.lpush(<span class="string">"tutorial-list"</span>, <span class="string">"Mongodb"</span>);</span><br><span class="line"></span><br><span class="line">      jedis.lpush(<span class="string">"tutorial-list"</span>, <span class="string">"Mysql"</span>);</span><br><span class="line"></span><br><span class="line">     <span class="comment">// Get the stored data and print it</span></span><br><span class="line"></span><br><span class="line">     List&lt;String&gt; list = jedis.lrange(<span class="string">"tutorial-list"</span>, <span class="number">0</span> ,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;list.size(); i++) &#123;</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">"Stored string in redis:: "</span>+list.get(i));</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$javac RedisListJava.java</span><br><span class="line"></span><br><span class="line">$java RedisListJava</span><br><span class="line"></span><br><span class="line">Connection to server sucessfully</span><br><span class="line"></span><br><span class="line">Stored string in redis:: Redis</span><br><span class="line"></span><br><span class="line">Stored string in redis:: Mongodb</span><br><span class="line"></span><br><span class="line">Stored string in redis:: Mysql</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Redis Java Keys Example</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line">public class RedisKeyJava &#123;</span><br><span class="line"></span><br><span class="line">   public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">      //Connecting to Redis server on localhost</span><br><span class="line"></span><br><span class="line">      Jedis jedis = new Jedis(&quot;localhost&quot;);</span><br><span class="line"></span><br><span class="line">      System.out.println(&quot;Connection to server sucessfully&quot;);</span><br><span class="line"></span><br><span class="line">      //store data in redis list</span><br><span class="line"></span><br><span class="line">     // Get the stored data and print it</span><br><span class="line"></span><br><span class="line">     List&lt;String&gt; list = jedis.keys(&quot;*&quot;);</span><br><span class="line"></span><br><span class="line">     for(int i=0; i&lt;list.size(); i++) &#123;</span><br><span class="line"></span><br><span class="line">       System.out.println(&quot;List of stored keys:: &quot;+list.get(i));</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$javac RedisKeyJava.java</span><br><span class="line"></span><br><span class="line">$java RedisKeyJava</span><br><span class="line"></span><br><span class="line">Connection to server sucessfully</span><br><span class="line"></span><br><span class="line">List of stored keys:: tutorial-name</span><br><span class="line"></span><br><span class="line">List of stored keys:: tutorial-list</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisKeyJava</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//Connecting to Redis server on localhost</span></span><br><span class="line"></span><br><span class="line">      Jedis jedis = <span class="keyword">new</span> Jedis(<span class="string">"localhost"</span>);</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"Connection to server sucessfully"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//store data in redis list</span></span><br><span class="line"></span><br><span class="line">     <span class="comment">// Get the stored data and print it</span></span><br><span class="line"></span><br><span class="line">     List&lt;String&gt; list = jedis.keys(<span class="string">"*"</span>);</span><br><span class="line"></span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;list.size(); i++) &#123;</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">"List of stored keys:: "</span>+list.get(i));</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$javac RedisKeyJava.java</span><br><span class="line"></span><br><span class="line">$java RedisKeyJava</span><br><span class="line"></span><br><span class="line">Connection to server sucessfully</span><br><span class="line"></span><br><span class="line">List of stored keys:: tutorial-name</span><br><span class="line"></span><br><span class="line">List of stored keys:: tutorial-list</span><br></pre></td></tr></table></figure>
 
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>Useful Links on Redis</li>

@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Hadoop学习记录-基础概念篇 | 码农随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由 王宇 原创并发布： 一 Hadoop 概念  参考资料  &amp;lt;&amp;lt; Distributed Systems Principles and Paradigms 2nd edition &amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop- The Definitive Guide, 4th Edition&amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop Real-World Solutions">
+  <meta name="description" content="由 王宇 原创并发布 ： 一 Hadoop 概念1. 参考资料&amp;lt;&amp;lt; Distributed Systems Principles and Paradigms 2nd edition &amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop- The Definitive Guide, 4th Edition&amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop Real-World Solutions">
 <meta name="keywords" content="大数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop学习记录-基础概念篇">
 <meta property="og:url" content="http://yoursite.com/2016/07/07/Hadoop学习记录-基础概念篇/index.html">
 <meta property="og:site_name" content="码农随笔">
-<meta property="og:description" content="由 王宇 原创并发布： 一 Hadoop 概念  参考资料  &amp;lt;&amp;lt; Distributed Systems Principles and Paradigms 2nd edition &amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop- The Definitive Guide, 4th Edition&amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop Real-World Solutions">
+<meta property="og:description" content="由 王宇 原创并发布 ： 一 Hadoop 概念1. 参考资料&amp;lt;&amp;lt; Distributed Systems Principles and Paradigms 2nd edition &amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop- The Definitive Guide, 4th Edition&amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop Real-World Solutions">
 <meta property="og:locale" content="cn">
-<meta property="og:updated_time" content="2019-08-12T10:21:56.132Z">
+<meta property="og:image" content="http://yoursite.com/assets/blog-image/dlb-gb-t.jpg">
+<meta property="og:updated_time" content="2019-08-15T03:21:44.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop学习记录-基础概念篇">
-<meta name="twitter:description" content="由 王宇 原创并发布： 一 Hadoop 概念  参考资料  &amp;lt;&amp;lt; Distributed Systems Principles and Paradigms 2nd edition &amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop- The Definitive Guide, 4th Edition&amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop Real-World Solutions">
+<meta name="twitter:description" content="由 王宇 原创并发布 ： 一 Hadoop 概念1. 参考资料&amp;lt;&amp;lt; Distributed Systems Principles and Paradigms 2nd edition &amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop- The Definitive Guide, 4th Edition&amp;gt;&amp;gt;&amp;lt;&amp;lt; Hadoop Real-World Solutions">
+<meta name="twitter:image" content="http://yoursite.com/assets/blog-image/dlb-gb-t.jpg">
   
     <link rel="alternative" href="/atom.xml" title="码农随笔" type="application/atom+xml">
   
@@ -221,149 +223,68 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>由 王宇 原创并发布：</p>
-<p>一 Hadoop 概念</p>
-<ol>
-<li>参考资料</li>
-</ol>
-<p>&lt;&lt; Distributed Systems Principles and Paradigms 2nd edition &gt;&gt;<br>&lt;&lt; Hadoop- The Definitive Guide, 4th Edition&gt;&gt;<br>&lt;&lt; Hadoop Real-World Solutions Cookbook&gt;&gt;</p>
-<ol start="2">
-<li>Hadoop 结构</li>
-</ol>
-<p>2.1 Hadoop 整体结构</p>
-<p>Hadoop Common: Hadoop Java 库和实用工具</p>
-<p>Hadoop YARN: Job 调度和集群资源管理框架</p>
-<p>Hadoop Distributed File System(HDFS): 分布式文件系统</p>
-<p>Hadoop MapReduce: 基于YARN的大数据集合并行处理</p>
-<p>2.1.1 MapReduce<br>The Map Task: This is the first task, which takes input data and converts it into a set of data, where individual elements are broken down into tuples (key/value pairs).</p>
-<p>The Reduce Task: This task takes the output from a map task as input and combines those data tuples into a smaller set of tuples. The reduce task is always performed after the map task.</p>
-<p>JobTracker: The master is responsible for resource management, tracking resource consumption/availability and scheduling the jobs component tasks on the slaves, monitoring them and re-executing the failed tasks.</p>
-<p>TaskTracker: he slaves TaskTracker execute the tasks as directed by the master and provide task-status information to the master periodically</p>
-<p>2.1.2 HDFS<br>NameNode: manages the file system metadata and one or more slave</p>
-<p>DataNode: store the actual data</p>
-<p>2.2 HDFS</p>
-<p>2.2.1 HDFS 功能<br>It is suitable for the distributed storage and processing.</p>
-<p>Hadoop provides a command interface to interact with HDFS.</p>
-<p>The built-in servers of namenode and datanode help users to easily check the status of cluster.</p>
-<p>Streaming access to file system data.</p>
-<p>HDFS provides file permissions and authentication.</p>
-<p>2.2.2 HDFS 结构</p>
-<p>Namenode 任务</p>
-<p>Manages the file system namespace.</p>
-<p>Regulates client’s access to files.</p>
-<p>It also executes file system operations such as renaming, closing, and opening files and directories.</p>
-<p>Datanode</p>
-<p>Datanodes perform read-write operations on the file systems, as per client request.</p>
-<p>They also perform operations such as block creation, deletion, and replication according to the instructions of the namenode.</p>
-<p>Block<br>Generally the user data is stored in the files of HDFS. The file in a file system will be divided into one or more segments and/or stored in individual data nodes. These file segments are called as blocks. In other words, the minimum amount of data that HDFS can read or write is called a Block. The default block size is 64MB, but it can be increased as per the need to change in HDFS configuration.</p>
-<p>2.3 MapReduce</p>
-<p>MapReduce 是一种处理技术，是一种基于JAVA的分布式程序模型。MapReduce算法包含两个重要的任务，Map 和 Reduce。</p>
-<p>2.3.1 算法<br>Generally MapReduce paradigm is based on sending the computer to where the data resides!</p>
-<p>MapReduce program executes in three stages, namely map stage, shuffle stage, and reduce stage.</p>
-<p>Map stage : The map or mapper’s job is to process the input data. Generally the input data is in the form of file or directory and is stored in the Hadoop file system (HDFS). The input file is passed to the mapper function line by line. The mapper processes the data and creates several small chunks of data.</p>
-<p>Reduce stage : This stage is the combination of the Shuffle stage and the Reduce stage. The Reducer’s job is to process the data that comes from the mapper. After processing, it produces a new set of output, which will be stored in the HDFS.</p>
-<p>During a MapReduce job, Hadoop sends the Map and Reduce tasks to the appropriate servers in the cluster.</p>
-<p>The framework manages all the details of data-passing such as issuing tasks, verifying task completion, and copying data around the cluster between the nodes.</p>
-<p>Most of the computing takes place on nodes with data on local disks that reduces the network traffic.</p>
-<p>After completion of the given tasks, the cluster collects and reduces the data to form an appropriate result, and sends it back to the Hadoop server.</p>
-<p>2.3.2 Inputs and Outpus</p>
-<p>2.3.3 术语<br>PayLoad - Applications implement the Map and the Reduce functions, and form the core of the job.</p>
-<p>Mapper - Mapper maps the input key/value pairs to a set of intermediate key/value pair.</p>
-<p>NamedNode - Node that manages the Hadoop Distributed File System (HDFS).</p>
-<p>DataNode - Node where data is presented in advance before any processing takes place.</p>
-<p>MasterNode - Node where JobTracker runs and which accepts job requests from clients.</p>
-<p>SlaveNode - Node where Map and Reduce program runs.</p>
-<p>JobTracker - Schedules jobs and tracks the assign jobs to Task tracker.</p>
-<p>Task Tracker - Tracks the task and reports status to JobTracker.</p>
-<p>Job - A program is an execution of a Mapper and Reducer across a dataset.</p>
-<p>Task - An execution of a Mapper or a Reducer on a slice of data.</p>
-<p>Task Attempt - A particular instance of an attempt to execute a task on a SlaveNode.</p>
-<p>二 Hadoop环境配置</p>
-<ol>
-<li>搭建虚拟机<br>VirualBox 5.0.24, 用户手册</li>
-</ol>
-<p>Linux OS : Puppy Slacko6.3.2 64bit</p>
-<p>在VirualBox 上安装三台虚拟机，机器名分别为：</p>
-<p>hadoop-master</p>
-<p>hadoop-slave-1</p>
-<p>hadoop-slave-2</p>
-<ol start="2">
-<li>软件安装及环境配置<br>下载JDK</li>
-</ol>
-<p>安装Eclipse</p>
-<p>下载Hadoop 2.7.2</p>
-<p>安装ssh</p>
-<p>在~/.bashrc 中配置环境变量</p>
-<p>JAVA_HOME=/opt/jdk1.8.0_92<br>CLASSPATH=.:${JAVA_HOME}/lib/<br>export JAVA_HOME=${JAVA_HOME}<br>export CLASSPATH=${CLASSPATH}:${CLASSPATH}tools.jar:${CLASSPATH}dt.jar<br>export PATH=.:${PATH}:${JAVA_HOME}/bin:${CLASSPATH}<br>export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar</p>
+        <p><img src="/assets/blog-image/dlb-gb-t.jpg" alt><br>由 王宇 原创并发布 ：</p>
+<h2 id="一-Hadoop-概念"><a href="#一-Hadoop-概念" class="headerlink" title="一 Hadoop 概念"></a>一 Hadoop 概念</h2><h3 id="1-参考资料"><a href="#1-参考资料" class="headerlink" title="1. 参考资料"></a>1. 参考资料</h3><p>&lt;&lt; Distributed Systems Principles and Paradigms 2nd edition &gt;&gt;<br>&lt;&lt; Hadoop- The Definitive Guide, 4th Edition&gt;&gt;<br>&lt;&lt; Hadoop Real-World Solutions Cookbook&gt;&gt;</p>
+<h3 id="2-Hadoop-结构"><a href="#2-Hadoop-结构" class="headerlink" title="2. Hadoop 结构"></a>2. Hadoop 结构</h3><a id="more"></a>
+<h4 id="2-1-Hadoop-整体结构"><a href="#2-1-Hadoop-整体结构" class="headerlink" title="2.1 Hadoop 整体结构"></a>2.1 Hadoop 整体结构</h4><p>Hadoop Common: Hadoop Java 库和实用工具<br>Hadoop YARN: Job 调度和集群资源管理框架<br>Hadoop Distributed File System(HDFS): 分布式文件系统<br>Hadoop MapReduce: 基于YARN的大数据集合并行处理</p>
+<h4 id="2-1-1-MapReduce"><a href="#2-1-1-MapReduce" class="headerlink" title="2.1.1 MapReduce"></a>2.1.1 MapReduce</h4><p>The Map Task: This is the first task, which takes input data and converts it into a set of data, where individual elements are broken down into tuples (key/value pairs).<br>The Reduce Task: This task takes the output from a map task as input and combines those data tuples into a smaller set of tuples. The reduce task is always performed after the map task.<br>JobTracker: The master is responsible for resource management, tracking resource consumption/availability and scheduling the jobs component tasks on the slaves, monitoring them and re-executing the failed tasks.<br>TaskTracker: he slaves TaskTracker execute the tasks as directed by the master and provide task-status information to the master periodically</p>
+<h4 id="2-1-2-HDFS"><a href="#2-1-2-HDFS" class="headerlink" title="2.1.2 HDFS"></a>2.1.2 HDFS</h4><p>NameNode: manages the file system metadata and one or more slave<br>DataNode: store the actual data</p>
+<h3 id="2-2-HDFS"><a href="#2-2-HDFS" class="headerlink" title="2.2 HDFS"></a>2.2 HDFS</h3><h4 id="2-2-1-HDFS-功能"><a href="#2-2-1-HDFS-功能" class="headerlink" title="2.2.1 HDFS 功能"></a>2.2.1 HDFS 功能</h4><p>It is suitable for the distributed storage and processing.<br>Hadoop provides a command interface to interact with HDFS.<br>The built-in servers of namenode and datanode help users to easily check the status of cluster.<br>Streaming access to file system data.<br>HDFS provides file permissions and authentication.</p>
+<h4 id="2-2-2-HDFS-结构"><a href="#2-2-2-HDFS-结构" class="headerlink" title="2.2.2 HDFS 结构"></a>2.2.2 HDFS 结构</h4><p>Namenode 任务<br>Manages the file system namespace.<br>Regulates client’s access to files.<br>It also executes file system operations such as renaming, closing, and opening files and directories.<br>Datanode<br>Datanodes perform read-write operations on the file systems, as per client request.<br>They also perform operations such as block creation, deletion, and replication according to the instructions of the namenode.<br>Block<br>Generally the user data is stored in the files of HDFS. The file in a file system will be divided into one or more segments and/or stored in individual data nodes. These file segments are called as blocks. In other words, the minimum amount of data that HDFS can read or write is called a Block. The default block size is 64MB, but it can be increased as per the need to change in HDFS configuration.</p>
+<h3 id="2-3-MapReduce"><a href="#2-3-MapReduce" class="headerlink" title="2.3 MapReduce"></a>2.3 MapReduce</h3><p>MapReduce 是一种处理技术，是一种基于JAVA的分布式程序模型。MapReduce算法包含两个重要的任务，Map 和 Reduce。</p>
+<h4 id="2-3-1-算法"><a href="#2-3-1-算法" class="headerlink" title="2.3.1 算法"></a>2.3.1 算法</h4><p>Generally MapReduce paradigm is based on sending the computer to where the data resides!<br>MapReduce program executes in three stages, namely map stage, shuffle stage, and reduce stage.<br>Map stage : The map or mapper’s job is to process the input data. Generally the input data is in the form of file or directory and is stored in the Hadoop file system (HDFS). The input file is passed to the mapper function line by line. The mapper processes the data and creates several small chunks of data.<br>Reduce stage : This stage is the combination of the Shuffle stage and the Reduce stage. The Reducer’s job is to process the data that comes from the mapper. After processing, it produces a new set of output, which will be stored in the HDFS.<br>During a MapReduce job, Hadoop sends the Map and Reduce tasks to the appropriate servers in the cluster.<br>The framework manages all the details of data-passing such as issuing tasks, verifying task completion, and copying data around the cluster between the nodes.<br>Most of the computing takes place on nodes with data on local disks that reduces the network traffic.<br>After completion of the given tasks, the cluster collects and reduces the data to form an appropriate result, and sends it back to the Hadoop server.</p>
+<h4 id="2-3-2-Inputs-and-Outpus"><a href="#2-3-2-Inputs-and-Outpus" class="headerlink" title="2.3.2 Inputs and Outpus"></a>2.3.2 Inputs and Outpus</h4><h4 id="2-3-3-术语"><a href="#2-3-3-术语" class="headerlink" title="2.3.3 术语"></a>2.3.3 术语</h4><p>PayLoad - Applications implement the Map and the Reduce functions, and form the core of the job.<br>Mapper - Mapper maps the input key/value pairs to a set of intermediate key/value pair.<br>NamedNode - Node that manages the Hadoop Distributed File System (HDFS).<br>DataNode - Node where data is presented in advance before any processing takes place.<br>MasterNode - Node where JobTracker runs and which accepts job requests from clients.<br>SlaveNode - Node where Map and Reduce program runs.<br>JobTracker - Schedules jobs and tracks the assign jobs to Task tracker.<br>Task Tracker - Tracks the task and reports status to JobTracker.<br>Job - A program is an execution of a Mapper and Reducer across a dataset.<br>Task - An execution of a Mapper or a Reducer on a slice of data.<br>Task Attempt - A particular instance of an attempt to execute a task on a SlaveNode.</p>
+<h2 id="二-Hadoop环境配置"><a href="#二-Hadoop环境配置" class="headerlink" title="二 Hadoop环境配置"></a>二 Hadoop环境配置</h2><h3 id="1-搭建虚拟机"><a href="#1-搭建虚拟机" class="headerlink" title="1. 搭建虚拟机"></a>1. 搭建虚拟机</h3><p>VirualBox 5.0.24, 用户手册<br>Linux OS : Puppy Slacko6.3.2 64bit<br>在VirualBox 上安装三台虚拟机，机器名分别为：<br>hadoop-master<br>hadoop-slave-1<br>hadoop-slave-2</p>
+<h3 id="2-软件安装及环境配置"><a href="#2-软件安装及环境配置" class="headerlink" title="2. 软件安装及环境配置"></a>2. 软件安装及环境配置</h3><p>下载JDK<br>安装Eclipse<br>下载Hadoop 2.7.2<br>安装ssh<br>在~/.bashrc 中配置环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/opt/jdk1.8.0_92</span><br><span class="line">CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib/</span><br><span class="line">export JAVA_HOME=$&#123;JAVA_HOME&#125;</span><br><span class="line">export CLASSPATH=$&#123;CLASSPATH&#125;:$&#123;CLASSPATH&#125;tools.jar:$&#123;CLASSPATH&#125;dt.jar</span><br><span class="line">export PATH=.:$&#123;PATH&#125;:$&#123;JAVA_HOME&#125;/bin:$&#123;CLASSPATH&#125;</span><br><span class="line">export HADOOP_CLASSPATH=$&#123;JAVA_HOME&#125;/lib/tools.jar</span><br></pre></td></tr></table></figure>
+
 <p>在 ~/.profile 最后一行加入： source ~/.bashrc 否则在ssh登录后，无法执行.bashrc, 使得环境变量无效。</p>
-<ol start="3">
-<li>配置SSH<br>使用Package Manager 下载 OpenSSH</li>
-</ol>
-<p>生成 Key</p>
-<pre><code>ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
-ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
-ssh-keyigen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key</code></pre><p>配置 /etc/ssh/sshd_config</p>
-<pre><code>PermitRootLogin yes
-TCPKeepAlive yes
-ClientAliveInterval 60
-ClientAliveCountMax 3
-MaxStartups 10:30:100</code></pre><p>修改 root 密码</p>
-<pre><code>passwd root</code></pre><p>启动SSH服务</p>
-<pre><code>/usr/sbin/sshd</code></pre><p>开机自动启动SSH服务<br>在 ~/Startup 目录中，增加 launchSSH.sh</p>
+<h3 id="3-配置SSH"><a href="#3-配置SSH" class="headerlink" title="3. 配置SSH"></a>3. 配置SSH</h3><p>使用Package Manager 下载 OpenSSH<br>生成 Key</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key</span><br><span class="line">ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key</span><br><span class="line">ssh-keyigen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key</span><br></pre></td></tr></table></figure>
+
+<p>配置 /etc/ssh/sshd_config</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PermitRootLogin yes</span><br><span class="line">TCPKeepAlive yes</span><br><span class="line">ClientAliveInterval 60</span><br><span class="line">ClientAliveCountMax 3</span><br><span class="line">MaxStartups 10:30:100</span><br></pre></td></tr></table></figure>
+
+<p>修改 root 密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd root</span><br></pre></td></tr></table></figure>
+
+<p>启动SSH服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/sshd</span><br></pre></td></tr></table></figure>
+
+<p>开机自动启动SSH服务<br>在 ~/Startup 目录中，增加 launchSSH.sh</p>
 <p>#!/usr/bin/bash<br>/usr/sbin/sshd<br>可以采用如下命令，调试SSH</p>
-<pre><code>ssh -v ip</code></pre><p>配置Putty</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -v ip</span><br></pre></td></tr></table></figure>
+
+<p>配置Putty</p>
 <ol start="4">
-<li>配置 Hadoop<br>在每个节点上配置SSH Key</li>
+<li>配置 Hadoop<br>在每个节点上配置SSH Key<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa </span><br><span class="line"><span class="meta">$</span> ssh-copy-id -i ~/.ssh/id_rsa.pub tutorialspoint@hadoop-master </span><br><span class="line"><span class="meta">$</span> ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop_tp1@hadoop-slave-1 </span><br><span class="line"><span class="meta">$</span> ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop_tp2@hadoop-slave-2</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<p>$ ssh-keygen -t rsa<br>$ ssh-copy-id -i ~/.ssh/id_rsa.pub tutorialspoint@hadoop-master<br>$ ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop_tp1@hadoop-slave-1<br>$ ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop_tp2@hadoop-slave-2<br>在每个节点上编辑hosts</p>
-<h1 id="vi-etc-hosts"><a href="#vi-etc-hosts" class="headerlink" title="vi /etc/hosts"></a>vi /etc/hosts</h1><p>enter the following lines in the /etc/hosts file.<br>192.168.67.113 hadoop-master<br>192.168.67.27 hadoop-slave-1<br>192.168.67.98 hadoop-slave-2<br>core-site.xml</p>
-<configuration>
-        <property>
-                <name>fs.default.name</name>
-                <value>hdfs://localhost:9000/</value>
-        </property>
-        <property>
-                <name>dfs.permissions</name>
-                <value>false</value>
-        </property>
-</configuration>
+<p>在每个节点上编辑hosts</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> vi /etc/hosts</span><br><span class="line">enter the following lines in the /etc/hosts file.</span><br><span class="line">192.168.67.113 hadoop-master</span><br><span class="line">192.168.67.27 hadoop-slave-1</span><br><span class="line">192.168.67.98 hadoop-slave-2</span><br></pre></td></tr></table></figure>
+
+<p>core-site.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.default.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://localhost:9000/<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.permissions<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>hdfs-site.xml</p>
-<configuration>
-   <property>
-      <name>dfs.data.dir</name>
-      <value>/opt/hadoop-2.7.2/dfs/name/data</value>
-      <final>true</final>
-   </property>
-
-   <property>
-      <name>dfs.name.dir</name>
-      <value>/opt/hadoop-2.7.2/dfs/name</value>
-      <final>true</final>
-   </property>
-
-   <property>
-      <name>dfs.replication</name>
-      <value>1</value>
-   </property>
-</configuration>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/hadoop-2.7.2/dfs/name/data<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">final</span>&gt;</span>true<span class="tag">&lt;/<span class="name">final</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/hadoop-2.7.2/dfs/name<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">final</span>&gt;</span>true<span class="tag">&lt;/<span class="name">final</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>mapred-site.xml</p>
-<configuration>
-   <property>
-      <name>mapred.job.tracker</name>
-      <value>hadoop-master:9001</value>
-   </property>
-</configuration>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapred.job.tracker<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop-master:9001<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>hadoop-env.sh<br>将下列环境变量更换为绝对路径：</p>
-<p>#export JAVA_HOME=${JAVA_HOME}<br>export JAVA_HOME=/opt/jdk1.8.0_92</p>
-<p>#export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-“/etc/hadoop”}<br>export HADOOP_CONF_DIR=”/opt/hadoop-2.7.2/etc/hadoop”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>export JAVA_HOME=$&#123;JAVA_HOME&#125;</span><br><span class="line">export JAVA_HOME=/opt/jdk1.8.0_92</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>export HADOOP_CONF_DIR=$&#123;HADOOP_CONF_DIR:-"/etc/hadoop"&#125;</span><br><span class="line">export HADOOP_CONF_DIR="/opt/hadoop-2.7.2/etc/hadoop"</span><br></pre></td></tr></table></figure>
+
+
 <ol start="5">
-<li><p>安装Hadoop到 Slave 服务器上<br>$ cd /opt<br>$ scp -r hadoop-2.7.2 hadoop-slave-1:/opt/hadoop-2.7.2<br>$ scp -r hadoop-2.7.2 hadoop-slave-2:/opt/hadoop-2.7.2</p>
+<li>安装Hadoop到 Slave 服务器上<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd /opt </span><br><span class="line"><span class="meta">$</span> scp -r hadoop-2.7.2 hadoop-slave-1:/opt/hadoop-2.7.2</span><br><span class="line"><span class="meta">$</span> scp -r hadoop-2.7.2 hadoop-slave-2:/opt/hadoop-2.7.2</span><br></pre></td></tr></table></figure>
+
+
 </li>
-<li><p>配置 Master 服务器<br>$ cd /opt/hadoop-2.7.2</p>
-</li>
+</ol>
+<ol start="6">
+<li>配置 Master 服务器<br>$ cd /opt/hadoop-2.7.2</li>
 </ol>
 <p>// Configuring Master Node<br>$ vi etc/hadoop/masters<br>hadoop-master</p>
 <p>// Configuring Slave Node<br>$ vi etc/hadoop/slaves<br>hadoop-master<br>hadoop-slave-1<br>hadoop-slave-2</p>
@@ -388,34 +309,11 @@ MaxStartups 10:30:100</code></pre><p>修改 root 密码</p>
 <p>使用 help 参数，查询命令的详细信息</p>
 <p>三 Hadoop MapReduce 开发实例</p>
 <ol>
-<li>WordCount 此例的功能是计算输入文件中的单词数量<br>import java.io.IOException;<br>import java.util.StringTokenizer;</li>
-</ol>
-<p>import org.apache.hadoop.conf.Configuration;<br>import org.apache.hadoop.fs.Path;<br>import org.apache.hadoop.io.IntWritable;<br>import org.apache.hadoop.io.Text;<br>import org.apache.hadoop.mapreduce.Job;<br>import org.apache.hadoop.mapreduce.Mapper;<br>import org.apache.hadoop.mapreduce.Reducer;<br>import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;<br>import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</p>
-<p>public class WordCount {</p>
-<p>  public static class TokenizerMapper<br>       extends Mapper&lt;Object, Text, Text, IntWritable&gt;{</p>
-<pre><code>private final static IntWritable one = new IntWritable(1);
-private Text word = new Text();
+<li>WordCount 此例的功能是计算输入文件中的单词数量<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.IntWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Job;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCount</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TokenizerMapper</span></span></span><br><span class="line"><span class="class">       <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">Object</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> IntWritable one = <span class="keyword">new</span> IntWritable(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">private</span> Text word = <span class="keyword">new</span> Text();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(Object key, Text value, Context context</span></span></span><br><span class="line"><span class="function"><span class="params">                    )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">      StringTokenizer itr = <span class="keyword">new</span> StringTokenizer(value.toString());</span><br><span class="line">      <span class="keyword">while</span> (itr.hasMoreTokens()) &#123;</span><br><span class="line">        word.set(itr.nextToken());</span><br><span class="line">        context.write(word, one);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntSumReducer</span></span></span><br><span class="line"><span class="class">       <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>,<span class="title">IntWritable</span>,<span class="title">Text</span>,<span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IntWritable result = <span class="keyword">new</span> IntWritable();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values,</span></span></span><br><span class="line"><span class="function"><span class="params">                       Context context</span></span></span><br><span class="line"><span class="function"><span class="params">                       )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (IntWritable val : values) &#123;</span><br><span class="line">        sum += val.get();</span><br><span class="line">      &#125;</span><br><span class="line">      result.set(sum);</span><br><span class="line">      context.write(key, result);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line">    Job job = Job.getInstance(conf, <span class="string">"word count"</span>);</span><br><span class="line">    job.setJarByClass(WordCount.class);</span><br><span class="line">    job.setMapperClass(TokenizerMapper.class);</span><br><span class="line">    job.setCombinerClass(IntSumReducer.class);</span><br><span class="line">    job.setReducerClass(IntSumReducer.class);</span><br><span class="line">    job.setOutputKeyClass(Text.class);</span><br><span class="line">    job.setOutputValueClass(IntWritable.class);</span><br><span class="line">    FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(args[<span class="number">0</span>]));</span><br><span class="line">    FileOutputFormat.setOutputPath(job, <span class="keyword">new</span> Path(args[<span class="number">1</span>]));</span><br><span class="line">    System.exit(job.waitForCompletion(<span class="keyword">true</span>) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-public void map(Object key, Text value, Context context
-                ) throws IOException, InterruptedException {
-  StringTokenizer itr = new StringTokenizer(value.toString());
-  while (itr.hasMoreTokens()) {
-    word.set(itr.nextToken());
-    context.write(word, one);
-  }
-}</code></pre><p>  }</p>
-<p>  public static class IntSumReducer<br>       extends Reducer&lt;Text,IntWritable,Text,IntWritable&gt; {<br>    private IntWritable result = new IntWritable();</p>
-<pre><code>public void reduce(Text key, Iterable&lt;IntWritable&gt; values,
-                   Context context
-                   ) throws IOException, InterruptedException {
-  int sum = 0;
-  for (IntWritable val : values) {
-    sum += val.get();
-  }
-  result.set(sum);
-  context.write(key, result);
-}</code></pre><p>  }</p>
-<p>  public static void main(String[] args) throws Exception {<br>    Configuration conf = new Configuration();<br>    Job job = Job.getInstance(conf, “word count”);<br>    job.setJarByClass(WordCount.class);<br>    job.setMapperClass(TokenizerMapper.class);<br>    job.setCombinerClass(IntSumReducer.class);<br>    job.setReducerClass(IntSumReducer.class);<br>    job.setOutputKeyClass(Text.class);<br>    job.setOutputValueClass(IntWritable.class);<br>    FileInputFormat.addInputPath(job, new Path(args[0]));<br>    FileOutputFormat.setOutputPath(job, new Path(args[1]));<br>    System.exit(job.waitForCompletion(true) ? 0 : 1);<br>  }<br>}</p>
+
+</li>
+</ol>
 <ol start="2">
 <li><p>编译WordCount 并创建JAR<br>$ bin/hadoop com.sun.tools.javac.Main WordCount.java<br>$ jar cf wc.jar WordCount*.class</p>
 </li>
@@ -573,7 +471,7 @@ public void map(Object key, Text value, Context context
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vi-etc-hosts"><span class="toc-number">1.</span> <span class="toc-text">vi /etc/hosts</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Hadoop-概念"><span class="toc-number">1.</span> <span class="toc-text">一 Hadoop 概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-参考资料"><span class="toc-number">1.1.</span> <span class="toc-text">1. 参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Hadoop-结构"><span class="toc-number">1.2.</span> <span class="toc-text">2. Hadoop 结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Hadoop-整体结构"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 Hadoop 整体结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-MapReduce"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.1.1 MapReduce</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-HDFS"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.1.2 HDFS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-HDFS"><span class="toc-number">1.3.</span> <span class="toc-text">2.2 HDFS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-HDFS-功能"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.2.1 HDFS 功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-HDFS-结构"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2.2 HDFS 结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-MapReduce"><span class="toc-number">1.4.</span> <span class="toc-text">2.3 MapReduce</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-算法"><span class="toc-number">1.4.1.</span> <span class="toc-text">2.3.1 算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-Inputs-and-Outpus"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.3.2 Inputs and Outpus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-术语"><span class="toc-number">1.4.3.</span> <span class="toc-text">2.3.3 术语</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-Hadoop环境配置"><span class="toc-number">2.</span> <span class="toc-text">二 Hadoop环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-搭建虚拟机"><span class="toc-number">2.1.</span> <span class="toc-text">1. 搭建虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-软件安装及环境配置"><span class="toc-number">2.2.</span> <span class="toc-text">2. 软件安装及环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置SSH"><span class="toc-number">2.3.</span> <span class="toc-text">3. 配置SSH</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
